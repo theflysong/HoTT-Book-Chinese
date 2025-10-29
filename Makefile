@@ -109,7 +109,7 @@ log-check:
 	! grep -n "!! Input index error" hott-online.ilg /dev/null
 
 version.tex:
-	printf '\\newcommand{\\OPTversion}{%s}\n' "`git describe --always --long`" > version.tex
+	printf '\\\\newcommand{\\OPTversion}{%s}\n' "`git describe --always --long`" > version.tex
 
 # these warnings are mostly spurious, and could have been prevented by a better makeindex algorithm
 log-check-for-warnings:

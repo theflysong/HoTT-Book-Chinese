@@ -22,7 +22,7 @@ colors = [("gray", str(float(i)/ncols)) for i in range(0, ncols+1)]
 ## Generate LaTeX
 
 template = r"""
-\documentclass{article}
+\documentclass{ctexart}
 \usepackage{palatino}
 \usepackage{amsmath,amssymb,amsfonts}
 \usepackage{xcolor}

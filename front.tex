@@ -30,11 +30,11 @@
 {\centering
 \makebox[\OPTbastardwidth][s]{
 \fontsize{\OPTbastardtitlefont}{\OPTbastardtitlefont}\fontshape{n}\selectfont%
-\textbf{Homotopy Type Theory}}\par
+\textbf{同伦类型论}}\par
 \vspace*{\OPTbastardtitleskip}
 \makebox[\OPTbastardwidth][s]{
 \fontsize{\OPTbastardsubtitlefont}{\OPTbastardsubtitlefont}\fontshape{n}\selectfont%
-\textit{Univalent Foundations of Mathematics}}\par
+\textit{数学泛等基础}}\par
 }
 \else
 \fi
@@ -44,15 +44,15 @@
 \hbox{}\vfill
 {\centering
 \makebox[\OPTtitlewidth][s]{\fontsize{\OPTtitletitlefont}{\OPTtitletitlefont}\fontseries{b}\selectfont%
-Homotopy Type Theory}\par
+同伦类型论}\par
 \vspace*{\OPTtitletitleskip}
 \makebox[\OPTtitlewidth][s]{\fontsize{\OPTtitlesubtitlefont}{\OPTtitlesubtitlefont}\fontshape{it}\selectfont%
-Univalent Foundations of Mathematics}\par
+数学泛等基础}\par
 \vspace*{\OPTtitleskip}
 {\fontsize{\OPTtitleauthorfont}{\OPTtitleauthorfont}\fontshape{n}\selectfont%
-The Univalent Foundations Program\par
+泛等基础纲领\par
 \vspace*{\OPTtitleauthorskip}
-Institute for Advanced Study\par
+普林斯顿高等研究院\par
 }
 \vspace*{\OPTtitleskip}
 \vspace*{\OPTtitleskip}
@@ -72,16 +72,16 @@ Institute for Advanced Study\par
 \input{version.tex}
 {\small
 \noindent
-\emph{``Homotopy Type Theory: Univalent Foundations of Mathematics''}\\
-\copyright\ 2013 The Univalent Foundations Program
+\emph{``同伦类型论:数学泛等基础''}\\
+\copyright\ 2013 泛等基础纲领
 
 \medskip
 \noindent
-Book version: \texttt{\OPTversion}
+版本: \texttt{\OPTversion}
 
 \medskip
 \noindent
-MSC 2010 classification:
+MSC 2010 分类号:
 \texttt{03-02},
 \texttt{55-02},
 \texttt{03B15}
@@ -90,72 +90,67 @@ MSC 2010 classification:
 \footnotesize
 
 \noindent
-This work is licensed under the
+本作品采用的许可协议为
 \textbf{\emph{Creative Commons Attribution-ShareAlike 3.0 Unported License.}}
 %
-To view a copy of this license, visit
+协议副本见
 \url{http://creativecommons.org/licenses/by-sa/3.0/}.
 
 \bigskip
 
 \noindent
-This book is freely available at \url{http://homotopytypetheory.org/book/}.
+本书可在 \url{http://homotopytypetheory.org/book/}. 中免费获得
 
 \bigskip
 
 \noindent
-\emph{\textbf{\small Acknowledgment}}
+\emph{\textbf{\small 致谢}}
 
 \medskip
 
 \noindent
-Apart from the generous support from the Institute for Advanced Study, some contributors
-to the book were partially or fully supported by the following agencies and grants:
+除了普林斯顿高等研究所的慷慨支持，本书的部分撰稿人还得到了下列机构和基金的部分或全部资助
 %
 \begin{itemize}
-\item Association of Members of the Institute for Advanced Study: a grant to the Institute for Advanced Study % Dan Grayson
+\item 普林斯顿高等研究所成员协会: 向普林斯顿高等研究院提供资助 % Dan Grayson
 % SLOVENIA
-\item Agencija za raziskovalno dejavnost Republike Slovenije:  % Andrej's Slovenian agency
+\item 斯洛文尼亚研究署:  % Andrej's Slovenian agency
 \href{http://www.sicris.si/search/prg.aspx?id=6120}{P1--0294},
 \href{http://www.sicris.si/search/prj.aspx?id=7109}{N1--0011}.
 
-\item Air Force Office of Scientific Research:
+\item 美国空军科学研究办公室:
   FA9550-11-1-0143, and % Steve's ASFOR
   FA9550-12-1-0370.  % Bob's ASFOR
   {
     \setlength{\parskip}{0pt}
     \begin{quote}
       \noindent\scriptsize
-      This material is based in part upon work supported by the AFOSR under the above awards.
-      Any opinions, findings, and conclusions or recommendations expressed in this publication are those of the author(s) and do not necessarily reflect the views of the AFOSR.
+      本材料部分基于上述奖项下由美国空军科学研究办公室资助的工作。
+      本出版物中表达的任何观点、发现、结论或建议均属于作者个人意见，并不一定反映美国空军科学研究办公室的立场。
     \end{quote}
   }
 
-\item Engineering and Physical Sciences Research Council: % Thorsten and students
+\item 英国工程与物理科学研究委员会: % Thorsten and students
    \href{http://gow.epsrc.ac.uk/NGBOViewGrant.aspx?GrantRef=EP/G034109/1}{EP/G034109/1}, % Reusability and dependent types
    \href{http://gow.epsrc.ac.uk/NGBOViewGrant.aspx?GrantRef=EP/G03298X/1}{EP/G03298X/1}. % Theory and Application of Induction Recursion
 
-\item European Union's 7th Framework Programme under grant agreement nr.\ 243847 (%
+\item 由欧盟第七框架计划资助（资助协议号 243847） (%
 \href{http://wiki.portal.chalmers.se/cse/pmwiki.php/ForMath/ForMath/}{ForMath}). %% several Europeans, via Bas
 
-\item National Science Foundation:
+\item 美国国家科学基金会:
   \href{http://www.nsf.gov/awardsearch/showAward.do?AwardNumber=1001191}{DMS-1001191}, %% Steve's NSF, including Chris and Kristina
   \href{http://www.nsf.gov/awardsearch/showAward.do?AwardNumber=1100938}{DMS-1100938}, %% Vladimir's NSF
   \href{http://www.nsf.gov/awardsearch/showAward.do?AwardNumber=1116703}{CCF-1116703}, %% Foundations and Applications of Higher-Dimensional Directed Type Theory
-  and
+  与
   \href{http://www.nsf.gov/awardsearch/showAward.do?AwardNumber=1128155}{DMS-1128155}. %% IAS support for Mike Shulman, copied from our %% paper by Dan Licata
   {
     \setlength{\itemsep}{0pt}
     \begin{quote}
       \noindent\scriptsize
-      This material is based in part upon work supported by the
-      National Science Foundation under the above awards.  Any opinions,
-      findings, and conclusions or recommendations expressed in this
-      material are those of the author(s) and do not necessarily reflect the
-      views of the National Science Foundation.
+      本研究成果部分基于美国国家科学基金会在上述奖项下的资助。作者在本材料中阐述的任何意见、发现、结论或建议均不代表美国国家科学基金会的观点。
     \end{quote}
   }
-\item The Simonyi Fund: a grant to the Institute for Advanced Study          %% Dan Grayson
+\item 西蒙尼基金：向普林斯顿高等研究院提供资助          %% Dan Grayson
   \end{itemize}
 
 
