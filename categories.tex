@@ -22,7 +22,7 @@ Since we regard the latter choice as usually the ``correct'' definition, we will
 
 A good example of the difference between the three notions of category is provided by the statement ``every fully faithful and essentially surjective functor is an equivalence of categories'', which in classical set-based category theory is equivalent to the axiom of choice.
 \index{mathematics!classical}%
-\index{axiom!of choice}%
+\index{GongLi@公理!XuanZe@选择}%
 \index{classical!category theory}%
 \begin{enumerate}
 \item For strict categories, this is still equivalent to the axiom of choice.
@@ -145,7 +145,7 @@ Thus, it is natural to make the following definition.
 In particular, in a category, if $a\cong b$, then $a=b$.
 
 \begin{eg}\label{ct:eg:set}
-  \index{univalence axiom}%
+  \index{FanDengGongLi@泛等公理}%
   The univalence axiom implies immediately that \uset is a category.
   One can also show, using univalence, that any precategory of set-level structures such as groups, rings, topological spaces, etc.\ is a category; see \cref{sec:sip}.
 \end{eg}
@@ -1666,7 +1666,7 @@ One could imagine a resizing axiom that could deal with this, but it is also pos
 
 We call the construction $A\mapsto \widehat A$ the \define{Rezk completion},
 although there is also an argument (coming from higher topos semantics)
-\index{.infinity1-topos@$(\infty,1)$-topos}%
+\index{.WuQiong1TuoPuSi@$(\infty,1)$-拓扑斯}%
 for calling it the \define{stack completion}.
 \index{stack}%
 \index{completion!Rezk|)}%
@@ -1741,8 +1741,8 @@ When interpreted in Voevodsky's simplicial\index{simplicial!sets} set model of u
 Strict categories correspond instead to (a weakened and truncated version of) what are called ``Segal categories''.
 It is known that Segal categories and complete Segal spaces are equivalent models for $(\infty,1)$-categories (see e.g.~\cite{bergner:infty-one}), so that in the simplicial set model, categories and strict categories yield ``equivalent'' category theories --- although as we have seen, the former still have many advantages.
 However, in the more general categorical semantics of a higher topos,
-\index{.infinity1-topos@$(\infty,1)$-topos}%
-a strict category corresponds to an internal category (in the traditional sense) in the corresponding 1-topos\index{topos} of sheaves, while a category corresponds to a \emph{stack}.
+\index{.WuQiong1TuoPuSi@$(\infty,1)$-拓扑斯}%
+a strict category corresponds to an internal category (in the traditional sense) in the corresponding 1-topos\index{TuoPuSi@拓扑斯} of sheaves, while a category corresponds to a \emph{stack}.
 \index{stack}%
 The latter are generally a more appropriate sort of ``category'' relative to a topos.
 
@@ -1825,7 +1825,7 @@ However, in higher topos models of homotopy type theory, the Rezk completion cor
 
 \begin{ex}\label{ex:rezk-vankampen}
   \index{van Kampen theorem}%
-  \index{theorem!van Kampen}%
+  \index{DingLi@定理!van Kampen}%
   \index{fundamental!groupoid}%
   \index{fundamental!pregroupoid}%
   Using fundamental (pre)groupoids from \cref{ct:fundgpd,ct:rezk-fundgpd-trunc1} and the Rezk completion from \cref{sec:rezk}, give a different proof of van Kampen's theorem (\cref{sec:van-kampen}).
@@ -1844,7 +1844,7 @@ However, in higher topos models of homotopy type theory, the Rezk completion cor
     \indexdef{stack}%
     for $p$, i.e.\ $A^X \to \mathrm{Desc}(A,p)$ is an equivalence.
   \item Show that the statement ``every strict category is a stack for every surjection of sets'' is equivalent to the axiom of choice.
-    \index{axiom!of choice}%
+    \index{GongLi@公理!XuanZe@选择}%
     \index{strict!category}%
   \end{enumerate}
 \end{ex}

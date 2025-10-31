@@ -342,7 +342,7 @@ we have $g(t):\emptyt$ for every $g:\neg\neg A$. Hence we may use
 \index{anger}
 \begin{thm}[Hedberg]\label{thm:hedberg}
   \index{Hedberg's theorem}%
-  \index{theorem!Hedberg's}%
+  \index{DingLi@定理!Hedberg's}%
   If $X$ has decidable equality, then $X$ is a set.
 \end{thm}
 
@@ -354,7 +354,7 @@ $x,y:X$. Therefore, Hedberg's theorem follows from
 
 There is, of course, a strong connection between this theorem and \cref{thm:not-lem}.
 The statement \LEM{\infty} that is denied by \cref{thm:not-lem} clearly implies that every type has decidable equality, and hence is a set, which we know is not the case.
-\index{excluded middle}%
+\index{PaiZhongLv@排中律}%
 Note that the consistent axiom \LEM{} from \cref{sec:intuitionism} implies only that every type has \emph{merely decidable equality}, i.e.\ that for any $A$ we have
 \indexdef{equality!merely decidable}%
 \indexdef{merely!decidable equality}%
@@ -385,7 +385,7 @@ characterization of \cref{thm:path-nat}, with \cref{thm:hedberg} to fill in the 
 
 \index{set|)}%
 
-\index{axiom!Streicher's Axiom K!generalization to n-types@generalization to $n$-types}%
+\index{GongLi@公理!Streicher's Axiom K!generalization to n-types@generalization to $n$-types}%
 Although Hedberg's theorem appears rather special to sets ($0$-types), ``Axiom K'' generalizes naturally to $n$-types.
 Note that the ordinary Axiom K (as a property of a type $X$) states that for all $x:X$, the loop space\index{loop space} $\Omega(X,x)$ (see \cref{def:loopspace}) is contractible.
 Since $\Omega(X,x)$ is always inhabited (by $\refl{x}$), this is equivalent to its being a mere proposition (a $(-1)$-type).
@@ -454,7 +454,7 @@ In \cref{subsec:prop-trunc} we introduced the propositional truncation, which ma
 proposition, i.e.\ a $(-1)$-type.
 In \cref{sec:hittruncations} we constructed this truncation as a higher inductive type, and gave one way to generalize it to a
 0-truncation.
-We now explain a better generalization of this, which truncates any type into an $n$-type for any $n\geq -2$; in classical homotopy theory this would be called its \define{$n^{\mathrm{th}}$ Postnikov section}.\index{Postnikov tower}
+We now explain a better generalization of this, which truncates any type into an $n$-type for any $n\geq -2$; in classical homotopy theory this would be called its \define{$n^{\mathrm{th}}$ Postnikov section}.\index{PostnikovTa@Postnikov塔}
 
 The idea is to make use of \cref{thm:ntype-nloop}, which states that $A$ is an $n$-type just when $\Omega^{n+1}(A,a)$
 \index{loop space!iterated}%
@@ -1894,9 +1894,9 @@ In particular, we have an orthogonal factorization system.
 
 An important class of modalities which does \emph{not} include the $n$-trun\-ca\-tions is the \emph{left exact} modalities: those for which the functor $\modal$ preserves pullbacks as well as finite products.
 \index{topology!Lawvere-Tierney}%
-These are a categorification of ``Lawvere-Tierney\index{Lawvere}\index{Tierney} topologies'' in elementary topos\index{topos} theory,
+These are a categorification of ``Lawvere-Tierney\index{Lawvere}\index{Tierney} topologies'' in elementary topos\index{TuoPuSi@拓扑斯} theory,
 and correspond in higher-categorical semantics to sub-$(\infty,1)$-toposes.
-\index{.infinity1-topos@$(\infty,1)$-topos}%
+\index{.WuQiong1TuoPuSi@$(\infty,1)$-拓扑斯}%
 However, this is beyond the scope of this book.
 
 Some particular examples of modalities other than $n$-truncation can be found in the exercises.
@@ -1908,17 +1908,17 @@ Some particular examples of modalities other than $n$-truncation can be found in
 The notion of homotopy $n$-type in classical homotopy theory is quite old.
 It was Voevodsky who realized that the notion can be defined recursively in homotopy type theory, starting from contractibility.
 
-\index{axiom!Streicher's Axiom K}%
+\index{GongLi@公理!Streicher's Axiom K}%
 The property ``Axiom K'' was so named by Thomas Streicher, as a property of identity types which comes after J, the latter being the traditional name for the eliminator of identity types.
 \cref{thm:hedberg} is due to Hedberg~\cite{hedberg1998coherence}; \cite{krausgeneralizations} contains more information and generalizations.
 
 The notions of $n$-connected spaces and functions are also classical in homotopy theory, although as mentioned before, our indexing for connectedness of functions is off by one from the classical indexing.
 The importance of the resulting factorization system has been emphasized by recent work in higher topos theory by Rezk, Lurie, and others.%
-\index{.infinity1-topos@$(\infty,1)$-topos}
+\index{.WuQiong1TuoPuSi@$(\infty,1)$-拓扑斯}
 In particular, the results of this chapter should be compared with~\cite[\S6.5.1]{lurie:higher-topoi}.
 In \cref{sec:freudenthal}, the theory of $n$-connected maps will be crucial to our proof of the Freudenthal suspension theorem.
 
-Modal operators\index{modal!operator} in \emph{simple} type theory have been studied extensively; see e.g.~\cite{modalTT}.  In the setting of dependent type theory, \cite{ab:bracket-types} treats the special case of propositional truncation ($(-1)$-truncation) as a modal operator\index{modal!operator}.  The development presented here greatly extends and generalizes this work, while drawing also on ideas from topos theory.\index{topos}
+Modal operators\index{modal!operator} in \emph{simple} type theory have been studied extensively; see e.g.~\cite{modalTT}.  In the setting of dependent type theory, \cite{ab:bracket-types} treats the special case of propositional truncation ($(-1)$-truncation) as a modal operator\index{modal!operator}.  The development presented here greatly extends and generalizes this work, while drawing also on ideas from topos theory.\index{TuoPuSi@拓扑斯}
 
 Generally, modal operators\index{modal!operator} come in (at least) two flavors: those such as $\diamond$ (``possibly'') for which $A\Rightarrow \diamond A$, and those such as $\Box$ (``necessarily'') for which $\Box A \Rightarrow A$.
 When they are also \emph{idempotent} (i.e.\ $\diamond A = \diamond{\diamond A}$ or $\Box A = \Box{\Box A}$), the former may be identified with reflective subcategories (or equivalently, idempotent monads), and the latter with coreflective subcategories (or idempotent comonads).
@@ -1928,7 +1928,7 @@ However, in dependent type theory it is trickier to deal with the comonadic sort
 Sometimes there are ways around this (see e.g.~\cite{QGFTinCHoTT12}), but for simplicity, here we stick to the monadic sort.
 
 On the computational side, monads (and hence modalities\index{modality}) are used to model computational effects in functional programming~\cite{Moggi89}.%
-\index{programming}%
+\index{BianCheng@编程}%
 \index{computational effect}
 A computation is said to be \emph{pure} if its execution results in no side effects (such as printing a message to the screen, playing music, or sending data over the Internet).
 There exist ``purely functional'' programming languages, such as Haskell\index{Haskell}, in which it is technically only possible to write pure functions: side effects are represented by applying ``monads'' to output types.
@@ -2005,7 +2005,7 @@ The modalities we have considered in this chapter are all idempotent, whereas th
 \end{ex}
 
 \begin{ex}\label{ex:acnm}
-  \indexdef{axiom!of choice!ACnm@$\choice{n,m}$}%
+  \indexdef{axiom!XuanZe@选择!ACnm@$\choice{n,m}$}%
   For $-1\le n,m\le\infty$, let $\choice{n,m}$ denote the statement
   \[ \prd{X:\set}{Y:X\to\ntype{n}}
   \Parens{\prd{x:X} \trunc m{Y(x)}}
@@ -2025,7 +2025,7 @@ The modalities we have considered in this chapter are all idempotent, whereas th
   \item Of course, $\choice{n,m}\Rightarrow \choice{k,m}$ if $k\le n$.
     Are there any other implications between the principles $\choice{n,m}$?
     Is $\choice{n,m}$ consistent with univalence for any $m\ge 0$ and any $n$?
-    (These are open questions.)\index{open!problem}
+    (These are open questions.)\index{KaiFang@开放!WenTi@问题}
   \end{enumerate}
 \end{ex}
 
@@ -2036,7 +2036,7 @@ The modalities we have considered in this chapter are all idempotent, whereas th
 \begin{ex}\label{ex:acconn}
   Define the \define{$n$-connected axiom of choice}
   \indexdef{n-connected@$n$-connected!axiom of choice}%
-  \indexdef{axiom!of choice!n-connected@$n$-connected}%
+  \indexdef{axiom!XuanZe@选择!n-connected@$n$-connected}%
   to be the statement
   \begin{quote}
     If $X$ is a set and $Y:X\to \type$ is a family of types such that each $Y(x)$ is $n$-connected, then $\prd{x:X} Y(x)$ is $n$-connected.
@@ -2045,7 +2045,7 @@ The modalities we have considered in this chapter are all idempotent, whereas th
   \begin{enumerate}
   \item Prove that the $(-1)$-connected axiom of choice implies the $n$-con\-nect\-ed axiom of choice for all $n\ge -1$.
   \item Are there any other implications between the $n$-connected axioms of choice and the principles $\choice{n,m}$?
-    (This is an open question.)\index{open!problem}
+    (This is an open question.)\index{KaiFang@开放!WenTi@问题}
   \end{enumerate}
 \end{ex}
 

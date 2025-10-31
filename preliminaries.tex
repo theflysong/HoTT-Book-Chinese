@@ -154,7 +154,7 @@ Each type former consists of a way to construct types (possibly making use of pr
 In most cases, these rules follow a fairly predictable pattern, but we will not attempt to make this precise here; see however the beginning of \cref{sec:finite-product-types} and also \cref{cha:induction}.\index{type theory!informal}
 
 
-\index{axiom!versus rules}%
+\index{GongLi@公理!versus rules}%
 \index{rule!versus axioms}%
 An important aspect of the type theory presented in this chapter is that it consists entirely of \emph{rules}, without any \emph{axioms}.
 In the description of deductive systems in terms of judgments, the \emph{rules} are what allow us to conclude one judgment from a collection of others, while the \emph{axioms} are the judgments we are given at the outset.
@@ -166,7 +166,7 @@ By contrast, in type theory, it is usually the \emph{rules} which contain all th
 For instance, in \cref{sec:finite-product-types} we will see that there is a rule allowing us to deduce the judgment ``$(a,b):A\times B$'' from ``$a:A$'' and ``$b:B$'', whereas in set theory the analogous statement would be (a consequence of) the pairing axiom.
 
 The advantage of formulating type theory using only rules is that rules are ``procedural''.
-In particular, this property is what makes possible (though it does not automatically ensure) the good computational properties of type theory, such as ``canonicity''.\index{canonicity}
+In particular, this property is what makes possible (though it does not automatically ensure) the good computational properties of type theory, such as ``canonicity''.\index{DianFanXing@典范性}
 However, while this style works for traditional type theories, we do not yet understand how to formulate everything we need for \emph{homotopy} type theory in this way.
 In particular, in \cref{sec:compute-pi,sec:compute-universe,cha:hits} we will have to augment the rules of type theory presented in this chapter by introducing additional axioms, notably the \emph{univalence axiom}.
 In this chapter, however, we confine ourselves to a traditional rule-based type theory.
@@ -327,7 +327,7 @@ using product types, which is called \define{currying}
 \indexdef{currying}%
 \indexdef{function!currying of}%
 (after the mathematician Haskell Curry).
-\index{programming}%
+\index{BianCheng@编程}%
 
 The idea of currying is to represent a function of two inputs $a:A$ and $b:B$ as a function which takes \emph{one} input $a:A$ and returns \emph{another function}, which then takes a second input $b:B$ and returns the result.
 That is, we consider two-variable functions to belong to an iterated function type, $f : A \to (B \to C)$.
@@ -842,7 +842,7 @@ as required.
 If we read $\Pi$ as ``for all'' and $\Sigma$ as ``there exists'', then the type of the function $\ac$ expresses:
 \emph{if for all $x:A$ there is a $y:B$ such that $R(x,y)$, then there is a function $f : A \to B$ such that for all $x:A$ we have $R(x,f(x))$}.
 Since this sounds like a version of the axiom of choice, the function \ac has traditionally been called the \define{type-theoretic axiom of choice}, and as we have just shown, it can be proved directly from the rules of type theory, rather than having to be taken as an axiom.
-\index{axiom!of choice!type-theoretic}%
+\index{GongLi@公理!XuanZe@选择!type-theoretic}%
 However, note that no choice is actually involved, since the choices have already been given to us in the premise: all we have to do is take it apart into two functions: one representing the choice and the other its correctness.
 In \cref{sec:axiom-choice} we will give another formulation of an ``axiom of choice'' which is closer to the usual one.
 
@@ -1267,7 +1267,7 @@ Only then do we introduce an appropriate sort of ``pattern matching'' which can 
 \label{sec:pat}
 
 \index{proposition!as types|(defstyle}%
-\index{logic!propositions as types|(}%
+\index{LuoJi@逻辑!propositions as types|(}%
 As mentioned in the introduction, to show that a proposition is true in type theory corresponds to exhibiting an element of the type corresponding to that proposition.
 \index{evidence, of the truth of a proposition}%
 \index{witness!to the truth of a proposition}%
@@ -1282,7 +1282,7 @@ Under this conception, proofs are not just the means by which mathematics is com
 Thus, since types classify the available mathematical objects and govern how they interact, propositions are nothing but special  types --- namely, types whose elements are proofs.
 
 \index{propositional!logic}%
-\index{logic!propositional}%
+\index{LuoJi@逻辑!propositional}%
 The basic observation which makes this identification feasible is that we have the following natural correspondence between \emph{logical} operations on propositions, expressed in English, and \emph{type-theoretic} operations on their corresponding types of witnesses.
 \index{false}%
 \index{true}%
@@ -1332,7 +1332,7 @@ of a type $A$ as
 %
 Thus, a witness of $\neg A$ is a function $A \to \emptyt$, which we may construct by assuming $x : A$ and deriving an element of~$\emptyt$.
 \index{proof!by contradiction}%
-\index{logic!constructive vs classical}
+\index{LuoJi@逻辑!constructive vs classical}
 Note that although the logic we obtain is ``constructive'', as discussed in the introduction, this sort of ``proof by contradiction'' (assume $A$ and derive a contradiction, concluding $\neg A$) is perfectly valid constructively: it is simply invoking the \emph{meaning} of ``negation''.
 The sort of ``proof by contradiction'' which is disallowed is to assume $\neg A$ and derive a contradiction as a way of proving $A$.
 Constructively, such an argument would only allow us to conclude $\neg\neg A$, and the reader can verify that there is no obvious way to get from $\neg\neg A$ (that is, from $(A\to \emptyt)\to\emptyt$) to $A$.
@@ -1397,13 +1397,13 @@ the converse tautology \emph{``If not ($A$ or $B$), then  (not $A$) and (not $B$
 \[ ((A + B) \to \emptyt) \to (A \to \emptyt) \times (B \to \emptyt), \]
 for any types $A$ and $B$, using the rules we have just introduced.
 
-\index{logic!classical vs constructive|(}
+\index{LuoJi@逻辑!classical vs constructive|(}
 However, not all classical\index{mathematics!classical} tautologies hold under this interpretation.
 For example, the rule 
 \emph{``If not ($A$ and $B$), then (not $A$) or (not $B$)''} is not valid: we cannot, in general, construct an element of the corresponding type
 \[ ((A \times B) \to \emptyt) \to (A \to \emptyt) + (B \to \emptyt).\]
 This reflects the fact that the ``natural'' propositions-as-types logic of type theory is \emph{constructive}.
-This means that it does not include certain classical principles, such as the law of excluded middle (\LEM{})\index{excluded middle}
+This means that it does not include certain classical principles, such as the law of excluded middle (\LEM{})\index{PaiZhongLv@排中律}
 or proof by contradiction,\index{proof!by contradiction}
 and others which depend on them, such as this instance of de Morgan's law.
 \index{law!de Morgan's|)}%
@@ -1414,14 +1414,14 @@ Without being too precise, this means there is some sort of algorithm\index{algo
 This requires omission of \LEM{}, since there is no \emph{effective}\index{effective!procedure} procedure for deciding whether a proposition is true or false.
 
 The constructivity of type-theoretic logic means it has an intrinsic computational meaning, which is of interest to computer scientists.
-It also means that type theory provides \emph{axiomatic freedom}.\index{axiomatic freedom}
+It also means that type theory provides \emph{axiomatic freedom}.\index{WuGongLi@无公理}
 For example, while by default there is no construction witnessing \LEM{}, the logic is still compatible with the existence of one (see \cref{sec:intuitionism}).
 Thus, because type theory does not \emph{deny} \LEM{}, we may consistently add it as an assumption, and work conventionally without restriction.
 In this respect, type theory enriches, rather than constrains, conventional mathematical practice.
 
 We encourage the reader who is unfamiliar with constructive logic to work through some more examples as a means of getting familiar with it.
 See \cref{ex:tautologies,ex:not-not-lem} for some suggestions.
-\index{logic!classical vs constructive|)}
+\index{LuoJi@逻辑!classical vs constructive|)}
 
 \mentalpause
 
@@ -1430,7 +1430,7 @@ So far we have discussed only propositional logic.
 \index{quantifier!existential}%
 \index{quantifier!universal}%
 \index{predicate!logic}%
-\index{logic!predicate}%
+\index{LuoJi@逻辑!predicate}%
 Now we consider \emph{predicate} logic, where in addition to logical connectives like ``and'' and ``or'' we have quantifiers ``there exists'' and ``for all''.
 In this case, types play a dual role: they serve as propositions and also as types in the conventional sense, i.e., domains we quantify over.
 A predicate over a type $A$ is represented as a family $P : A \to \UU$, assigning to every element $a : A$ a type $P(a)$ corresponding to the proposition that $P$ holds for $a$. We now extend the above translation with an explanation of the quantifiers:
@@ -1542,7 +1542,7 @@ In particular, the empty type $\emptyt$ is obviously not inhabited, since $\neg 
 
 \index{proof|)}%
 \index{proposition!as types|)}%
-\index{logic!propositions as types|)}%
+\index{LuoJi@逻辑!propositions as types|)}%
 
 \section{Identity types}
 \label{sec:identity-types}
@@ -1876,7 +1876,7 @@ interpretation of equality, whereas more restricted variants impose restrictions
 \indexsee{UIP}{uniqueness of identity proofs}%
 \index{uniqueness!of identity proofs}%
 stating that any two proofs of equality are judgmentally equal, and \emph{Axiom K}~\cite{Streicher93},
-\index{axiom!Streicher's Axiom K}
+\index{GongLi@公理!Streicher's Axiom K}
 stating that 
 the only proof of equality is reflexivity (up to judgmental equality).  These additional requirements may be selectively imposed in the \Coq 
 and \Agda\ systems.
@@ -1902,7 +1902,7 @@ Another is that specifying the allowable kinds of (deep) pattern matching is qui
 for instance, \Agda's
 \index{proof!assistant!Agda@\textsc{Agda}}%
 pattern matching can prove Axiom K by default,
-\index{axiom!Streicher's Axiom K}%
+\index{GongLi@公理!Streicher's Axiom K}%
 although a flag \texttt{--without-K} prevents this~\cite{CDP14}.
 Finally, deep pattern matching is not well-understood for \emph{higher} inductive types (see \cref{cha:hits}).
 Therefore, we will only use pattern matches such as those described in \cref{sec:pattern-matching}, which are directly equivalent to the application of an induction principle.

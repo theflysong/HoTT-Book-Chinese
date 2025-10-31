@@ -64,7 +64,7 @@ and then \emph{homotopy between homotopies between homotopies}, and so
 on.  This infinite tower of points, paths, homotopies, homotopies between
 homotopies, \ldots, equipped with algebraic operations such as the
 fundamental group, is an instance of an algebraic structure called a
-(weak) \emph{$\infty$-groupoid}.  An $\infty$-groupoid\index{.infinity-groupoid@$\infty$-groupoid} consists of a
+(weak) \emph{$\infty$-groupoid}.  An $\infty$-groupoid\index{.WuQiongQunPei@$\infty$-群胚} consists of a
 collection of objects, and then a collection of \emph{morphisms}\indexdef{morphism!in an .infinity-groupoid@in an $\infty$-groupoid} between
 objects, and then \emph{morphisms between morphisms}, and so on,
 equipped with some complex algebraic structure; a morphism at level $k$ is called a \define{$k$-morphism}\indexdef{k-morphism@$k$-morphism}.  Morphisms at each level
@@ -81,7 +81,7 @@ Lane's pentagon\index{pentagon, Mac Lane}.  Weakness also creates non-trivial in
 levels.
 
 Every topological space $X$ has a \emph{fundamental $\infty$-groupoid}
-\index{.infinity-groupoid@$\infty$-groupoid!fundamental}
+\index{.WuQiongQunPei@$\infty$-群胚!fundamental}
 \index{fundamental!.infinity-groupoid@$\infty$-groupoid}
 whose
 $k$-mor\-ph\-isms are the $k$-dimen\-sional paths in $X$.  The weakness of the
@@ -122,7 +122,7 @@ identifications $p,q$, and the type
 $\id[{(\id[{(\id[A]{x}{y})}]{p}{q})}]{r}{s}$, and so on.  The structure
 of this tower of identity types corresponds precisely to that of the
 continuous paths and (higher) homotopies between them in a space, or an
-$\infty$-groupoid.\index{.infinity-groupoid@$\infty$-groupoid}
+$\infty$-groupoid.\index{.WuQiongQunPei@$\infty$-群胚}
 
 
 Thus, we will frequently refer to an element $p : \id[A]{x}{y}$ as
@@ -202,7 +202,7 @@ If a sequence\index{sequence} $(a_n)_{n\in \mathbb{N}}$ is defined by giving $a_
 (This may seem so obvious as to not be worth saying, but if we view a definition by recursion as an algorithm\index{algorithm} for calculating values of a sequence, then it is precisely the process of executing that algorithm.)
 The rule~\eqref{eq:Jconv} is analogous: it says that if we define an object $f(p)$ for all $p:x=y$ by specifying what the value should be when $p$ is $\refl{x}:x=x$, then the value we specified is in fact the value of $f(\refl{x})$.
 
-This induction principle endows each type with the structure of an $\infty$-groupoid\index{.infinity-groupoid@$\infty$-groupoid}, and each function between two types with the structure of an $\infty$-functor\index{.infinity-functor@$\infty$-functor} between two such groupoids.  This is interesting from a mathematical point of view, because it gives a new way to work with
+This induction principle endows each type with the structure of an $\infty$-groupoid\index{.WuQiongQunPei@$\infty$-群胚}, and each function between two types with the structure of an $\infty$-functor\index{.infinity-functor@$\infty$-functor} between two such groupoids.  This is interesting from a mathematical point of view, because it gives a new way to work with
 $\infty$-groupoids.  It is interesting from a type-theoretic point of view, because it reveals new operations that are associated with each type and function.  In the remainder of this chapter, we begin to explore this structure.
 
 \section{Types are higher groupoids}
@@ -210,7 +210,7 @@ $\infty$-groupoids.  It is interesting from a type-theoretic point of view, beca
 
 \index{type!identity|(}%
 \index{path|(}%
-\index{.infinity-groupoid@$\infty$-groupoid!structure of a type|(}%
+\index{.WuQiongQunPei@$\infty$-群胚!structure of a type|(}%
 We now derive from the induction principle the beginnings of the structure of a higher groupoid.
 We begin with symmetry of equality, which, in topological language, means that ``paths can be reversed''.
 
@@ -674,7 +674,7 @@ Indeed, as in classical homotopy theory, we can make the following general defin
 \end{defn}
 
 We will return to iterated loop spaces in \cref{cha:hlevels,cha:hits,cha:homotopy}.
-\index{.infinity-groupoid@$\infty$-groupoid!structure of a type|)}%
+\index{.WuQiongQunPei@$\infty$-群胚!structure of a type|)}%
 \index{type!identity|)}
 \index{path|)}%
 
@@ -1217,11 +1217,11 @@ Thus, the characterizations for particular types to be discussed in this chapter
 Actually, the type theory of \cref{cha:typetheory} is insufficient to prove the desired theorems for two of the type formers: $\Pi$-types and universes.
 For this reason, we are forced to introduce axioms into our type theory, in order to make those ``theorems'' true.
 Type-theoretically, an \emph{axiom} (c.f.~\cref{sec:axioms}) is an ``atomic'' element that is declared to inhabit some specified type, without there being any rules governing its behavior other than those pertaining to the type it inhabits.
-\index{axiom!versus rules}%
+\index{GongLi@公理!versus rules}%
 
 \index{function extensionality}%
 \indexsee{extensionality, of functions}{function extensionality}
-\index{univalence axiom}%
+\index{FanDengGongLi@泛等公理}%
 The axiom for $\Pi$-types (\cref{sec:compute-pi}) is familiar to type theorists: it is called \emph{function extensionality}, and states (roughly) that if two functions are homotopic in the sense of \cref{sec:basics-equivalences}, then they are equal.
 The axiom for universes (\cref{sec:compute-universe}), however, is a new contribution of homotopy type theory due to Voevodsky: it is called the \emph{univalence axiom}, and states (roughly) that if two types are equivalent in the sense of \cref{sec:basics-equivalences}, then they are equal.
 We have already remarked on this axiom in the introduction; it will play a very important role in this book.%
@@ -2227,7 +2227,7 @@ Moreover, this map is an equivalence, because
 $\transfibf{C}(\alpha)$ is always an equivalence with inverse
 $\transfibf{C}{(\opp \alpha)}$, see \cref{thm:transport-concat,thm:omg}.
 
-While the univalence axiom\index{univalence axiom} ensures that this map exists, we need to use
+While the univalence axiom\index{FanDengGongLi@泛等公理} ensures that this map exists, we need to use
 facts about $\mathsf{transport}$ proven in the preceding sections to
 calculate what it actually does. Let $(m,a)$ be a semigroup structure on
 $A$, and we investigate the induced semigroup structure on $B$ given by
@@ -2433,7 +2433,7 @@ Note that if we have $P(x,a) \defeq B(x)$ for some $B:X\to\type$, then~\eqref{eq
   On the other hand, given $(g,h)$, the round-trip composite yields $(\lam {x} g(x),\lam{x} h(x))$, which is judgmentally equal to $(g,h)$ as before.
 \end{proof}
 
-\index{axiom!of choice!type-theoretic}
+\index{GongLi@公理!XuanZe@选择!type-theoretic}
 This is noteworthy because the propositions-as-types interpretation of~\eqref{eq:sigma-ump-map} is ``the axiom of choice''.
 If we read $\Sigma$ as ``there exists'' and $\Pi$ (sometimes) as ``for all'', we can pronounce:
 \begin{itemize}
@@ -2519,7 +2519,7 @@ Therefore, regarding univalence as an extensionality property, one may say that 
 The proofs of symmetry (inversion) and transitivity (concatenation) for equalities are well-known in type theory.
 The fact that these make each type into a 1-groupoid (up to homotopy) was exploited in~\cite{hs:gpd-typethy} to give the first ``homotopy'' style semantics for type theory.
 
-The actual homotopical interpretation, with identity types as path spaces, and type families as fibrations, is due to \cite{AW}, who used the formalism of Quillen model categories.  An interpretation in (strict) $\infty$-groupoids\index{.infinity-groupoid@$\infty$-groupoid} was also given in the thesis \cite{mw:thesis}.
+The actual homotopical interpretation, with identity types as path spaces, and type families as fibrations, is due to \cite{AW}, who used the formalism of Quillen model categories.  An interpretation in (strict) $\infty$-groupoids\index{.WuQiongQunPei@$\infty$-群胚} was also given in the thesis \cite{mw:thesis}.
 For a construction of \emph{all} the higher operations and coherences of an $\infty$-groupoid in type theory, see~\cite{pll:wkom-type} and~\cite{bg:type-wkom}.
 
 \index{proof!assistant!Coq@\textsc{Coq}}%
@@ -2535,7 +2535,7 @@ The naive form of function extensionality which says that ``if two functions are
 Some stronger forms of function extensionality were considered in~\cite{garner:depprod}.
 The version we have used, which identifies the identity types of function types up to equivalence, was first studied by Voevodsky, who also proved that it is implied by the naive version (and by univalence; see \cref{sec:univalence-implies-funext}).
 
-\index{univalence axiom}%
+\index{FanDengGongLi@泛等公理}%
 The univalence axiom is also due to Voevodsky.
 It was originally motivated by semantic considerations in the simplicial set model; see~\cite{klv:ssetmodel}.
 A similar axiom motivated by the groupoid model was proposed by Hofmann and Streicher~\cite{hs:gpd-typethy} under the name ``universe extensionality''.
@@ -2552,7 +2552,7 @@ There are also other potential ways to introduce univalence and function extensi
 The simple conclusions in \crefrange{sec:compute-coprod}{sec:compute-nat} such as ``$\inl$ and $\inr$ are injective and disjoint'' are well-known in type theory, and the construction of the function \encode is the usual way to prove them.
 The more refined approach we have described, which characterizes the entire identity type of a positive type (up to equivalence), is a more recent development; see e.g.~\cite{ls:pi1s1}.
 
-\index{axiom!of choice!type-theoretic}%
+\index{GongLi@公理!XuanZe@选择!type-theoretic}%
 The type-theoretic axiom of choice~\eqref{eq:sigma-ump-map} was noticed in William Howard's original paper~\cite{howard:pat} on the propositions-as-types correspondence, and was studied further by Martin-L\"of with the introduction of his dependent type theory.  It is mentioned as a ``distributivity law'' in Bourbaki's set theory \cite{Bourbaki}.\index{Bourbaki}%
 
 For a more comprehensive (and formalized) discussion of pullbacks and more general homotopy limits in homotopy type theory, see~\cite{AKL13}.
@@ -2560,7 +2560,7 @@ Limits\index{limit!of types} of diagrams over directed graphs\index{graph} are t
 \index{.infinity1-category@$(\infty,1)$-category}%
 \indexsee{category!.infinity1-@$(\infty,1)$-}{$(\infty,1)$-category}%
 is that in general, infinitely many coherence conditions are involved in the notion of (homotopy coherent) diagram.\index{diagram}
-Resolving this problem is an important open question\index{open!problem} in homotopy type theory.
+Resolving this problem is an important open question\index{KaiFang@开放!WenTi@问题} in homotopy type theory.
 
 \sectionExercises
 

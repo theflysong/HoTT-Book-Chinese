@@ -14,7 +14,7 @@ We begin this chapter in \cref{sec:piw-pretopos} by showing that the category $\
 \index{mathematics!predicative}%
 In constructive, predicative, univalent foundations, it is a ``$\Pi\mathsf{W}$-pretopos''; whereas if we assume propositional resizing
 \index{propositional!resizing}%
-(\cref{subsec:prop-subsets}) it is an elementary topos,\index{topos} and if we assume \LEM{} and \choice{} then it is a model of Lawvere's \emph{Elementary Theory of the Category of Sets}\index{Lawvere}.
+(\cref{subsec:prop-subsets}) it is an elementary topos,\index{TuoPuSi@拓扑斯} and if we assume \LEM{} and \choice{} then it is a model of Lawvere's \emph{Elementary Theory of the Category of Sets}\index{Lawvere}.
 \index{Elementary Theory of the Category of Sets}%
 This is sufficient to ensure that the sets in homotopy type theory behave like sets as used by most mathematicians outside of set theory.
 
@@ -612,9 +612,9 @@ Taking $x\defeq \north$ and $y\defeq \south$ yields $\eqv{A}{(\id[\susp(A)]\nort
 \end{proof}
 
 \begin{thm}[Diaconescu]\label{thm:1surj_to_surj_to_pem}
-  \index{axiom!of choice}%
-  \index{excluded middle}%
-  \index{Diaconescu's theorem}\index{theorem!Diaconescu's}%
+  \index{GongLi@公理!XuanZe@选择}%
+  \index{PaiZhongLv@排中律}%
+  \index{Diaconescu's theorem}\index{DingLi@定理!Diaconescu's}%
   The axiom of choice implies the law of excluded middle.
 \end{thm}
 
@@ -667,7 +667,7 @@ Finally, since $(f(\bfalse)=f(\btrue)) = (\north=\south) = A$ by \cref{prop:trun
 \begin{thm}\label{thm:ETCS}
   \index{Elementary Theory of the Category of Sets}%
   \index{category!well-pointed}%
-  If the axiom of choice holds then the category $\uset$ is a well-pointed boolean\index{topos!boolean}\index{boolean!topos} elementary topos\index{topos} with choice.
+  If the axiom of choice holds then the category $\uset$ is a well-pointed boolean\index{topos!boolean}\index{boolean!topos} elementary topos\index{TuoPuSi@拓扑斯} with choice.
 \end{thm}
 
 \begin{proof}
@@ -811,8 +811,8 @@ We may likewise show that cardinal inequality is compatible with the semiring op
   \item There is a surjection $B\to A$.\label{item:cle-surj}
   \end{enumerate}
   Then, assuming excluded middle:
-  \index{excluded middle}%
-  \index{axiom!of choice}%
+  \index{PaiZhongLv@排中律}%
+  \index{GongLi@公理!XuanZe@选择}%
   \begin{itemize}
   \item Given $a_0:A$, we have~\ref{item:cle-inj}$\to$\ref{item:cle-surj}.
   \item Therefore, if $A$ is merely inhabited, we have~\ref{item:cle-inj} $\to$ merely \ref{item:cle-surj}.
@@ -832,7 +832,7 @@ We may likewise show that cardinal inequality is compatible with the semiring op
 \end{proof}
 
 \begin{thm}[Schroeder--Bernstein]
-  \index{theorem!Schroeder--Bernstein}%
+  \index{DingLi@定理!Schroeder--Bernstein}%
   \index{Schroeder--Bernstein theorem}%
   Assuming excluded middle, for sets $A$ and $B$ we have
   \[ \inj(A,B) \to \inj(B,A) \to (A\cong B) \]
@@ -855,7 +855,7 @@ Finally, we can reproduce Cantor's theorem, showing that for every cardinal ther
 
 \begin{thm}[Cantor]
   \index{Cantor's theorem}%
-  \index{theorem!Cantor's}%
+  \index{DingLi@定理!Cantor's}%
   For $A:\set$, there is no surjection $A \to (A\to \bool)$.
 \end{thm}
 \begin{proof}
@@ -1035,7 +1035,7 @@ if it is unequal to the empty subset $(\lam{x}\bot) : \power X$.
 We leave it to the reader to verify that assuming excluded middle, this is equivalent to mere inhabitation, i.e.\ to the condition $\exis{x:A} x\in B$.
 
 \begin{lem}\label{thm:wfmin}
-  \index{excluded middle}%
+  \index{PaiZhongLv@排中律}%
   Assuming excluded middle, $<$ is well-founded if and only if every nonempty subset $B: \power A$ merely has a minimal element.
 \end{lem}
 \begin{proof}
@@ -1066,7 +1066,7 @@ We leave it to the reader to verify that assuming excluded middle, this is equiv
 
 Note that since $A$ is a set, extensionality is a mere proposition.
 This notion of ``extensionality'' is unrelated to function extensionality, and also unrelated to the extensionality of identity types.
-\index{axiom!of extensionality}%
+\index{GongLi@公理!of extensionality}%
 Rather, it is a ``local'' counterpart of the axiom of extensionality in classical set theory.
 
 \begin{thm}
@@ -1074,7 +1074,7 @@ Rather, it is a ``local'' counterpart of the axiom of extensionality in classica
 \end{thm}
 \begin{proof}
   By the univalence axiom, it suffices to show that if $(A,<)$ is extensional and well-founded and $f:(A,<) \cong (A,<)$, then $f=\idfunc[A]$.
-  \index{automorphism!of extensional well-founded relations}%
+  \index{ZiDongTai@自同态!of extensional well-founded relations}%
   We prove by induction on $<$ that $f(a)=a$ for all $a:A$.
   The inductive hypothesis is that for all $a'<a$, we have $f(a')=a'$.
 
@@ -1282,7 +1282,7 @@ Similar remarks apply to the next lemma, which could be proved in a less useful 
 We now show the equivalence of our ordinals with the more familiar classical\index{mathematics!classical} well-orderings.
 
 \begin{lem}
-  \index{excluded middle}%
+  \index{PaiZhongLv@排中律}%
   Assuming excluded middle, every ordinal is trichotomous:
   \index{trichotomy of ordinals}%
   \index{ordinal!trichotomy of}%
@@ -1342,8 +1342,8 @@ For any set $X$, let $\powerp X$ denote the type of merely inhabited subsets of 
 Assuming excluded middle, this is equivalently the type of \emph{nonempty}\index{nonempty subset} subsets of $X$, and we have $\power X \eqvsym (\powerp X) + \unit$.
 
 \begin{thm}\label{thm:wop}
-  \index{axiom!of choice}%
-  \index{excluded middle}%
+  \index{GongLi@公理!XuanZe@选择}%
+  \index{PaiZhongLv@排中律}%
   Assuming excluded middle, the following are equivalent.
   \begin{enumerate}
   \item For every set $X$, there merely exists a function
@@ -1607,7 +1607,7 @@ For every $u:V$ there is a given $A_u:\UU$ and monic $m_u: A_u \mono V$ such tha
 \end{defn}
 
 \begin{thm}\label{thm:VisCST}
-  \index{axiom!of set theory, for the cumulative hierarchy}%
+  \index{GongLi@公理!of set theory, for the cumulative hierarchy}%
   The following hold for $(V, {\in})$:
   %
   \begin{enumerate}
@@ -1621,7 +1621,7 @@ For every $u:V$ there is a given $A_u:\UU$ and monic $m_u: A_u \mono V$ such tha
     %
     \item \emph{pairing:} for all $u, v:V$, the class $\{u, v\} \defeq \setof{ x | x = u \vee x = v}$ is a $V$-set.
       %
-    \item \emph{infinity:}\index{axiom!of infinity}  there is a $v:V$ with $\emptyset\in v$ and $x\in v$ implies $x\cup \{x\}\in v$.
+    \item \emph{infinity:}\index{GongLi@公理!of infinity}  there is a $v:V$ with $\emptyset\in v$ and $x\in v$ implies $x\cup \{x\}\in v$.
     %
   \item \emph{union:} for all $v:V$, the class $\cup v\defeq \setof{ x | \exis{u:V} x \in u \in v}$ is a $V$-set.
     %
@@ -1630,7 +1630,7 @@ For every $u:V$ there is a given $A_u:\UU$ and monic $m_u: A_u \mono V$ such tha
     %
    \item \emph{$\in$-induction:} if $C : V \to \prop$ is a class such that $C(a)$ holds whenever $C(x)$ for all $x\in a$, then $C(v)$ for all $v:V$.
    %
-     \item \emph{replacement:}\index{axiom!of replacement} given any $r : V \to V$ and $x : V$, the class
+     \item \emph{replacement:}\index{GongLi@公理!of replacement} given any $r : V \to V$ and $x : V$, the class
        %
        \begin{equation*}
          \setof{ y | \exis{z : V} z \in x \land y = r(z)}
@@ -1638,7 +1638,7 @@ For every $u:V$ there is a given $A_u:\UU$ and monic $m_u: A_u \mono V$ such tha
        %
        is a $V$-set.
   %
-   \item \emph{separation:}\index{axiom!of separation}  given any $a : V$ and $\UU$-small $C : V \to \propU$, the class
+   \item \emph{separation:}\index{GongLi@公理!of separation}  given any $a : V$ and $\UU$-small $C : V \to \propU$, the class
      %
      \begin{equation*}
        \setof{ x | x \in a \land C(x)}
@@ -1703,7 +1703,7 @@ It is also convenient to have a strictly syntactic criterion of separability, so
 \begin{cor}\label{cor:Delta0sep}
 If the class $C: V \to \prop$ is $\Delta_0$ in the above sense, then it is separable.
 \end{cor}
-\index{axiom!of $\Delta_0$-separation}%
+\index{GongLi@公理!of $\Delta_0$-separation}%
 
 \begin{proof}
 Recall that we have a $\UU$-small resizing $x \bisim y$ of identity $x = y$. Since $x\in y$ is defined in terms of $x=y$, we also have a $\UU$-small resizing of membership
@@ -1731,11 +1731,11 @@ We have shown that in type theory with a universe $\UU$, the cumulative hierarch
 \index{constructive!set theory}%
 with many of the standard axioms.
 However, as far as we know, it lacks the \emph{strong collection}
-\index{axiom!strong collection}%
+\index{GongLi@公理!strong collection}%
 \index{collection!strong}%
 \index{strong!collection}%
 and \emph{subset collection}
-\index{axiom!subset collection}%
+\index{GongLi@公理!subset collection}%
 \index{collection!subset}%
 \index{subset!collection}%
 axioms which are included in \CZF{}~\cite{AczelCZF}.
@@ -1743,7 +1743,7 @@ In the usual interpretation of this set theory into type theory, these two axiom
 We do not know whether either of these axioms holds in our model $(V,\in)$, but it seems unlikely.
 Since $V$ is a higher inductive type \emph{inside} the system, rather than being an \emph{external} construction, it is not surprising that it differs in some ways from prior interpretations.
 
-Finally, consider the result of adding the axiom of choice for sets to our type theory, in the form  $\choice{}$ from \cref{subsec:emacinsets} above.  This has the consequence that $\LEM{}$ then also holds, by \cref{thm:1surj_to_surj_to_pem}, and so $\set$ is a topos\index{topos} with subobject classifier $\bool$, by \cref{thm:settopos}.  In this case, we have $\prop = \bool:\UU$, and so \emph{all classes are separable}.
+Finally, consider the result of adding the axiom of choice for sets to our type theory, in the form  $\choice{}$ from \cref{subsec:emacinsets} above.  This has the consequence that $\LEM{}$ then also holds, by \cref{thm:1surj_to_surj_to_pem}, and so $\set$ is a topos\index{TuoPuSi@拓扑斯} with subobject classifier $\bool$, by \cref{thm:settopos}.  In this case, we have $\prop = \bool:\UU$, and so \emph{all classes are separable}.
 Thus we have shown:
 
 \begin{lem}\label{lem:fullsep}
@@ -1782,7 +1782,7 @@ The implication in \cref{thm:1surj_to_surj_to_pem} from $\choice{}$ to $\LEM{}$ 
 theory of a theorem from topos theory due to Diaconescu~\cite{Diaconescu}; it was posed as a problem already by Bishop~\cite[Problem~2]{Bishop1967}.
 
 For the intuitionistic theory of ordinal numbers, see~\cite{taylor:ordinals,Taylor99} and also \cite{JoyalMoerdijk1995}.
-Definitions of well-foundedness in type theory by an induction principle, including the inductive predicate of accessibility\index{accessibility}, were studied in~\cite{Huet80,Paulson86,Nordstrom88}, although the idea dates back to Gentzen's proof of the consistency\index{consistency!of arithmetic} of arithmetic~\cite{Gentzen36}.
+Definitions of well-foundedness in type theory by an induction principle, including the inductive predicate of accessibility\index{accessibility}, were studied in~\cite{Huet80,Paulson86,Nordstrom88}, although the idea dates back to Gentzen's proof of the consistency\index{YiZhiXing@一致性!of arithmetic} of arithmetic~\cite{Gentzen36}.
 
 The idea of algebraic set theory, which informs our development in \cref{sec:cumulative-hierarchy} of the cumulative hierarchy, is due to~\cite{JoyalMoerdijk1995}, but it derives from earlier work by~\cite{AczelCZF}.
 \index{algebraic set theory}%

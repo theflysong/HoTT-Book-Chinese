@@ -22,7 +22,7 @@ etc., and
   \index{proof!assistant}
 \end{itemize}
 %
-Even the logical consistency\index{consistency} of homotopy type theory, namely that in the empty context there is no term $a:\emptyt$, is not obvious: if we had erroneously
+Even the logical consistency\index{YiZhiXing@一致性} of homotopy type theory, namely that in the empty context there is no term $a:\emptyt$, is not obvious: if we had erroneously
 chosen a definition of equivalence for which $\eqv{\emptyt}{\unit}$, then
 univalence would imply that $\emptyt$ has an element, since $\unit$ does.
 Nor is it obvious that, for example, our definition of $\Sn^1$ as a higher
@@ -999,7 +999,7 @@ asserts that $\happly$ is an equivalence:
 The definitions of $\happly$ and $\isequiv$ can be found in~\eqref{eq:happly} and
 \cref{sec:concluding-remarks}, respectively.
 
-\index{univalence axiom}%
+\index{FanDengGongLi@泛等公理}%
 \cref{axiom:univalence} is formalized in a similar fashion, too:
 %
 \begin{mathparpagebreakable}
@@ -1065,7 +1065,7 @@ In $\ind{\Sn^1}$, $x$ is bound in $C$. The notation ${\dpath C \lloop b b}$ for 
 \index{metatheory|(}%
 
 This section discusses the meta-theoretic properties of the type theory presented in 
-\cref{sec:syntax-informally}, and similar results hold for \cref{sec:syntax-more-formally}. Figuring out which of these still hold when we add the features from \cref{sec:hott-features} quickly leads to open questions,\index{open!problem} as discussed at the end of this section.
+\cref{sec:syntax-informally}, and similar results hold for \cref{sec:syntax-more-formally}. Figuring out which of these still hold when we add the features from \cref{sec:hott-features} quickly leads to open questions,\index{KaiFang@开放!WenTi@问题} as discussed at the end of this section.
 
 Recall that \cref{sec:syntax-informally} defines the terms of type theory as
 an extension of the untyped $\lambda$-calculus. The $\lambda$-calculus 
@@ -1145,7 +1145,7 @@ can explicitly describe all normal forms:
   $t:A$ is decidable.
 \end{thm}
 
-Logical consistency\index{consistency} (of the system in \cref{sec:syntax-informally}) follows
+Logical consistency\index{YiZhiXing@一致性} (of the system in \cref{sec:syntax-informally}) follows
 immediately: if we had $a:\emptyt$ in the empty context, then by
 \cref{thm:conversion-preserves-typing,thm:strong-normalization}, $a$
 simplifies to a normal term $a':\emptyt$. But by
@@ -1175,17 +1175,17 @@ The property of being a proof in the system in \cref{sec:syntax-informally} is d
 The above results do not apply to the extended system of homotopy type
 theory (i.e., the above system extended by \cref{sec:hott-features}), since
 occurrences of the univalence axiom and constructors of higher inductive types
-never simplify, breaking \cref{lem:normal-forms}. It is an open question\index{open!problem}
+never simplify, breaking \cref{lem:normal-forms}. It is an open question\index{KaiFang@开放!WenTi@问题}
 whether one can simplify applications of these constants in order to restore
 canonicity. We also do not have a schema describing all permissible higher
 inductive types, nor are we certain how to correctly formulate their rules
 (e.g., whether the computation rules on higher constructors should be judgmental
 equalities).
 
-The consistency\index{consistency} of Martin-L\"{o}f type theory extended with univalence and higher
+The consistency\index{YiZhiXing@一致性} of Martin-L\"{o}f type theory extended with univalence and higher
 inductive types could be shown by inventing an appropriate normalization procedure, but currently
 the only proofs that these systems are consistent are via semantic models --- for
-univalence, a model in Kan\index{Kan complex} complexes due to Voevodsky \cite{klv:ssetmodel}, and
+univalence, a model in Kan\index{KanFuXing@Kan复形} complexes due to Voevodsky \cite{klv:ssetmodel}, and
 for higher inductive types, a model due to Lumsdaine and Shulman \cite{ls:hits}.
 
 Other metatheoretic issues, and a summary of our current results, are discussed

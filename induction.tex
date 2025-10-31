@@ -168,7 +168,7 @@ But what is the relation between $\nat$ and $\natp$?
 This is not just an academic question, since structures that ``look like'' the natural numbers can be found in many other places.
 \index{type!of lists}%
 For instance, we may identify natural numbers with lists over the type with one element (this is arguably the oldest appearance, found on walls of caves\index{caves, walls of}), with the non-negative integers, with subsets of the rationals and the reals, and so on.
-And from a programming\index{programming} point of view, the ``unary'' representation of our natural numbers is very inefficient, so we might prefer sometimes to use a binary one instead.
+And from a programming\index{BianCheng@编程} point of view, the ``unary'' representation of our natural numbers is very inefficient, so we might prefer sometimes to use a binary one instead.
 We would like to be able to identify all of these versions of ``the natural numbers'' with each other, in order to transfer constructions and results from one to another.
 
 Of course, if two versions of the natural numbers satisfy identical induction principles, then they have identical induced structure.
@@ -205,7 +205,7 @@ Consider, for instance, a simple lemma such as
 Inserting the correct $f$s and $g$s is only a little easier than re-proving it by induction on $n:\natp$ directly.
 \index{isomorphism!transfer across}%
 
-\index{univalence axiom}%
+\index{FanDengGongLi@泛等公理}%
 Here is where the univalence axiom steps in: since $\eqv{\nat}{\natp}$, we also have $\id[\type]{\nat}{\natp}$, i.e.\ $\nat$ and $\natp$ are
 \emph{equal} as types.
 Now the induction principle for identity guarantees that any construction or proof relating to $\nat$ can automatically be transferred to $\natp$ in the same way.
@@ -413,7 +413,7 @@ The appropriate sort of ``algebra'' here is a type equipped with the same struct
 We thus have a category of $\nat$-algebras and $\nat$-homomorphisms, and the claim is that $\nat$ is the initial object of this category.
 A category theorist will immediately recognize this as the definition of a \emph{natural numbers object} in a category.
 
-Of course, since our types behave like $\infty$-groupoids\index{.infinity-groupoid@$\infty$-groupoid}, we actually have an $(\infty,1)$-category\index{.infinity1-category@$(\infty,1)$-category} of $\nat$-algebras, and we should ask $\nat$ to be initial in the appropriate $(\infty,1)$-categorical sense.
+Of course, since our types behave like $\infty$-groupoids\index{.WuQiongQunPei@$\infty$-群胚}, we actually have an $(\infty,1)$-category\index{.infinity1-category@$(\infty,1)$-category} of $\nat$-algebras, and we should ask $\nat$ to be initial in the appropriate $(\infty,1)$-categorical sense.
 Fortunately, we can formulate this without needing to define $(\infty,1)$-categories.
 
 \begin{defn}
@@ -859,7 +859,7 @@ This is a contradiction: no proposition can be equivalent to its negation.
   mentioned in \cref{subsec:prop-subsets}.
 \end{rmk}
 
-\index{consistency}%
+\index{YiZhiXing@一致性}%
 This counterexample suggests that we should ban an inductive type from ever appearing on the left of an arrow in the domain of its constructors, even if that appearance is nested in other arrows so as to eventually become covariant.
 (Similarly, we also forbid it from appearing in the domain of a dependent function type.)
 This restriction is called \define{strict positivity}
@@ -1111,7 +1111,7 @@ In general, the elements of a free structure are obtained by applying not only t
 In the case of inductive types, we are talking about freely generated \emph{types} --- so what are the ``operations'' of the structure of a type?
 If types are viewed as like \emph{sets}, as was traditionally the case in type theory, then there are no such operations, and hence we expect there to be no elements in an inductive type other than those resulting from its constructors.
 In homotopy type theory, we view types as like \emph{spaces} or $\infty$-groupoids,%
-\index{.infinity-groupoid@$\infty$-groupoid}
+\index{.WuQiongQunPei@$\infty$-群胚}
 in which case there are many operations on the \emph{paths} (concatenation, inversion, etc.) --- this will be important in \cref{cha:hits} --- but there are still no operations on the \emph{objects} (elements).
 Thus, it is still true for us that, e.g., every element of \bool is either $\bfalse$ or $\btrue$, and every element of $\nat$ is either $0$ or a successor.
 
@@ -1223,7 +1223,7 @@ We can deduce a similar result for identity types $=_A$, regarded as a family va
 \index{identity!system|)}%
 
 One reason this characterization is interesting is that it provides an alternative way to state univalence and function extensionality.
-\index{univalence axiom}%
+\index{FanDengGongLi@泛等公理}%
 The univalence axiom for a universe \UU says exactly that the type family
 \[ (\eqv{\blank}{\blank}) : \UU\to\UU\to\UU \]
 together with $\idfunc : \prd{A:\UU} (\eqv AA)$ satisfies \cref{thm:ML-identity-systems}\ref{item:MLis4}.

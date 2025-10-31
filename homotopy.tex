@@ -9,7 +9,7 @@ use the \emph{synthetic approach} to homotopy theory introduced in
 notions, which are represented by types and elements of types, particularly
 the identity type.  The algebraic structure of paths and homotopies is
 represented by the natural $\infty$-groupoid
-\index{.infinity-groupoid@$\infty$-groupoid}%
+\index{.WuQiongQunPei@$\infty$-群胚}%
 structure on types, which is generated
 by the rules for the identity type.  Using higher inductive types, as
 introduced in \cref{cha:hits}, we can describe spaces directly by their
@@ -36,7 +36,7 @@ structure as is needed in any particular proof.
 
 The abstract nature of type theory means that our proofs apply automatically in a variety of settings.
 In particular, as mentioned previously, homotopy type theory has one interpretation in
-Kan\index{Kan complex} simplicial sets\index{simplicial!sets},
+Kan\index{KanFuXing@Kan复形} simplicial sets\index{simplicial!sets},
 which is one model for the homotopy theory of $\infty$-groupoids.  Thus,
 our proofs apply to this model, and transferring them along the geometric
 realization\index{geometric realization} functor from simplicial sets to topological spaces gives
@@ -44,7 +44,7 @@ proofs of corresponding theorems in classical homotopy theory.
 However, though the details are work in progress, we can also
 interpret type theory in a wide variety of other categories
 that look like the category of $\infty$-groupoids, such as
-$(\infty,1)$-toposes\index{.infinity1-topos@$(\infty,1)$-topos}.
+$(\infty,1)$-toposes\index{.WuQiong1TuoPuSi@$(\infty,1)$-拓扑斯}.
 Thus, proving a result in type theory will show
 that it holds in these settings as well.
 This sort of extra generality is well-known as a property of ordinary categorical logic:
@@ -59,7 +59,7 @@ computer scientists use type theory to reason about computer programs.
 One thing that seems to have permitted these new proofs is the fact that type theory
 emphasizes different aspects of homotopy theory than other approaches:
 while tools like path induction and the universal properties of higher
-inductives are available in a setting like Kan\index{Kan complex} simplicial sets, type
+inductives are available in a setting like Kan\index{KanFuXing@Kan复形} simplicial sets, type
 theory elevates their importance, because they are the \emph{only}
 primitive tools available for working with these types.  Focusing on
 these tools had led to new descriptions of familiar constructions such
@@ -211,7 +211,7 @@ the additive group of integers,\index{integers} and $\Z_{m}$ is the cyclic group
 
 One way of understanding this complexity is through the correspondence
 between spaces and $\infty$-groupoids
-\index{.infinity-groupoid@$\infty$-groupoid}%
+\index{.WuQiongQunPei@$\infty$-群胚}%
 introduced in \cref{cha:basics}.
 As discussed in \cref{sec:circle}, the 2-sphere is presented by a higher
 inductive type with one point and one 2-dimensional loop.  Thus, one
@@ -259,7 +259,7 @@ it is defined without reference to any basepoint in $A$.
 This definition is a suitable one for investigating homotopy groups
 because the (higher) inductive definition of a type $X$ presents $X$ as
 a free type, analogous to a free $\infty$-groupoid,
-\index{.infinity-groupoid@$\infty$-groupoid}%
+\index{.WuQiongQunPei@$\infty$-群胚}%
 and this
 presentation \emph{determines} but does not \emph{explicitly describe}
 the higher identity types of $X$.  The identity types are populated by
@@ -275,13 +275,13 @@ or booleans.  For example, the theorem that $\bfalse$ is different
 from $\btrue$ does not follow immediately from the definition;
 see \cref{sec:compute-coprod}.
 
-\index{univalence axiom}%
+\index{FanDengGongLi@泛等公理}%
 The univalence axiom plays an essential role in calculating homotopy
 groups (without univalence, type theory is compatible with an
 interpretation where all paths, including, for example, the loop on the
 circle, are reflexivity).  We will see this in the calculation of the
 fundamental group of the circle below: the map from $\Omega(\Sn^1)$ to $\Z$ is defined by mapping a loop on the circle to an
-automorphism\index{automorphism!of Z, successor@of $\Z$, successor} of the set $\Z$, so that, for example, $\lloop \ct \opp
+automorphism\index{ZiDongTai@自同态!of Z, successor@of $\Z$, successor} of the set $\Z$, so that, for example, $\lloop \ct \opp
 \lloop$ is sent to $\mathsf{successor} \ct \mathsf{predecessor}$ (where
 $\mathsf{successor}$ and $\mathsf{predecessor}$ are automorphisms of
 $\Z$ viewed, by univalence, as paths in the universe), and then applying
@@ -1559,7 +1559,7 @@ We can now construct the Hopf fibration:
 \label{sec:freudenthal}
 
 \index{Freudenthal suspension theorem|(}%
-\index{theorem!Freudenthal suspension|(}%
+\index{DingLi@定理!Freudenthal suspension|(}%
 
 Before proving the Freudenthal suspension theorem, we need some auxiliary lemmas about connectedness.
 In \cref{cha:hlevels} we proved a number of facts about $n$-connected maps and $n$-types for fixed $n$; here we are now interested in what happens when we vary $n$.
@@ -1805,7 +1805,7 @@ equivalence on $2n$-truncations.
 \index{encode-decode method|)}%
 
 \index{Freudenthal suspension theorem|)}%
-\index{theorem!Freudenthal suspension|)}%
+\index{DingLi@定理!Freudenthal suspension|)}%
 
 \index{homotopy!group!of sphere}%
 \index{stability!of homotopy groups of spheres}%
@@ -1880,7 +1880,7 @@ this equivalence, combined with the inductive hypothesis, gives the result.
 \label{sec:van-kampen}
 
 \index{van Kampen theorem|(}%
-\index{theorem!van Kampen|(}%
+\index{DingLi@定理!van Kampen|(}%
 
 \index{fundamental!group}%
 The van Kampen theorem calculates the fundamental group $\pi_1$ of a (homotopy) pushout of spaces.
@@ -2181,7 +2181,7 @@ There is an obvious induced function $\kbar:T\to A$ such that $\kbar \ell = k$, 
   $T$ can be regarded as the (homotopy) coequalizer of the ``kernel pair'' of $k$.
   If $S$ and $A$ were sets, then the $(-1)$-connectivity of $k$ would imply that $A$ is the $0$-truncation of this coequalizer (see \cref{cha:set-math}).
   For general types, higher topos theory suggests that $(-1)$-con\-nec\-tiv\-i\-ty of $k$ will imply instead that $A$ is the colimit (a.k.a.\ ``geometric realization'') of the ``simplicial kernel'' of $k$.
-  \index{.infinity1-topos@$(\infty,1)$-topos}%
+  \index{.WuQiong1TuoPuSi@$(\infty,1)$-拓扑斯}%
   \index{geometric realization}%
   \index{simplicial!kernel}%
   \index{kernel!simplicial}%
@@ -2335,29 +2335,29 @@ relation.  In that respect, it is an improvement over
 \index{fundamental!group|)}%
 
 \index{van Kampen theorem|)}%
-\index{theorem!van Kampen|)}%
+\index{DingLi@定理!van Kampen|)}%
 
 \section{Whitehead's theorem and Whitehead's principle}
 \label{sec:whitehead}
 
 In classical homotopy theory, a map $f:A\to B$ which induces an isomorphism $\pi_n(A,a) \cong \pi_n(B,f(a))$ for all points $a$ in $A$ (and also an isomorphism $\pi_0(A)\cong\pi_0(B)$) is necessarily a homotopy equivalence, as long as the spaces $A$ and $B$ are well-behaved (e.g.\ have the homotopy types of CW-complexes).
-\index{theorem!Whitehead's}%
+\index{DingLi@定理!Whitehead's}%
 \index{Whitehead's!theorem}%
 This is known as \emph{Whitehead's theorem}.
 In fact, the ``ill-behaved'' spaces for which Whitehead's theorem fails are invisible to type theory.
 Roughly, the well-behaved topological spaces suffice to present $\infty$-groupoids,%
-\index{.infinity-groupoid@$\infty$-groupoid}
+\index{.WuQiongQunPei@$\infty$-群胚}
 and homotopy type theory deals with $\infty$-groupoids directly rather than actual topological spaces.
 Thus, one might expect that Whitehead's theorem would be true in univalent foundations.
 
 However, this is \emph{not} the case: Whitehead's theorem is not provable.
 In fact, there are known models of type theory in which it fails to be true, although for entirely different reasons than its failure for ill-behaved topological spaces.
 These models are ``non-hypercomplete $\infty$-toposes''
-\index{.infinity1-topos@$(\infty,1)$-topos}%
-\index{.infinity1-topos@$(\infty,1)$-topos!non-hypercomplete}%
+\index{.WuQiong1TuoPuSi@$(\infty,1)$-拓扑斯}%
+\index{.WuQiong1TuoPuSi@$(\infty,1)$-拓扑斯!non-hypercomplete}%
 (see~\cite{lurie:higher-topoi}); roughly speaking, they consist of sheaves of $\infty$-groupoids over $\infty$-dimensional base spaces.
 
-\index{axiom!Whitehead's principle|(}%
+\index{GongLi@公理!Whitehead's principle|(}%
 \index{Whitehead's!principle|(}%
 
 From a foundational point of view, therefore, we may speak of \emph{Whitehead's principle} as a ``classicality axiom'', akin to \LEM{} and \choice{}.
@@ -2505,12 +2505,12 @@ Then if we want to assume Whitehead's principle as an axiom, we may use either o
 \item Every type is $\infty$-truncated.
 \end{itemize}
 In higher topos models,
-\index{.infinity1-topos@$(\infty,1)$-topos}%
+\index{.WuQiong1TuoPuSi@$(\infty,1)$-拓扑斯}%
 the $\infty$-truncated types form a reflective subuniverse in the sense of
 \cref{sec:modalities} (the ``hypercompletion'' of an $(\infty,1)$-topos), but we do not know whether this is
 true in general.
 
-\index{axiom!Whitehead's principle|)}%
+\index{GongLi@公理!Whitehead's principle|)}%
 \index{Whitehead's!principle|)}%
 
 It may not be obvious that there \emph{are} any types which are not $n$-types for any $n$, but in fact there are.
@@ -2822,7 +2822,7 @@ the connections between these two subjects.
 \begin{ex}\label{ex:decidable-equality-susp}
   \index{decidable!equality}%
   Prove that if $A$ is a set with decidable equality (see \cref{defn:decidable-equality}), then its suspension $\susp A$ is a 1-type.
-  (It is an open question\index{open!problem} whether this is provable without the assumption of decidable equality.)
+  (It is an open question\index{KaiFang@开放!WenTi@问题} whether this is provable without the assumption of decidable equality.)
 \end{ex}
 
 \begin{ex}\label{ex:contr-infinity-sphere-colim}
@@ -2865,7 +2865,7 @@ as a fibration (that is, a type family) over $\Sn ^1$ whose fiber over the basep
 \end{ex}
 
 \begin{ex}\label{ex:SuperHopf}
-Again following the example of the Hopf fibration in \cref{sec:hopf}, define an analogous fibration over $\Sn ^4$ whose fiber over the basepoint is $\Sn ^3$ and whose total space is $\Sn ^7$.  This is an open problem\index{open!problem} in homotopy type theory (such a fibration is known to exist in classical homotopy theory).
+Again following the example of the Hopf fibration in \cref{sec:hopf}, define an analogous fibration over $\Sn ^4$ whose fiber over the basepoint is $\Sn ^3$ and whose total space is $\Sn ^7$.  This is an open problem\index{KaiFang@开放!WenTi@问题} in homotopy type theory (such a fibration is known to exist in classical homotopy theory).
 \end{ex}
 
 \begin{ex}\label{ex:vksusppt}

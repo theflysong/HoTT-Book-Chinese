@@ -160,19 +160,19 @@ Such types may be regarded as \emph{propositions in a narrow sense}, and their s
 \label{subsec:pat?}
 
 \index{proposition!as types|(}%
-\index{logic!constructive vs classical|(}%
+\index{LuoJi@逻辑!constructive vs classical|(}%
 \index{anger|(}%
 Until now, we have been following the straightforward ``propositions as types'' philosophy described in \cref{sec:pat}, according to which English phrases such as ``there exists an $x:A$ such that $P(x)$'' are interpreted by corresponding types such as $\sm{x:A} P(x)$, with the proof of a statement being regarded as judging some specific element to inhabit that type.
 However, we have also seen some ways in which the ``logic'' resulting from this reading seems unfamiliar to a classical mathematician.
 For instance, in \cref{thm:ttac} we saw that the statement
-\index{axiom!of choice!type-theoretic}%
+\index{GongLi@公理!XuanZe@选择!type-theoretic}%
 \begin{equation}\label{eq:english-ac}
   \parbox{\textwidth-2cm}{``If for all $x:X$ there exists an $a:A(x)$ such that $P(x,a)$, then there exists a function $g:\prd{x:X} A(x)$ such that for all $x:X$ we have $P(x,g(x))$'',}
 \end{equation}
 which looks like the classical\index{mathematics!classical} \emph{axiom of choice}, is always true under this reading. This is a noteworthy, and often useful, feature of the propositions-as-types logic, but it also illustrates how significantly it differs from the classical interpretation of logic, under which the axiom of choice is not a logical truth, but an additional ``axiom''.
 
 On the other hand, we can now also show that corresponding statements looking like the classical \emph{law of double negation} and \emph{law of excluded middle} are incompatible with the univalence axiom.
-\index{univalence axiom}%
+\index{FanDengGongLi@泛等公理}%
 
 \begin{thm}\label{thm:not-dneg}
   \index{double negation, law of}%
@@ -187,7 +187,7 @@ On the other hand, we can now also show that corresponding statements looking li
   \index{continuity of functions in type theory@``continuity'' of functions in type theory}%
   \index{functoriality of functions in type theory@``functoriality'' of functions in type theory}%
   By univalence, this implies that $f$ is \emph{natural} with respect to equivalences of types.
-  From this, and a fixed-point-free autoequivalence\index{automorphism!fixed-point-free}, we will be able to extract a contradiction.
+  From this, and a fixed-point-free autoequivalence\index{ZiDongTai@自同态!WuBuDongDianDe@无不动点的}, we will be able to extract a contradiction.
 
   Let $e:\eqv\bool\bool$ be the equivalence defined by $e(\btrue)\defeq\bfalse$ and $e(\bfalse)\defeq\btrue$, as in \cref{thm:type-is-not-a-set}.
   Let $p:\bool=\bool$ be the path corresponding to $e$ by univalence, i.e.\ $p\defeq \ua(e)$.
@@ -232,7 +232,7 @@ On the other hand, we can now also show that corresponding statements looking li
 \end{rmk}
 
 \begin{cor}\label{thm:not-lem}
-  \index{excluded middle}%
+  \index{PaiZhongLv@排中律}%
   It is not the case that for all $A:\UU$ we have $A+(\neg A)$.
 \end{cor}
 \begin{proof}
@@ -250,12 +250,12 @@ However, neither do we want to discard propositions-as-types entirely, because o
 We now discuss a modification of propositions-as-types which resolves these problems; in \cref{subsec:when-trunc} we will return to the question of which logic to use when.
 \index{anger|)}%
 \index{proposition!as types|)}%
-\index{logic!constructive vs classical|)}%
+\index{LuoJi@逻辑!constructive vs classical|)}%
 
 \section{Mere propositions}
 \label{subsec:hprops}
 
-\index{logic!of mere propositions|(}%
+\index{LuoJi@逻辑!of mere propositions|(}%
 \index{mere proposition|(defstyle}%
 \indexsee{proposition!mere}{mere proposition}%
 We have seen that the propositions-as-types logic has both good and bad properties.
@@ -347,13 +347,13 @@ In particular, this implies:
 
 We have seen one other example so far: condition~\ref{item:be3} in \cref{sec:basics-equivalences} asserts that for any function $f$, the type $\isequiv (f)$ should be a mere proposition.
 
-\index{logic!of mere propositions|)}%
+\index{LuoJi@逻辑!of mere propositions|)}%
 \index{mere proposition|)}%
 
 \section{Classical vs.\ intuitionistic logic}
 \label{sec:intuitionism}
 
-\index{logic!constructive vs classical|(}%
+\index{LuoJi@逻辑!constructive vs classical|(}%
 \index{denial|(}%
 With the notion of mere proposition in hand, we can now give the proper formulation of the \define{law of excluded middle}
 \indexdef{excluded middle}%
@@ -446,7 +446,7 @@ In particular, $\LEM{}$ implies that all sets (in the sense of \cref{sec:basics-
 Having decidable equality in this sense is very strong; see \cref{thm:hedberg}.
 
 \index{denial|)}%
-\index{logic!constructive vs classical|)}%
+\index{LuoJi@逻辑!constructive vs classical|)}%
 
 \section{Subsets and propositional resizing}
 \label{subsec:prop-subsets}
@@ -558,7 +558,7 @@ See also \cref{subsec:piw}.
 \section{The logic of mere propositions}
 \label{subsec:logic-hprop}
 
-\index{logic!of mere propositions|(}%
+\index{LuoJi@逻辑!of mere propositions|(}%
 We mentioned in \cref{sec:types-vs-sets} that in contrast to type theory, which has only one basic notion (types), set-theoretic foundations have two basic notions: sets and propositions.
 Thus, a classical\index{mathematics!classical} mathematician is accustomed to manipulating these two kinds of objects separately.
 
@@ -695,13 +695,13 @@ Of course, in the absence of \LEM{}, the latter are not ``complements'' in the u
 
 \index{truncation!propositional|)}%
 \index{mere proposition|)}%
-\index{logic!of mere propositions|)}%
+\index{LuoJi@逻辑!of mere propositions|)}%
 
 
 \section{The axiom of choice}
 \label{sec:axiom-choice}
 
-\index{axiom!of choice|(defstyle}%
+\index{GongLi@公理!XuanZe@选择|(defstyle}%
 \index{denial|(}%
 We can now properly formulate the axiom of choice in homotopy type theory.
 Assume a type $X$ and type families
@@ -796,13 +796,13 @@ However, observe that we cannot relax the requirement that $X$ be a set.
 \end{proof}
 
 \index{denial|)}%
-\index{axiom!of choice|)}%
+\index{GongLi@公理!XuanZe@选择|)}%
 
 \section{The principle of unique choice}
 \label{sec:unique-choice}
 
 \index{unique!choice|(defstyle}%
-\indexsee{axiom!of choice!unique}{unique choice}%
+\indexsee{axiom!XuanZe@选择!unique}{unique choice}%
 
 The following observation is trivial, but very useful.
 
@@ -852,9 +852,9 @@ Thus, if $A$ is not a set (such as perhaps a universe $\UU$), there is no consis
 \section{When are propositions truncated?}
 \label{subsec:when-trunc}
 
-\index{logic!of mere propositions|(}%
+\index{LuoJi@逻辑!of mere propositions|(}%
 \index{mere proposition|(}%
-\index{logic!truncated}%
+\index{LuoJi@逻辑!truncated}%
 
 At first glance, it may seem that the truncated versions of $+$ and $\Sigma$ are actually closer to the informal mathematical meaning of ``or'' and ``there exists'' than the untruncated ones.
 Certainly, they are closer to the \emph{precise} meaning of ``or'' and ``there exists'' in the first-order logic \index{first-order!logic} which underlies formal set theory, since the latter makes no attempt to remember any witnesses to the truth of propositions.
@@ -933,7 +933,7 @@ In this book we will continue using untruncated logic as the default convention,
 \end{enumerate}
 
 \index{mere proposition|)}%
-\index{logic!of mere propositions|)}%
+\index{LuoJi@逻辑!of mere propositions|)}%
 
 \section{Contractibility}
 \label{sec:contractibility}
@@ -1106,7 +1106,7 @@ In fact, he defined the entire hierarchy of $n$-types by induction, as we will d
 
 \cref{thm:not-dneg,thm:not-lem} rely in essence on a classical theorem of Hedberg,
 \index{Hedberg's theorem}%
-\index{theorem!Hedberg's}%
+\index{DingLi@定理!Hedberg's}%
 which we will prove in \cref{sec:hedberg}.
 The implication that the propositions-as-types form of \LEM{} contradicts univalence was observed by Mart\'\i n Escard\'o on the \Agda mailing list.
 The proof we have given of \cref{thm:not-dneg} is due to Thierry Coquand.
@@ -1121,17 +1121,17 @@ The intensional version in homotopy type theory was constructed by Voevodsky usi
 
 \index{propositional!resizing}%
 Voevodsky~\cite{Universe-poly} has proposed resizing rules of the kind considered in \cref{subsec:prop-subsets}.
-\index{axiom!of reducibility}\index{resizing}%
+\index{GongLi@公理!of reducibility}\index{resizing}%
 These are clearly related to the notorious \emph{axiom of reducibility} proposed by Russell in his and Whitehead's \emph{Principia Mathematica}~\cite{PM2}.\index{Russell, Bertrand}
 
 The adverb ``purely'' as used to refer to untruncated logic is a reference to the use of monadic modalities to model effects in programming languages; see \cref{sec:modalities} and the Notes to \cref{cha:hlevels}.
 
 There are many different ways in which logic can be treated relative to type theory.
 For instance, in addition to the plain propositions-as-types logic described in \cref{sec:pat}, and the alternative which uses mere propositions only as described in \cref{subsec:logic-hprop}, one may introduce a separate ``sort'' of propositions, which behave somewhat like types but are not identified with them.
-This is the approach taken in logic enriched type theory~\cite{aczel2002collection} and in some presentations of the internal languages of toposes\index{topos} and related categories (e.g.~\cite{jacobs1999categorical,elephant}), as well as in the proof assistant \Coq.\index{proof!assistant!Coq@\textsc{Coq}}
+This is the approach taken in logic enriched type theory~\cite{aczel2002collection} and in some presentations of the internal languages of toposes\index{TuoPuSi@拓扑斯} and related categories (e.g.~\cite{jacobs1999categorical,elephant}), as well as in the proof assistant \Coq.\index{proof!assistant!Coq@\textsc{Coq}}
 Such an approach is more general, but less powerful.
 For instance, the principle of unique choice (\cref{sec:unique-choice}) fails in the category of so-called setoids in \Coq~\cite{Spiwack}, in logic enriched type theory~\cite{aczel2002collection}, and in minimal type theory~\cite{maietti2005toward}.\index{setoid}
-Thus, the univalence axiom makes our type theory behave more like the internal logic of a topos;~see also \cref{cha:set-math}.\index{topos}
+Thus, the univalence axiom makes our type theory behave more like the internal logic of a topos;~see also \cref{cha:set-math}.\index{TuoPuSi@拓扑斯}
 
 Martin-L\"of~\cite{martin2006100} provides a discussion on the history of axioms of choice.
 Of course, constructive and intuitionistic mathematics has a long and complicated history, which we will not delve into here; see for instance~\cite{TroelstraI,TroelstraII}.
@@ -1198,7 +1198,7 @@ Of course, constructive and intuitionistic mathematics has a long and complicate
 \end{ex}
 
 \begin{ex}\label{ex:lem-impl-simple-ac}
-  \index{axiom!of choice}%
+  \index{GongLi@公理!XuanZe@选择}%
   Show that if \LEM{} holds, then for all $A:\type$ we have $\bbrck{(\brck A \to A)}$.
   (This property is a very simple form of the axiom of choice, which can fail in the absence of \LEM{}; see~\cite{krausgeneralizations}.)
 \end{ex}
