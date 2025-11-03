@@ -31,7 +31,7 @@
 这本书应被视作这个对这个领域的一部分, 在写作时拍摄的一张``快照'', 而不是经过润色的, 对一个完整学说进行的阐释。
 就像我们稍后会大致讨论的, 同伦类型论的许多方面都还未被充分地理解——而还有一些甚至不会在此处被提及。
 几乎可以肯定的是, 尽管最终的理论和本书所描述的理论不会完全相同, 但其 \emph{至少} 会和这个理论一样有力; 因此, 
-我们相信泛等基础最终将成为集合论的一个切实可行的替代, 作为大多数数学家进行的非形式化数学的``隐形基础''。
+我们相信泛等基础最终将成为集合论的一个切实可行的替代, 作为大多数数学家进行的非形式化数学研究的``隐形基础''。
 
 \subsection*{类型论}
 
@@ -76,7 +76,7 @@ Per Martin-L\"{o}f \cite{Martin-Lof-1972,Martin-Lof-1973,Martin-Lof-1979,martin-
 
 \subsection*{同伦类型论}
 
-同伦类型论(HoTT)从同伦论的视角解释类型论。
+同伦类型论(HoTT)从同伦论的视角解读类型论。
 同伦类型论中, 我们将类型视作``空间''或(像同伦论已研究的那样)视作高阶群胚。而逻辑构造(就像积$A \times B$)则被视作这些空间之间的同伦不变量的构造。
 这样一来, 我们得以直接操纵空间, 而无需首先构造点集拓扑(或任何它的组合替代理论, 例如单纯集论)
 为了简要地介绍这种视角, 我们先考虑类型论的基础概念, 或确切地说:
@@ -106,15 +106,15 @@ a : A
 
 (为这些对象使用\emph{同伦类型}这个短语也是很诱人的, 
 \index{TongLun@同伦!LeiXing@类型}%
-这暗示了一对对偶的解释: ``在同伦意义上被看待的(类型论的)类型'' 和 ``从同伦论的观点上看待空间''。
+这暗示了一对对偶的解读: ``在同伦意义上被看待的(类型论的)类型'' 和 ``从同伦论的观点上看待空间''。
 后者与经典意义上的``同伦类型''有些许不同——空间同伦等价意义下的\emph{等价类}, 尽管其确实保持了像``这两个空间具有相同的同伦类型''这样的短语的含义)
 
-将类型视作结构化对象而非集合的想法有着悠长的历史, 众所周知, 它可以阐明类型论中许多神秘的方面。
-例如, 将类型解释为层能够帮助解释类型论的直觉主义本质, 而将其解释为偏等价关系或``定义域''则有助于解释它的可计算性。
+将类型解读为结构化对象而非集合的想法有着悠长的历史, 众所周知, 它可以阐明类型论中许多神秘的方面。
+例如, 将类型解读为层能够帮助解释类型论的直觉主义本质, 而将其解读为偏等价关系或``定义域''则有助于解释它的可计算性。
 这也暗示着我们可以使用类型论的推理来研究结构化对象, 这指向了范畴论逻辑这一丰富的领域。
-对其的同伦论解释也遵循了同样的模式: 它阐明了类型论中\emph{恒等}(或相等性)的本质, 允许我们在同伦论的研究中使用类型论式的推理。
+对其的同伦论解读也遵循了同样的模式: 它阐明了类型论中\emph{恒等}(或相等性)的本质, 允许我们在同伦论的研究中使用类型论式的推理。
 
-同伦论解释的核心观点为: 对具有同样类型$A$的两个对象$a, b:A$,  逻辑上的恒等的概念$a=b$可以被理解为在空间$A$中存在一条从点$a$到$b$的d$p : a \leadsto b$。
+同伦论解读的核心观点为: 对具有同样类型$A$的两个对象$a, b:A$,  逻辑上的恒等的概念$a=b$可以被理解为在空间$A$中存在一条从点$a$到$b$的d$p : a \leadsto b$。
 这也意味着如果两个函数$f, g: A \to B$是同伦的, 它们就是恒等的。因为同伦只不过是$B$上的一个(连续)道路族$p_x: f(x) \leadsto g(x)$, 其中$x:A$。
 
 在类型论中, 对每个类型$A$, 都有一个(在先前些许神秘的)类型$\idtypevar{A}$, 它是$A$上两个物体的等同证明的类型。
@@ -126,14 +126,14 @@ a : A
 在这个意义上, 项$p : \idtype[A]{a}{b}$呈现了$A$上的一条道路$p : a \leadsto b$。
 
 同伦类型论的思想在2006年左右, 在Awodey与Warren的合著~\cite{AW}, 和Voevodsky的著作~\cite{VV}中分别被提出,  
-但其灵感源于Hofmann与Streicher的早期群胚解释~\cite{hs:gpd-typethy}。
+但其灵感源于Hofmann与Streicher的早期群胚解读~\cite{hs:gpd-typethy}。
 实际上, 高阶范畴论(特别是弱$\infty$-群胚理论)与同伦论之间的亲密联系是众所周知的事。这一观点最先由Grothendieck提出, 现在同时被两个领域的数学家所关注。
 Awodey--Warren和Voevodsky原先所提出的语义模型使用了同伦论中所熟知的概念与技巧。这些概念与技巧现在也在高阶范畴论中被使用, 
 像是Quillen模型范畴和Kan\index{KanFuXing@Kan复形}单纯集\index{DanChun@单纯!ji@集}。
 \index{QuillenMoXingFanChou@Quillen模型范畴}%
 \index{MoxingFanChou@模型范畴}%
 
-实际上, Voevodsky构造了类型论的Kan单纯集解释, 并意识到这种解释满足一个更深刻的性质, 他称其为\emph{泛等}。
+实际上, Voevodsky构造了类型论的Kan单纯集解读, 并意识到这种解读满足一个更深刻的性质, 他称其为\emph{泛等}。
 这一性质先前并未在类型论中被考虑过(尽管Church的命题外延性原理被发现是该性质的一个特例, 而Hofmann和Streicher之前考虑过另一个称为``宇宙外延性''的特例)。
 将泛等以一种新公理的方式添加到类型论中有着深远的结果, 其中的许多是很自然, 简单且鼓舞人心的。
 泛等公理也增强了同伦视角下的类型论, 因为它在单纯模型和其他相关模型中成立, 而在将类型视作集合的观点下不成立。
@@ -148,7 +148,7 @@ Awodey--Warren和Voevodsky原先所提出的语义模型使用了同伦论中所
 像其他类型一样, $\UU$有着恒等类型$\idtypevar{\UU}$, 其表达了小类型间的恒等关系$A=B$。
 将类型视作空间, $\UU$是一个点为空间的空间; 为了理解其恒等类型, 我们必须知道, $\UU$上空间$A$与$B$之间的道路$p: A \leadsto B$是什么?
 泛等公理告诉我们, 这样的一条道路对应于同伦等价$\eqv A B$,  (大体上)就像前面所解释的那样。
-更精确地说, 给定任意(小)类型$A$与$B$, 除了$A$与$B$之间的等同证明的原始类型$\idtype[\UU]AB$，还有定义类型$\texteqv AB$，其对象是从$A$到$B$的等价。
+更精确地说, 给定任意(小)类型$A$与$B$, 除了$A$与$B$之间的等同证明的原始类型$\idtype[\UU]AB$, 还有定义类型$\texteqv AB$, 其对象是从$A$到$B$的等价。
 因为任何物体上的恒等映射都是一个等价, 因此有一个典范映射
 \[\idtype[\UU]AB\to\texteqv AB.\]
 泛等公理声称这样一个映射其本身也是一个等价。
@@ -178,7 +178,7 @@ Awodey--Warren和Voevodsky原先所提出的语义模型使用了同伦论中所
 最简单的非平凡归纳定义的结构是自然数, 由零与后继函数归纳生成。
 从这句话中, 人们可以把数学归纳法抽象为一个算法\index{SuanFa@算法}, 其刻画了自然数的特征。
 更一般的归纳定义包括各种类型的链表与良基树, 它们的特征都被一个对应的``归纳原理''所刻画。
-这包括了某些编程语言中使用的大多数数据结构; 正因如此，类型论在对后者进行形式化推理方面才如此实用。
+这包括了某些编程语言中使用的大多数数据结构; 正因如此, 类型论在对后者进行形式化推理方面才如此实用。
 如果从非常广义的角度来理解, 归纳定义同样包含诸如无交并 $A+B$ 这样的例子。
 其可以看作是由两个投射 $A \to A+B$ 与 $B \to A+B$ ``归纳''生成的。
 这种情况下, 其``归纳原理''即为``分类讨论'', 其刻画了无交并的特征。
@@ -221,17 +221,16 @@ Awodey--Warren和Voevodsky原先所提出的语义模型使用了同伦论中所
 像Lawvere的\index{Lawvere}集合范畴基本理论~\cite{lawvere:etcs-long}这样的, 更加``结构化''的集合论是足够的。
 \index{JiHeFanChouJiChuLiLun@集合范畴基本理论}%
 
-在泛等基础中, 基础对象是``同伦类型''而非集合, 但是我们可以\emph{定义}一类行为类似于集合的类型。
-从同伦论的角度, 这些类型可以看作是每个联通分量均可缩的空间, 即, 同伦等价于离散空间的空间。
+在泛等基础中, 基础对象是``同伦类型''而非集合, 但是我们可以\emph{定义}一类行为类似于集合的类型。从同伦论的角度, 这些类型可以看作是每个联通分量均可缩的空间, 即, 同伦等价于离散空间的空间。
 \index{LiSan@离散!KongJian@空间}%
 有一个定理表明, 这样的``集合''构成的范畴满足Lawvere's\index{Lawvere}公理(或相关的公理, 取决于理论的具体细节)。
-因此, 任何能够用ETCS-式理论表示的数学理论(经验表明, 这基本上是全部的数学)都可以等价地在泛等基础中表示。
+因此, 任何能够用ETCS-式理论表示的数学理论(经验表明, 这基本上是全部的数学理论)都可以等价地在泛等基础中表示。
 
-这支持了我们所宣称的泛等基础至少和现存的数学一样好的观点。使用泛等基础的数学家可以利用集合来构造结构, 就像他们所熟悉的那样。
+这支持了我们所宣称的泛等基础至少和现存的数学基础一样好的观点。使用泛等基础的数学家可以利用集合来构造结构, 就像他们所熟悉的那样。
 而更一般化的同伦类型则在幕后待命。因此, 在这本书所选择的大部分应用场景中, 泛等基础能为此作出不同于现存基础系统的\emph{新}贡献。
 
 不出意料地, 同伦论和范畴论属于这种应用范围。但不太明显的是泛等基础甚至也能为像集合论和实分析这样的学科带来一些新奇有趣的概念。
-例如, 泛等公理允许我们把同构的结构等同, 而高阶归纳类型允许我们通过泛性质来直接描述对象。因此我们可以避免使用任意选择的代表元或是超限迭代构造，
+例如, 泛等公理允许我们把同构的结构等同, 而高阶归纳类型允许我们通过泛性质来直接描述对象。因此我们可以避免使用任意选择的代表元或是超限迭代构造, 
 事实上, 甚至是ZF集合论所研究的对象也可以通过这样一种归纳泛性质在泛等基础的集合中被刻画。
 
 \index{JiHe@集合|)}%
@@ -283,11 +282,9 @@ Awodey--Warren和Voevodsky原先所提出的语义模型使用了同伦论中所
 经典基础\index{ShuXue@数学!JinDianDe@经典的}与类型论的最令人惊讶的区别是\emph{证明相关性}的概念——其主张数学陈述, 甚至是它们的证明, 是一等数学对象。
 在类型论中, 我们通过类型表示数学陈述, 其可以同时被视作数学构造与数学断言, 这是一个称之为\emph{命题即类型}的构想。
 \index{MingTi@命题!JiLeiXing@即类型}%
-据此, 我们可以将项$a : A$同时视作类型$A$的元素(或是同伦类型论中空间$A$的一点)与对命题$A$的一个证明。
-举个例子, 假设我们有集合$A$与$B$(离散空间), 
+据此, 我们可以将项$a : A$同时视作类型$A$的元素(或是同伦类型论中空间$A$的一点)与对命题$A$的一个证明。举个例子, 假设我们有集合$A$与$B$(离散空间), 
 \index{LiSan@离散!KongJian@空间}%
-考虑陈述 ``$A$同构于$B$''。
-在类型论中, 其可以描绘为:
+考虑陈述 ``$A$同构于$B$''。在类型论中, 其可以描绘为:
 \begin{narrowmultline*}
   \mathsf{Iso}(A,B) \defeq \narrowbreak
   \sm{f : A\to B}{g : B\to A}\Big(\big(\tprd{x:A} g(f(x)) = x\big) \times \big(\tprd{y:B}\, f(g(y)) = y\big)\Big).
@@ -300,108 +297,81 @@ Awodey--Warren和Voevodsky原先所提出的语义模型使用了同伦论中所
 而证明$A$蕴含$B$就是寻找一个类型为$A \to B$的元素, 即一个从$A$到$B$的函数(决定一个从$A$的证明到$B$的证明的映射)。
 
 命题即类型的逻辑十分灵活, 并且有着非常多的变种, 例如只使用类型的一个子类来描述命题。
-The logic of propositions-as-types is flexible and supports many variations, such as using only a subclass of types to represent propositions.
-In Homotopy Type Theory, there are natural such subclasses arising from the fact that the system of all types, just like spaces in classical homotopy theory,
-is ``stratified'' according to the dimensions in which their higher homotopy structure exists or collapses.
-In particular, Voevodsky has found a purely type-theoretic definition of \emph{homotopy $n$-types}, corresponding to spaces with no nontrivial homotopy information above dimension $n$.
-(The $0$-types are the ``sets'' mentioned previously as satisfying Lawvere's axioms\index{Lawvere}.)
-Moreover, with higher inductive types, we can universally ``truncate'' a type into an $n$-type; in classical homotopy theory this would be its $n^{\mathrm{th}}$ Postnikov\index{PostnikovTa@Postnikov塔} section.
+在同伦类型论中, 这样的子类是自然显现出来的。因为由所有类型组成的系统, 会像经典同伦论中的空间一样, 根据其高阶同伦结构存在或坍缩的维度分层。
+特别地, Voevodsky找到了一种对\emph{同伦 $n$-类型}的纯类型论的定义, 与在$n$维以上维度中不含有非平凡同伦信息的空间对应。($0$-类型是前文所提的满足Lawvere公理的``集合''\index{Lawvere})
+不仅如此, 与高阶归纳类型结合在一起, 我们可以普遍地把一个类型``截断''为一个$n$-类型; 在经典同伦论中这是其第$n$个Postnikov\index{PostnikovTa@Postnikov塔}截面。
 \index{n-LeiXing@$n$-类型} %
-Particularly important for logic is the case of homotopy $(-1)$-types, which we call \emph{mere propositions}.
-Classically, every $(-1)$-type is empty or contractible; we interpret these possibilities as the truth values ``false'' and ``true'' respectively.
+对逻辑学而言特别重要的是$(-1)$-类型, 其被我们称为\emph{纯粹命题}。在经典理论中, 每个$(-1)$-类型要么空要么可缩; 我们将这些情况分别解读为``假''和``真''。
 
-Using all types as propositions yields a very ``constructive'' conception of logic; for more on this, see~\cite{kolmogorov,TroelstraI,TroelstraII}.
-For instance, every proof that something exists carries with it enough information to actually find such an object;
-and every proof that ``$A$ or $B$'' holds is either a proof that $A$ holds or a proof that $B$ holds.
-Thus, from every proof we can automatically extract an algorithm;\index{SuanFa@算法} \index{TiQuSuanFa@提取算法} this can be very useful in applications to computer programming.
+将所有的类型都作为命题使用会产生一个十分``构造性''的逻辑构想; 见~\cite{kolmogorov,TroelstraI,TroelstraII}以了解更多。
+举例而言, 每个关于某物存在的证明都会携带充分的信息, 使得该对象真的可以被找到;对每个``$A$或$B$''成立的证明, 它要么是$A$成立的证明, 要么是$B$成立的证明
+因此, 我们可以自动地从每个证明中提取出一个算法; \index{SuanFa@算法} \index{TiQuSuanFa@提取算法} 这在应用于计算机编程时非常有用
 
-On the other hand, however, this logic does diverge from the traditional understanding of existence proofs in mathematics.
-In particular, it does not faithfully represent certain important classical principles of reasoning, such as the axiom of choice and the law of excluded middle.
-For these we need to use the ``$(-1)$-truncated'' logic, in which only the homotopy $(-1)$-types represent propositions.
+然而另一方面, 这种逻辑与数学对存在性证明的传统理解存在偏差。
+事实上, 其并不忠实地遵守一些重要的传统推理原则, 比如选择公理和排中律。
+对于这些, 我们需要使用``$(-1)$-截断''逻辑, 其中只有同伦$(-1)$-类型表示命题。
 
 \index{GongLi@公理!XuanZe@选择}%
-More specifically, consider on one hand the \emph{axiom of choice}: ``if for every $x: A$ there exists a $y:B$ such that $R(x,y)$, there is a function $f : A\to B$ such that for all $x:A$ we have $R(x, f(x))$.''
-The pure propositions-as-types notion of ``there exists'' is strong enough to make this statement simply provable --- yet it does not have all the consequences of the usual axiom of choice.
-However, in $(-1)$-truncated logic, this statement is not automatically true, but is a strong assumption 
-with the same sorts of consequences as its counterpart in classical\index{ShuXue@数学!JinDianDe@经典的} set theory.
+更具体地, 一方面考虑\emph{选择公理}: ``如果对每个$x : A$, 存在一个$y : B$ 使得 $R(x, y)$, 则存在一个函数$f: A \to B$使得对所有的$x : A$, 有$R(x, f(x))$。''
+命题即逻辑纯粹的``存在''概念足够强大, 以至于这个陈述可以简单地被证明 —— 尽管其没有通常的选择公理所能产生的全部结果。
+然而, 在$(-1)$-截断逻辑中, 这一陈述并不是自动为真, 而是一个强力的假设, 与在经典\index{ShuXue@数学!JinDianDe@经典的}集合论中所对应的版本有着一样结果。
 
 \index{PaiZhongLv@排中律}%
 \index{FanDengGongLi@泛等公理}%
-On the other hand, consider the \emph{law of excluded middle}: ``for all $A$, either $A$ or not $A$.''
-Interpreting this in the pure propositions-as-types logic yields a statement that is inconsistent with the univalence axiom.
-For since proving ``$A$'' means exhibiting an element of it, this assumption would give a uniform way of selecting an element from every nonempty type --- a sort of Hilbertian choice operator.
-Univalence implies that the element of $A$ selected by such a choice operator must be invariant under all self-equivalences of $A$,
-since these are identified with self-identities and every operation must respect identity;
-but clearly some types have automorphisms with no fixed points, e.g.\ we can swap the elements of a two-element type.
+另一方面, 考虑\emph{排中律}: ``对所有的$A$, 要么$A$要么非$A$。''在纯粹的命题即类型逻辑中解释会产生一个与泛等公理不一致的陈述。
+因为证明``$A$''意味着给出其中的一个元素, 这个假设将会给出一个从所有非空类型中选择元素的统一方式——一种希尔伯特选择算子。泛等蕴含着$A$中通过该算子选出的元素在所有$A$的自等价下必须不变,
+因为这些自等价与自恒等是等同的, 而每个操作都必须保恒等;但显然有些类型有着无不动点的自同构, 例如我们可以交换只有两个元素的类型的元素。
 \index{ZiDongTai@自同态!WuBuDongDianDe@无不动点的}%
-However, the ``$(-1)$-truncated law of excluded middle'', though also not automatically true, may consistently be assumed with most of the same consequences as in classical mathematics.
+然而, ``$(-1)$-截断排中律'', 虽然也不是自动为真, 但可被无矛盾地引入, 且其在经典数学中的绝大多数结论依然成立。
 
-In other words, while the pure propositions-as-types logic is ``constructive'' in the strong algorithmic sense mentioned above,
-the default $(-1)$-truncated logic is ``constructive'' in a different sense (namely, that of the logic formalized by Heyting under the name ``intuitionistic'');
-and to the latter we may freely add the axioms of choice and excluded middle to obtain a logic that may be called ``classical''.
-Thus, Homotopy Type Theory is compatible with both constructive and classical conceptions of logic, and many more besides.
+换言之, 虽然纯粹的命题即类型逻辑在和前文所提及的强烈的算法意义下是``构造性的'',
+但默认的$(-1)$-截断逻辑是在另一种意义下的``构造性的''(准确地说, 是海廷形式化的名为``直觉主义''的逻辑)
+在后者中, 我们可以自由地添加选择公理和排中律来得到被称为``经典''的逻辑。
+因此, 同伦类型论和构造性逻辑与经典逻辑的构想都兼容, 也可容纳远多于此的其他逻辑范式。
 \index{LuoJi@逻辑!GouZaoXingDeVsJingDian@构造性的vs经典}%
-Indeed, the homotopical perspective reveals that classical and constructive logic can coexist, as endpoints of a spectrum of different systems,
-with an infinite number of possibilities in between (the homotopy $n$-types for $-1 < n < \infty$).
-We may speak of ``\LEM{n}'' and ``\choice{n}'', with $\choice{\infty}$ being provable and \LEM{\infty} inconsistent with univalence,
-while $\choice{-1}$ and $\LEM{-1}$ are the versions familiar to classical mathematicians (hence in most cases it is appropriate to assume the subscript $(-1)$ when none is given).
-Indeed, one can even have useful systems in which only \emph{certain} types satisfy such further ``classical'' principles,
-while types in general remain ``constructive''.\index{PaiZhongLv@排中律}\index{GongLi@公理!XuanZe@选择}%%
+实际上, 同伦论视角揭示了经典逻辑与构造性逻辑是可以并行不悖的, 就像是不同系统构成的光谱的两端, 其中有着无尽的可能性(满足$-1 < n < \infty$的同伦$n$-类型)。 
+我们可以讨论带层级标记的``\LEM{n}''与``\choice{n}'': 其中 $\choice{\infty}$ 是可证明的, 而 $\LEM{\infty}$ 则与泛等公理不相容;
+另一方面, $\choice{-1}$ 与 $\LEM{-1}$ 正是经典数学家所熟悉的版本(因此在不标注下标时, 默认指 $(-1)$ 层级是合适的)。
+事实上, 我们完全可以构建这样一类有用的逻辑系统: 其中仅有特定类型需要满足这类进阶的``经典''原则, 而所有类型在整体上仍保持``可构造性''。\index{PaiZhongLv@排中律}\index{GongLi@公理!XuanZe@选择}%%
 
-It is worth emphasizing that univalent foundations does not \emph{require} the use of constructive or intuitionistic logic.\index{LuoJi@逻辑!intuitionistic}\index{LuoJi@逻辑!GouZaoXingDe@构造性的} %
-Most of classical mathematics which depends on the law of excluded middle and the axiom of choice can be performed in univalent foundations,
-simply by assuming that these two principles hold (in their proper, $(-1)$-truncated, form).
-However, type theory does encourage avoiding these principles when they are unnecessary, for several reasons.
+值得强调的是, 泛等基础并不要求使用构造性的或直觉主义逻辑。\index{LuoJi@逻辑!intuitionistic}\index{LuoJi@逻辑!GouZaoXingDe@构造性的} %
+大多数依赖于排中律和选择公理的经典数学结果都可以在泛等公理中进行, 只需要简单地假设这两个原理成立(在正确的——$(-1)$-截断——形式下)。
+然而, 出于一些原因, 类型论确实鼓励在不需要时避免这两个原理。
 
-First of all, every mathematician knows that a theorem is more powerful when proven using fewer assumptions, since it applies to more examples.
-The situation with \choice{} and \LEM{} is no different:
-type theory admits many interesting ``nonstandard'' models, such as in sheaf toposes,\index{TuoPuSi@拓扑斯} where classicality principles such as \choice{} and \LEM{} tend to fail.
-Homotopy Type Theory admits similar models in higher toposes, such as are studied in~\cite{ToenVezzosi02,Rezk05,lurie:higher-topoi}.
-Thus, if we avoid using these principles, the theorems we prove will be valid internally to all such models.
+首先, 每个数学家都知道, 定理使用的假设越少, 其就更加强力, 因为它能够被应用到更多的情境中。
+这对 \choice{} 与 \LEM{} 来说没什么不同:
+类型论容许许多有趣的``非标准''模型, 例如层拓扑斯中像 \choice{} 和 \LEM{} 这样的经典原理是失效的。\index{TuoPuSi@拓扑斯}
+同伦类型论在高阶拓扑斯中也承认类似的模型, 例如\cite{ToenVezzosi02,Rezk05,lurie:higher-topoi}所研究的。
+因此, 如果我们避免使用这些原理, 我们证明的定理对所有这些模型而言都是内部有效的。
 
-Secondly, one of the additional virtues of type theory is its computable character.
-In addition to being a foundation for mathematics, type theory is a formal theory of computation, and can be treated as a powerful programming language.
+其次, 类型论的另一个优势就是其可计算的特征。
+除了作为数学基础, 类型论也是有关计算的一个形式理论, 可以被视作一个强大的编程语言。
 \index{BianCheng@编程}%
-From this perspective, the rules of the system cannot be chosen arbitrarily the way set-theoretic axioms can: there must be a harmony between them which allows all proofs to be ``executed'' as programs.
-We do not yet fully understand the new principles introduced by Homotopy Type Theory, such as univalence and higher inductive types, from
-this point of view, but the basic outlines are emerging; see, for example,~\cite{lh:canonicity}.
-It has been known for a long time, however, that principles such as \choice{} and \LEM{} are fundamentally antithetical to computability,
-since they assert baldly that certain things exist without giving any way to compute them.
-Thus, avoiding them is necessary to maintain the character of type theory as a theory of computation.
+从这个角度上看, 系统的规则不能像集合论的公理那样任意选取: 它们要足够协调, 以容许所有的证明都能像程序一样被``执行''。
+从这一点上看, 我们并不完全了解同伦类型论所引入的一些新原理, 例如泛等性和高阶归纳类型, 但是基础大纲已经出现; 举例而言, 见~\cite{lh:canonicity}.
+然而, 在很长一段时间里, 像 \choice{} 与 \LEM{} 这样的原理从根本上就是与可计算性相悖的,
+因为它们大胆地断言特定事物的存在, 却不给出任何方法来计算它们。因此, 避免使用它们是维持类型论作为计算理论的特征的必要之举。
 
-Fortunately, constructive reasoning is not as hard as it may seem.
-In some cases, simply by rephrasing some definitions, a theorem can be made constructive and its proof more elegant.
-Moreover, in univalent foundations this seems to happen more often.
-For instance:
+幸运地是, 构造性推理并没有它看起来得那么难。
+在某些情况下, 只需要重新表述某些定义, 一个定理就可以构造性地得到, 其证明也会更加优雅。 
+进一步地, 在泛等基础中这种事只会更常发生。举例而言: 
+
 \begin{enumerate}
-\item In set-theoretic foundations, at various points in homotopy theory and category theory one needs the axiom of choice to perform transfinite constructions.
-  But with higher inductive types, we can encode these constructions directly and constructively.
-  In particular, none of the ``synthetic'' homotopy theory in \cref{cha:homotopy} requires \LEM{} or \choice{}.
-\item In set-theoretic foundations, the statement ``every fully faithful and essentially surjective functor is an equivalence of categories'' is equiv\-a\-lent to the axiom of choice.
-  But with the univalence axiom, it is just \emph{true}; see \cref{cha:category-theory}.
-\item In set theory, various circumlocutions are required to obtain notions of ``cardinal number'' and ``ordinal number'' which canonically represent isomorphism classes of sets and well-ordered sets,
-respectively --- possibly involving the axiom of choice or the axiom of foundation.
-  But with univalence and higher inductive types, we can obtain such representatives directly by truncating the universe; see \cref{cha:set-math}.
-\item In set-theoretic foundations, the definition of the real numbers as equivalence classes of Cauchy sequences requires either the law of excluded middle or the axiom of (countable) choice to be well-behaved.
-  But with higher inductive types, we can give a version of this definition which is well-behaved and avoids any choice principles; see \cref{cha:real-numbers}.
+\item 在集合论基础中, 同伦论与范畴论的多处环节都需要借助选择公理来实现超限构造。
+  而通过高阶归纳类型, 我们能够以构造性的方式直接编码这些数学结构。
+  特别值得一提的是, 在第\ref{cha:homotopy}章中所有的``综合''同伦论内容均不依赖 \LEM{} 或 \choice{}。
+\item 在集合论基础中, ``完全忠实且本质满的函子必为范畴等价''这一命题等价于选择公理；
+  但在泛等公理体系中, 该命题天然\emph{成立}; 参见第\ref{cha:category-theory}章。
+\item 在集合论中, 为获得能典范表示集合同构类与良序集同构类的``基数''与``序数''概念, 往往需要引入复杂的迂回论述——
+  其间可能涉及选择公理或正则公理。
+  而依托泛等公理与高阶归纳类型, 我们只需对宇宙进行截断操作便可直接获得这类典范表示; 参见第\ref{cha:set-math}章。
+\item 在集合论基础下, 将实数定义为柯西序列等价类的方案需要依赖排中律或(可数)选择公理才能保证良定义性；
+  但借助高阶归纳类型, 我们可以给出一个既能规避选择公理又具备良定义性的版本; 参见第\ref{cha:real-numbers}章。
 \end{enumerate}
-Of course, these simplifications could as well be taken as evidence that the new methods will not, ultimately, prove to be really constructive. 
-However, we emphasize again that the reader does not have to care, or worry, about constructivity in order to read this book.
-The point is that in all of the above examples, the version of the theory we give has independent advantages, whether or not \LEM{} and \choice{} are assumed to be available. 
-Constructivity, if attained, will be an added bonus.\index{KeGouZaoXing@可构造性}%
 
-Given this discussion of adding new principles such as univalence, higher inductive types, \choice{}, and \LEM{}, one may wonder whether the resulting system remains consistent.
-(One of the original virtues of type theory, relative to set theory, was that it can be seen to be consistent by proof-theoretic means).
-As with any foundational system, consistency\index{YiZhiXing@一致性} is a relative question: ``consistent with respect to what?''
-The short answer is that all of the constructions and axioms considered in this book have a model in the category of Kan\index{KanFuXing@Kan复形} complexes,
-due to Voevodsky~\cite{klv:ssetmodel} (see~\cite{ls:hits} for higher inductive types).
-Thus, they are known to be consistent relative to ZFC (with as many inaccessible cardinals
-\index{BuKeDaJiShu@不可达基数}\index{YiZhiXing@一致性}%
-as we need nested univalent universes).
-Giving a more traditionally type-theoretic account of this consistency is work in progress (see,
-e.g.,~\cite{lh:canonicity,coquand2012constructive}).
-
-We summarize the different points of view of the type-theoretic operations in \cref{tab:pov}.
+当然, 这些简化也可以作为一种证据, 最终证明新方法并非真正可构造。然而, 我们强调阅读本书时, 读者并不需要去在意或担忧其可构造性。
+关键在于, 对以上这些所有例子而言, 我们给出的理论版本具有独立的优势, 而不依赖于 \LEM{} 与 \choice{} 的真假。
+如果能够达成可构造性, 那将是一个额外的好处。\index{KeGouZaoXing@可构造性}%
 
 \begin{table}[htb]
   \centering
@@ -425,6 +395,17 @@ We summarize the different points of view of the type-theoretic operations in \c
   \end{tabular}
   \caption{类型论操作在不同视角下的比较}\label{tab:pov}
 \end{table}
+
+在当前的讨论中, 我们已经添加了诸如泛等性, 高阶归纳类型, \choice{} 与 \LEM{}, 人们会好奇最终系统是否还保持一致。
+(类型论最初的优势之一就是, 相比于集合论, 其一致性在证明论的意义下是可见的)。
+与任何基础系统一样, 一致性\index{YiZhiXing@一致性} 是一个相对的问题: ``关于什么一致?''
+简略的答案是, 归功于Voevodsky~\cite{klv:ssetmodel}, 这本书中所有的构造和公理都在Kan \index{KanFuXing@Kan复形} 复形范畴中有一个模型。(参见~\cite{ls:hits}以了解高阶归纳类型)。
+因此, 已被证明的是, 它们相对于ZFC(配备上足够多的不可达基数,
+\index{BuKeDaJiShu@不可达基数}\index{YiZhiXing@一致性}%
+其数量与嵌套泛等宇宙所需的一致)是一致的。
+对其一致性的更加传统的类型论解释仍在进行中。(例如参见~\cite{lh:canonicity,coquand2012constructive})
+
+我们将类型论操作的不同视角总结为表\ref{tab:pov}:
 
 \index{ShuXue@数学!GouZaoXingDe@构造性的|)}%
 
@@ -495,7 +476,7 @@ For those who want to understand one or more chapters in \cref{part:mathematics}
 
 \cref{cha:typetheory} is about the basic notions of type theory, prior to any homotopical interpretation.
 A reader who is familiar with Martin-L\"of type theory can quickly skim it to pick up the particulars of the theory we are using.
-However, readers without experience in type theory will need to read \cref{cha:typetheory}, as there are many subtle differences between type theory and other foundations such as set theory.
+However, readers without experience in type theory will need to read \Cref{cha:typetheory}, as there are many subtle differences between type theory and other foundations such as set theory.
 
 \cref{cha:basics} introduces the homotopical viewpoint on type theory, along with the basic notions supporting this view, and describes the homotopical behavior of each component of the type theory from \cref{cha:typetheory}.
 It also introduces the \emph{univalence axiom} (\cref{sec:compute-universe}) --- the first of the two basic innovations of Homotopy Type Theory.

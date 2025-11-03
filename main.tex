@@ -5,6 +5,12 @@
 % DOCUMENT CLASS
 \documentclass[\OPTfontsize]{ctexbook}
 
+\renewcommand{\thechapter}{\arabic{chapter}}
+\ctexset{
+  chapter/name = {第,章},
+  chapter/number = \arabic{chapter}
+}
+
 \PassOptionsToPackage{table}{xcolor}
 
 \usepackage{etex} % We're running out of registers and dimensions, or some such
@@ -107,7 +113,6 @@
 %%%% Header and footers
 \pagestyle{fancyplain}
 \setlength{\headheight}{15pt}
-\renewcommand{\chaptermark}[1]{\markboth{\textsc{Chapter \thechapter. #1}}{}}
 \renewcommand{\sectionmark}[1]{\markright{\textsc{\thesection\ #1}}}
 
 \lhead[\fancyplain{}{{\thepage}}]%
@@ -121,7 +126,7 @@
 %%%% Chapter & part style
 \usepackage[raggedright]{titlesec}
 \titleformat{\part}[display]{\fontsize{\OPTpartfont}{\OPTpartfont}\fontseries{m}\fontshape{sc}\selectfont}{\hfil\partname\ \Roman{part}}{\OPTpartskip}{\fontsize{\OPTparttitlefont}{\OPTparttitlefont}\fontseries{b}\fontshape{sc}\selectfont\hfil}
-\titleformat{\chapter}[display]{\fontsize{\OPTchapterfont}{\OPTchapterfont}\fontseries{m}\fontshape{it}\selectfont}{\chaptertitlename\ \thechapter}{\OPTchapterskip}{\fontsize{\OPTchaptertitlefont}{\OPTchaptertitlefont}\fontseries{b}\fontshape{n}\selectfont}
+\titleformat{\chapter}[display]{\fontsize{\OPTchapterfont}{\OPTchapterfont}\fontseries{m}\fontshape{it}\selectfont}{第\, \thechapter \, 章}{\OPTchapterskip}{\fontsize{\OPTchaptertitlefont}{\OPTchaptertitlefont}\fontseries{b}\fontshape{n}\selectfont}
 
 % Patch bug in titlesec 2.10.1
 \makeatletter
@@ -241,7 +246,7 @@
 
 \appendix
 
-\renewcommand{\chaptermark}[1]{\markboth{\textsc{Appendix. \thechapter. #1}}{}}
+\renewcommand{\chaptermark}[1]{\markboth{\textsc{附录 \thechapter. #1}}{}}
 \renewcommand{\sectionmark}[1]{\markright{\textsc{\thesection\ #1}}}
 
 \include{formal}
@@ -254,11 +259,10 @@
 \bibliographystyle{halpha}
 \phantomsection % black magic to get TOC to point to correct page
 \addcontentsline{toc}{part}{\bibname}
-\markboth{}{\textsc{Bibliography}}
-{\renewcommand{\markboth}[2]{} % Prevent bibliography from resetting the header to something silly
+\textsc{Bibliography}
+\renewcommand{\markboth}[2]{} % Prevent bibliography from resetting the header to something silly
 \OPTbibliographyfont
-\bibliography{references}}
-
+\bibliography{references}
 \cleartooddpage[\thispagestyle{empty}]
 
 %%%% Index of symbols
