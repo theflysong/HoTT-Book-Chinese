@@ -409,120 +409,112 @@ Awodey--Warren和Voevodsky原先所提出的语义模型使用了同伦论中所
 
 \index{ShuXue@数学!GouZaoXingDe@构造性的|)}%
 
-\subsection*{开放问题} 
+\subsection*{开放性问题} 
 
 \index{KaiFang@开放!WenTi@问题|(}%
 
-For those interested in contributing to this new branch of mathematics, it may be encouraging to know that there are many interesting open questions.
+对那些有志于为这一个新的数学分支添砖加瓦的人而言, 知道该领域还有很多有意思的开放性问题是非常鼓舞人心的。
 
 \index{FanDengGongLi@泛等公理!DeKeGouZaoXing的可构造性}%
-Perhaps the most pressing of them is the ``constructivity'' of the Univalence Axiom, posed by Voevodsky in \cite{Universe-poly}.
-The basic system of type theory follows the structure of Gentzen's natural deduction. Logical connectives are defined by their introduction rules,
-and have elimination rules justified by computation rules. Following this pattern, and using Tait's computability method,
-originally designed to analyse G\"odel's Dialectica interpretation, one can show the property of \emph{normalization} for type theory.
-This in turn implies important properties such as decidability of type-checking
-(a crucial property since type-checking corresponds to proof-checking, and one can argue that we should be able to ``recognize a proof when we see one''),
-and the so-called ``canonicity\index{DianFanXing@典范性} property'' that any closed term of the type of natural numbers reduces to a numeral. This last property,
-and the uniform structure of introduction/elimination rules, are lost when one extends type theory with an axiom, such as the axiom of function extensionality,
-or the univalence axiom. Voevodsky has formulated a precise mathematical conjecture connected to this question of canonicity for type theory extended with 
-the axiom of Univalence: given a closed term of the type of natural numbers, is it always possible to find a numeral and a proof that this term is equal to this numeral,
-where this proof of equality may itself use the univalence axiom? More generally,
-an important issue is whether it is possible to provide a constructive justification of the univalence axiom.
-What about if one adds other homotopically motivated constructions, like higher inductive types?
-These questions remain open at the present time, although methods are currently being developed to try to find answers.
+其中最急迫的是泛等公理的``可构造性''\footnote{译者注: 事实上, 这个问题已经由最新的立方类型论(CuTT)完成了, 参见~\cite{cohen2016cubicaltypetheoryconstructive}。}, 
+其由Voevodsky于\cite{Universe-poly}中提出。
+类型论的基础系统服从Gentzen的自然演绎结构。逻辑连接词由它们的引入规则定义, 并且有着由其计算规则所保证的消去规则。
+通过使用Tait的可计算性方法 ——其原先被设计用于分析G\"odel辩证解释—— 人们可以证明类型论的 \emph{正则性}。
+这反过来又蕴含了其他重要的性质。例如类型检查的可判定性 
+(这是一个关键特性, 因为类型检查正对应着证明验证——我们有理由要求, 系统应当能够``在看到证明时识别出它''),
+与所谓的``典范\index{DianFanXing@典范性} 性质'', 其要求所有具有自然数类型的闭项能归约到一个数。
+在通过引入公理以拓展类型论时, 例如函数外延性公理, 或是泛等公理, 后一个性质会与引入/消去规则的统一结构一起丢失。
+Veovodsky已经构想出了一个精确的数学猜想, 该猜想与用泛等公理拓展的类型论的典范性相关: 给定一个自然数类型的闭项, 是否有可能找到一个数与一个该项等于该数的证明？
+其中该证明本身可能用到泛等公理。更一般地, 一个重要问题在于: 是否有可能为泛等公理提供一个构造性证明? 倘若再加上其它受同伦论启发的构造, 例如高阶归纳类型, 又有什么不同?
+这些问题目前仍然是开放的, 尽管各种寻找答案的方法目前都还在发展。
 
-Another basic issue is the difficulty of working with types, such as the natural numbers, that are essentially sets (i.e., discrete spaces),
+另一个基础的问题在于处理本质为集合(即离散空间)的类型, 例如自然数,
 \index{LiSan@离散!KongJian@空间}%
-containing only trivial paths.
-At present, Homotopy Type Theory can really only characterize spaces up to homotopy equivalence, which means that these ``discrete spaces'' may only be \emph{homotopy equivalent} to discrete spaces.
-Type-theoretically, this means there are many paths that are equal to reflexivity, but not \emph{judgmentally} equal to it (see \cref{sec:types-vs-sets} for the meaning of ``judgmentally'').
-While this homotopy-invariance has advantages, these ``meaningless'' identity terms do introduce needless complications into arguments and constructions, so it would be convenient to have a systematic way of eliminating or collapsing them.
+它们只包含平凡道路。目前, 同伦类型论只能在同伦等价意义上真正刻画空间,
+这意味着这些``离散空间''就仅仅\emph{同伦等价}于离散空间。
+从类型论的角度, 这意味着有许多道路等于自反性, 但是没有一条是\emph{判断}相等于它的(关于``判断的``意义, 参见第\ref{sec:types-vs-sets}节)。
+尽管这种同伦不变性有着优势, 这些``无意义的''恒等项确实向论证与构造中引入了无必要的复杂性,
+因此我们希望寻找一种系统性的方法将他们消去或坍缩。这将会给工作带来方便。
 % In some cases, the proliferation of such superfluous identity terms makes it very difficult or impossible to formulate what should be a straightforward concept, such as the definition of a (semi-)simplicial type.
 
-A more specialized, but no less important, problem is the relation between Homotopy Type Theory and the research on \emph{higher toposes}%
-\index{.WuQiong1TuoPuSi@$(\infty,1)$-拓扑斯}
-currently happening at the intersection of higher category theory and homotopy theory.
-There is a growing conviction among those familiar with both subjects that they are intimately connected.
-For instance, the notion of a univalent universe should coincide with that of an object classifier, while higher inductive types should be an ``elementary'' reflection of local presentability.
-More generally, Homotopy Type Theory should be the ``internal language'' of $(\infty,1)$-toposes, just as intuitionistic higher-order logic is the internal language of ordinary 1-toposes.
-Despite this general consensus, however, details remain to be worked out --- in particular, questions of coherence and strictness remain to be addressed  --- and doing so will undoubtedly lead to further insights into both concepts.
+一个更加专业却不因此而使其重要性失色的问题是同伦类型论与\emph{高阶拓扑斯}研究之间的关系。
+\index{.WuQiong1TuoPuSi@$(\infty, 1)$-拓扑斯}
+这样一种联系目前出现在高阶范畴论与同伦论的交集之中。
+由于两个学科间许多的熟悉之处, 愈发令人信服的是, 它们在暗中是相关联的。
+例如, 泛等宇宙的概念应与对象分类器相对应, 而高阶归纳类型应是局部可表性的一个``基本的''反映。
+更一般地, 同伦类型论应是$(\infty, 1)$-拓扑斯的``内部语言'', 就像直觉主义高阶逻辑是普通 1-拓扑斯的内部语言。
+尽管有这些一般的一致性, 然而, 细节仍待被挖掘 —— 特别地, 相容性和严格性的问题仍待被解决 —— 而这么做毫无疑问将会给两个概念都带来更为深刻的洞见。
 
 \index{ShuXue@数学!XingShiHuaDe@形式化的}%
-But by far the largest field of work to be done is in the ongoing formalization of everyday mathematics in this new system.
-Recent successes in formalizing some facts from basic homotopy theory and category theory have been encouraging; some of these are described in \cref{cha:homotopy,cha:category-theory}.
-Obviously, however, much work remains to be done.
+然而迄今为止最为浩瀚的工程, 仍在于将日常数学在这一新体系中实现持续的形式化。
+近期在基础同伦论与范畴论中若干结论的形式化成果令人鼓舞(部分案例详见第\ref{cha:homotopy}, \ref{cha:category-theory}章),
+但显然, 还有许多工作亟待完成。
 
 \index{KaiFang@开放!WenTi@问题|)}%
 
-The Homotopy Type Theory community maintains a web site and group blog at \url{http://homotopytypetheory.org}, as well as a discussion email list.
-Newcomers are always welcome!
-
+同伦类型论社区维护着一个网站与群体博客, 地址为 \url{http://homotopytypetheory.org}。同时设有一个用于学术交流的讨论邮件列表。
+欢迎新人加入！
 
 \subsection*{如何阅读本书}
 
-This book is divided into two parts.
-\cref{part:foundations}, ``Foundations'', develops the fundamental concepts of Homotopy Type Theory.
-This is the mathematical foundation on which the development of specific subjects is built, and which is required for the understanding of the univalent foundations approach. To a programmer, this is ``library code''.
-Since univalent foundations is a new and different kind of mathematics, its basic notions take some getting used to; thus \cref{part:foundations} is fairly extensive.
+这本书被分为了两个部分。
+第\ref{part:foundations}部分, ``基础'', 本部分阐述了同伦类型论的基本概念。这些数学基础既是后续具体学科发展的理论基石, 也是理解泛等基础方法论的必要前提。
+对于程序员而言, 这部分内容相当于 ``库代码''。由于泛等基础是一种全新的数学范式, 其基本概念需要一定的适应过程, 因此第\ref{part:foundations}部分的论述相当详尽。
 
-\cref{part:mathematics}, ``Mathematics'', consists of four chapters that build on the basic notions of \cref{part:foundations} to exhibit some of the new things we can do with univalent foundations in four different areas of mathematics: homotopy theory (\cref{cha:homotopy}), category theory (\cref{cha:category-theory}), set theory (\cref{cha:set-math}), and real analysis (\cref{cha:real-numbers}).
-The chapters in \cref{part:mathematics} are more or less independent of each other, although occasionally one will use a lemma proven in another.
+第\ref{part:mathematics}部分, ``数学'', 由四个章节组成。其中每章都基于第\ref{part:foundations}部分中的基础概念,
+以展现泛等基础在四个不同数学领域的应用: 同伦论(第\ref{cha:homotopy}章), 范畴论(第\ref{cha:category-theory}章), 集合论(第\ref{cha:set-math}章)与实分析(第\ref{cha:real-numbers})。
+第\ref{part:mathematics}部分的章节之间大体是相互独立的, 尽管有时一个章节会使用另一个章节中证明过的引理。
 
-A reader who wants to seriously understand univalent foundations, and be able to work in it, will eventually have to read and understand most of \cref{part:foundations}.
-However, a reader who just wants to get a taste of univalent foundations and what it can do may understandably balk at having to work through over 200 pages before getting to the ``meat'' in \cref{part:mathematics}.
-Fortunately, not all of \cref{part:foundations} is necessary in order to read the chapters in \cref{part:mathematics}.
-Each chapter in \cref{part:mathematics} begins with a brief overview of its subject, what univalent foundations has to contribute to it, and the necessary background from \cref{part:foundations}, so the courageous reader can turn immediately to the appropriate chapter for their favorite subject.
-For those who want to understand one or more chapters in \cref{part:mathematics} more deeply than this, but are not ready to read all of \cref{part:foundations}, we provide here a brief summary of \cref{part:foundations}, with remarks about which parts are necessary for which chapters in \cref{part:mathematics}.
+对那些想要真正理解泛等基础并能在其中开展研究的读者, 他们最终需要阅读并掌握第\ref{part:foundations}部分的大部分内容。
+然而, 对于仅希望浅尝辄止、了解泛等基础及其能力的读者而言, 在接触到第\ref{part:mathematics}部分的``精华''之前必须先研读超过200页的内容, 难免会望而生畏。
+所幸的是, 要阅读第\ref{part:mathematics}部分的章节, 并不需要掌握第\ref{part:foundations}部分的全部内容。
+第\ref{part:mathematics}部分的每一章开篇都会对该学科领域与泛等基础对其的贡献进行概述,
+以及需要从第\ref{part:foundations}部分预备的必要背景知识。因此, 勇敢的读者可以直接翻至其最感兴趣的主题所在章节。
+若读者希望比上述方式更深入地理解第\ref{part:mathematics}部分的一个或多个章节, 但尚未准备好通读整个第\ref{part:foundations}部分, 
+我们在此提供第\ref{part:foundations}部分的简要总结, 并附注说明哪些部分对应第\ref{part:mathematics}部分的哪些章节是必需的。
 
-\cref{cha:typetheory} is about the basic notions of type theory, prior to any homotopical interpretation.
-A reader who is familiar with Martin-L\"of type theory can quickly skim it to pick up the particulars of the theory we are using.
-However, readers without experience in type theory will need to read \Cref{cha:typetheory}, as there are many subtle differences between type theory and other foundations such as set theory.
+第\ref{cha:typetheory}章阐述的是类型论的基本概念, 尚未涉及同伦论解读。熟悉 Martin-L\"of 类型论的读者可快速浏览该章以了解我们所采用理论的具体细节。
+然而, 缺乏类型论经验的读者则需要仔细阅读第\ref{cha:typetheory}章, 因为类型论与集合论等其他基础理论存在诸多细微差异。
 
-\cref{cha:basics} introduces the homotopical viewpoint on type theory, along with the basic notions supporting this view, and describes the homotopical behavior of each component of the type theory from \cref{cha:typetheory}.
-It also introduces the \emph{univalence axiom} (\cref{sec:compute-universe}) --- the first of the two basic innovations of Homotopy Type Theory.
-Thus, it is quite basic and we encourage everyone to read it, especially \crefrange{sec:equality}{sec:basics-equivalences}.
+第\ref{cha:basics}章引入了类型论的同伦论视角, 以及支持此视角的基本概念, 并描述了第\ref{cha:typetheory}章中类型论各组分的同伦行为。
+该章还引入了\emph{泛等公理}(\S\ref{sec:compute-universe}) ---这是同伦类型论两大基础创新中的第一个。
+因此, 该章内容非常基础, 我们鼓励所有读者阅读, 尤其是\S\ref{sec:equality}至\S\ref{sec:basics-equivalences}。
 
-\cref{cha:logic} describes how we represent logic in Homotopy Type Theory, and its connection to classical logic as well as to constructive and intuitionistic logic.
-Here we define the law of excluded middle, the axiom of choice, and the axiom of propositional resizing (although, for the most part, we do not need to assume any of these in the rest of the book), as well as the \emph{propositional truncation} which is essential for representing traditional logic.
-This chapter is essential background for \cref{cha:set-math,cha:real-numbers}, less important for \cref{cha:category-theory}, and not so necessary for \cref{cha:homotopy}.
+第\ref{cha:logic}章描述了在同伦类型论中如何表述逻辑, 及其与经典逻辑、构造性逻辑和直觉主义逻辑的联系。
+此处我们定义了排中律、选择公理和命题缩并公理(尽管在本书后续大部分内容中我们无需假设这些公理), 同时介绍了对于表述传统逻辑至关重要的\emph{命题截断}。
+此章是阅读第\ref{cha:set-math}章和第\ref{cha:real-numbers}章的必要背景, 对第\ref{cha:category-theory}章重要性较低, 对第\ref{cha:homotopy}章则非必需。
 
-\cref{cha:equivalences,cha:induction} study two special topics in detail: equivalences (and related notions) and generalized inductive definitions.
-While these are important subjects in their own rights and provide a deeper understanding of Homotopy Type Theory, for the most part they are not necessary for \cref{part:mathematics}.
-Only a few lemmas from \cref{cha:equivalences} are used here and there, while the general discussions in \cref{sec:bool-nat,sec:strictly-positive,sec:generalizations} are helpful for providing the intuition required for \cref{cha:hits}.
-The generalized sorts of inductive definition discussed in \cref{sec:generalizations} are also used in a few places in \cref{cha:set-math,cha:real-numbers}.
+第\ref{cha:equivalences}章和第\ref{cha:induction}章详细研究了两个专题: 
+等价性(及相关概念)和广义归纳定义。尽管这些主题本身很重要且能加深对同伦类型论的理解, 但在第\ref{part:mathematics}部分大部分内容中并非必需。
+仅在第\ref{cha:equivalences}章中的少数引理被零星使用, 而\S\ref{sec:bool-nat}、\S\ref{sec:strictly-positive}和\S\ref{sec:generalizations}中的一般性讨论有助于为理解第\ref{cha:hits}章提供必要的直观背景。
+第\ref{sec:generalizations}节讨论的广义归纳定义也在第\ref{cha:set-math}章和第\ref{cha:real-numbers}章中的少数地方有所使用。
 
-\cref{cha:hits} introduces the second basic innovation of Homotopy Type Theory --- \emph{higher inductive types} --- with many examples.
-Higher inductive types are the primary object of study in \cref{cha:homotopy}, and some particular ones play important roles in \cref{cha:set-math,cha:real-numbers}.
-They are not so necessary for \cref{cha:category-theory}, although one example is used in \cref{sec:rezk}.
+第\ref{cha:hits}章通过诸多示例引入了同伦类型论的第二个基础创新---\emph{高阶归纳类型}---。高阶归纳类型是第\ref{cha:homotopy}章的主要研究对象, 
+并且某些特定的高阶归纳类型在第\ref{cha:set-math}章和第\ref{cha:real-numbers}章中扮演重要角色。它们对第\ref{cha:category-theory}章则非必需, 
+尽管在\S\ref{sec:rezk}中使用了一个例子。
 
-Finally, \cref{cha:hlevels} discusses homotopy $n$-types and related notions such as $n$-connected types.
-These notions are important for \cref{cha:homotopy}, but not so important in the rest of \cref{part:mathematics}, although the case $n=-1$ of some of the lemmas are used in \cref{sec:piw-pretopos}.
+最后, 第\ref{cha:hlevels}章讨论了同伦$n$-类型及相关概念, 如$n$-连通类型。这些概念对第\ref{cha:homotopy}章很重要, 
+但在第\ref{part:mathematics}部分其余章节中不那么重要, 尽管其中一些引理在$n=-1$时的特例在\S\ref{sec:piw-pretopos}中被用到。
 
-This completes \cref{part:foundations}.
-As mentioned above, \cref{part:mathematics} consists of four largely unrelated chapters, each describing what univalent foundations has to offer to a particular subject.
+第\ref{part:foundations}部分到此结束。
+如前所述, 第\ref{part:mathematics}部分由四个很大程度上无关的章节组成, 每章都描述了泛等基础在某一个特定学科的应用。
 
-Of the chapters in \cref{part:mathematics}, \cref{cha:homotopy} (Homotopy theory) is perhaps the most radical.
-Univalent foundations has a very different ``synthetic'' approach to homotopy theory in which homotopy types are the basic objects (namely, the types) rather than being constructed using topological spaces or some other set-theoretic model.
-This enables new styles of proof for classical theorems in algebraic topology, of which we present a sampling, from $\pi_1(\Sn^1)=\Z$ to the Freudenthal suspension theorem.
+在第\ref{part:mathematics}部分的各章中, 第\ref{cha:homotopy}章(同伦论)或许是最具革命性的。泛等基础采用了一种非常不同的``综合''的方式来处理同伦论, 
+其中同伦类型是基本对象(即类型本身), 而非通过拓扑空间或其他集合论模型构造而来。这使得代数拓扑中的经典定理有了新的证明方式, 我们从中选取了一些示例, 从$\pi_1(\Sn^1)=\Z$到Freudenthal纬悬定理。
 
-In \cref{cha:category-theory} (Category theory), we develop some basic (1-)category theory, adhering to the principle of the univalence axiom that \emph{equality is isomorphism}.
-This has the pleasant effect of ensuring that all definitions and constructions are automatically invariant under equivalence of categories: indeed, equivalent categories are equal just as equivalent types are equal.
-(It also has connections to higher category theory and higher topos theory.)
+在第\ref{cha:category-theory}章(范畴论)中, 我们发展了一些基本的(1-)范畴理论, 遵循泛等公理的原则, 即\emph{相等即同构}。这产生了一个良好的性质: 确保所有定义和构造在范畴等价下自动满足不变性。
+事实上, 等价的范畴是相等的, 正如等价的类型是相等的一样。(这也与高阶范畴论和高阶拓扑斯理论存在联系。)
 
-\cref{cha:set-math} (Set theory) studies sets in univalent foundations.
-The category of sets has its usual properties, hence provides a foundation for any mathematics that doesn't need homotopical or higher-categorical structures.
-We also observe that univalence makes cardinal and ordinal numbers a bit more pleasant, and that higher inductive types yield a cumulative hierarchy satisfying the usual axioms of Zermelo--Fraenkel set theory.
+第\ref{cha:set-math}章(集合论)研究泛等基础中的集合。集合范畴具有其通常的性质, 从而为任何不需要同伦或高阶范畴结构的数学提供了基础。
+我们还观察到, 泛等公理使得基数和序数的处理更为优雅, 并且高阶归纳类型产生了一个满足Zermelo--Fraenkel集合论一般公理的累积层级。
 
-In \cref{cha:real-numbers} (Real numbers), we summarize the construction of Dedekind real numbers, and then observe that higher inductive types allow a definition of Cauchy real numbers that avoids some associated problems in constructive mathematics.
-Then we sketch a similar approach to Conway's surreal numbers.
+在第\ref{cha:real-numbers}章(实数)中, 我们总结了Dedekind实数的构造, 然后指出高阶归纳类型允许一种Cauchy实数的定义, 该定义避免了构造性数学中一些相关的问题。
+接着我们概述了对Conway超实数的类似处理方法。
 
-Each chapter in this book ends with a Notes section, which collects historical comments, references to the literature, and attributions of results, to the extent possible.
-We have also included Exercises at the end of each chapter, to assist the reader in gaining familiarity with doing mathematics in univalent foundations.
+本书的每一章都以``注释''节作结, 该节尽可能收集了历史评论、文献引用和成果归属说明。我们还在每章末尾附有习题, 以帮助读者熟悉在泛等基础中进行数学研究的方式。
 
-Finally, recall that this book was written as a massively collaborative effort by a large number of people.
-We have done our best to achieve consistency in terminology and notation, and to put the mathematics in a linear sequence that flows logically, but it is very likely that some imperfections remain.
-We ask the reader's forgiveness for any such infelicities, and welcome suggestions for improvement of the next edition.
-
+最后, 请记住本书是由大量参与者通过大规模协作努力撰写而成的。我们已尽力确保术语和符号的一致性, 并将数学内容以逻辑流畅的线性结构呈现, 但很可能仍存在一些不完美之处。
+我们恳请读者对此类疏漏予以谅解, 并欢迎为下一版的改进提出建议。
 
 % Local Variables:
 % TeX-master: "hott-online"
