@@ -21,7 +21,7 @@ First, it combines advantages of concrete models (such as topological
 spaces\index{topological!space}
 or simplicial sets)\index{simplicial!sets}
 with advantages of abstract categorical frameworks
-for homotopy theory (such as Quillen model categories).\index{Quillen model category}
+for homotopy theory (such as Quillen model categories).\index{QuillenMoXingFanChou@Quillen模型范畴}
  On the one hand,
 our proofs feel elementary, and refer concretely to
 points, paths, and homotopies in types.  On the other hand, our approach nevertheless abstracts away from
@@ -250,7 +250,7 @@ truncation (this was also defined as an example in
 Since $n\ge 1$, the path concatenation and inversion operations on
 $\Omega^n(A)$ induce operations on $\pi_n(A)$ making it into a group in
 a straightforward way.  If $n\ge 2$, then the group $\pi_n(A)$ is
-abelian\index{group!abelian}, by the Eckmann--Hilton argument \index{Eckmann--Hilton argument} (\cref{thm:EckmannHilton}).
+abelian\index{group!abelian}, by the Eckmann--Hilton argument \index{Eckmann--HiltonLunZheng@Eckmann--Hilton论证} (\cref{thm:EckmannHilton}).
 It is convenient to also write $\pi_0(A) \defeq \trunc0 A$,
 but this case behaves somewhat differently: not only is it not a group,
 it is defined without reference to any basepoint in $A$.
@@ -1119,7 +1119,7 @@ When we speak of an \define{exact sequence of groups}, it is assumed moreover th
 
   Thus, applying $\truncf0$ to the fiber sequence of $f$, we obtain a long exact sequence involving the pointed sets $\pi_k(F)$, $\pi_k(X)$, and $\pi_k(Y)$ in the desired order.
   And of course, $\pi_k$ is a group for $k\ge1$, being the 0-truncation of a loop space, and an abelian group for $k\ge 2$ by the Eckmann--Hilton argument
-  \index{Eckmann--Hilton argument} (\cref{thm:EckmannHilton}).
+  \index{Eckmann--HiltonLunZheng@Eckmann--Hilton论证} (\cref{thm:EckmannHilton}).
   Moreover, \cref{thm:fiber-of-the-fiber} allows us to identify the maps $\pi_k(F) \to \pi_k(X)$ and $\pi_k(X) \to \pi_k(Y)$ in this exact sequence as $(-1)^k \pi_k(i)$ and $(-1)^k \pi_k(f)$ respectively.
 
   More generally, every map in this long exact sequence except the last three is of the form $\trunc0{\Omega h}$ or $\trunc0{-\Omega h}$ for some $h$.
@@ -1317,7 +1317,7 @@ pushouts.
 
 \begin{defn}
   An \define{H-space}
-  \indexdef{H-space}%
+  \indexdef{H-KongJian@H-空间}%
   consists of
   \begin{itemize}
   \item a type $A$,
@@ -1521,7 +1521,7 @@ A more conceptual proof sketch is as follows.
 
   Hence using a Fubini-like theorem for colimits (that we haven’t proved) we
   have an equivalence $\eqv{(A*B)*C}{A*(B*C)}$. The proof of this Fubini theorem
-  \index{Fubini theorem for colimits}
+  \index{FubiniYuJiXianDingLi@Fubini余极限定理}
   for colimits still requires the long and tedious computation, though.
 \end{proof}
 
@@ -2293,7 +2293,7 @@ relation.  In that respect, it is an improvement over
 
 
 \begin{eg}
-  \index{CW complex}
+  \index{CWFuXing@CW复形}
   \index{hub and spoke}
   More generally, any CW complex can be obtained by repeatedly ``coning off'' spheres, as described in \cref{sec:hubs-spokes}.
   That is, we start with a set $X_0$ of points (``0-cells''), which is the ``0-skeleton'' of the CW complex.
@@ -2329,7 +2329,7 @@ relation.  In that respect, it is an improvement over
   It follows that $\pi_1(P) \cong G$; thus we have constructed a connected type whose fundamental group is $G$.
   Since any group has a presentation, any group is the fundamental group of some type.
   If we 1-truncate such a type, we obtain a type whose only nontrivial homotopy group is $G$; this is called an \define{Eilenberg--Mac Lane space} $K(G,1)$.%
-  \indexdef{Eilenberg--Mac Lane space}%
+  \indexdef{Eilenberg-Mac LaneKongJian@Eilenberg-Mac Lane空间}%
 \end{eg}
 
 \index{fundamental!group|)}%
@@ -2686,7 +2686,7 @@ In order to express the theorem in homotopy type theory, we have to replace noti
 We have seen another example of this in the van Kampen theorem (\cref{sec:van-kampen}), where we had to replace a union of open subsets by a homotopy pushout.
 
 \begin{thm}[Eilenberg--Mac Lane Spaces]\label{Eilenberg-Mac-Lane-Spaces}
-\index{Eilenberg--Mac Lane space}
+\index{Eilenberg-Mac LaneKongJian@Eilenberg-Mac Lane空间}
 For any abelian\index{group!abelian} group $G$ and positive integer $n$, there is an $n$-type
 $K(G,n)$ such that $\pi_n(K(G,n)) = G$, and  $\pi_k(K(G,n)) = 0$
 for $k\neq n$.

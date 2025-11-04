@@ -15,7 +15,7 @@ We begin this chapter in \cref{sec:piw-pretopos} by showing that the category $\
 In constructive, predicative, univalent foundations, it is a ``$\Pi\mathsf{W}$-pretopos''; whereas if we assume propositional resizing
 \index{propositional!resizing}%
 (\cref{subsec:prop-subsets}) it is an elementary topos,\index{TuoPuSi@拓扑斯} and if we assume \LEM{} and \choice{} then it is a model of Lawvere's \emph{Elementary Theory of the Category of Sets}\index{Lawvere}.
-\index{Elementary Theory of the Category of Sets}%
+\index{JiHeFanChouChuDengLiLun@集合范畴初等理论}%
 This is sufficient to ensure that the sets in homotopy type theory behave like sets as used by most mathematicians outside of set theory.
 
 In the rest of the chapter, we investigate some subjects that traditionally belong to ``set theory''.
@@ -471,7 +471,7 @@ quotient. The reader is invited to check the details.
 \index{structural!set theory|(}%
 
 The notion of a \emph{$\Pi\mathsf{W}$-pretopos}
-\index{PiW-pretopos@$\Pi\mathsf{W}$-pretopos}%
+\index{PiW-YuTuoPu@PiW-预拓扑}%
 \indexsee{pretopos}{$\Pi\mathsf{W}$-pretopos}
 --- that is, a locally cartesian closed category
 \index{locally cartesian closed category}%
@@ -489,7 +489,7 @@ Typically, in constructive type theory, one resorts to an external construction 
   In particular, the well-behaved quotients are required for many constructions in mathematics that usually involve (non-constructive) power sets.  It is noteworthy that univalent foundations provides these constructions \emph{internally} (via higher inductive types), without requiring such external constructions.  This represents a powerful advantage of our approach, as we shall see in subsequent examples.
 
 \begin{thm}
-  \index{PiW-pretopos@$\Pi\mathsf{W}$-pretopos}
+  \index{PiW-YuTuoPu@PiW-预拓扑}
   The category $\uset$ is a $\Pi\mathsf{W}$-pretopos.
 \end{thm}
 \begin{proof}
@@ -614,7 +614,7 @@ Taking $x\defeq \north$ and $y\defeq \south$ yields $\eqv{A}{(\id[\susp(A)]\nort
 \begin{thm}[Diaconescu]\label{thm:1surj_to_surj_to_pem}
   \index{GongLi@公理!XuanZe@选择}%
   \index{PaiZhongLv@排中律}%
-  \index{Diaconescu's theorem}\index{DingLi@定理!Diaconescu's}%
+  \index{DiaconescuDingLi@Diaconescu定理}\index{DingLi@定理!Diaconescu's}%
   The axiom of choice implies the law of excluded middle.
 \end{thm}
 
@@ -665,7 +665,7 @@ Finally, since $(f(\bfalse)=f(\btrue)) = (\north=\south) = A$ by \cref{prop:trun
 
 \index{denial}
 \begin{thm}\label{thm:ETCS}
-  \index{Elementary Theory of the Category of Sets}%
+  \index{JiHeFanChouChuDengLiLun@集合范畴初等理论}%
   \index{category!well-pointed}%
   If the axiom of choice holds then the category $\uset$ is a well-pointed boolean\index{topos!boolean}\index{boolean!topos} elementary topos\index{TuoPuSi@拓扑斯} with choice.
 \end{thm}
@@ -833,7 +833,7 @@ We may likewise show that cardinal inequality is compatible with the semiring op
 
 \begin{thm}[Schroeder--Bernstein]
   \index{DingLi@定理!Schroeder--Bernstein}%
-  \index{Schroeder--Bernstein theorem}%
+  \index{Schroeder--BernsteinDingLi@Schroeder--Bernstein定理}%
   Assuming excluded middle, for sets $A$ and $B$ we have
   \[ \inj(A,B) \to \inj(B,A) \to (A\cong B) \]
 \end{thm}
@@ -854,7 +854,7 @@ We may likewise show that cardinal inequality is compatible with the semiring op
 Finally, we can reproduce Cantor's theorem, showing that for every cardinal there is a greater one.
 
 \begin{thm}[Cantor]
-  \index{Cantor's theorem}%
+  \index{CantorDingLi@Cantor定理}%
   \index{DingLi@定理!Cantor's}%
   For $A:\set$, there is no surjection $A \to (A\to \bool)$.
 \end{thm}
@@ -1768,7 +1768,7 @@ We have all the axioms listed in \cref{thm:VisCST}, plus full separation, so we 
 The basic properties one expects of the category of sets date back to the early days of elementary topos theory.
 The \emph{Elementary theory of the category of sets} referred to in \cref{subsec:emacinsets} was introduced by Lawvere\index{Lawvere} in
 \cite{lawvere:etcs-long}, as a category-theoretic axiomatization of set theory.
-\index{Elementary Theory of the Category of Sets}%
+\index{JiHeFanChouChuDengLiLun@集合范畴初等理论}%
 The notion of $\Pi W$-pretopos, regarded as a predicative version of an elementary topos, was introduced in~\cite{MoerdijkPalmgren2002}; see also~\cite{palmgren:cetcs}.
 
 The treatment of the category of sets in \cref{sec:piw-pretopos} roughly follows that in~\cite{RijkeSpitters}.

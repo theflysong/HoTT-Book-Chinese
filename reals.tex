@@ -846,7 +846,7 @@ Now, given a type family $A:\RC\to\type$ and a family of relations $\bsim$ as ab
   We call such $a$ a \define{dependent Cauchy approximation}
   \indexdef{Cauchy!approximation!dependent}%
   \indexsee{approximation, Cauchy}{Cauchy approximation}%
-  \indexdef{dependent!Cauchy approximation}%
+  \indexdef{dependent!CauchyGuJi@Cauchy估计}%
   over $x$.
 \item For $u, v : \RC$ such that $h:\fall{\epsilon : \Qp} u \close\epsilon v$, and all $a:A(u)$ and $b:A(v)$ such that
   $\fall{\epsilon:\Qp} (u,a) \bsim_\epsilon (v,b)$,
@@ -2429,7 +2429,7 @@ evidence that they are a reasonable notion.
     $a < c < d < b$, so consider such $c$ and $d$. By \cref{classical-Heine-Borel}
     there is a finite subfamily $[i_1, \ldots, i_n]$ which already pointwise covers $[c,
     d]$, and hence $(c,d)$. Let $\epsilon : \Qp$ be a Lebesgue number
-    \index{Lebesgue number}
+    \index{LebesgueShu@Lebesgue数}
     for $(q_{i_1}, r_{i_1}), \ldots, (q_{i_n}, r_{i_n})$ as in
     \cref{ex:finite-cover-lebesgue-number}. There is a positive $k : \N$ such that $2 (d - c)/k
     < \min(1, \epsilon)$. For $0 \leq i \leq k$ let
@@ -2613,7 +2613,7 @@ In identifying surreal numbers presented by different cuts, the following simple
 
 \begin{thm}[Conway's simplicity theorem]\label{thm:NO-simplicity}
   \index{simplicity theorem}%
-  \index{DingLi@定理!Conway's simplicity}%
+  \index{DingLi@定理!ConwayFaZe@Conway法则}%
   Suppose $x$ and $z$ are surreal numbers defined by cuts, and that the following hold.
   \begin{itemize}
   \item $x^L < z < x^R$ for all $L$ and $R$.
@@ -2690,7 +2690,7 @@ This should be compared with Conway's remark:
 With $\NO$-induction, we can prove
 
 \begin{thm}[Conway's Theorem 0]\label{thm:NO-refl-opt}\
-  \index{DingLi@定理!Conway's 0}%
+  \index{DingLi@定理!Conway 0@Conway 0}%
   \begin{enumerate}
   \item For any $x:\NO$, we have $x\le x$.\label{item:NO-le-refl}
   \item For any $x:\NO$ defined by a cut, we have $x^L <x$ and $x<x^R$ for all $L$ and $R$.\label{item:NO-lt-opt}
@@ -3032,7 +3032,7 @@ There are several ways to get arithmetic going: each has its own advantages, but
 For instance, Richman~\cite{Richman:reals} defines multiplication on the Dedekind reals first on the positive cuts and then extends it algebraically to all Dedekind cuts, while Conway~\cite{conway:onag} has observed that the definition of multiplication for surreal numbers works well for Dedekind reals.
 
 Our treatment of the Dedekind reals borrows many ideas from~\cite{BauerTaylor09} where the Dedekind reals are constructed in the context of Abstract Stone Duality.
-\index{Abstract Stone Duality}%
+\index{ChouXiangStoneDuiOuXing@抽象Stone对偶性}%
 This is a (restricted) form of simply typed $\lambda$-calculus with a distinguished object $\Sigma$ which classifies open sets, and by duality also the closed ones. In~\cite{BauerTaylor09} you can also find detailed proofs of the basic properties of arithmetical operations.
 
 The fact that $\RC$ is the least Cauchy complete archimedean ordered field, as was proved in \cref{RC-initial-Cauchy-complete}, indicates that our Cauchy reals probably coincide with the Escard{\'o}--Simpson reals~\cite{EscardoSimpson:01}.
@@ -3204,8 +3204,8 @@ The \emph{higher} inductive-inductive version presented here, which builds in th
 
 \begin{ex} \label{ex:reals-apart-neq-MP}
   \define{Markov's principle}
-  \indexdef{axiom!Markov's principle}%
-  \indexdef{Markov's principle}%
+  \indexdef{axiom!MarkovYuanLi@Markov原理}%
+  \indexdef{MarkovYuanLi@Markov原理}%
   says that for all $f : \nat \to \bool$,
   %
   \begin{equation*}
@@ -3231,7 +3231,7 @@ The \emph{higher} inductive-inductive version presented here, which builds in th
   $\epsilon : \Qp$ such that whenever $a < x < y < b$ and $|x - y| < \epsilon$
   then there merely exists $i$ such that $q_i < x < r_i$ and $q_i < y < r_i$. Such an
   $\epsilon$ is called a \define{Lebesgue number}
-  \indexdef{Lebesgue number}%
+  \indexdef{LebesgueShu@Lebesgue数}%
   for the given cover.
 \end{ex}
 

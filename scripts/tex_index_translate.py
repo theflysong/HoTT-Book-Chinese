@@ -20,6 +20,13 @@ tex_index_translate.py
     则生成的 pinyin 仅对中文部分进行转写，英文和数字原样保留，
     例如：pinyin -> "英文aPinYin1英文b"（默认每音节首字母大写且无分隔）。
 
+    维护操作
+    - 可用 prune 子命令清理 JSON 中“已存在 display（sort@display）”的键：
+        - 默认仅移除“只以 sort@display 形式出现、从未以纯 sort 出现”的键；
+        - 若加 --any，则移除所有曾以 sort@display 出现过的键（更激进）。
+        - 支持 --dry-run 仅查看将移除哪些键而不写回。
+        - 若加 --unused，则移除所有在源码中已不再出现的键（既无纯 sort 也无 sort@display）。
+
 用法（PowerShell）
   # 第一次提取（生成或合并 index_terms.json）
   python scripts/tex_index_translate.py extract
@@ -34,6 +41,7 @@ tex_index_translate.py
     --pinyin-case <case>     pinyin 大小写：lower|upper|capitalized（默认 capitalized）
     --pinyin-sep <sep>       pinyin 连接符（默认无分隔 ""；例如 "-" 或 " ")
   --backup-suffix <sfx>    备份后缀（默认 .bak）
+    --include-key-at         提取时包含“sort@display”形式的段落（默认忽略）
 
 注意
 - pinyin 由中文翻译自动生成，默认无声调（Style.NORMAL）、每音节首字母大写且无分隔（即 "PinYin"）。
@@ -174,7 +182,7 @@ def _is_english_key(s: str) -> bool:
     return bool(re.fullmatch(r"[\w\-\s/.,:'()]+", s))
 
 
-def extract_terms_from_text(text: str) -> List[str]:
+def extract_terms_from_text(text: str, include_key_at: bool = False) -> List[str]:
     keys: List[str] = []
     for _cmd, start, end in _find_commands_positions(text):
         # 获取 {...} 内容
@@ -184,9 +192,47 @@ def extract_terms_from_text(text: str) -> List[str]:
         arg = text[brace_open + 1 : end - 1]
         for seg in _split_hierarchy(arg):
             sort, _display = _segment_sort_and_display(seg)
+            # 默认忽略已有 display（sort@display）的段落，除非显式包含
+            if _display is not None and not include_key_at:
+                continue
             if sort and _is_english_key(sort):
                 keys.append(sort)
     return keys
+
+
+def scan_usage_in_text(text: str) -> Dict[str, Tuple[bool, bool]]:
+    """
+    扫描文本内每个 sort 键的使用形态：
+    返回 { sort: (seen_plain, seen_display) }
+    - seen_plain: 以不含 @ 的形式出现过
+    - seen_display: 以 sort@display 形式出现过
+    """
+    usage: Dict[str, Tuple[bool, bool]] = {}
+    for _cmd, start, end in _find_commands_positions(text):
+        brace_open = text.find("{", start)
+        if brace_open == -1 or brace_open >= end:
+            continue
+        arg = text[brace_open + 1 : end - 1]
+        for seg in _split_hierarchy(arg):
+            sort, display = _segment_sort_and_display(seg)
+            if not sort:
+                continue
+            seen_plain, seen_disp = usage.get(sort, (False, False))
+            if display is None:
+                seen_plain = True
+            else:
+                seen_disp = True
+            usage[sort] = (seen_plain, seen_disp)
+    return usage
+
+
+def merge_usage_maps(maps: Iterable[Dict[str, Tuple[bool, bool]]]) -> Dict[str, Tuple[bool, bool]]:
+    merged: Dict[str, Tuple[bool, bool]] = {}
+    for m in maps:
+        for k, (p, d) in m.items():
+            mp, md = merged.get(k, (False, False))
+            merged[k] = (mp or p, md or d)
+    return merged
 
 
 def apply_translations_to_text(
@@ -282,7 +328,7 @@ def save_json(path: Path, mapping: Dict[str, str]) -> None:
         f.write("\n")
 
 
-def cmd_extract(root: Path, json_path: Path) -> None:
+def cmd_extract(root: Path, json_path: Path, include_key_at: bool = False) -> None:
     existing = load_json(json_path)
     keys: List[str] = []
     for tex in iter_tex_files(root):
@@ -290,7 +336,7 @@ def cmd_extract(root: Path, json_path: Path) -> None:
             txt = tex.read_text(encoding="utf-8")
         except UnicodeDecodeError:
             txt = tex.read_text(encoding="latin-1")
-        keys.extend(extract_terms_from_text(txt))
+        keys.extend(extract_terms_from_text(txt, include_key_at=include_key_at))
     unique_keys = set(keys)
     # 合并：已有翻译不覆盖，缺失键补为空串
     merged = dict(existing)
@@ -299,6 +345,64 @@ def cmd_extract(root: Path, json_path: Path) -> None:
             merged[k] = ""
     save_json(json_path, merged)
     print(f"提取完成：共发现 {len(unique_keys)} 个键；已合并至 {json_path}")
+
+
+def cmd_prune(
+    root: Path,
+    json_path: Path,
+    any_display: bool = False,
+    remove_unused: bool = False,
+    dry_run: bool = False,
+) -> None:
+    mapping = load_json(json_path)
+    if not mapping:
+        print(f"未找到或无法解析 {json_path}，无需清理。")
+        return
+    usage_maps = []
+    for tex in iter_tex_files(root):
+        try:
+            txt = tex.read_text(encoding="utf-8")
+        except UnicodeDecodeError:
+            txt = tex.read_text(encoding="latin-1")
+        usage_maps.append(scan_usage_in_text(txt))
+    usage = merge_usage_maps(usage_maps)
+
+    to_remove: List[str] = []
+    for k in list(mapping.keys()):
+        seen = usage.get(k, (False, False))
+        seen_plain, seen_disp = seen
+        # 未使用键（既未纯 sort，也未 display）
+        if remove_unused and not (seen_plain or seen_disp):
+            to_remove.append(k)
+            continue
+        # display 相关移除逻辑
+        if any_display:
+            if seen_disp:
+                to_remove.append(k)
+        else:
+            if seen_disp and not seen_plain:
+                to_remove.append(k)
+
+    if not to_remove:
+        print("没有可移除的键。")
+        return
+
+    print(f"将移除 {len(to_remove)} 个键：")
+    # 为避免过长，最多打印前 50 个
+    preview = to_remove[:50]
+    for k in preview:
+        print(f"  - {k}")
+    if len(to_remove) > len(preview):
+        print(f"  ... 其余 {len(to_remove) - len(preview)} 个省略")
+
+    if dry_run:
+        print("dry-run 模式：未写回任何更改。")
+        return
+
+    for k in to_remove:
+        mapping.pop(k, None)
+    save_json(json_path, mapping)
+    print(f"已从 {json_path} 中移除 {len(to_remove)} 个键。")
 
 
 def cmd_apply(
@@ -351,11 +455,17 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
     common.add_argument("--json", type=str, default="index_terms.json", help="JSON 文件路径（相对或绝对）")
 
     p_extract = sub.add_parser("extract", parents=[common], help="提取所有英文键至 JSON（保留已有翻译）")
+    p_extract.add_argument("--include-key-at", action="store_true", help="包含 sort@display 段落的英文键（默认忽略）")
     p_apply = sub.add_parser("apply", parents=[common], help="根据 JSON 翻译回写 pinyin@中文")
     p_apply.add_argument("--pinyin-style", type=str, choices=["normal", "tone", "tone3"], default="normal")
     p_apply.add_argument("--backup-suffix", type=str, default=".bak")
     p_apply.add_argument("--pinyin-case", type=str, choices=["lower", "upper", "capitalized"], default="capitalized")
     p_apply.add_argument("--pinyin-sep", type=str, default="")
+
+    p_prune = sub.add_parser("prune", parents=[common], help="从 JSON 中清除已存在 display 的键或移除未使用的键")
+    p_prune.add_argument("--any", action="store_true", help="移除所有出现过 sort@display 的键（不论是否也出现纯 sort）")
+    p_prune.add_argument("--unused", action="store_true", help="移除在源码中已不再出现的键（既无纯 sort 也无 sort@display）")
+    p_prune.add_argument("--dry-run", action="store_true", help="只预览将移除的键，不写回文件")
 
     args = parser.parse_args(argv)
     root = Path(args.root).resolve()
@@ -364,7 +474,7 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
         json_path = (root / json_path).resolve()
 
     if args.cmd == "extract":
-        cmd_extract(root, json_path)
+        cmd_extract(root, json_path, include_key_at=args.include_key_at)
         return 0
     elif args.cmd == "apply":
         if lazy_pinyin is None:
@@ -378,6 +488,9 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
             pinyin_case=args.pinyin_case,
             pinyin_sep=args.pinyin_sep,
         )
+        return 0
+    elif args.cmd == "prune":
+        cmd_prune(root, json_path, any_display=args.any, remove_unused=args.unused, dry_run=args.dry_run)
         return 0
     else:
         parser.print_help()

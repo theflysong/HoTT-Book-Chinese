@@ -6,386 +6,363 @@
 \label{sec:axioms}
 
 \index{LeiXingLun@类型论}
-Homotopy type theory is (among other things) a foundational language for mathematics, i.e., an alternative to Zermelo--Fraenkel\index{JiHeLun@集合论!Zermelo--Fraenkel} set theory.
-However, it behaves differently from set theory in several important ways, and that can take some getting used to.
-Explaining these differences carefully requires us to be more formal here than we will be in the rest of the book.
-As stated in the introduction, our goal is to write type theory \emph{informally}; but for a mathematician accustomed to set theory, 
-more precision at the beginning can help avoid some common misconceptions and mistakes.
 
-We note that a set-theoretic foundation has two ``layers'': the deductive system of first-order logic,\index{YiJie@一阶!LuoJiLuoJi@LuoJi逻辑} and, 
-formulated inside this system, the axioms of a particular theory, such as ZFC.
-Thus, set theory is not only about sets, but rather about the interplay between sets (the objects of the second layer) and propositions (the objects of the first layer).
+同伦类型论(与其他的基础一样)是数学的一种基础语言, 即 Zermelo--Fraenkel\index{JiHeLun@集合论!Zermelo--Fraenkel} 集合论的一种替代方案。
+然而, 它在几个重要方面的行为方式与集合论不同, 这可能需要一些时间来适应。
+为了仔细解释这些差异, 与本书其余部分相比, 我们需要在此处更加形式化。
+如引言中所述, 我们的目标是\emph{非形式化}地书写类型论; 但对于习惯于集合论的数学家来说, 在开始时更加精确有助于避免一些常见的误解和错误。
 
-By contrast, type theory is its own deductive system: it need not be formulated inside any superstructure, such as first-order logic.
-Instead of the two basic notions of set theory, sets and propositions, type theory has one basic notion: \emph{types}.
-Propositions (statements which we can prove, disprove, assume, negate, and so on\footnote{Confusingly, it is also a common practice (dating 
-back to Euclid) to use the word ``proposition'' synonymously with ``theorem''.
-  We will confine ourselves to the logician's usage, according to which a \emph{proposition} is a statement \emph{susceptible to} proof,
-  whereas a \emph{theorem}\indexfoot{DingLi@定理} (or ``lemma''\indexfoot{YinLi@引理} or ``corollary''\indexfoot{TuiLun@推论}) is such a statement that \emph{has been} proven.
-Thus ``$0=1$'' and its negation ``$\neg(0=1)$'' are both propositions, but only the latter is a theorem.}) are identified with particular types,
-via the correspondence shown in \cref{tab:pov} on page~\pageref{tab:pov}.
-Thus, the mathematical activity of \emph{proving a theorem} is identified with a special case of the mathematical activity of \emph{constructing an object} ---
-in this case, an inhabitant of a type that represents a proposition.
+我们注意到, 集合论基础有两个``层次'': 一阶逻辑\index{YiJie@一阶!LuoJi@逻辑}的演绎系统, 以及在该系统内部形式化的特定理论(例如 ZFC)的公理。
+因此, 集合论不仅仅是关于集合的, 而是关于集合(第二层次的对象)与命题(第一层次的对象)之间的相互作用。
+
+相反, 类型论是它自己的演绎系统: 它不需要在任何上层结构(如一阶逻辑)的内部形式化。
+与集合论的两个基本概念(集合和命题)不同, 类型论有一个基本概念:\emph{类型}。
+命题(我们可以证明、证伪、假设、否定等的陈述
+\footnote{
+  令人困惑的是, 将``命题''一词与``定理''同义使用也是一种常见做法(可追溯到欧几里得)。
+  我们将自己局限于逻辑学家的用法, 根据这种用法, \emph{命题}是一个\emph{易于}证明的陈述, 
+  而\emph{定理}\indexfoot{DingLi@定理}(或``引理''\indexfoot{YinLi@引理}或``推论''\indexfoot{TuiLun@推论})是一个\emph{已经被}证明的陈述。
+  因此``$0=1$''和它的否定``$\neg(0=1)$''都是命题, 但只有后者是定理。})
+根据第~\pageref{tab:pov}页的表\ref{tab:pov}中所示的对应关系, 被等同于特定的类型。
+因此, \emph{证明定理}的数学活动被等同于\emph{构造对象}的数学活动的一个特例——在这个意义下, 就是构造一个表示命题的类型的居留元。
 
 \index{TuiLiXiTong@推理系统}%
-This leads us to another difference between type theory and set theory, but to explain it we must say a little about deductive systems in general.
-Informally, a deductive system is a collection of \define{rules}
+这使我们想到类型论和集合论之间的另一个区别, 但为了解释它, 我们必须稍微谈谈一般的演绎系统。
+非正式地说, 演绎系统是一个\define{规则}
 \indexdef{GuiZe@规则}%
-for deriving things called \define{judgments}.
+的集合, 用于推导称为\define{判断}的东西。
 \indexdef{PanDuan@判断}%
-If we think of a deductive system as a formal game,
+如果我们将演绎系统视为一个形式游戏, 
 \index{YouXi@游戏!TuiLiXiTongZuoWei@推理系统作为}%
-then the judgments are the ``positions'' in the game which we reach by following the game rules.
-We can also think of a deductive system as a sort of algebraic theory, in which case the judgments are the elements (like the elements of a group)
-and the deductive rules are the operations (like the group multiplication).
-From a logical point of view, the judgments can be considered to be the ``external'' statements, living in the metatheory, as opposed to the ``internal'' statements of the theory itself.
+那么判断就是我们通过遵循游戏规则而达到的游戏中的``位置''。
+我们也可以将演绎系统视为一种代数理论, 在这种情况下, 判断是元素(如群中的元素), 而演绎规则是运算(如群的乘法)。
+从逻辑的观点来看, 判断可以被视为``外部''陈述, 存在于元理论中, 与理论本身的``内部''陈述相对。
 
-In the deductive system of first-order logic (on which set theory is based), there is only one kind of judgment: that a given proposition has a proof.
-That is, each proposition $A$ gives rise to a judgment ``$A$ has a proof'', and all judgments are of this form.
-A rule of first-order logic such as ``from $A$ and $B$ infer $A\wedge B$'' is actually a rule of ``proof construction''
-which says that given the judgments ``$A$ has a proof'' and ``$B$ has a proof'', we may deduce that ``$A\wedge B$ has a proof''.
-Note that the judgment ``$A$ has a proof'' exists at a different level from the \emph{proposition} $A$ itself, which is an internal statement of the theory.
+在一阶逻辑推理系统中(集合论所基于的推理系统), 只存在一类判断: 给定的一个命题存在证明。
+这就是说, 每个命题$A$都会产生一个判断``$A$存在证明'', 而所有的判断都具有该形式。
+一阶逻辑中形如``从$A$和$B$推断出$A \wedge B$''的规则, 实际上是一个``证明构造''的规则,
+其断言, 只要给定判断``$A$存在证明''与``$B$存在证明'', 我们可以就推理出``$A \wedge B$存在证明''。
+需要注意的是, 判断``$A$存在证明''与$A$本身处在不同的层级, 后者是理论的内部陈述。
 % In particular, we cannot manipulate it to construct propositions such as ``if $A$ has a proof, then $B$ does not have a proof'' --- unless we are using our set-theoretic foundation as a meta-theory with which to talk about some other axiomatic system.
 
-The basic judgment of type theory, analogous to ``$A$ has a proof'', is written ``$a:A$'' and pronounced as ``the term $a$ has type $A$'',
-or more loosely ``$a$ is an element of $A$'' (or, in homotopy type theory, ``$a$ is a point of $A$'').
+与``$A$存在证明''相似, 类型论的基础判断写作``$a:A$'', 读作``项$a$具有类型$A$'',
+或者更宽泛地读作 ``$a$是$A$的元素'' (或在同伦类型论中读作``$a$是$A$中一点'')。
 \indexdef{Xiang@项}%
 \indexdef{YuanSu@元素}%
 \indexdef{Dian@点!YiGeLeiXingDe@一个类型的}%
-When $A$ is a type representing a proposition, then $a$ may be called a \emph{witness}\index{JianZheng@见证!GuanYuYiGeMingTiZhenZhiDe@关于一个命题真值的} to the provability of $A$,
-or \emph{evidence}\index{ZhengJuGuanYuYiGeMingTiZhenZhiDe@证据, 关于一个命题真值的} of the truth of $A$ (or even a \emph{proof}\index{ZhengMing@证明} of $A$, but we will try to avoid this confusing terminology).
-In this case, the judgment $a:A$ is derivable in type theory (for some $a$) precisely when the analogous judgment ``$A$ has a proof'' is derivable in first-order logic 
-(modulo differences in the axioms assumed and in the encoding of mathematics, as we will discuss throughout the book).
- 
-On the other hand, if the type $A$ is being treated more like a set than like a proposition (although as we will see, the distinction can become blurry), 
-then ``$a:A$'' may be regarded as analogous to the set-theoretic statement ``$a\in A$''.
-However, there is an essential difference in that ``$a:A$'' is a \emph{judgment} whereas ``$a\in A$'' is a \emph{proposition}.
-In particular, when working internally in type theory, we cannot make statements such as ``if $a:A$ then it is not the case that $b:B$'', nor can we ``disprove'' the judgment ``$a:A$''.
+若$A$是一个表示命题的类型, 那么$a$被称作对$A$可证明性的一个\emph{见证}\index{JianZheng@见证!GuanYuYiGeMingTiZhenZhiDe@关于一个命题真值的},
+或是$A$真值的一个\emph{证据}\index{ZhengJuGuanYuYiGeMingTiZhenZhiDe@证据, 关于一个命题真值的}
+(或甚至为$A$的一个\emph{证明}\index{ZhengMing@证明}, 但我们会避免使用这个令人困惑的术语)。
+在这种情况下, 当一阶逻辑中相似的判断``$A$存在证明''是可以被导出的, 那么判断$a:A$在类型论中(对某些$a$)是可以被精确地导出的
+(模去我们假设的公理和数学编码的差异, 正如我们将在全书讨论的那样)。
 
-A good way to think about this is that in set theory, ``membership'' is a relation which may or may not hold between two pre-existing objects ``$a$'' and ``$A$'', 
-while in type theory we cannot talk about an element ``$a$'' in isolation: every element \emph{by its very nature} is an element of some type, 
-and that type is (generally speaking) uniquely determined.
-Thus, when we say informally ``let $x$ be a natural number'', in set theory this is shorthand for ``let $x$ be a thing and assume that $x\in\nat$'', 
-whereas in type theory ``let $x:\nat$'' is an atomic statement: we cannot introduce a variable without specifying its type.\index{ChengYuanGuanXi@成员关系}
+另一方面, 如果类型 $A$ 被更多地视作一个集合而非一个命题(尽管正如我们将看到的, 这种区分可能变得模糊), 
+那么 ``$a:A$'' 可被视为类似于集合论陈述 ``$a\in A$''。
+然而, 存在一个本质区别: ``$a:A$'' 是一个\emph{判断}, 而 ``$a\in A$'' 是一个\emph{命题}。
+特别地, 在类型论内部工作时, 我们不能做出诸如`若$a:A$,则$b:B$不成立''这样的陈述, 也不能``反驳''判断 ``$a:A$''。
 
+理解这一点的一个好方法是: 在集合论中, ``属于''是一种关系, 它可能在两个预先存在的对象 ``$a$'' 和 ``$A$'' 之间成立, 也可能不成立;
+而在类型论中, 我们不能孤立地谈论一个元素 ``$a$'': 每个元素\emph{根据其本质}都是某个类型的元素, 并且该类型(一般而言)是唯一确定的。
+因此, 当我们非正式地说``设 $x$ 为一个自然数''时, 在集合论中, 这是``设 $x$ 为一个事物并假设 $x\in\nat$''的简写, 
+而在类型论中``设 $x:\nat$''是一个原子陈述: 我们不能在未指定其类型的情况下引入一个变量。\index{ChengYuanGuanXi@成员关系}
 
-At first glance, this may seem an uncomfortable restriction, but it is arguably closer to the intuitive mathematical meaning of ``let $x$ be a natural number''.
-In practice, it seems that whenever we actually \emph{need} ``$a\in A$'' to be a proposition rather than a judgment, 
-there is always an ambient set $B$ of which $a$ is known to be an element and $A$ is known to be a subset.
-This situation is also easy to represent in type theory, by taking $a$ to be an element of the type $B$, and $A$ to be a predicate on $B$; see \cref{subsec:prop-subsets}.
+乍看之下, 这似乎是一个不便的限制, 但可以说, 它更接近``设 $x$ 为一个自然数''的直观数学含义。
+在实践中, 似乎每当我们实际上\emph{需要}``$a\in A$''是一个命题而非判断时, 
+总存在一个背景集合 $B$, 已知 $a$ 是其元素且 $A$ 是其子集。
+这种情况在类型论中也容易表示, 只需将 $a$ 视为类型 $B$ 的一个元素, 而将 $A$ 视为 $B$ 上的一个谓词;参见\S\ref{subsec:prop-subsets}。
 
-A last difference between type theory and set theory is the treatment of equality.
-The familiar notion of equality in mathematics is a proposition: e.g.\ we can disprove an equality or assume an equality as a hypothesis.
-Since in type theory, propositions are types, this means that equality is a type: for elements $a,b:A$ (that is, both $a:A$ and $b:A$) we have a type ``$\id[A]ab$''.
-(In \emph{homotopy} type theory, of course, this equality proposition can behave in unfamiliar ways: see \cref{sec:identity-types,cha:basics}, and the rest of the book).
-When $\id[A]ab$ is inhabited, we say that $a$ and $b$ are \define{(propositionally) equal}.
+类型论与集合论之间的最后一个区别是对相等的处理。
+数学中熟悉的概念是一个命题: 例如, 我们可以反驳一个等式或假设一个等式作为前提。
+由于在类型论中, 命题是类型, 这意味着相等是一个类型: 对于元素 $a,b:A$(即同时有 $a:A$ 和 $b:A$), 我们有一个类型``$\id[A]ab$''。
+(当然, 在\emph{同伦}类型论中, 这个相等命题可能以不熟悉的方式行为: 参见\S\ref{sec:identity-types}和第\ref{cha:basics}章, 以及本书其余部分)。
+当 $\id[A]ab$ 有居留元时, 我们说 $a$ 和 $b$ 是\define{(命题)相等的}。
 \index{MingTiXing@命题性!XiangDeng@相等}%
 \index{XiangDeng@相等!MingTiXing@命题性}%
 
-However, in type theory there is also a need for an equality \emph{judgment}, existing at the same level as the judgment ``$x:A$''.\index{PanDuan@判断}
+然而, 在类型论中还需要一种相等\emph{判断}, 它存在于与判断``$x:A$''相同的层次。\index{PanDuan@判断}
 \symlabel{defn:judgmental-equality}%
-This is called \define{judgmental equality}
+这被称为\define{判断相等}
 \indexdef{XiangDeng@相等!PanDuan@判断}%
 \indexdef{PanDuanXiangDeng@判断相等}%
-or \define{定义相等},
+或\define{定义相等},
 \indexdef{XiangDeng@相等!DingYi@定义}%
 \indexsee{定义相等}{相等, 定义}%
-and we write it as $a\jdeq b : A$ or simply $a \jdeq b$.
-It is helpful to think of this as meaning ``equal by definition''.
-For instance, if we define a function $f:\nat\to\nat$ by the equation $f(x)=x^2$, then the expression $f(3)$ is equal to $3^2$ \emph{by definition}.
-Inside the theory, it does not make sense to negate or assume an equality-by-definition; we cannot say ``if $x$ is equal to $y$ by definition, then $z$ is not equal to $w$ by definition''.
-Whether or not two expressions are equal by definition is just a matter of expanding out the definitions; in particular, 
-it is algorithmically\index{SuanFa@算法} decidable (though the algorithm is necessarily meta-theoretic, not internal to the theory).\index{KePanDing@可判定!DingYiXiangDeng@定义相等}
+我们将其写为 $a\jdeq b : A$ 或简写为 $a \jdeq b$。
+将其理解为``按定义相等''是有帮助的。
+例如, 如果我们通过方程 $f(x)=x^2$ 定义一个函数 $f:\nat\to\nat$, 那么表达式 $f(3)$ 就\emph{按定义}等于 $3^2$。
+在理论内部, 否定或假设一个按定义的相等是没有意义的;我们不能说``如果 $x$ 按定义等于 $y$, 那么 $z$ 就不按定义等于 $w$''。
+两个表达式是否按定义相等只是一个展开定义的问题;特别地, 
+它是算法上\index{SuanFa@算法}可判定的(尽管该算法必然是元理论的, 而非理论内部的)。\index{KePanDing@可判定!DingYiXiangDeng@定义相等}
 
-As type theory becomes more complicated, judgmental equality can get more subtle than this, but it is a good intuition to start from.
-Alternatively, if we regard a deductive system as an algebraic theory, then judgmental equality is simply the equality in that theory, analogous to the equality between elements of a group --- 
-the only potential for confusion is that there is \emph{also} an object \emph{inside} the deductive system of type theory (namely the type ``$a=b$'')
-which behaves internally as a notion of ``equality''.
+随着类型论变得更为复杂, 判断相等可能比这更为微妙, 但这是一个很好的最初直觉。
+或者, 如果我们将演绎系统视为一个代数理论, 那么判断相等就是该理论中的简单相等, 类似于群中元素之间的相等——
+唯一潜在的混淆是, 在类型论的演绎系统\emph{内部}也有一个对象(即类型``$a=b$''), 
+在其内部行为上, 它被视作一种``相等''概念。
 
-The reason we \emph{want} a judgmental notion of equality is so that it can control the other form of judgment, ``$a:A$''.
-For instance, suppose we have given a proof that $3^2=9$, i.e.\ we have derived the judgment $p:(3^2=9)$ for some $p$.
-Then the same witness $p$ ought to count as a proof that $f(3)=9$, since $f(3)$ is $3^2$ \emph{by definition}.
-The best way to represent this is with a rule saying that given the judgments $a:A$ and $A\jdeq B$, we may derive the judgment $a:B$.
+我们希望有一个判断的相等性概念的原因在于其可以控制其他形式的判断, 即形如``$a:A$''的判断。
+举例而言, 假设我们已经有了对$3^2=9$的证明, 即, 我们得到了某个$p$, 对其有判断$p : (3^2 = 9)$.
+那么同一个$p$就应该被算作是一个关于$f(3) = 9$的证明, 其中$f(3)$\emph{依定义}等于$3^2$。
+表示这一点的最好方法是通过一个规则, 其声明如果给定判断$a:A$与$A \jdeq B$, 我们就可以导出判断$a : B$。
 
-Thus, for us, type theory will be a deductive system based on two forms of judgment:
+因此, 对我们而言, 类型论将是一个基于以下两种判断的推理系统。
+
 \begin{center}
 \medskip
 \begin{tabular}{cl}
   \toprule
-  Judgment & Meaning\\
+  判断 & 含义\\
   \midrule
-  $a : A$       & ``$a$ is an object of type $A$''\\
-  $a \jdeq b : A$ & ``$a$ and $b$ are definitionally equal objects of type $A$''\\
+  $a : A$       & ``$a$是类型$A$的对象''\\
+  $a \jdeq b : A$ & ``$a$与$b$是类型$A$中依定义相等的对象''\\
   \bottomrule
 \end{tabular}
 \medskip
 \end{center}
 %
 \symlabel{defn:defeq}%
-When introducing a definitional equality, i.e., defining one thing to be equal to another, we will use the symbol ``$\defeq$''.
-Thus, the above definition of the function $f$ would be written as $f(x)\defeq x^2$.
+在引入定义相等——即将一个事物定义为等于另一个事物——时, 我们将使用符号``$\defeq$''。
+因此, 上述函数$f$的定义将写为$f(x)\defeq x^2$。
 
-Because judgments cannot be put together into more complicated statements, the symbols ``$:$'' and ``$\jdeq$'' bind more loosely than anything else.%
-\footnote{In formalized\indexfoot{ShuXue@数学!XingShiHuaDe@形式化的} type theory, commas and turnstiles can bind even more loosely.
-  For instance, $x:A,y:B\vdash c:C$ is parsed as $((x:A),(y:B))\vdash (c:C)$.
-  However, in this book we refrain from such notation until \cref{cha:rules}.}
-Thus, for instance, ``$p:\id{x}{y}$'' should be parsed as ``$p:(\id{x}{y})$'', which makes sense since ``$\id{x}{y}$'' is a type, and not as ``$\id{(p:x)}{y}$'',
-which is senseless since ``$p:x$'' is a judgment and cannot be equal to anything.
-Similarly, ``$A\jdeq \id{x}{y}$'' can only be parsed as ``$A\jdeq(\id{x}{y})$'', although in extreme cases such as this, one ought to add parentheses anyway to aid reading comprehension.
-Moreover, later on we will fall into the common notation of chaining together equalities --- e.g.\ writing $a=b=c=d$ to mean ``$a=b$ and $b=c$ and $c=d$, hence $a=d$'' ---
-and we will also include judgmental equalities in such chains.
-Context usually suffices to make the intent clear.
+由于判断不能被组合成更复杂的陈述, 符号``$:$''和``$\jdeq$''的结合性比任何其他符号都更弱。%
+\footnote{在形式化的\indexfoot{ShuXue@数学!XingShiHuaDe@形式化的}类型论中, 逗号和推出符号的结合性可能更弱。
+  例如, $x:A,y:B\vdash c:C$被解析为$((x:A),(y:B))\vdash (c:C)$。
+  然而, 在本书中, 我们直到第\ref{cha:rules}章才会使用这种表示法。}
+因此, 例如, ``$p:\id{x}{y}$''应被解析为``$p:(\id{x}{y})$'', 这是合理的, 因为``$\id{x}{y}$''是一个类型, 而不应解析为``$\id{(p:x)}{y}$'', 
+后者是无意义的, 因为``$p:x$''是一个判断, 不能等于任何东西。
+类似地, ``$A\jdeq \id{x}{y}$''只能被解析为``$A\jdeq(\id{x}{y})$'', 尽管在这种极端情况下, 无论如何都应添加括号以帮助阅读理解。
+此外, 后面我们将沿用串联等式的常见表示法——例如, 写$a=b=c=d$表示``$a=b$且$b=c$且$c=d$, 因此$a=d$''——
+并且我们将在这种链条中包含判断相等。通常, 上下文足以使我们的意图清晰。
 
-This is perhaps also an appropriate place to mention that the common mathematical notation ``$f:A\to B$'', expressing the fact that $f$ is a function from $A$ to $B$,
-can be regarded as a typing judgment, since we use ``$A\to B$'' as notation for the type of functions from $A$ to $B$ (as is standard practice in type theory; see \cref{sec:pi-types}).
+这里或许也是提及常见数学符号``$f:A\to B$''(表示$f$是从$A$到$B$的函数)的适当时机, 
+它可以被视为一个类型判断, 因为我们使用``$A\to B$''作为从$A$到$B$的函数类型的记号(这是类型论中的标准做法; 参见\S\ref{sec:pi-types})。
 
 \index{JiaShe@假设|(defstyle}%
-Judgments may depend on \emph{assumptions} of the form $x:A$, where $x$ is a variable
+判断可能依赖于形式为$x:A$的\emph{假设}, 其中$x$是变量
 \indexdef{BianLiang@变量}%
-and $A$ is a type.
-For example, we may construct an object $m + n : \nat$ under the assumptions that $m,n : \nat$.
-Another example is that assuming $A$ is a type, $x,y : A$, and $p : \id[A]{x}{y}$, we may construct an element $p^{-1} : \id[A]{y}{x}$.
-The collection of all such assumptions is called the \define{context};%
+而$A$是一个类型。例如, 我们可以在假设$m,n : \nat$下构造一个对象$m + n : \nat$。
+另一个例子是: 假设$A$是一个类型, $x,y : A$, 且$p : \id[A]{x}{y}$, 我们可以构造一个元素$p^{-1} : \id[A]{y}{x}$。
+所有此类假设的集合称为\define{上下文}; %
 \index{ShangXiaWen@上下文}
-from a topological point of view it may be thought of as a ``parameter\index{CanShu@参数!KongJian@空间} space''.
-In fact, technically the context must be an ordered list of assumptions, since later assumptions may depend on previous ones:
-the assumption $x:A$ can only be made \emph{after} the assumptions of any variables appearing in the type $A$.
+从拓扑的观点来看, 它可以被视为一个``参数\index{CanShu@参数!KongJian@空间}空间''。
+实际上, 从技术上讲, 上下文必须是一个有序的假设列表, 因为后面的假设可能依赖于前面的假设: 
+只有在类型$A$中出现的任何变量作出假设\emph{之后}, 我们才能做出假设$x:A$。
 
-If the type $A$ in an assumption $x:A$ represents a proposition, then the assumption is a type-theoretic version of a \emph{hypothesis}:
+如果假设$x:A$中的类型$A$表示一个命题, 则该假设是如下\emph{假说}的类型论版本: 
 \indexdef{JiaShuo@假说}%
-we assume that the proposition $A$ holds.
-When types are regarded as propositions, we may omit the names of their proofs.
-Thus, in the second example above we may instead say that assuming $\id[A]{x}{y}$, we can prove $\id[A]{y}{x}$.
-However, since we are doing ``proof-relevant'' mathematics,
+我们假设命题$A$成立。
+当类型被视为命题时, 我们可以省略其证明的名称。
+因此, 在上面的第二个例子中, 我们可以改为说: 假设$\id[A]{x}{y}$, 我们可以证明$\id[A]{y}{x}$。
+然而, 由于我们正在做``证明相关''的数学, 
 \index{ShuXue@数学!ZhengMingXiangGuanDe@证明相关的}%
-we will frequently refer back to proofs as objects.
-In the example above, for instance, we may want to establish that $p^{-1}$ together with the proofs of transitivity and reflexivity behave like a groupoid; see \cref{cha:basics}.
+我们将频繁地将证明作为对象来引用。
+例如, 在上面的例子中, 我们可能想要确定, $p^{-1}$, 与传递性和自反性的证明一起, 其行为类似于群胚; 参见第\ref{cha:basics}章。
 
-Note that under this meaning of the word \emph{assumption}, we can assume a propositional equality (by assuming a variable $p:x=y$), but we cannot assume a judgmental equality $x\jdeq y$,
-since it is not a type that can have an element.
-However, we can do something else which looks kind of like assuming a judgmental equality: if we have a type or an element which involves a variable $x:A$, 
-then we can \emph{substitute} any particular element $a:A$ for $x$ to obtain a more specific type or element.
-We will sometimes use language like ``now assume $x\jdeq a$'' to refer to this process of substitution, even though it is not an \emph{assumption} in the technical sense introduced above.
+注意, 在\emph{假设}一词的这种含义下, 我们可以假设一个命题相等(通过假设一个变量$p:x=y$), 但不能假设一个判断相等$x\jdeq y$, 
+因为它不是一个可以拥有元素的类型。
+然而, 我们可以做另一件看起来有点像假设判断相等的事情: 如果我们有一个涉及变量$x:A$的类型或元素, 
+那么我们可以用任何特定元素$a:A$\emph{代入}$x$, 以获得更具体的类型或元素。
+我们有时会使用诸如``现在假设$x\jdeq a$''的语言来指代这种代入过程, 即使它在技术意义上不是上面介绍的\emph{假设}。
 \index{assumption|)}%
 
-By the same token, we cannot \emph{prove} a judgmental equality either, since it is not a type in which we can exhibit a witness.
-Nevertheless, we will sometimes state judgmental equalities as part of a theorem, e.g.\ ``there exists $f:A\to B$ such that $f(x)\jdeq y$''.
-This should be regarded as the making of two separate judgments: first we make the judgment $f:A\to B$ for some element $f$, then we make the additional judgment that $f(x)\jdeq y$.
+同样地, 我们也不能\emph{证明}一个判断相等, 因为它不是一个我们可以展示见证者的类型。
+然而, 我们有时会在定理中陈述判断相等, 例如``存在$f:A\to B$使得$f(x)\jdeq y$''。
+这应被视为做出两个独立的判断: 首先我们对某个元素$f$做出判断$f:A\to B$, 然后我们做出额外的判断$f(x)\jdeq y$。
 
-In the rest of this chapter, we attempt to give an informal presentation of type theory, sufficient for the purposes of this book; we give a more formal account in \cref{cha:rules}.
-Aside from some fairly obvious rules (such as the fact that judgmentally equal things can always be substituted\index{substitution} for each other), 
-the rules of type theory can be grouped into \emph{type formers}.
-Each type former consists of a way to construct types (possibly making use of previously constructed types), together with rules for the construction and behavior of elements of that type.
-In most cases, these rules follow a fairly predictable pattern, but we will not attempt to make this precise here; see however the beginning of \cref{sec:finite-product-types} 
-and also \cref{cha:induction}.\index{LeiXingLun@类型论!FeiXingShiHuaDe@非形式化的}
-
+在本章的剩余部分, 我们尝试给出类型论的非形式化阐述, 其足以满足本书的目的; 我们在第\ref{cha:rules}章给出更形式化的说明。
+除了一些相当明显的规则(例如判断相等的事物总是可以相互\index{substitution}替换), 
+类型论的规则可以分组为\emph{类型构造子}。
+每个类型构造子包括一种构造类型的方法(可能利用先前构造的类型), 以及该类型元素的构造和行为规则。
+在大多数情况下, 这些规则遵循相当可预测的模式, 但我们不试图在此使其精确; 然而可参见\S\ref{sec:finite-product-types}的开头
+以及第\ref{cha:induction}章。\index{LeiXingLun@类型论!FeiXingShiHuaDe@非形式化的}
 
 \index{GongLi@公理!versus rules}%
 \index{GuiZe@规则!versus axioms}%
-An important aspect of the type theory presented in this chapter is that it consists entirely of \emph{rules}, without any \emph{axioms}.
-In the description of deductive systems in terms of judgments, the \emph{rules} are what allow us to conclude one judgment from a collection of others, 
-while the \emph{axioms} are the judgments we are given at the outset.
-If we think of a deductive system as a formal game, then the rules are the rules of the game, while the axioms are the starting position.
-And if we think of a deductive system as an algebraic theory, then the rules are the operations of the theory, 
-while the axioms are the \emph{generators} for some particular free model of that theory.
+本章所介绍的\emph{类型论}的一个重要方面是它完全由\emph{规则}组成, 而不包含任何\emph{公理}。
+在用判断来描述演绎系统时, 通过\emph{规则}, 我们能够从一组判断中推断出一个判断, 而\emph{公理}则被初始给定。
+如果我们将演绎系统视为一个形式游戏, 那么规则就是游戏规则, 而公理则是起点。
+如果我们将演绎系统视为一个代数理论, 那么规则就是理论的操作, 而公理则是该理论某个特定自由模型的\emph{生成元}。
 
-In set theory, the only rules are the rules of first-order logic (such as the rule allowing us to deduce ``$A\wedge B$ has a proof'' from ``$A$ has a proof'' and ``$B$ has a proof''):
-all the information about the behavior of sets is contained in the axioms.
-By contrast, in type theory, it is usually the \emph{rules} which contain all the information, with no axioms being necessary.
-For instance, in \cref{sec:finite-product-types} we will see that there is a rule allowing us to deduce the judgment ``$(a,b):A\times B$'' from ``$a:A$'' and ``$b:B$'', 
-whereas in set theory the analogous statement would be (a consequence of) the pairing axiom.
+在集合论中, 唯一的规则是一阶逻辑的规则(例如允许我们从``$A$ 有一个证明''和``$B$ 有一个证明''推导出``$A\wedge B$ 有一个证明''的规则): 所有关于集合行为的信息都包含在公理中。
+与之相对的, 在类型论中, 通常是\emph{规则}包含了所有信息, 而不需要任何公理。
+例如, 在\S\ref{sec:finite-product-types}中我们将看到, 存在一条规则, 其允许我们从``$a:A$''和``$b:B$''推导出判断``$(a,b):A\times B$'', 
+而在集合论中, 类似的陈述将是配对公理(的一个推论)。
 
-The advantage of formulating type theory using only rules is that rules are ``procedural''.
-In particular, this property is what makes possible (though it does not automatically ensure) the good computational properties of type theory, such as ``canonicity''.\index{DianFanXing@典范性}
-However, while this style works for traditional type theories, we do not yet understand how to formulate everything we need for \emph{homotopy} type theory in this way.
-In particular, in \cref{sec:compute-pi,sec:compute-universe,cha:hits} we will have to augment the rules of type theory presented in this chapter by introducing additional axioms, notably the \emph{univalence axiom}.
-In this chapter, however, we confine ourselves to a traditional rule-based type theory.
+仅使用规则来形式化类型论, 其优势在于规则的``程序性''。
+事实上, ``程序性''使得类型论有可能具备一些良好的计算性质(尽管不能自动确保), 例如``典范性''。\index{DianFanXing@典范性}
+然而, 虽然这种风格适用于传统的类型论, 但我们尚未理解如何以这种方式形式化\emph{同伦}类型论所需的一切。
+特别地, 在\S\ref{sec:compute-pi}、\S\ref{sec:compute-universe}和第\ref{cha:hits}章中, 我们将不得不通过引入额外的公理来扩充本章介绍的类型论规则, 特别是\emph{泛等公理}。
+然而, 在本章中, 我们将讨论范围局限于传统的、基于规则的类型论。
 
-
-\section{Function types}
+\section{函数类型}
 \label{sec:function-types}
 
 \index{type!function|(defstyle}%
 \indexsee{function type}{type, function}%
-Given types $A$ and $B$, we can construct the type $A \to B$ of \define{functions}
+给定类型 $A$ 与 $B$, 我们可以构造定义域为$A$, 陪域为$B$的\define{函数}类型·$A \to B$
 \index{function|(defstyle}%
 \indexsee{map}{function}%
 \indexsee{mapping}{function}%
-with domain $A$ and codomain $B$.
-We also sometimes refer to functions as \define{maps}.
+我们有时也会将函数称为\define{映射}。
 \index{domain!of a function}%
 \index{codomain, of a function}%
 \index{function!domain of}%
 \index{function!codomain of}%
 \index{functional relation}%
-Unlike in set theory, functions are not defined as
-functional relations; rather they are a primitive concept in type theory.
-We explain the function type by prescribing what we can do with functions, 
-how to construct them and what equalities they induce.
+与集合论不同, 函数并不被定义为函数关系, 而是类型论的基础概念。我们通过规定如何使用函数,
+如何构造它们, 以及它们能引出出怎样的相等性来阐释函数类型。
 
-Given a function $f : A \to B$ and an element of the domain $a : A$, we
-can \define{apply}
+给定一个函数$f : A \to B$与定义域中的一个元素$a:A$, 我们可以\define{应用}该函数来得到陪域中的一个元素$B$,
 \indexdef{application!of function}%
 \indexdef{function!application}%
 \indexsee{evaluation}{application, of a function}
-the function to obtain an element of the codomain $B$,
-denoted $f(a)$ and called the \define{value} of $f$ at $a$.
+将其记为$f(a)$并称之为函数$f$在$a$处的\define{函数值}。
 \indexdef{value!of a function}%
-It is common in type theory to omit the parentheses\index{parentheses} and denote $f(a)$ simply by $f\,a$, and we will sometimes do this as well.
+类型论中通常会省略括号\index{parentheses}, 并将$f(a)$简单记为$f\,a$, 我们有时也会遵循这一惯例。
 
-But how can we construct elements of $A \to B$? There are two equivalent ways:
-either by direct definition or by using
-$\lambda$-abstraction. Introducing a function by definition
+但是我们该如何构造 $A \to B$ 的元素呢? 有两种等价的方式: 一种是通过直接定义, 另一种是使用 $\lambda$ 抽象。
 \indexdef{definition!of function, direct}%
-means that
-we introduce a function by giving it a name --- let's say, $f$ --- and saying
-we define $f : A \to B$ by giving an equation
+通过直接定义引入函数, 指的是我们通过给函数命名(比方说 $f$)来引入它, 并通过给出一个等式
 \begin{equation}
   \label{eq:expldef}
   f(x) \defeq \Phi
 \end{equation}
-where $x$ is a variable
+来定义 $f : A \to B$, 其中 $x$ 是一个变量
 \index{variable}%
-and $\Phi$ is an expression which may use $x$.
-In order for this to be valid, we have to check that $\Phi : B$ assuming $x:A$.
+而 $\Phi$ 是一个可以使用 $x$ 的表达式。
+为了使其有效, 我们必须检查在假设 $x:A$ 的情况下有 $\Phi : B$。
 
-Now we can compute $f(a)$ by replacing the variable $x$ in $\Phi$ with
-$a$. As an example, consider the function $f : \nat \to \nat$ which is
-defined by $f(x) \defeq x+x$.  (We will define $\nat$ and $+$ in \cref{sec:inductive-types}.)
-Then $f(2)$ is judgmentally equal to $2+2$.
+现在我们可以通过将 $\Phi$ 中的变量 $x$ 替换为 $a$ 来计算 $f(a)$。
+例如, 考虑函数 $f : \nat \to \nat$, 它由 $f(x) \defeq x+x$ 定义。(我们将在\S\ref{sec:inductive-types}中定义 $\nat$ 和 $+$。)
+那么 $f(2)$ 判断相等于 $2+2$。
 
-If we don't want to introduce a name for the function, we can use
-\define{$\lambda$-abstraction}.
+如果我们不想为函数命名, 我们可以使用
+\define{$\lambda$ 抽象}。
 \index{lambda abstraction@$\lambda$-abstraction|defstyle}%
 \indexsee{function!lambda abstraction@$\lambda$-abstraction}{$\lambda$-abstraction}%
 \indexsee{abstraction!lambda-@$\lambda$-}{$\lambda$-abstraction}%
-Given an expression $\Phi$ of type $B$ which may use $x:A$, as above, we write $\lam{x:A} \Phi$ to indicate the same function defined by~\eqref{eq:expldef}.
-Thus, we have
+给定一个如上所述可能使用$x:A$的、类型为 $B$ 的表达式 $\Phi$, 我们写作 $\lam{x:A} \Phi$ 来表示由~\eqref{eq:expldef} 定义的同一个函数。
+因此, 我们有
 \[ (\lamt{x:A}\Phi) : A \to B. \]
-For the example in the previous paragraph, we have the typing judgment
+对于前一段中的例子, 我们有类型判断
 \[ (\lam{x:\nat}x+x) : \nat \to \nat. \]
-As another example, for any types $A$ and $B$ and any element $y:B$, we have a \define{constant function}
+作为另一个例子, 对于任何类型 $A$ 和 $B$ 以及任何元素 $y:B$, 我们有一个\define{常函数}
 \indexdef{constant!function}%
 \indexdef{function!constant}%
-$(\lam{x:A} y): A\to B$.
+$(\lam{x:A} y): A\to B$。
 
-We generally omit the type of the variable $x$ in a $\lambda$-abstraction and write $\lam{x}\Phi$, since the typing $x:A$ is inferable from the judgment that the function $\lam x \Phi$ has type $A\to B$.
-By convention, the ``scope''
+我们通常省略 $\lambda$ 抽象中变量 $x$ 的类型, 写作 $\lam{x}\Phi$, 因为从函数 $\lam x \Phi$ 具有类型 $A\to B$ 的判断中可以推断出 $x:A$。
+按照约定, 绑定变量 ``$\lam{x}$'' 的``作用域''
 \indexdef{variable!scope of}%
 \indexdef{scope}%
-of the variable binding ``$\lam{x}$'' is the entire rest of the expression, unless delimited with parentheses\index{parentheses}.
-Thus, for instance, $\lam{x} x+x$ should be parsed as $\lam{x} (x+x)$, not as $(\lam{x}x)+x$ (which would, in this case, be ill-typed anyway).
+是整个表达式的其余部分, 除非用括号\index{parentheses}将其括起。
+因此, 例如, $\lam{x} x+x$ 应该解析为 $\lam{x} (x+x)$, 而不是 $(\lam{x}x)+x$(在这种情况下, 后者本身就是类型错误的)。
 
-Another equivalent notation is
+%
+
+另一个等价的记号是
 \symlabel{mapsto}%
 \[ (x \mapsto \Phi) : A \to B. \]
 \symlabel{blank}%
-We may also sometimes use a blank ``$\blank$'' in the expression $\Phi$ in place of a variable, to denote an implicit $\lambda$-abstraction.
-For instance, $g(x,\blank)$ is another way to write $\lam{y} g(x,y)$.
+我们有时也会在表达式$\Phi$中使用一个空的``$\blank$''来代替变量, 以表示一个隐式的$\lambda$-抽象。
+例如, $g(x,\blank)$是书写$\lam{y} g(x,y)$的另一种方式。
 
-Now a $\lambda$-abstraction is a function, so we can apply it to an argument $a:A$.
-We then have the following \define{computation rule}\indexdef{computation rule!for function types}\footnote{Use of this equality is often referred to as \define{$\beta$-conversion}
+现在, $\lambda$-抽象本身即是函数, 因此我们可以将它应用于参数$a:A$。
+于是我们有以下\define{计算规则}\indexdef{computation rule!for function types}\footnote{该等式通常被称为\define{$\beta$-转换}
 \indexsee{beta-conversion@$\beta $-conversion}{$\beta$-reduction}%
 \indexsee{conversion!beta@$\beta $-}{$\beta$-reduction}%
-or \define{$\beta$-reduction}.%
+或\define{$\beta$-规约}。%
 \index{beta-reduction@$\beta $-reduction|footstyle}%
 \indexsee{reduction!beta@$\beta $-}{$\beta$-reduction}%
-}, which is a definitional equality:
+}, 这是一个定义等式: 
 \[(\lamu{x:A}\Phi)(a) \jdeq \Phi'\]
-where $\Phi'$ is the
-expression $\Phi$ in which all occurrences of $x$ have been replaced by $a$.
-Continuing the above example, we have
+其中$\Phi'$是表达式$\Phi$中所有$x$的出现都被$a$替换后的结果。
+继续上面的例子, 我们有
 %
 \[ (\lamu{x:\nat}x+x)(2) \jdeq 2+2. \]
 %
-Note that from any function $f:A\to B$, we can construct a lambda abstraction function $\lam{x} f(x)$.
-Since this is by definition ``the function that applies $f$ to its argument'' we consider it to be definitionally equal to $f$:\footnote{Use of this equality is often referred to as \define{$\eta$-conversion}
+注意, 从任意函数$f:A\to B$, 我们可以构造一个lambda抽象函数$\lam{x} f(x)$。
+依定义, 这是``将$f$应用于其参数的函数'', 我们认为它与$f$定义相等: \footnote{该等式通常被称为\define{$\eta$-转换}
 \indexsee{eta-conversion@$\eta $-conversion}{$\eta$-expansion}%
 \indexsee{conversion!eta@$\eta $-}{$\eta$-expansion}%
-or \define{$\eta$-expansion.
+或\define{$\eta$-展开}。%
 \index{eta-expansion@$\eta $-expansion|footstyle}%
 \indexsee{expansion, eta-@expansion, $\eta $-}{$\eta$-expansion}%
-}}
+}
 \[ f \jdeq (\lam{x} f(x)). \]
-This equality is the \define{uniqueness principle for function types}\indexdef{uniqueness!principle!for function types}, because it shows that $f$ is uniquely determined by its values.
+这个等式被称为\define{函数类型的唯一性原理}\indexdef{uniqueness!principle!for function types}, 因为它表明$f$由其值唯一决定。
 
-The introduction of functions by definitions with explicit parameters can be reduced
-to simple definitions by using $\lambda$-abstraction: i.e., we can read 
-a definition of $f: A\to B$ by
+通过使用$\lambda$-抽象, 我们可以简化带有显式参数的, 由直接定义引入函数的方法: 
+即, 我们可以将
 \[ f(x) \defeq \Phi \]
-as 
+的定义读作
 \[ f \defeq \lamu{x:A}\Phi.\]
 
-When doing calculations involving variables, we have to be 
-careful when replacing a variable with an expression that also involves
-variables, because we want to preserve the binding structure of
-expressions. By the \emph{binding structure}\indexdef{binding structure} we mean the
-invisible link generated by binders such as $\lambda$, $\Pi$ and
-$\Sigma$ (the latter we are going to meet soon) between the place where the variable is introduced and where it is used. As an example, consider $f : \nat \to (\nat \to \nat)$
-defined as 
+当进行涉及变量的计算时, 我们必须小心地用同样涉及变量的表达式替换变量, 因为我们希望保持表达式的绑定结构。
+这里所说的\emph{绑定结构}\indexdef{binding structure}是指一种在变量的引入位置与使用位置间的不可见链接。
+这种链接由诸如$\lambda$、$\Pi$和$\Sigma$(我们很快就会遇到后者)的绑定符生成。例如, 考虑定义$f : \nat \to (\nat \to \nat)$
 \[ f(x) \defeq \lamu{y:\nat} x + y. \] 
-Now if we have assumed somewhere that $y : \nat$, then what is $f(y)$? It would be wrong to just naively replace $x$ by $y$ everywhere in the expression ``$\lam{y}x+y$'' defining $f(x)$, obtaining $\lamu{y:\nat} y + y$, because this means that $y$ gets \define{captured}.
+如果我们在某处假设了$y : \nat$, 那么$f(y)$是什么? 在$f(x)$的定义式``$\lam{y}x+y$''中天真地用$y$替换所有位置上的$x$,
+从而得到$\lamu{y:\nat} y + y$是错误的做法, 因为这意味着$y$被\define{捕获了}。
 \indexdef{capture, of a variable}%
 \indexdef{variable!captured}%
-Previously, the substituted\index{substitution} $y$ was referring to our assumption, but now it is referring to the argument of the $\lambda$-abstraction. Hence, this naive substitution would destroy the binding structure, allowing us to perform calculations which are semantically unsound.
+之前, 被替换的\index{substitution}$y$指的是我们的假设, 但现在它指的是$\lambda$-抽象的参数。因此, 这种天真的替换会破坏绑定结构, 允许我们执行语义上不可靠的计算。
 
-But what \emph{is} $f(y)$ in this example? Note that bound (or ``dummy'')
-variables
+但在这个例子中, $f(y)$\emph{究竟}是什么? 注意, 绑定(或``哑'')变量
 \indexdef{variable!bound}%
 \indexdef{variable!dummy}%
 \indexsee{bound variable}{variable, bound}%
 \indexsee{dummy variable}{variable, bound}%
-such as $y$ in the expression $\lamu{y:\nat} x + y$
-have only a local meaning, and can be consistently replaced by any
-other variable, preserving the binding structure. Indeed, $\lamu{y:\nat} x + y$ is declared to be judgmentally equal\footnote{Use of this equality is often referred to as \define{$\alpha$-conversion.
+(如表达式$\lamu{y:\nat} x + y$中的$y$)只有局部意义, 并且可以一致地被任何其他变量替换, 同时保持绑定结构。
+实际上, $\lamu{y:\nat} x + y$被声明为判断相等
+\footnote{
+使用这个等式通常被称为\define{$\alpha$-转换}。
 \indexfoot{alpha-conversion@$\alpha $-conversion}
-\indexsee{conversion!alpha@$\alpha$-}{$\alpha$-conversion}
-}} to
-$\lamu{z:\nat} x + z$.  It follows that 
-$f(y)$ is judgmentally equal to  $\lamu{z:\nat} y + z$, and that answers our question.  (Instead of $z$,
-any variable distinct from $y$ could have been used, yielding an equal result.)
+\indexsee{converion!alpha@$\alpha$-}{$\alpha$-conversion}
+}
+于$\lamu{z:\nat} x + z$。由此可知, 
+$f(y)$判断相等于$\lamu{z:\nat} y + z$, 这就回答了这一问题。(除了$z$, 任何与$y$不同的变量都可以使用, 并得到相等的结果。)
 
-Of course, this should all be familiar to any mathematician: it is the same phenomenon as the fact that if $f(x) \defeq \int_1^2 \frac{dt}{x-t}$, then $f(t)$ is not $\int_1^2 \frac{dt}{t-t}$ but rather $\int_1^2 \frac{ds}{t-s}$.
-A $\lambda$-abstraction binds a dummy variable in exactly the same way that an integral does.
+当然, 这任何数学家都应该对此感到熟悉: 这与以下现象相同: 
+如果$f(x) \defeq \int_1^2 \frac{dt}{x-t}$, 那么$f(t)$不是$\int_1^2 \frac{dt}{t-t}$而是$\int_1^2 \frac{ds}{t-s}$。
+$\lambda$-抽象绑定哑变量的方式与积分如出一辙。
 
-We have seen how to define functions in one variable. One
-way to define functions in several variables would be to use the
-cartesian product, which will be introduced later; a function with
-parameters $A$ and $B$ and results in $C$ would be given the type 
-$f : A \times B \to C$. However, there is another choice that avoids
-using product types, which is called \define{currying}
+%
+
+我们已经了解如何定义单变量函数。
+一种定义多变量函数的方式是使用笛卡尔积, 这将在后面介绍; 
+我们把一个参数为 $A$ 和 $B$, 结果为 $C$ 的函数赋予类型 $f : A \times B \to C$。
+然而, 还有一种被称为\define{柯里化}的方法可以避免使用乘积类型 
 \indexdef{currying}%
 \indexdef{function!currying of}%
-(after the mathematician Haskell Curry).
+(以数学家 Haskell Curry 命名)。
 \index{BianCheng@编程}%
 
-The idea of currying is to represent a function of two inputs $a:A$ and $b:B$ as a function which takes \emph{one} input $a:A$ and returns \emph{another function}, which then takes a second input $b:B$ and returns the result.
-That is, we consider two-variable functions to belong to an iterated function type, $f : A \to (B \to C)$.
-We may also write this without the parentheses\index{parentheses}, as $f : A \to B \to C$, with
-associativity\index{associativity!of function types} to the right as the default convention.  Then given $a : A$ and $b : B$,
-we can apply $f$ to $a$ and then apply the result to $b$, obtaining
-$f(a)(b) : C$. To avoid the proliferation of parentheses, we allow ourselves to
-write $f(a)(b)$ as $f(a,b)$ even though there are no products
-involved.
-When omitting parentheses around function arguments entirely, we write $f\,a\,b$ for $(f\,a)\,b$, with the default associativity now being to the left so that $f$ is applied to its arguments in the correct order.
+柯里化的思想是将一个有两个输入 $a:A$ 和 $b:B$ 的函数表示为一个接受\emph{单个}输入 $a:A$ 并返回\emph{另一个函数}的函数, 
+而这个函数接受第二个输入 $b:B$ 并返回结果。
+也就是说, 我们认为双变量函数属于一个迭代函数类型, $f : A \to (B \to C)$。
+我们也可以省略括号\index{parentheses}并写作, 如 $f : A \to B \to C$, 
+其默认向右结合\index{associativity!of function types}。
+于是, 给定 $a : A$ 和 $b : B$, 
+我们可以将 $f$ 应用于 $a$, 然后将结果应用于 $b$, 得到
+$f(a)(b) : C$。为了避免括号的泛滥, 我们允许将 $f(a)(b)$ 写作 $f(a,b)$, 即使没有涉及到乘积。
+当完全省略函数参数周围的括号时, 我们把$(f\,a)\,b$写作$f\,a\,b$, 其默认向左结合, 从而让$f$以正确的顺序应用于其参数。
 
-Our notation for definitions with explicit parameters extends to
-this situation: we can define a named function $f : A \to B \to C$ by
-giving an equation
+于是, 带有显式参数的定义也适用于该情况: 
+我们可以通过给出一个等式
 \[ f(x,y) \defeq \Phi\]
-where $\Phi:C$ assuming $x:A$ and $y:B$. Using $\lambda$-abstraction\index{lambda abstraction@$\lambda$-abstraction} this
-corresponds to
+来定义一个命名函数 $f : A \to B \to C$, 其中 $\Phi:C$ 假设 $x:A$ 和 $y:B$。
+使用 $\lambda$-抽象的话\index{lambda abstraction@$\lambda$-abstraction}, 
+这对应于
 \[ f \defeq \lamu{x:A}{y:B} \Phi, \]
-which may also be written as 
+这也可以写成 
 \[ f \defeq x \mapsto y \mapsto \Phi. \] 
-We can also implicitly abstract over multiple variables by writing multiple blanks, e.g.\ $g(\blank,\blank)$ means $\lam{x}{y} g(x,y)$.
-Currying a function of three or more arguments is a straightforward extension of what we have just described.
- 
+我们也可以通过多个空白来隐式抽象多个变量, 例如 $g(\blank,\blank)$ 表示 $\lam{x}{y} g(x,y)$。
+通过直接拓展刚刚所述内容, 我们可以对三个或更多参数的函数进行柯里化。
+
 \index{type!function|)}%
 \index{function|)}%
 
-
-\section{Universes and families}
+\section{宇宙与族}
 \label{sec:universes}
 
 So far, we have been using the expression ``$A$ is a type'' informally. We
@@ -464,7 +441,7 @@ Moreover, we do not even identify the indices $i$ of the universes $\UU_i$ with 
 
 \index{type!universe|)}%
 
-\section{Dependent function types (\texorpdfstring{$\Pi$}{Π}-types)}
+\section{依值函数类型 (\texorpdfstring{$\Pi$}{Π}-类型)}
 \label{sec:pi-types}
 
 \index{type!dependent function|(defstyle}%
@@ -557,7 +534,7 @@ as before, we write as $f(a,b) : C(a,b)$.
 \index{function!dependent|)}%
 
 
-\section{Product types}
+\section{乘积类型}
 \label{sec:finite-product-types}
 
 Given types $A,B:\UU$ we introduce the type $A\times B:\UU$, which we call their \define{cartesian product}.
@@ -755,7 +732,7 @@ or equivalently by using induction:
 \index{type!product|)}%
 \index{type!unit|)}%
 
-\section{Dependent pair types (\texorpdfstring{$\Sigma$}{Σ}-types)}
+\section{依值对类型 (\texorpdfstring{$\Sigma$}{Σ}-类型)}
 \label{sec:sigma-types}
 
 \index{type!dependent pair|(defstyle}%
@@ -897,7 +874,7 @@ That is, we have $(x,y,z) \defeq (x,(y,z))$ and $(x,y,z,w)\defeq (x,(y,(z,w)))$,
 
 \index{type!dependent pair|)}%
 
-\section{Coproduct types}
+\section{余积类型}
 \label{sec:coproduct-types}
 
 Given $A,B:\UU$, we introduce their \define{coproduct} type $A+B:\UU$.
@@ -986,7 +963,7 @@ empty type. % In the presence of $\eta$-equality it is derivable
 \index{type!empty|)}%
 
 
-\section{The type of booleans}
+\section{布尔类型}
 \label{sec:type-booleans}
 
 \indexsee{boolean!type of}{type of booleans}%
@@ -1089,7 +1066,7 @@ In particular, the type $A \to \bool$ is not generally the power set\index{power
 \index{type!of booleans|)}%
 
 
-\section{The natural numbers}
+\section{自然数}
 \label{sec:inductive-types}
 
 \indexsee{type!of natural numbers}{natural numbers}%
@@ -1232,7 +1209,7 @@ Putting these together with $\ind{\nat}$, we obtain a proof of associativity.
 \index{natural numbers|)}%
 
 
-\section{Pattern matching and recursion}
+\section{模式匹配与递归}
 \label{sec:pattern-matching}
 
 \index{pattern matching|(defstyle}%
@@ -1293,7 +1270,7 @@ Only then do we introduce an appropriate sort of ``pattern matching'' which can 
 \index{pattern matching|)}%
 \index{definition!by pattern matching|)}%
 
-\section{Propositions as types}
+\section{命题即类型}
 \label{sec:pat}
 
 \index{proposition!as types|(defstyle}%
@@ -1574,7 +1551,7 @@ In particular, the empty type $\emptyt$ is obviously not inhabited, since $\neg 
 \index{proposition!as types|)}%
 \index{LuoJi@逻辑!propositions as types|)}%
 
-\section{Identity types}
+\section{恒等类型}
 \label{sec:identity-types}
 
 \index{type!identity|(defstyle}%
@@ -1906,7 +1883,7 @@ interpretation of equality, whereas more restricted variants impose restrictions
 \indexsee{UIP}{uniqueness of identity proofs}%
 \index{uniqueness!of identity proofs}%
 stating that any two proofs of equality are judgmentally equal, and \emph{Axiom K}~\cite{Streicher93},
-\index{GongLi@公理!Streicher's Axiom K}
+\index{GongLi@公理!StreicherGongLiK@Streicher公理K}
 stating that 
 the only proof of equality is reflexivity (up to judgmental equality).  These additional requirements may be selectively imposed in the \Coq 
 and \Agda\ systems.
@@ -1932,7 +1909,7 @@ Another is that specifying the allowable kinds of (deep) pattern matching is qui
 for instance, \Agda's
 \index{proof!assistant!Agda@\textsc{Agda}}%
 pattern matching can prove Axiom K by default,
-\index{GongLi@公理!Streicher's Axiom K}%
+\index{GongLi@公理!StreicherGongLiK@Streicher公理K}%
 although a flag \texttt{--without-K} prevents this~\cite{CDP14}.
 Finally, deep pattern matching is not well-understood for \emph{higher} inductive types (see \cref{cha:hits}).
 Therefore, we will only use pattern matches such as those described in \cref{sec:pattern-matching}, which are directly equivalent to the application of an induction principle.
@@ -1946,7 +1923,7 @@ This was suggested originally by de Bruijn~\cite{deBruijn-1973}, Howard~\cite{ho
 We do, however, include a full cumulative hierarchy of universes, so that the type formation and equality judgments become instances of the membership and equality judgments for a universe.
 As a convenience, we regard objects of a universe as types, rather than as codes for types; in the terminology of \cite{martin-lof:bibliopolis}, this means we use ``Russell-style universes'' rather than ``Tarski-style universes''.
 \index{type!universe!Tarski-style}%
-\index{type!universe!Russell-style}%
+\index{type!universe!RussellShi@Russell式}%
 An alternative would be to use Tarski-style universes, with an explicit coercion\index{coercion, universe-raising} function required to make an element $A:\UU$ of a universe into a type $\mathsf{El}(A)$, and just say that the coercion is omitted when working informally.
 
 We also treat the universe hierarchy as cumulative, in that every type in $\UU_i$ is also in $\UU_j$ for each $j\geq i$.
@@ -2030,7 +2007,7 @@ Give an alternative derivation of $\indidb{A}$ from $\indid{A}$ which avoids the
 
 \begin{ex}\label{ex:ackermann}
   \indexdef{function!Ackermann}%
-  \indexdef{Ackermann function}%
+  \indexdef{AckermannHanShu@Ackermann函数}%
   Show that the Ackermann function $\ack : \nat \to \nat \to \nat$ is definable using only $\rec{\nat}$ satisfying the following equations:
   \begin{align*}
     \ack(0,n) &\jdeq \suc(n), \\
