@@ -97,7 +97,7 @@ A \emph{Dedekind cut}\index{cut!Dedekind} consists of a pair $(L, U)$ of subsets
 \item \emph{inhabited:} there are $q \in L$ and $r \in U$,
 \item \emph{rounded:} $q \in L \Leftrightarrow \exis {r \in \Q} q < r \land r \in L$
   and $r \in U \Leftrightarrow \exis {q \in \Q} q \in U \land q < r$,
-  \index{rounded!Dedekind cut}
+  \index{rounded!DedekindFenGe@Dedekind分割}
 \item \emph{disjoint:} $\lnot (q \in L \land q \in U)$, and
 \item \emph{located:} $q < r \Rightarrow q \in L \lor r \in U$.
   \index{locatedness}%
@@ -180,7 +180,7 @@ logical notation from \cref{defn:logical-notation}.
   \item \label{defn:dedekind-reals-inhabited}
     \emph{inhabited (i.e., bounded):} $\exis{q : \Q} L(q)$ and $\exis{r : \Q} U(r)$,
   \item \emph{rounded:} for all $q, r : \Q$,
-    \index{rounded!Dedekind cut}
+    \index{rounded!DedekindFenGe@Dedekind分割}
     %
     \begin{align*}
       L(q) &\Leftrightarrow \exis{r : \Q} (q < r) \land L(r)
@@ -3094,7 +3094,7 @@ The \emph{higher} inductive-inductive version presented here, which builds in th
   \begin{enumerate}
   \item \emph{inhabited:} $\exis{q : \Q} L(q)$ and
   \item \emph{rounded:} $L(q) = \exis{r : \Q} q < r \land L(r)$.
-    \index{rounded!Dedekind cut}
+    \index{rounded!DedekindFenGe@Dedekind分割}
   \end{enumerate}
   %
   (We could also require $\exis{r : \Q} \lnot L(r)$ to exclude the cut $\infty \defeq
