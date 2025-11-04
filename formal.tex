@@ -464,7 +464,7 @@ In this section, there are three kinds of judgments
 \end{mathpar}
 which we specify by providing inference rules for deriving them. A typical \define{inference rule}
 \indexsee{inference rule}{rule}%
-\indexdef{rule}%
+\indexdef{GuiZe@规则}%
 has the form
 %
 \begin{equation*}
@@ -537,7 +537,7 @@ This choice is only one of the many possible ways to formulate a type theory pre
 \subsection{Structural rules}
 
 \index{structural!rules|(}%
-\index{rule!structural|(}%
+\index{GuiZe@规则!structural|(}%
 
 The fact that the context holds assumptions is expressed by the rule which says that we may derive those typing judgments which are listed in the context:
 %
@@ -550,14 +550,14 @@ The fact that the context holds assumptions is expressed by the rule which says 
 As with $\ctx$-\textsc{ext}, the hypothesis and conclusion of the rule $\Vble$ are judgments of different forms, only now they are reversed: we start with a well-formed context and derive a typing judgment.
 
 The following important principles, called \define{substitution}
-\indexdef{rule!of substitution}%
+\indexdef{GuiZe@规则!of substitution}%
 and
 \define{weakening},
-\indexdef{rule!of weakening}%
+\indexdef{GuiZe@规则!of weakening}%
 need not be explicitly assumed. Rather, it is possible to
 show, by induction on the structure of all possible derivations, that whenever
 the hypotheses of these rules are derivable, their conclusion is also
-derivable.\footnote{Such rules are called \define{admissible}\indexdef{rule!admissible}\indexsee{admissible!rule}{rule, admissible}.}
+derivable.\footnote{Such rules are called \define{admissible}\indexdef{GuiZe@规则!admissible}\indexsee{admissible!rule}{rule, admissible}.}
 For the typing judgments these principles are manifested as
 %
 \begin{mathpar}
@@ -614,7 +614,7 @@ $\Pi$-\textsc{form-eq}\ and $\Pi$-\textsc{elim-eq}, are assumed.
 Taken together, these local principles (at every type) imply the global congruence principles
 $\Subst_2$ and $\Subst_3$ above. We will omit these local rules for brevity.
 
-\index{rule!structural|)}%
+\index{GuiZe@规则!structural|)}%
 \index{structural!rules|)}%
 
 \subsection{Type universes}
@@ -662,8 +662,8 @@ Consequently, we may define dependent functions directly, without reference to n
 %
 In fact, henceforth each type former is introduced systematically by:
 \begin{itemize}
-\item a \define{formation rule}, stating when the type former can be applied;\index{formation rule}\index{rule!formation}
-\item some \define{introduction rules}, stating how to inhabit the type;\index{introduction rule}\index{rule!introduction}
+\item a \define{formation rule}, stating when the type former can be applied;\index{formation rule}\index{GuiZe@规则!formation}
+\item some \define{introduction rules}, stating how to inhabit the type;\index{introduction rule}\index{GuiZe@规则!introduction}
 \item \define{elimination rules}, or an induction principle, stating how to use an
   element of the type;
   \index{induction principle}\index{eliminator}
@@ -1074,7 +1074,7 @@ has its own notion of computation, namely the computation rule\index{computation
   (\lam{x} t)(u) \defeq t[u/x].
 \]
 This rule, together with the defining equations for the defined constants form
-\emph{rewriting rules}\index{rewriting rule}\index{rule!rewriting} that determine reduction steps for a rewriting 
+\emph{rewriting rules}\index{rewriting rule}\index{GuiZe@规则!rewriting} that determine reduction steps for a rewriting 
 system. These steps yield a notion of computation in the sense that each rule
 has a natural direction: one simplifies $(\lam{x} t)(u)$ by evaluating the
 function at its argument.
