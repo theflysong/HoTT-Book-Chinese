@@ -43,22 +43,22 @@ We consider successively the levels of structure which \uset possesses.
 \label{subsec:limits-sets}
 
 \index{limit!of sets}%
-\index{colimit!of sets}%
+\index{YuJiXian@余极限!of sets}%
 
 Since sets are closed under products, the universal property of products in \cref{thm:prod-ump} shows immediately that \uset has finite products.
 In fact, infinite products follow just as easily from the equivalence
 \[ \Parens{X\to \prd{a:A} B(a)} \eqvsym \Parens{\prd{a:A} (X\to B(a))}.\]
 And we saw in \cref{ex:pullback}\index{pullback} that the pullback of $f:A\to C$ and $g:B\to C$ can be defined as $\sm{a:A}{b:B} f(a)=g(b)$; this is a set if $A,B,C$ are and inherits the correct universal property.
 Thus, \uset is a \emph{complete} category in the obvious sense.
-\index{FanChou@范畴!complete}%
-\index{complete!FanChou@范畴}%
+\index{FanChou@范畴!WanBeiDe@完备的}%
+\index{WanBeiDe@完备的!FanChou@范畴}%
 
 Since sets are closed under $+$ and contain \emptyt, \uset has finite coproducts.
 Similarly, since $\sm{a:A}B(a)$ is a set whenever $A$ and each $B(a)$ are, it yields a coproduct of the family $B$ in \uset.
 Finally, we showed in \cref{sec:pushouts} that pushouts exist in $n$-types, which includes \uset in particular.
 Thus, \uset is also \emph{cocomplete}.
-\index{FanChou@范畴!cocomplete}%
-\index{cocomplete category}%
+\index{FanChou@范畴!YuWanBei@余完备}%
+\index{YuWanBeiFanChou@余完备范畴}%
 
 \subsection{Images}
 \label{sec:image}
@@ -457,7 +457,7 @@ is a coequalizer diagram. Since coequalizers are unique up to equivalence, it fo
 
 We finish this section by mentioning a possible third construction of the quotient of a set $A$ by an equivalence relation $R$.
 Consider the precategory with objects $A$ and hom-sets $R$; the type of objects of the Rezk completion
-\index{completion!Rezk}%
+\index{WanBei@完备!Rezk}%
 (see \cref{sec:rezk}) of this precategory will then be the
 quotient. The reader is invited to check the details.
 
@@ -481,11 +481,11 @@ with disjoint finite coproducts, effective equivalence relations, and initial al
 notion of topos, i.e.\ a category of ``predicative sets'', which can serve the purpose for constructive mathematics
 \index{mathematics!GouZaoXingDe@构造性的}%
 that the usual category of sets does for classical
-\index{mathematics!classical}%
+\index{mathematics!JingDianDe@经典的}%
 mathematics.
 
 Typically, in constructive type theory, one resorts to an external construction of ``setoids'' --- an exact completion --- to obtain a category with such closure properties.
-\index{setoid}\index{completion!exact}%
+\index{setoid}\index{WanBei@完备!exact}%
   In particular, the well-behaved quotients are required for many constructions in mathematics that usually involve (non-constructive) power sets.  It is noteworthy that univalent foundations provides these constructions \emph{internally} (via higher inductive types), without requiring such external constructions.  This represents a powerful advantage of our approach, as we shall see in subsequent examples.
 
 \begin{thm}
@@ -520,7 +520,7 @@ However, if we assume an appropriate form of propositional resizing (see \cref{s
 \index{topos|)}
 
 A sufficient condition for this is the law of excluded middle, in the ``mere-propositional'' form that we have called \LEM{}; for then we have $\prop = \bool$, which \emph{is} small, and which then also classifies all mere propositions.
-Moreover, in topos theory a well-known sufficient condition for \LEM{} is the axiom of choice, which is of course often assumed as an axiom in classical\index{mathematics!classical} set theory.
+Moreover, in topos theory a well-known sufficient condition for \LEM{} is the axiom of choice, which is of course often assumed as an axiom in classical\index{mathematics!JingDianDe@经典的} set theory.
 In the next section, we briefly investigate the relation between these conditions in our setting.
 
 \index{structural!JiHeLun@集合论|)}%
@@ -686,8 +686,8 @@ an exercise for the reader (\cref{ex:well-pointed}).
 \begin{defn}\label{defn:card}
   The \define{type of cardinal numbers}
   \indexdef{LeiXing@类型!of cardinal numbers}%
-  \indexdef{cardinal number}%
-  \indexsee{number!cardinal}{cardinal number}%
+  \indexdef{JiShu@基数}%
+  \indexsee{number!JiShuDe@基数的}{基数}%
   is the 0-truncation of the type \set of sets:
   \[ \card \defeq \pizero{\set} \]
   Thus, a \define{cardinal number}, or \define{cardinal}, is an inhabitant of $\card\jdeq \pizero\set$.
@@ -699,14 +699,14 @@ an exercise for the reader (\cref{ex:well-pointed}).
   % , but with these conventions we can state theorems beginning with ``for all cardinal numbers\dots''\ and give them exactly the same sort of meaning as those beginning ``for all types\dots''.
 %\end{rmk}
 
-As usual for truncations, if $A$ is a set, then $\cd{A}$ denotes its image under the canonical projection $\set \to \trunc0\set \jdeq \card$; we call $\cd{A}$ the \define{cardinality}\indexdef{cardinality} of $A$.
+As usual for truncations, if $A$ is a set, then $\cd{A}$ denotes its image under the canonical projection $\set \to \trunc0\set \jdeq \card$; we call $\cd{A}$ the \define{cardinality}\indexdef{JiShuXing@技术性} of $A$.
 By definition, \card is a set.
 It also inherits the structure of a semiring from \set.
 
 \begin{defn}
   The operation of \define{cardinal addition}
   \indexdef{JiaFa@加法!of cardinal numbers}%
-  \index{cardinal number!...DeJiaFa@...的加法}%
+  \index{JiShu@基数!...DeJiaFa@...的加法}%
   \[ (\blank+\blank) : \card \to \card \to \card \]
   is defined by induction on truncation:
   \[ \cd{A} + \cd{B} \defeq \cd{A+B}.\]
@@ -721,7 +721,7 @@ It also inherits the structure of a semiring from \set.
 \begin{defn}
   Similarly, the operation of \define{cardinal multiplication}
   \indexdef{multiplication!of cardinal numbers}%
-  \index{cardinal number!multiplication of}%
+  \index{JiShu@基数!multiplication of}%
   \[ (\blank\cdot\blank) : \card \to \card \to \card \]
   is defined by induction on truncation:
   \[ \cd{A} \cdot \cd{B} \defeq \cd{A\times B} \]
@@ -752,7 +752,7 @@ It also inherits the structure of a semiring from \set.
 \begin{defn}
   The operation of \define{cardinal exponentiation} is also defined by induction on truncation:
   \indexdef{exponentiation, of cardinal numbers}%
-  \index{cardinal number!exponentiation of}%
+  \index{JiShu@基数!exponentiation of}%
   \[ \cd{A}^{\cd{B}} \defeq \cd{B\to A}. \]
 \end{defn}
 
@@ -774,7 +774,7 @@ It also inherits the structure of a semiring from \set.
 \begin{defn}
   The relation of \define{cardinal inequality}
   \index{order!non-strict}%
-  \index{cardinal number!inequality of}%
+  \index{JiShu@基数!inequality of}%
   \[ (\blank\le\blank) : \card\to\card\to\prop \]
   is defined by induction on truncation:
   \symlabel{inj}
@@ -1028,7 +1028,7 @@ Recall from \cref{subsec:prop-subsets} that $\power B$ denotes the \emph{power s
   Thus, we can define $f(a)\defeq \bar f (a,w(a))$.
 \end{proof}
 
-In classical\index{mathematics!classical} logic, well-foundedness has a more well-known reformulation.
+In classical\index{mathematics!JingDianDe@经典的} logic, well-foundedness has a more well-known reformulation.
 In the following, we say that a subset $B: \power A$ is \define{nonempty}
 \indexdef{nonempty subset}
 if it is unequal to the empty subset $(\lam{x}\bot) : \power X$.
@@ -1279,7 +1279,7 @@ Similar remarks apply to the next lemma, which could be proved in a less useful 
 \label{sec:wellorderings}
 
 \index{denial|(}%
-We now show the equivalence of our ordinals with the more familiar classical\index{mathematics!classical} well-orderings.
+We now show the equivalence of our ordinals with the more familiar classical\index{mathematics!JingDianDe@经典的} well-orderings.
 
 \begin{lem}
   \index{PaiZhongLv@排中律}%
@@ -1332,7 +1332,7 @@ In particular, a well-founded relation must be \define{irreflexive}, i.e.\ $\neg
   Similarly, it implies extensionality, for if $\fall{c:A}(c<a)\Leftrightarrow (c<b)$, then $a<b$ implies (letting $c$ be $a$) that $a<a$, which is a cycle, and similarly if $b<a$; hence $a=b$.
 \end{proof}
 
-In classical\index{mathematics!classical} mathematics, the characterization of \cref{thm:wellorder} is taken as the definition of a \emph{well-ordering}, with the \emph{ordinals} being a canonical set of representatives of isomorphism classes for well-orderings.
+In classical\index{mathematics!JingDianDe@经典的} mathematics, the characterization of \cref{thm:wellorder} is taken as the definition of a \emph{well-ordering}, with the \emph{ordinals} being a canonical set of representatives of isomorphism classes for well-orderings.
 In our context, the structure identity principle means that there is no need to look for such representatives: any well-ordering is as good as any other.
 
 We now move on to consider consequences of the axiom of choice.
@@ -1354,7 +1354,7 @@ Assuming excluded middle, this is equivalently the type of \emph{nonempty}\index
 \end{thm}
 
 \noindent
-Of course,~\ref{item:wop1} is a standard classical\index{mathematics!classical} version of the axiom of choice; see \cref{ex:choice-function}.
+Of course,~\ref{item:wop1} is a standard classical\index{mathematics!JingDianDe@经典的} version of the axiom of choice; see \cref{ex:choice-function}.
 
 \begin{proof}
   One direction is easy: suppose~\ref{item:wop2}.
@@ -1525,7 +1525,7 @@ $x\subseteq y$ is defined on $V$ as usual by
 \end{equation*}
 
 A \define{class}
-\indexdef{class}%
+\indexdef{Lei@类}%
 may be taken to be a mere predicate on~$V$. We can say that a class $C : V \to \prop$ is a
 \define{$V$-set}
 \indexdef{JiHe@集合!in the cumulative hierarchy}%
@@ -1540,8 +1540,8 @@ We may also use the conventional notation for classes, which matches our standar
 \end{equation}
 %
 A class $C: V\to \prop$ will be called \define{$\UU$-small}
-\indexdef{class!small}%
-\indexdef{small!class}%
+\indexdef{Lei@类!small}%
+\indexdef{small!Lei@类}%
 if all of its values $C(x)$ lie in $\UU$, specifically $C: V\to \prop_{\UU}$.
 Since $V$ lives in the same universe $\UU'$ as does the base universe $\UU$ from which it is built, the same is true for the identity types $v=_V w$ for any $v,w:V$. To obtain a well-behaved theory in the absence of propositional resizing,
 \index{propositional!resizing}%
@@ -1684,7 +1684,7 @@ For every $u:V$ there is a given $A_u:\UU$ and monic $m_u: A_u \mono V$ such tha
     if we take $z \defeq f(a)$ we see that $C(y)$ holds.
 
   \item Let us say that a class $C: V\to\prop$ is \define{separable}
-    \indexdef{class!separable}%
+    \indexdef{Lei@类!separable}%
     \indexdef{separable class}%
     if for any $a:V$ the class
   %
@@ -1732,12 +1732,12 @@ We have shown that in type theory with a universe $\UU$, the cumulative hierarch
 with many of the standard axioms.
 However, as far as we know, it lacks the \emph{strong collection}
 \index{GongLi@公理!strong collection}%
-\index{collection!strong}%
-\index{strong!collection}%
+\index{DuiXiangZongTi@对象总体!strong}%
+\index{strong!DuiXiangZongTi@对象总体}%
 and \emph{subset collection}
 \index{GongLi@公理!subset collection}%
-\index{collection!subset}%
-\index{subset!collection}%
+\index{DuiXiangZongTi@对象总体!subset}%
+\index{subset!DuiXiangZongTi@对象总体}%
 axioms which are included in \CZF{}~\cite{AczelCZF}.
 In the usual interpretation of this set theory into type theory, these two axioms are consequences of the setoid-like definition of equality; while in other constructed models of set theory, strong collection may hold for other reasons.
 We do not know whether either of these axioms holds in our model $(V,\in)$, but it seems unlikely.
@@ -1794,7 +1794,7 @@ The idea of algebraic set theory, which informs our development in \cref{sec:cum
 
 \begin{ex}\label{ex:utype-ct}
   Following the pattern of $\uset$, we would like to make a category $\utype$ of all types and maps between them (in a given universe $\UU$).  In order for this to be a category in the sense of \cref{sec:cats}, however, we must first declare $\hom(X,Y) \defeq \pizero{X\to Y}$, with composition defined by induction on truncation from ordinary composition $(Y\to Z) \to (X\to Y) \to (X\to Z)$.  This was defined as the \emph{homotopy precategory of types} in \cref{ct:hoprecat}.  It is still not a category, however, but only a precategory (its type of objects $\UU$ is not even a $0$-type).  It becomes a category by Rezk completion
-  \index{completion!Rezk}%
+  \index{WanBei@完备!Rezk}%
   (see \cref{ct:hocat}), and its type of objects can be identified with $\trunc1\type$ by \cref{ct:ex:hocat}.  Show that the resulting category $\utype$, unlike $\uset$, is not a pretopos.
 \end{ex}
 
@@ -1901,8 +1901,8 @@ The idea of algebraic set theory, which informs our development in \cref{sec:cum
 \begin{ex}\label{ex:strong-collection}
   In \CZF, the \define{axiom of strong collection}
   \indexdef{GongLi@公理!strong collection}%
-  \indexdef{collection!strong}%
-  \indexdef{strong!collection}%
+  \indexdef{DuiXiangZongTi@对象总体!strong}%
+  \indexdef{strong!DuiXiangZongTi@对象总体}%
   has the form:
    \begin{multline*}
    \Parens{\fall{x\in v}\exis{y} R(x,y)} \Rightarrow \\

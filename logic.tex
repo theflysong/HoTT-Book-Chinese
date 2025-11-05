@@ -169,7 +169,7 @@ For instance, in \cref{thm:ttac} we saw that the statement
 \begin{equation}\label{eq:english-ac}
   \parbox{\textwidth-2cm}{``If for all $x:X$ there exists an $a:A(x)$ such that $P(x,a)$, then there exists a function $g:\prd{x:X} A(x)$ such that for all $x:X$ we have $P(x,g(x))$'',}
 \end{equation}
-which looks like the classical\index{mathematics!classical} \emph{axiom of choice}, is always true under this reading. This is a noteworthy, and often useful, feature of the propositions-as-types logic, but it also illustrates how significantly it differs from the classical interpretation of logic, under which the axiom of choice is not a logical truth, but an additional ``axiom''.
+which looks like the classical\index{mathematics!JingDianDe@经典的} \emph{axiom of choice}, is always true under this reading. This is a noteworthy, and often useful, feature of the propositions-as-types logic, but it also illustrates how significantly it differs from the classical interpretation of logic, under which the axiom of choice is not a logical truth, but an additional ``axiom''.
 
 On the other hand, we can now also show that corresponding statements looking like the classical \emph{law of double negation} and \emph{law of excluded middle} are incompatible with the univalence axiom.
 \index{FanDengGongLi@泛等公理}%
@@ -221,8 +221,8 @@ On the other hand, we can now also show that corresponding statements looking li
 \end{proof}
 
 \begin{rmk}
-  \index{choice operator}%
-  \indexsee{operator!choice}{choice operator}%
+  \index{XuanZeSuanZi@选择算子}%
+  \indexsee{operator!XuanZe@选择}{选择算子}%
   In particular, this implies that there can be no Hilbert-style ``choice operator'' which selects an element of every nonempty type.
   The point is that no such operator can be \emph{natural}, and under the univalence axiom, all functions acting on types must be natural with respect to equivalences.
 \end{rmk}
@@ -245,7 +245,7 @@ On the other hand, we can now also show that corresponding statements looking li
   Thus, in both cases we have an element of $A$, as desired.
 \end{proof}
 
-Thus, if we want to assume the univalence axiom (which, of course, we do) and still leave ourselves the option of classical\index{mathematics!classical} reasoning (which is also desirable), we cannot use the unmodified propositions-as-types principle to interpret \emph{all} informal mathematical statements into type theory, since then the law of excluded middle would be false.
+Thus, if we want to assume the univalence axiom (which, of course, we do) and still leave ourselves the option of classical\index{mathematics!JingDianDe@经典的} reasoning (which is also desirable), we cannot use the unmodified propositions-as-types principle to interpret \emph{all} informal mathematical statements into type theory, since then the law of excluded middle would be false.
 However, neither do we want to discard propositions-as-types entirely, because of its many good properties (such as simplicity, constructivity, and computability).
 We now discuss a modification of propositions-as-types which resolves these problems; in \cref{subsec:when-trunc} we will return to the question of which logic to use when.
 \index{anger|)}%
@@ -305,7 +305,7 @@ That is, as promised in \cref{sec:pat}, if two mere propositions are logically e
 In homotopy theory, a space that is homotopy equivalent to \unit is said to be \emph{contractible}.
 Thus, any mere proposition which is inhabited is contractible (see also \cref{sec:contractibility}).
 On the other hand, the uninhabited type \emptyt is also (vacuously) a mere proposition.
-In classical\index{mathematics!classical} mathematics, at least, these are the only two possibilities.
+In classical\index{mathematics!JingDianDe@经典的} mathematics, at least, these are the only two possibilities.
 
 Mere propositions are also called \emph{subterminal objects} (if thinking categorically), \emph{subsingletons} (if thinking set-theoretically), or \emph{h-propositions}.
 \indexsee{object!subterminal}{mere proposition}%
@@ -395,7 +395,7 @@ Quite often, a simple reformulation of a definition or theorem enables us to avo
 While this takes a little getting used to sometimes, it is often worth the hassle, resulting in more elegant and more general proofs.
 We discussed some of the benefits of this in the introduction.
 
-For instance, in classical\index{mathematics!classical} mathematics, double negations are frequently used unnecessarily.
+For instance, in classical\index{mathematics!JingDianDe@经典的} mathematics, double negations are frequently used unnecessarily.
 A very simple example is the common assumption that a set $A$ is ``nonempty'', which literally means it is \emph{not} the case that $A$ contains \emph{no} elements.
 Almost always what is really meant is the positive assertion that $A$ \emph{does} contain at least one element, and by removing the double negation we make the statement less dependent on \LEM{}.
 Recall that we say that a type $A$ is \emph{inhabited}
@@ -404,7 +404,7 @@ when we assert $A$ itself as a proposition (i.e.\ we construct an element of $A$
 Thus, often when translating a classical proof into constructive logic, we replace the word ``nonempty'' by ``inhabited'' (although sometimes we must replace it instead by ``merely inhabited''; see \cref{subsec:prop-trunc}).
 
 Similarly, it is not uncommon in classical mathematics to find unnecessary proofs by contradiction.
-\index{proof!by contradiction}%
+\index{proof!TongGuoFanZhengFa@通过反证法}%
 Of course, the classical form of proof by contradiction proceeds by way of the law of double negation: we assume $\neg A$ and derive a contradiction, thereby deducing $\neg \neg A$, and thus by double negation we obtain $A$.
 However, often the derivation of a contradiction from $\neg A$ can be rephrased slightly so as to yield a direct proof of $A$, avoiding the need for \LEM{}.
 
@@ -416,7 +416,7 @@ With practice, one learns to distinguish more carefully between negated and non-
 Thus, contrary to how it may appear on the surface, doing mathematics ``constructively'' does not usually involve giving up important theorems, but rather finding the best way to state the definitions so as to make the important theorems constructively provable.
 That is, we may freely use the \LEM{} when first investigating a subject, but once that subject is better understood, we can hope to refine its definitions and proofs so as to avoid that axiom.
 % For instance, the theory of ordinal numbers, which classically makes heavy use of \LEM{}, works quite well constructively once we choose the correct definition of ``ordinal''; see \cref{sec:ordinals}.
-This sort of observation is even more pronounced in \emph{homotopy} type theory, where the powerful tools of univalence and higher inductive types allow us to constructively attack many problems that traditionally would require classical\index{mathematics!classical} reasoning.
+This sort of observation is even more pronounced in \emph{homotopy} type theory, where the powerful tools of univalence and higher inductive types allow us to constructively attack many problems that traditionally would require classical\index{mathematics!JingDianDe@经典的} reasoning.
 We will see several examples of this in \cref{part:mathematics}.
 % For instance, none of the ``synthetic'' homotopy theory we will develop in \cref{cha:homotopy} requires \LEM{} --- despite the fact that classical homotopy theory (formulated using topological spaces or simplicial sets) makes heavy use of them (as well as the axiom of choice).
 
@@ -560,7 +560,7 @@ See also \cref{subsec:piw}.
 
 \index{LuoJi@逻辑!of mere propositions|(}%
 We mentioned in \cref{sec:types-vs-sets} that in contrast to type theory, which has only one basic notion (types), set-theoretic foundations have two basic notions: sets and propositions.
-Thus, a classical\index{mathematics!classical} mathematician is accustomed to manipulating these two kinds of objects separately.
+Thus, a classical\index{mathematics!JingDianDe@经典的} mathematician is accustomed to manipulating these two kinds of objects separately.
 
 It is possible to recover a similar dichotomy in type theory, with the role of the set-theoretic propositions being played by the types (and type families) that are \emph{mere} propositions.
 In many cases, the logical connectives and quantifiers can be represented in this logic by simply restricting the corresponding type-former to the mere propositions.
@@ -601,8 +601,8 @@ This is a purely constructive interpretation of ``there exists an $x:A$ such tha
 \index{truncation!propositional|(defstyle}%
 \indexsee{LeiXing@类型!squash}{truncation, propositional}%
 \indexsee{squash type}{truncation, propositional}%
-\indexsee{bracket type}{truncation, propositional}%
-\indexsee{LeiXing@类型!bracket}{truncation, propositional}%
+\indexsee{KuoHaoLeiXing@括号类型}{truncation, propositional}%
+\indexsee{LeiXing@类型!KuoHao@括号}{truncation, propositional}%
 The \emph{propositional truncation}, also called the \emph{$(-1)$-truncation}, \emph{bracket type}, or \emph{squash type}, is an additional type former which ``squashes'' or ``truncates'' a type down to a mere proposition, forgetting all information contained in inhabitants of that type other than their existence.
 
 More precisely, for any type $A$, there is a type $\brck{A}$.
@@ -681,7 +681,7 @@ Similarly, when discussing subsets as in \cref{subsec:prop-subsets}, we may use 
 \symlabel{intersection}%
 \indexdef{union!of subsets}%
 \symlabel{union}%
-\indexdef{complement, of a subset}%
+\indexdef{ZiJiDeBu@子集的补}%
 \symlabel{complement}%
 \begin{align*}
   \setof{x:A | P(x)} \cap \setof{x:A | Q(x)}
@@ -748,7 +748,7 @@ In fact, because of \cref{thm:ttac}, this axiom can also be expressed in a simpl
   \end{equation}
 \end{lem}
 
-This corresponds to a well-known equivalent form of the classical\index{mathematics!classical} axiom of choice, namely ``the cartesian product of a family of nonempty sets is nonempty''.
+This corresponds to a well-known equivalent form of the classical\index{mathematics!JingDianDe@经典的} axiom of choice, namely ``the cartesian product of a family of nonempty sets is nonempty''.
 
 \begin{proof}
   By \cref{thm:ttac}, the codomain of~\eqref{eq:ac} is equivalent to
@@ -801,7 +801,7 @@ However, observe that we cannot relax the requirement that $X$ be a set.
 \section{The principle of unique choice}
 \label{sec:unique-choice}
 
-\index{unique!choice|(defstyle}%
+\index{unique!XuanZe@选择|(defstyle}%
 \indexsee{GongLi@公理!XuanZe@选择!unique}{unique choice}%
 
 The following observation is trivial, but very useful.
@@ -846,7 +846,7 @@ One option is of course to refine the argument to unique existence of $b : B$, a
 In homotopy type theory, however, quite apart from any desire to avoid choice, the available forms of choice are simply less applicable, since they require that the domain of choice be a \emph{set}.
 Thus, if $A$ is not a set (such as perhaps a universe $\UU$), there is no consistent form of choice that will allow us to simply pick an element of $B$ for each $a : A$ to use in defining $f(a)$.
 
-\index{unique!choice|)}%
+\index{unique!XuanZe@选择|)}%
 
 
 \section{When are propositions truncated?}
@@ -938,8 +938,8 @@ In this book we will continue using untruncated logic as the default convention,
 \section{Contractibility}
 \label{sec:contractibility}
 
-\index{LeiXing@类型!contractible|(defstyle}%
-\index{contractible!LeiXing@类型|(defstyle}%
+\index{LeiXing@类型!KeSuoDe@可缩的|(defstyle}%
+\index{KeSuoDe@可缩的!LeiXing@类型|(defstyle}%
 
 In \cref{thm:inhabprop-eqvunit} we observed that a mere proposition which is inhabited must be equivalent to $\unit$,
 \index{LeiXing@类型!unit}%
@@ -1096,8 +1096,8 @@ Another reason contractible types are interesting is that they extend the ladder
 Thus, contractible types may also be called \define{$(-2)$-types}.
 They are the bottom rung of the ladder of $n$-types, and will be the base case of the recursive definition of $n$-types in \cref{cha:hlevels}.
 
-\index{LeiXing@类型!contractible|)}%
-\index{contractible!LeiXing@类型|)}%
+\index{LeiXing@类型!KeSuoDe@可缩的|)}%
+\index{KeSuoDe@可缩的!LeiXing@类型|)}%
 
 \sectionNotes
 

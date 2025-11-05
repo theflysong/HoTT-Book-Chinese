@@ -65,7 +65,7 @@ For instance, the induction principle for \bool is:
 \item When proving a statement $E : \bool \to \type$ about \emph{all} inhabitants of \bool, it suffices to prove it for $\bfalse$ and $\btrue$, i.e., to give proofs $e_0 : E(\bfalse)$ and $e_1 : E(\btrue)$.
 \end{itemize}
 
-Furthermore, the resulting proof $\ind\bool(E,e_0,e_1): \prd{b : \bool}E(b)$ behaves as expected when applied to the constructors $\bfalse$ and $\btrue$; this principle is expressed by the \emph{computation rules}\index{computation rule!for type of booleans}:
+Furthermore, the resulting proof $\ind\bool(E,e_0,e_1): \prd{b : \bool}E(b)$ behaves as expected when applied to the constructors $\bfalse$ and $\btrue$; this principle is expressed by the \emph{computation rules}\index{JiSuanGuiZe@计算规则!for type of booleans}:
 \begin{itemize}
 \item We have $\ind\bool(E,e_0,e_1,\bfalse) \jdeq e_0$.
 \item We have $\ind\bool(E,e_0,e_1,\btrue) \jdeq e_1$.
@@ -83,7 +83,7 @@ This gives us the following induction principle:
 for $n$, i.e., we construct $e_z : E(0)$ and $e_s : \prd{n : \nat} E(n) \to E(\suc(n))$.
 \end{itemize}
 As in the case of booleans, we also have the associated computation rules for the function $\ind\nat(E,e_z,e_s) : \prd{x:\nat} E(x)$:
-\index{computation rule!for natural numbers}%
+\index{JiSuanGuiZe@计算规则!for natural numbers}%
 \begin{itemize}
 \item $\ind\nat(E,e_z,e_s,0) \jdeq e_z$.
 \item $\ind\nat(E,e_z,e_s,\suc(n)) \jdeq e_s(n,\ind\nat(E,e_z,e_s,n))$ for any $n : \nat$.
@@ -331,7 +331,7 @@ with $e$ as defined above.
 
 \symlabel{defn:recursor-wtype}
 The associated computation rule for the function $\rec{\wtype{x:A} B(x)}(E,e) : \prd{w : \wtype{x:A} B(x)} E(w)$ is as follows.
-\index{computation rule!for W-types@for $\w$-types}%
+\index{JiSuanGuiZe@计算规则!for W-types@for $\w$-types}%
 \begin{itemize}
 \item
   For any $a : A$ and $f : B(a) \to \wtype{x:A} B(x)$ we have
@@ -579,7 +579,7 @@ This means that the computation rules for natural numbers, which give judgmental
 \index{LeiXing@类型!homotopy-inductive}%
 \index{homotopy-inductive type}%
 This problem goes away if instead of the conventional inductive types we consider \emph{homotopy-inductive types}, where all computation rules are stated up to a path, i.e.\ the symbol $\jdeq$ is replaced by $=$. For instance, the computation rule for the homotopy version of $\w$-types $\mathsf{W^h}$ becomes:
-\index{computation rule!propositional}%
+\index{JiSuanGuiZe@计算规则!propositional}%
 \begin{itemize}
 \item For any $a : A$ and $f : B(a) \to \wtypeh{x:A} B(x)$ we have
 \begin{equation*}
@@ -622,7 +622,7 @@ In other words, it suffices to construct a function
   c : \prd{a:A} (B(a) \to C) \to C.
 \end{equation*}
 \end{itemize}
-\index{computation rule!propositional}%
+\index{JiSuanGuiZe@计算规则!propositional}%
 The associated computation rule for $\rec{\wtypeh{x:A} B(x)}(C,c) : (\wtype{x:A} B(x)) \to C$ is as follows:
 \begin{itemize}
 \item For any $a : A$ and $f : B(a) \to \wtypeh{x:A} B(x)$ we have
@@ -797,7 +797,7 @@ This is the case for all the examples we have considered so far.
 For instance, with the constructor $\inl:A\to A+B$, the relevant functor is constant at $A$ (i.e.\ $X\mapsto A$), while for the constructor $\suc:\nat\to\nat$, the functor is the identity functor ($X\mapsto X$).
 
 However, this necessary condition is also not sufficient.
-Covariance prevents the inductive type from occurring on the left of a single function type, as in the argument $C\to\nat$ of the ``constructor'' $g$ considered above, since this yields a contravariant\index{HanZi@函子!contravariant}\index{contravariant functor} functor rather than a covariant one.
+Covariance prevents the inductive type from occurring on the left of a single function type, as in the argument $C\to\nat$ of the ``constructor'' $g$ considered above, since this yields a contravariant\index{HanZi@函子!NiBianDe@逆变的}\index{NiBianHanZi@逆变函子} functor rather than a covariant one.
 However, since the composite of two contravariant functors is covariant, \emph{double} function types such as $((X\to \nat)\to \nat)$ are once again covariant.
 This enables us to reproduce Cantorian-style paradoxes\index{BeiLun@悖论}.
 
@@ -897,7 +897,7 @@ For the example constructor~\eqref{eq:example-constructor}, we would require $P$
   (B\to C \to P) \to D \to W \to P \to P.
 \end{narrowmultline}
 Under these hypotheses, the recursion principle yields $f:W\to P$, which moreover ``preserves the constructor data'' in the evident way --- this is the computation rule, where we use covariance of the inputs.
-\index{computation rule!for inductive types}%
+\index{JiSuanGuiZe@计算规则!for inductive types}%
 For instance, in the example~\eqref{eq:example-constructor}, the computation rule says that for any $\alpha:A\to W$, $\beta:B\to C\to W$, $\delta:D$, and $\omega:W$, we have
 \begin{equation}
   f(c(\alpha,\beta,\delta,\omega)) \jdeq d(\alpha,f\circ \alpha,\beta, f\circ \beta, \delta, \omega,f(\omega)).\label{eq:example-comp}
@@ -922,8 +922,8 @@ As we have mentioned before, the induction principle is also called the \define{
 
 As discussed in \cref{sec:pattern-matching}, we also allow ourselves to invoke the induction and recursion principles implicitly, writing a definitional equation with $\defeq$ for each expression that would be the hypotheses of the induction principle.
 This is called giving a definition by (dependent) \define{pattern matching}.
-\index{MoShiPiPei@漠视匹配}%
-\index{DingYi@定义!by pattern matching}%
+\index{MoShiPiPei@模式匹配}%
+\index{DingYi@定义!TongGuoMoShiPiPei@通过模式匹配}%
 In our running example, this means we could define $f:\prd{w:W} P(w) $ by
 \[ f(c(\alpha,\beta,\delta,\omega)) \defeq \cdots \]
 where $\alpha:A\to W$ and $\beta:B\to C\to W$ and $\delta:D$ and $\omega:W$ are variables

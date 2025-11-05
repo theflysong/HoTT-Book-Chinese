@@ -3,7 +3,7 @@
 
 同伦类型论的核心创意是类型可以被视作同伦论中的空间,抑或是范畴论中的高阶群胚。
 
-\index{classical!TongLunLun@同伦论|(}
+\index{JingDianDe@经典的!TongLunLun@同伦论|(}
 \index{higher category theory|(}
 We begin with a brief summary of the connection between homotopy theory
 and higher-dimensional category theory.
@@ -103,7 +103,7 @@ a space, it will agree with the classical definition of fundamental
 group of that space.  Because of this correspondence, homotopy theory
 and higher-dimensional category theory are intimately related.
 
-\index{classical!TongLunLun@同伦论|)}%
+\index{JingDianDe@经典的!TongLunLun@同伦论|)}%
 \index{higher category theory|)}%
 
 \mentalpause
@@ -279,9 +279,9 @@ Next we prove the transitivity of equality, or equivalently we ``concatenate pat
   written $p \mapsto q \mapsto p\ct q$, such that $\refl{x}\ct \refl{x}\jdeq \refl{x}$ for any $x:A$.
   We call $p\ct q$ the \define{concatenation} or \define{composite} of $p$ and $q$.
   \indexdef{DaoLu@道路!LianJie@连接}%
-  \indexdef{DaoLu@道路!composite}%
+  \indexdef{DaoLu@道路!FuHe@复合}%
   \indexdef{DaoLuDeLianJie@道路的连接}%
-  \indexdef{composition!of paths}%
+  \indexdef{FuHe@复合!of paths}%
   \index{equality!transitivity of}%
   \index{transitivity!XiangDengXingDe@相等性的}%
 \end{lem}
@@ -600,7 +600,7 @@ where $\mathsf{lu}_r$ denotes the left unit law.
 The operations $\leftwhisker$ and $\rightwhisker$ are called \define{whiskering}\indexdef{whiskering}.
 Next, since $\alpha \rightwhisker r$ and $q\leftwhisker \beta$ are composable 2-paths, we can define the \define{horizontal composition}
 \indexdef{horizontal composition!of paths}%
-\indexdef{composition!of paths!horizontal}%
+\indexdef{FuHe@复合!of paths!horizontal}%
 by:
 \[
 \alpha\hct\beta\ \defeq\ (\alpha\rightwhisker r) \ct (q\leftwhisker \beta).
@@ -1120,7 +1120,7 @@ Thus,~\eqref{eq:qinvtype} is \emph{the type of quasi-inverses of $f$}; we may de
 In general, we will only use the word \emph{isomorphism}
 \index{TongGou@同构!of sets}
 (and similar words such as \emph{bijection}, and the associated notation $A\cong B$)
-\index{bijection}
+\index{ShuangShe@双射}
 in the special case when the types $A$ and $B$ ``behave like sets'' (see \cref{sec:basics-sets}).
 In this case, the type~\eqref{eq:qinvtype} is unproblematic.
 We will reserve the word \emph{equivalence} for an improved notion $\isequiv (f)$ with the following properties:%
@@ -1296,7 +1296,7 @@ From this perspective, the two components of~\eqref{eq:path-prod}:
 \end{align*}
 are \emph{elimination} rules.
 Similarly, the two homotopies which witness~\eqref{eq:path-prod-inverse} as quasi-inverse to~\eqref{eq:path-prod} consist, respectively, of \emph{propositional computation rules}:
-\index{computation rule!propositional!for identities between pairs}%
+\index{JiSuanGuiZe@计算规则!propositional!for identities between pairs}%
 \begin{align*}
   {\projpath{1}{(\pairpath(p, q)})}
   &= %_{(\id{\proj{1} x}{\proj{1} y})}
@@ -1603,7 +1603,7 @@ In particular, \cref{axiom:funext} implies that~\eqref{eq:happly} has a quasi-in
 \]
 This function is also referred to as ``function extensionality''.
 As we did with $\pairpath$ in \cref{sec:compute-cartprod}, we can regard $\funext$ as an \emph{introduction rule} for the type $\id f g$.
-From this point of view, $\happly$ is the \emph{elimination rule}, while the homotopies witnessing $\funext$ as quasi-inverse to $\happly$ become a propositional computation rule\index{computation rule!propositional!for identities between functions}
+From this point of view, $\happly$ is the \emph{elimination rule}, while the homotopies witnessing $\funext$ as quasi-inverse to $\happly$ become a propositional computation rule\index{JiSuanGuiZe@计算规则!propositional!for identities between functions}
 \[
 \id{\happly({\funext{(h)}},x)}{h(x)} \qquad\text{for }h:\prd{x:A} (\id{f(x)}{g(x)})
 \]
@@ -1768,7 +1768,7 @@ As we did in previous sections, it is useful to break this equivalence into:
   \[
   \idtoeqv \jdeq \transfibf{X \mapsto X} : (\id[\type]{A}{B}) \to (\eqv A B).
   \]
-\item The propositional computation rule\index{computation rule!propositional!for univalence},
+\item The propositional computation rule\index{JiSuanGuiZe@计算规则!propositional!for univalence},
   \[
   \transfib{X \mapsto X}{\ua(f)}{x} = f(x).
   \]
@@ -2441,7 +2441,7 @@ If we read $\Sigma$ as ``there exists'' and $\Pi$ (sometimes) as ``for all'', we
 \item $\sm{g:\prd{x:X} A(x)} \prd{x:X} P(x,g(x))$ as ``there exists a choice function $g:\prd{x:X} A(x)$ such that for all $x:X$ we have $P(x,g(x))$''.
 \end{itemize}
 Thus, \cref{thm:ttac} says that not only is the axiom of choice ``true'', its antecedent is actually equivalent to its conclusion.
-(On the other hand, the classical\index{mathematics!classical} mathematician may find that~\eqref{eq:sigma-ump-map} does not carry the usual meaning of the axiom of choice, since we have already specified the values of $g$, and there are no choices left to be made.
+(On the other hand, the classical\index{mathematics!JingDianDe@经典的} mathematician may find that~\eqref{eq:sigma-ump-map} does not carry the usual meaning of the axiom of choice, since we have already specified the values of $g$, and there are no choices left to be made.
 We will return to this point in \cref{sec:axiom-choice}.)
 
 The above universal property for pair types is for ``mapping in'', which is familiar from the category-theoretic notion of products.
@@ -2471,9 +2471,9 @@ for any $a:A$ and type family $B:\prd{x:A} (a=x) \to\type$.
 However, inductive types with recursion, such as the natural numbers, have more complicated universal properties; see \cref{cha:induction}.
 
 \index{LeiXing@类型!limit}%
-\index{LeiXing@类型!colimit}%
+\index{LeiXing@类型!YuJiXian@余极限}%
 \index{limit!of types}%
-\index{colimit!of types}%
+\index{YuJiXian@余极限!of types}%
 Since \cref{thm:prod-ump} expresses the usual universal property of a cartesian product (in an appropriate homotopy-theoretic sense), the categorically inclined reader may well wonder about other limits and colimits of types.
 In \cref{ex:coprod-ump} we ask the reader to show that the coproduct type $A+B$ also has the expected universal property, and the nullary cases of $\unit$ (the terminal object) and $\emptyt$ (the initial object) are easy.
 \index{LeiXing@类型!empty}%
@@ -2616,7 +2616,7 @@ Resolving this problem is an important open question\index{KaiFang@开放!WenTi@
 
 \begin{ex}\label{ex:pullback}
   A (homotopy) \define{commutative square}
-  \indexdef{commutative!square}%
+  \indexdef{KeJiaoHuanDe@可交换的!square}%
   \begin{equation*}
   \vcenter{\xymatrix{
       P\ar[r]^h\ar[d]_k &

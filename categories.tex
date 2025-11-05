@@ -21,9 +21,9 @@ Alternatively, we can require a generalized version of the univalence axiom, ide
 Since we regard the latter choice as usually the ``correct'' definition, we will call it simply a \emph{category}.
 
 A good example of the difference between the three notions of category is provided by the statement ``every fully faithful and essentially surjective functor is an equivalence of categories'', which in classical set-based category theory is equivalent to the axiom of choice.
-\index{mathematics!classical}%
+\index{mathematics!JingDianDe@经典的}%
 \index{GongLi@公理!XuanZe@选择}%
-\index{classical!FanChouLun@范畴论}%
+\index{JingDianDe@经典的!FanChouLun@范畴论}%
 \begin{enumerate}
 \item For strict categories, this is still equivalent to the axiom of choice.
 \item For precategories, there is no consistent axiom of choice which can make it true.
@@ -31,14 +31,14 @@ A good example of the difference between the three notions of category is provid
 \end{enumerate}
 We will prove the latter statement in this chapter, as well as other pleasant properties of categories, e.g.\ that equivalent categories are equal (as elements of the type of categories).
 We will also describe a universal way of ``saturating'' a precategory $A$ into a category $\widehat A$, which we call its \emph{Rezk completion},
-\index{completion!Rezk}%
+\index{WanBei@完备!Rezk}%
 although it could also reasonably be called the \emph{stack completion} (see the Notes).
 
 The Rezk completion also sheds further light on the notion of equivalence of categories.
 For instance, the functor $A \to \widehat{A}$ is always fully faithful and essentially surjective, hence a ``weak equivalence''.
 It follows that a precategory is a category exactly when it ``sees'' all fully faithful and essentially surjective functors as equivalences; thus our notion of ``category'' is already inherent in the notion of ``fully faithful and essentially surjective functor''.
 
-We assume the reader has some basic familiarity with classical category theory.\index{classical!FanChouLun@范畴论}
+We assume the reader has some basic familiarity with classical category theory.\index{JingDianDe@经典的!FanChouLun@范畴论}
 Recall that whenever we write \type it denotes some universe of types, but perhaps a different one at different times; everything we say remains true for any consistent choice of universe levels\index{YuZhouCengJi@宇宙层级}.
 We will use the basic notions of homotopy type theory from \cref{cha:typetheory,cha:basics} and the propositional truncation from \cref{cha:logic}, but not much else from \cref{part:foundations}, except that our second construction of the Rezk completion will use a higher inductive type.
 
@@ -67,7 +67,7 @@ This leads us to the following definition.
   \item For each $a:A$, a morphism $1_a:\hom_A(a,a)$, called the \define{identity morphism}.%
     \indexdef{identity!morphism in a (pre)category}
   \item For each $a,b,c:A$, a function%
-    \indexdef{composition!of morphisms in a (pre)category}
+    \indexdef{FuHe@复合!of morphisms in a (pre)category}
     \[  \hom_A(b,c) \to \hom_A(a,b) \to \hom_A(a,c) \]
     called \define{composition}, and denoted infix by $g\mapsto f\mapsto g\circ f$, or sometimes simply by $gf$.
   \item For each $a,b:A$ and $f:\hom_A(a,b)$, we have $\id f {1_b\circ f}$ and $\id f {f\circ 1_a}$.
@@ -201,7 +201,7 @@ and so on.
 
 \begin{eg}\label{ct:gaunt}
   If $A$ is a category, then $A_0$ is a set if and only if for any $a,b:A_0$, the type $a\cong b$ is a mere proposition.
-  Given that $A$ is a category, this is equivalent to saying that every automorphism in $A$ is an identity arrow. On the other hand, if $A$ is a precategory such that $A_0$ is a set, then $A$ is a category precisely if it is skeletal\index{mathematics!classical} (any two isomorphic objects are equal) \emph{and} every automorphism is an identity arrow.
+  Given that $A$ is a category, this is equivalent to saying that every automorphism in $A$ is an identity arrow. On the other hand, if $A$ is a precategory such that $A_0$ is a set, then $A$ is a category precisely if it is skeletal\index{mathematics!JingDianDe@经典的} (any two isomorphic objects are equal) \emph{and} every automorphism is an identity arrow.
   Categories of this sort are sometimes called \define{gaunt}~\cite{bsp12infncats}.
   \indexdef{FanChou@范畴!gaunt}%
   \indexdef{gaunt category}%
@@ -272,7 +272,7 @@ and so on.
 \end{eg}
 
 We might now restrict ourselves to considering categories rather than precategories.
-Instead, we will develop many concepts for precategories as well as categories, in order to emphasize how much better-behaved categories are, as compared both to precategories and to ordinary categories in classical\index{mathematics!classical} mathematics.
+Instead, we will develop many concepts for precategories as well as categories, in order to emphasize how much better-behaved categories are, as compared both to precategories and to ordinary categories in classical\index{mathematics!JingDianDe@经典的} mathematics.
 
 We will also see in \crefrange{sec:strict-categories}{sec:dagger-categories} that in slightly more exotic contexts, there are uses for certain kinds of precategories other than categories, each of which ``fixes'' the equality of objects in different ways.
 This emphasizes the ``pre''-ness of precategories: they are the raw material out of which multiple important categorical structures can be defined.
@@ -431,7 +431,7 @@ We now define all the usual ways to compose functors and natural transformations
 \end{proof}
 
 \index{horizontal composition!of natural transformations}%
-\index{classical!FanChouLun@范畴论}%
+\index{JingDianDe@经典的!FanChouLun@范畴论}%
 Classically, one defines the ``horizontal composite'' of $\gamma:F\to G$ and $\delta:H\to K$ to be the common value of ${(\delta G)(H\gamma)}$ and ${(K\gamma)(\delta F)}$.
 We will refrain from doing this, because while equal, these two transformations are not \emph{definitionally} equal.
 This also has the consequence that we can use the symbol $\circ$ (or juxtaposition) for all kinds of composition unambiguously: there is only one way to compose two natural transformations (as opposed to composing a natural transformation with a functor on either side).
@@ -1197,7 +1197,7 @@ Thus for each $x,y:A$ we have a set of unitary isomorphisms from $x$ to $y$, whi
   It follows from this that \uhilb is a $\dagger$-category, though it is not a category (not every linear isomorphism is unitary).
 \end{eg}
 
-There has been a good deal of general theory developed for $\dagger$-cat\-e\-gor\-ies under classical\index{mathematics!classical}\index{classical!FanChouLun@范畴论} foundations.
+There has been a good deal of general theory developed for $\dagger$-cat\-e\-gor\-ies under classical\index{mathematics!JingDianDe@经典的}\index{JingDianDe@经典的!FanChouLun@范畴论} foundations.
 It was observed early on that the unitary isomorphisms, not arbitrary isomorphisms, are the correct notion of ``sameness'' for objects of a $\dagger$-category, which has caused some consternation among category theorists.
 Homotopy type theory resolves this issue by identifying $\dagger$-categories, like strict categories, as simply a different kind of precategory.
 
@@ -1371,7 +1371,7 @@ In fact, we will give two.
 Both rely on the fact that ``categories see weak equivalences as equivalences''.
 
 To prove this, we begin with a couple of lemmas which are completely standard category theory, phrased carefully so as to make sure we are using the eliminator for $\truncf{-1}$ correctly.
-One would have to be similarly careful in classical\index{mathematics!classical}\index{classical!FanChouLun@范畴论} category theory if one wanted to avoid the axiom of choice: any time we want to define a function, we need to characterize its values uniquely somehow.
+One would have to be similarly careful in classical\index{mathematics!JingDianDe@经典的}\index{JingDianDe@经典的!FanChouLun@范畴论} category theory if one wanted to avoid the axiom of choice: any time we want to define a function, we need to characterize its values uniquely somehow.
 
 \begin{lem}\label{ct:esosurj-postcomp-faithful}
   If $A,B,C$ are precategories and $H:A\to B$ is an essentially surjective functor, then $(\blank\circ H):C^B \to C^A$ is faithful.
@@ -1440,7 +1440,7 @@ One would have to be similarly careful in classical\index{mathematics!classical}
 
 The rest of the theorem follows almost exactly the same lines, with the category-ness of $C$ inserted in one crucial step, which we have italicized below for emphasis.
 This is the point at which we are trying to define a function into \emph{objects} without using choice, and so we must be careful about what it means for an object to be ``uniquely specified''.
-In classical\index{mathematics!classical}\index{classical!FanChouLun@范畴论} category theory, all one can say is that this object is specified up to unique isomorphism, but in set-theoretic foundations this is not a sufficient amount of uniqueness to give us a function without invoking \choice{}.
+In classical\index{mathematics!JingDianDe@经典的}\index{JingDianDe@经典的!FanChouLun@范畴论} category theory, all one can say is that this object is specified up to unique isomorphism, but in set-theoretic foundations this is not a sufficient amount of uniqueness to give us a function without invoking \choice{}.
 In univalent foundations, however, if $C$ is a category, then isomorphism is equality, and we have the appropriate sort of uniqueness (namely, living in a contractible space).
 
 \index{weak equivalence!of precategories|(}%
@@ -1530,8 +1530,8 @@ In univalent foundations, however, if $C$ is a category, then isomorphism is equ
 Therefore, if a precategory $A$ admits a weak equivalence functor $A\to \widehat{A}$ into a category, then that is its ``reflection'' into categories: any functor from $A$ into a category will factor essentially uniquely through $\widehat{A}$.
 We now give two constructions of such a weak equivalence.
 
-\indexsee{RezkWanBei@Rezk完备}{completion, Rezk}%
-\index{completion!Rezk|(defstyle}%
+\indexsee{RezkWanBei@Rezk完备}{Rezk完备}%
+\index{WanBei@完备!Rezk|(defstyle}%
 
 \begin{thm}\label{thm:rezk-completion}
   For any precategory $A$, there is a category $\widehat A$ and a weak equivalence $A\to\widehat{A}$.
@@ -1669,7 +1669,7 @@ although there is also an argument (coming from higher topos semantics)
 \index{.WuQiong1TuoPuSi@$(\infty,1)$-拓扑斯}%
 for calling it the \define{stack completion}.
 \index{stack}%
-\index{completion!Rezk|)}%
+\index{WanBei@完备!Rezk|)}%
 
 We have seen that most precategories arising in practice are categories, since they are constructed from \uset, which is a category by the univalence axiom.
 However, there are a few cases in which the Rezk completion is necessary to obtain a category.
@@ -1732,7 +1732,7 @@ Independently of philosophical considerations about category theory, Rezk~\cite{
 \index{.infinity1-category@$(\infty,1)$-category}%
 it was very convenient to use not merely a \emph{set} of objects with spaces of morphisms between them, but a \emph{space} of objects incorporating all the equivalences and homotopies between them.
 This yields a very well-behaved sort of model for $(\infty,1)$-categories as particular simplicial spaces, which Rezk called \emph{complete Segal spaces}.
-\index{complete!SegalKongJian@Segal空间}%
+\index{WanBeiDe@完备的!SegalKongJian@Segal空间}%
 \index{Segal!space}%
 One especially good aspect of this model is the analogue of \cref{ct:eqv-levelwise}: a map of complete Segal spaces is an equivalence just when it is a levelwise equivalence of simplicial spaces.
 
@@ -1750,7 +1750,7 @@ In Rezk's context, what we have called the ``Rezk completion'' corresponds to fi
 \index{fibrant replacement}
 in the model category for complete Segal spaces.
 Since this is built using a transfinite induction argument, it most closely matches our second construction as a higher inductive type.
-However, in higher topos models of homotopy type theory, the Rezk completion corresponds to \emph{stack completion},\index{completion!stack}\index{stack!completion} which can be constructed either with a transfinite induction~\cite{jt:strong-stacks} or using a Yoneda embedding \cite{bunge:stacks-morita-internal}.
+However, in higher topos models of homotopy type theory, the Rezk completion corresponds to \emph{stack completion},\index{WanBei@完备!stack}\index{stack!WanBei@完备} which can be constructed either with a transfinite induction~\cite{jt:strong-stacks} or using a Yoneda embedding \cite{bunge:stacks-morita-internal}.
 
 
 \sectionExercises
