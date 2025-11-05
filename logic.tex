@@ -11,11 +11,11 @@ In this chapter we will explain the issues involved, and justify the choices we 
 \section{Sets and \texorpdfstring{$n$}{n}-types}
 \label{sec:basics-sets}
 
-\index{set|(defstyle}%
+\index{JiHe@集合|(defstyle}%
 
 In order to explain the connection between the logic of type theory and the logic of set theory, it is helpful to have a notion of \emph{set} in type theory.
 While types in general behave like spaces or higher groupoids, there is a subclass of them that behave more like the sets in a traditional set-theoretic system.
-Categorically, we may consider \emph{discrete} groupoids, which are determined by a set of objects and only identity morphisms as higher morphisms; while topologically, we may consider spaces having the discrete topology.\index{discrete!space}
+Categorically, we may consider \emph{discrete} groupoids, which are determined by a set of objects and only identity morphisms as higher morphisms; while topologically, we may consider spaces having the discrete topology.\index{LiSanDe@离散的!space}
 More generally, we may consider groupoids or spaces that are \emph{equivalent} to ones of this sort; since everything we do in type theory is up to homotopy, we can't expect to tell the difference.
 
 Intuitively, we would expect a type to ``be a set'' in this sense if it has no higher homotopical information: any two parallel paths are equal (up to homotopy), and similarly for parallel higher paths at all dimensions.
@@ -131,7 +131,7 @@ Second, this stratification of types by level is not degenerate, in the
 sense that not all types are sets:
 
 \begin{eg}\label{thm:type-is-not-a-set}
-  \index{type!universe}%
+  \index{LeiXing@类型!YuZhou@宇宙}%
   The universe \type is not a set.
   To prove this, it suffices to exhibit a type $A$ and a path $p:A=A$ which is not equal to $\refl A$.
   Take $A=\bool$, and let $f:A\to A$ be defined by $f(\bfalse)\defeq \btrue$ and $f(\btrue)\defeq \bfalse$.
@@ -154,18 +154,18 @@ Since sets are equivalently 0-types, it is natural to call a type a \emph{$(-1)$
 Such types may be regarded as \emph{propositions in a narrow sense}, and their study is just what is usually called ``logic''; it will occupy us for the rest of this chapter.
 
 \index{n-type@$n$-type|)}%
-\index{set|)}%
+\index{JiHe@集合|)}%
 
 \section{Propositions as types?}
 \label{subsec:pat?}
 
-\index{proposition!as types|(}%
-\index{LuoJi@逻辑!constructive vs classical|(}%
+\index{proposition!JiLeiXing@即类型|(}%
+\index{LuoJi@逻辑!GouZaoXingDevsJingDianDe@构造性的vs经典的|(}%
 \index{anger|(}%
 Until now, we have been following the straightforward ``propositions as types'' philosophy described in \cref{sec:pat}, according to which English phrases such as ``there exists an $x:A$ such that $P(x)$'' are interpreted by corresponding types such as $\sm{x:A} P(x)$, with the proof of a statement being regarded as judging some specific element to inhabit that type.
 However, we have also seen some ways in which the ``logic'' resulting from this reading seems unfamiliar to a classical mathematician.
 For instance, in \cref{thm:ttac} we saw that the statement
-\index{GongLi@公理!XuanZe@选择!type-theoretic}%
+\index{GongLi@公理!XuanZe@选择!LeiXingLunDe@类型论的}%
 \begin{equation}\label{eq:english-ac}
   \parbox{\textwidth-2cm}{``If for all $x:X$ there exists an $a:A(x)$ such that $P(x,a)$, then there exists a function $g:\prd{x:X} A(x)$ such that for all $x:X$ we have $P(x,g(x))$'',}
 \end{equation}
@@ -175,7 +175,7 @@ On the other hand, we can now also show that corresponding statements looking li
 \index{FanDengGongLi@泛等公理}%
 
 \begin{thm}\label{thm:not-dneg}
-  \index{double negation, law of}%
+  \index{ShuangChongFouDingLv@双重否定律}%
   It is not the case that for all $A:\UU$ we have $\neg(\neg A) \to A$.
 \end{thm}
 \begin{proof}
@@ -249,8 +249,8 @@ Thus, if we want to assume the univalence axiom (which, of course, we do) and st
 However, neither do we want to discard propositions-as-types entirely, because of its many good properties (such as simplicity, constructivity, and computability).
 We now discuss a modification of propositions-as-types which resolves these problems; in \cref{subsec:when-trunc} we will return to the question of which logic to use when.
 \index{anger|)}%
-\index{proposition!as types|)}%
-\index{LuoJi@逻辑!constructive vs classical|)}%
+\index{proposition!JiLeiXing@即类型|)}%
+\index{LuoJi@逻辑!GouZaoXingDevsJingDianDe@构造性的vs经典的|)}%
 
 \section{Mere propositions}
 \label{subsec:hprops}
@@ -353,12 +353,12 @@ We have seen one other example so far: condition~\ref{item:be3} in \cref{sec:bas
 \section{Classical vs.\ intuitionistic logic}
 \label{sec:intuitionism}
 
-\index{LuoJi@逻辑!constructive vs classical|(}%
+\index{LuoJi@逻辑!GouZaoXingDevsJingDianDe@构造性的vs经典的|(}%
 \index{denial|(}%
 With the notion of mere proposition in hand, we can now give the proper formulation of the \define{law of excluded middle}
 \indexdef{excluded middle}%
-\indexsee{axiom!excluded middle}{excluded middle}%
-\indexsee{law!of excluded middle}{excluded middle}%
+\indexsee{GongLi@公理!excluded middle}{excluded middle}%
+\indexsee{Lv@律!PaiZhongDe@排中的}{excluded middle}%
 in homotopy type theory:
 \begin{equation}
   \label{eq:lem}
@@ -366,9 +366,9 @@ in homotopy type theory:
   \prd{A:\UU} \Big(\isprop(A) \to (A + \neg A)\Big).
 \end{equation}
 Similarly, the \define{law of double negation}
-\indexdef{double negation, law of}%
-\indexdef{axiom!double negation}%
-\indexdef{law!of double negation}%
+\indexdef{ShuangChongFouDingLv@双重否定律}%
+\indexdef{GongLi@公理!ShuangChongFouDing@双重否定}%
+\indexdef{Lv@律!ShuangChongFouDingDe@双重否定的}%
 is
 \begin{equation}
   \label{eq:ldn}
@@ -427,16 +427,16 @@ The name traditionally given to such propositions is \emph{decidable}.
   \mbox{}
   \begin{enumerate}
   \item A type $A$ is called \define{decidable}
-    \indexdef{decidable!type}%
-    \indexdef{type!decidable}%
+    \indexdef{KePanDingDe@可判定的!LeiXing@类型}%
+    \indexdef{LeiXing@类型!KePanDingDe@可判定的}%
     if $A+\neg A$.
   \item Similarly, a type family $B:A\to \type$ is \define{decidable}
-    \indexdef{decidable!type family}%
-    \indexdef{type!family of!decidable}%
+    \indexdef{KePanDingDe@可判定的!LeiXingZu@类型族}%
+    \indexdef{LeiXing@类型!family of!KePanDingDe@可判定的}%
     if \narrowequation{\prd{a:A} (B(a)+\neg B(a)).} \label{item:decidable-equality2}
   \item In particular, $A$ has \define{decidable equality}
-    \indexdef{decidable!equality}%
-    \indexsee{equality!decidable}{decidable equality}%
+    \indexdef{KePanDingDe@可判定的!equality}%
+    \indexsee{equality!KePanDingDe@可判定的}{可判定相等性}%
     if \narrowequation{\prd{a,b:A} ((a=b) + \neg(a=b)).}
   \end{enumerate}
 \end{defn}
@@ -446,7 +446,7 @@ In particular, $\LEM{}$ implies that all sets (in the sense of \cref{sec:basics-
 Having decidable equality in this sense is very strong; see \cref{thm:hedberg}.
 
 \index{denial|)}%
-\index{LuoJi@逻辑!constructive vs classical|)}%
+\index{LuoJi@逻辑!GouZaoXingDevsJingDianDe@构造性的vs经典的|)}%
 
 \section{Subsets and propositional resizing}
 \label{subsec:prop-subsets}
@@ -491,7 +491,7 @@ as an alternative notation for $\sm{x:A} P(x)$.
 (There is no technical reason not to use this notation for arbitrary $P$ as well, but such usage could be confusing due to unintended connotations.)
 If $A$ is a set, we call \eqref{eq:subset} a \define{subset}
 \indexdef{subset}%
-\indexdef{type!subset}%
+\indexdef{LeiXing@类型!subset}%
 of $A$; for general $A$ we might call it a \define{subtype}.
 \indexdef{subtype}%
 We may also refer to $P$ itself as a \emph{subset} or \emph{subtype} of $A$; this is actually more correct, since the type~\eqref{eq:subset} in isolation doesn't remember its relationship to $A$.
@@ -522,12 +522,12 @@ Thus, for any $(A,s):\set_{\UU_i}$ we also have $(A,s):\set_{\UU_{i+1}}$, and si
   \set_{\UU_i} &\to \set_{\UU_{i+1}}\label{eq:set-up},\\
   \prop_{\UU_i} &\to \prop_{\UU_{i+1}}.\label{eq:prop-up}
 \end{align}
-The map~\eqref{eq:set-up} cannot be an equivalence, since then we could reproduce the paradoxes\index{paradox} of self-reference that are familiar from Cantorian set theory.
+The map~\eqref{eq:set-up} cannot be an equivalence, since then we could reproduce the paradoxes\index{BeiLun@悖论} of self-reference that are familiar from Cantorian set theory.
 However, although~\eqref{eq:prop-up} is not automatically an equivalence in the type theory we have presented so far, it is consistent to suppose that it is.
 That is, we may consider adding to type theory the following axiom.
 
 \begin{axiom}[Propositional resizing]
-  \indexsee{axiom!propositional resizing}{propositional resizing}%
+  \indexsee{GongLi@公理!propositional resizing}{propositional resizing}%
   \indexdef{propositional!resizing}%
   \indexsee{resizing!propositional}{propositional resizing}%
   The map $\prop_{\UU_i} \to \prop_{\UU_{i+1}}$ is an equivalence.
@@ -579,7 +579,7 @@ Of course, this requires knowing that the type-former in question preserves mere
 
   In particular, if $P$ is a mere proposition, then so is $A\to P$ regardless of what $A$ is.
   In even more particular, since \emptyt is a mere proposition, so is $\neg A \jdeq (A\to\emptyt)$.
-  \index{quantifier!universal}%
+  \index{quantifier!FanDe@泛的}%
   Thus, the connectives ``implies'' and ``not'' preserve mere propositions, as does the quantifier ``for all''.
 \end{eg}
 
@@ -599,10 +599,10 @@ This is a purely constructive interpretation of ``there exists an $x:A$ such tha
 \label{subsec:prop-trunc}
 
 \index{truncation!propositional|(defstyle}%
-\indexsee{type!squash}{truncation, propositional}%
+\indexsee{LeiXing@类型!squash}{truncation, propositional}%
 \indexsee{squash type}{truncation, propositional}%
 \indexsee{bracket type}{truncation, propositional}%
-\indexsee{type!bracket}{truncation, propositional}%
+\indexsee{LeiXing@类型!bracket}{truncation, propositional}%
 The \emph{propositional truncation}, also called the \emph{$(-1)$-truncation}, \emph{bracket type}, or \emph{squash type}, is an additional type former which ``squashes'' or ``truncates'' a type down to a mere proposition, forgetting all information contained in inhabitants of that type other than their existence.
 
 More precisely, for any type $A$, there is a type $\brck{A}$.
@@ -652,8 +652,8 @@ traditional logical notations to refer only to ``propositionally truncated logic
   \index{quantifier}%
   \indexsee{existential quantifier}{quantifier, existential}%
   \index{quantifier!existential}%
-  \indexsee{universal!quantifier}{quantifier, universal}%
-  \index{quantifier!universal}%
+  \indexsee{FanDe@泛的!quantifier}{quantifier, universal}%
+  \index{quantifier!FanDe@泛的}%
   \indexdef{conjunction}%
   \indexdef{disjunction}%
   \indexdef{true}%
@@ -802,7 +802,7 @@ However, observe that we cannot relax the requirement that $X$ be a set.
 \label{sec:unique-choice}
 
 \index{unique!choice|(defstyle}%
-\indexsee{axiom!XuanZe@选择!unique}{unique choice}%
+\indexsee{GongLi@公理!XuanZe@选择!unique}{unique choice}%
 
 The following observation is trivial, but very useful.
 
@@ -874,7 +874,7 @@ Moreover, when deriving further properties of this $x$, one may use phrases such
 A very common example is ``$A$ is isomorphic to $B$'', which strictly speaking means only that there exists \emph{some} isomorphism between $A$ and~$B$.
 But almost invariably, when proving such a statement, one exhibits a specific isomorphism or proves that some previously known map is an isomorphism, and it often matters later on what particular isomorphism was given.
 
-Set-theoretically trained mathematicians often feel a twinge of guilt at such ``abuses of language''.\index{abuse!of language}
+Set-theoretically trained mathematicians often feel a twinge of guilt at such ``abuses of language''.\index{LanYong@滥用!of language}
 We may attempt to apologize for them, expunge them from final drafts, or weasel out of them with vague words like ``canonical''.
 The problem is exacerbated by the fact that in formalized set theory, there is technically no way to ``construct'' objects at all --- we can only prove that an object with certain properties exists.
 Untruncated logic in type theory thus captures some common practices of informal mathematics that the set theoretic reconstruction obscures.
@@ -889,7 +889,7 @@ Perhaps depending on the sort of mathematics being done, one convention or the o
 In this case, a remark at the beginning of a mathematical paper may suffice to inform the reader of the linguistic conventions in use therein.
 However, even after one overall convention is chosen, the other sort of logic will usually arise at least occasionally, so we need a way to refer to it.
 More generally, one may consider replacing the propositional truncation with another operation on types that behaves similarly, such as the double negation operation $A\mapsto \neg\neg A$, or the $n$-truncations to be considered in \cref{cha:hlevels}.
-As an experiment in exposition,  in what follows we will occasionally use \emph{adverbs}\index{adverb} to denote the application of such ``modalities'' as propositional truncation.
+As an experiment in exposition,  in what follows we will occasionally use \emph{adverbs}\index{FuCi@副词} to denote the application of such ``modalities'' as propositional truncation.
 
 For instance, if untruncated logic is the default convention, we may use the adverb \define{merely}
 \indexdef{merely}%
@@ -903,7 +903,7 @@ Similarly, we will say that a type $A$ is \define{merely inhabited}
 \indexdef{merely!inhabited}%
 \indexdef{inhabited type!merely}%
 to mean that its propositional truncation $\brck A$ is inhabited (i.e.\ that we have an unnamed element of it).
-Note that this is a \emph{definition}\index{definition!of adverbs} of the adverb ``merely'' as it is to be used in our informal mathematical English, in the same way that we define nouns\index{noun} like ``group'' and ``ring'', and adjectives\index{adjective} like ``regular'' and ``normal'', to have precise mathematical meanings.
+Note that this is a \emph{definition}\index{DingYi@定义!of adverbs} of the adverb ``merely'' as it is to be used in our informal mathematical English, in the same way that we define nouns\index{noun} like ``group'' and ``ring'', and adjectives\index{XingRuCi@形如词} like ``regular'' and ``normal'', to have precise mathematical meanings.
 We are not claiming that the dictionary definition of ``merely'' refers to propositional truncation; the choice of word is meant only to remind the mathematician reader that a mere proposition contains ``merely'' the information of a truth value and nothing more.
 
 On the other hand, if truncated logic is the current default convention, we may use an adverb such as \define{purely}
@@ -918,7 +918,7 @@ We may also use ``purely'' or ``actually'' just to emphasize the absence of trun
 In this book we will continue using untruncated logic as the default convention, for a number of reasons.
 \begin{enumerate}[label=(\arabic*)]
 \item We want to encourage the newcomer to experiment with it, rather than sticking to truncated logic simply because it is more familiar.
-\item Using truncated logic as the default in type theory suffers from the same sort of ``abuse of language''\index{abuse!of language} problems as set-theoretic foundations, which untruncated logic avoids.
+\item Using truncated logic as the default in type theory suffers from the same sort of ``abuse of language''\index{LanYong@滥用!of language} problems as set-theoretic foundations, which untruncated logic avoids.
   For instance, our definition of ``$\eqv A B$'' as the type of equivalences between $A$ and $B$, rather than its propositional truncation, means that to prove a theorem of the form ``$\eqv A B$'' is literally to construct a particular such equivalence.
   This specific equivalence can then be referred to later on.
 \item We want to emphasize that the notion of ``mere proposition'' is not a fundamental part of type theory.
@@ -938,11 +938,11 @@ In this book we will continue using untruncated logic as the default convention,
 \section{Contractibility}
 \label{sec:contractibility}
 
-\index{type!contractible|(defstyle}%
-\index{contractible!type|(defstyle}%
+\index{LeiXing@类型!contractible|(defstyle}%
+\index{contractible!LeiXing@类型|(defstyle}%
 
 In \cref{thm:inhabprop-eqvunit} we observed that a mere proposition which is inhabited must be equivalent to $\unit$,
-\index{type!unit}%
+\index{LeiXing@类型!unit}%
 and it is not hard to see that the converse also holds.
 A type with this property is called \emph{contractible}.
 Another equivalent definition of contractibility, which is also sometimes convenient, is the following.
@@ -950,8 +950,8 @@ Another equivalent definition of contractibility, which is also sometimes conven
 \begin{defn}\label{defn:contractible}
   A type $A$ is \define{contractible},
   or a \define{singleton},
-  \indexdef{type!singleton}%
-  \indexsee{singleton type}{type, singleton}%
+  \indexdef{LeiXing@类型!singleton}%
+  \indexsee{singleton type}{类型, 独元的}%
   if there is $a:A$, called the \define{center of contraction},
   \indexdef{center!of contraction}%
   such that $a=x$ for all $x:A$.
@@ -1020,7 +1020,7 @@ For instance, we have:
   Thus by \cref{thm:contr-unit}\ref{item:contr-inhabited-prop}, $\prd{x:A} P(x)$ is contractible.
 \end{proof}
 
-\index{function extensionality}%
+\index{HanShuWaiYanXing@函数外延性}%
 (In fact, the statement of \cref{thm:contr-forall} is equivalent to the function extensionality axiom.
 See~\cref{sec:univalence-implies-funext}.)
 
@@ -1028,12 +1028,12 @@ Of course, if $A$ is equivalent to $B$ and $A$ is contractible, then so is $B$.
 More generally, it suffices for $B$ to be a \emph{retract} of $A$.
 By definition, a \define{retraction}
 \indexdef{retraction}%
-\indexdef{function!retraction}%
+\indexdef{HanShu@函数!retraction}%
 is a function $r : A \to B$ such that there exists a function $s : B \to A$, called its \define{section},
 \indexdef{section}%
-\indexdef{function!section}%
+\indexdef{HanShu@函数!section}%
 and a homotopy $\epsilon:\prd{y:B} (r(s(y))=y)$; then we say that $B$ is a \define{retract}%
-\indexdef{retract!of a type}
+\indexdef{retract!LeiXingDe@类型的}
 of $A$.
 
 \begin{lem}\label{thm:retract-contr}
@@ -1096,13 +1096,13 @@ Another reason contractible types are interesting is that they extend the ladder
 Thus, contractible types may also be called \define{$(-2)$-types}.
 They are the bottom rung of the ladder of $n$-types, and will be the base case of the recursive definition of $n$-types in \cref{cha:hlevels}.
 
-\index{type!contractible|)}%
-\index{contractible!type|)}%
+\index{LeiXing@类型!contractible|)}%
+\index{contractible!LeiXing@类型|)}%
 
 \sectionNotes
 
 The fact that it is possible to define sets, mere propositions, and contractible types in type theory, with all higher homotopies automatically taken care of as in \cref{sec:basics-sets,subsec:hprops,sec:contractibility}, was first observed by Voevodsky.
-In fact, he defined the entire hierarchy of $n$-types by induction, as we will do in \cref{cha:hlevels}.\index{n-type@$n$-type!definable in type theory}%
+In fact, he defined the entire hierarchy of $n$-types by induction, as we will do in \cref{cha:hlevels}.\index{n-type@$n$-type!LeiXingLunZhongKeDingYiDe@类型论中可定义的}%
 
 \cref{thm:not-dneg,thm:not-lem} rely in essence on a classical theorem of Hedberg,
 \index{HedbergDingLi@Hedberg定理}%
@@ -1112,7 +1112,7 @@ The implication that the propositions-as-types form of \LEM{} contradicts unival
 The proof we have given of \cref{thm:not-dneg} is due to Thierry Coquand.
 
 The propositional truncation was introduced in the extensional type theory of
-\index{proof!assistant!\NuPRL}%
+\index{proof!ZhuShou@助手!\NuPRL}%
 \NuPRL in 1983 by Constable~\cite{Con85} as an
 application of ``subset'' and ``quotient'' types.  What is here called the
 ``propositional truncation'' was called ``squashing'' in the \NuPRL type theory~\cite{constable+86nuprl-book}.
@@ -1128,7 +1128,7 @@ The adverb ``purely'' as used to refer to untruncated logic is a reference to th
 
 There are many different ways in which logic can be treated relative to type theory.
 For instance, in addition to the plain propositions-as-types logic described in \cref{sec:pat}, and the alternative which uses mere propositions only as described in \cref{subsec:logic-hprop}, one may introduce a separate ``sort'' of propositions, which behave somewhat like types but are not identified with them.
-This is the approach taken in logic enriched type theory~\cite{aczel2002collection} and in some presentations of the internal languages of toposes\index{TuoPuSi@拓扑斯} and related categories (e.g.~\cite{jacobs1999categorical,elephant}), as well as in the proof assistant \Coq.\index{proof!assistant!Coq@\textsc{Coq}}
+This is the approach taken in logic enriched type theory~\cite{aczel2002collection} and in some presentations of the internal languages of toposes\index{TuoPuSi@拓扑斯} and related categories (e.g.~\cite{jacobs1999categorical,elephant}), as well as in the proof assistant \Coq.\index{proof!ZhuShou@助手!Coq@\textsc{Coq}}
 Such an approach is more general, but less powerful.
 For instance, the principle of unique choice (\cref{sec:unique-choice}) fails in the category of so-called setoids in \Coq~\cite{Spiwack}, in logic enriched type theory~\cite{aczel2002collection}, and in minimal type theory~\cite{maietti2005toward}.\index{setoid}
 Thus, the univalence axiom makes our type theory behave more like the internal logic of a topos;~see also \cref{cha:set-math}.\index{TuoPuSi@拓扑斯}

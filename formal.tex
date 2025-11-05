@@ -4,9 +4,9 @@
 \chapter{形式化类型论}
 \label{cha:rules}
 
-\index{formal!type theory|(}%
-\index{type theory!formal|(}%
-\index{rules of type theory|(}%
+\index{XingShiHuaDe@形式化的!LeiXingLun@类型论|(}%
+\index{LeiXingLun@类型论!XingShiHuaDe@形式化的|(}%
+\index{LeiXingLunDeGuiZe@类型论的规则|(}%
 
 Just as one can develop mathematics in set theory without explicitly using the axioms of Zermelo--Fraenkel set theory, 
 in this book we have developed mathematics in univalent foundations without explicitly referring to a formal
@@ -19,7 +19,7 @@ consistency,
 \item construct models, e.g.\  in simplicial sets, model categories, higher toposes,
 etc., and
 \item implement it in proof assistants like \Coq or \Agda.
-  \index{proof!assistant}
+  \index{proof!ZhuShou@助手}
 \end{itemize}
 %
 Even the logical consistency\index{YiZhiXing@一致性} of homotopy type theory, namely that in the empty context there is no term $a:\emptyt$, is not obvious: if we had erroneously
@@ -74,7 +74,7 @@ or list of assumptions, of the form
 \]
 An element $x_i : A_i$ of the context expresses the assumption that the
 variable
-\index{variable}%
+\index{BianLiang@变量}%
 $x_i$ has type $A_i$. The variables $x_1, \ldots, x_n$ appearing in
 the context must be distinct. We abbreviate contexts with the letters $\Gamma$
 and $\Delta$.
@@ -103,7 +103,7 @@ x_2:A_2,\dots,x_{i-1}:A_{i-1}$.  In particular, therefore, if $\oftp\Gamma aA$ a
 $\wfctx\Gamma$, then we know that each $A_i$ contains only the variables
 $x_1,\dots,x_{i-1}$, and that $a$ and $A$ contain only the variables
 $x_1,\dots,x_n$.
-\index{variable!in context}
+\index{BianLiang@变量!in context}
 
 In informal mathematical presentations, the context is
 implicit. At each point in a proof, the mathematician knows which
@@ -118,7 +118,7 @@ We write $B[a/x]$ for the \define{substitution}
 of a term $a$ for free occurrences of
 the variable~$x$ in the term $B$, with possible capture-avoiding
 renaming of bound variables,
-\index{variable!and substitution}%
+\index{BianLiang@变量!YuTiHuan@与替换}%
 as discussed in
 \cref{sec:function-types}. The general form of substitution
 %
@@ -130,9 +130,9 @@ substitutes expressions $a_1,\dots,a_n$ for the variables
 $x_1,\dots,x_n$ simultaneously.
 
 To \define{bind a variable $x$ in an expression $B$}
-\indexdef{variable!bound}%
+\indexdef{BianLiang@变量!ShouXian@受限}%
 means to incorporate both of them into a larger expression, called an \define{abstraction},
-\indexdef{abstraction}%
+\indexdef{ChouXiang@抽象}%
 whose purpose is to express the fact that $x$ is ``local'' to $B$, i.e., it
 is not to be confused with other occurrences of $x$ appearing
 elsewhere. Bound variables are familiar to programmers, but less so to mathematicians.
@@ -151,8 +151,8 @@ One may also regard each variable $x_i$ of a judgment
   x_1:A_1, x_2:A_2,\dots,x_n:A_n \vdash a : A
 \]
 to be bound in its \define{scope},
-\indexdef{variable!scope of}%
-\index{scope}%
+\indexdef{BianLiang@变量!DeZuoYongYu@的作用域}%
+\index{ZuoYongYu@作用域}%
 consisting of the expressions $A_{i+1},
 \ldots, A_n$, $a$, and $A$.
 
@@ -162,11 +162,11 @@ consisting of the expressions $A_{i+1},
 The objects and types of our type theory may be written as terms using
 the following syntax, which is an extension of $\lambda$-calculus with
 \emph{variables} $x, x',\dots$,
-\index{variable}%
+\index{BianLiang@变量}%
 \emph{primitive constants}
-\index{primitive!constant}%
-\index{constant!primitive}%
-$c,c',\dots$, \emph{defined constants}\index{constant!defined} $f,f',\dots$, and term forming
+\index{primitive!ChangDe@常的}%
+\index{ChangDe@常的!primitive}%
+$c,c',\dots$, \emph{defined constants}\index{ChangDe@常的!DingYiDe@定义的} $f,f',\dots$, and term forming
 operations
 %
 \[
@@ -186,9 +186,9 @@ constant.
 
 Each defined constant has zero, one or more \define{defining equations}.
 \index{equation, defining}%
-\index{defining equation}%
+\index{DingYiDengShi@定义等式}%
 There are two kinds of defined constant. An \emph{explicit}
-\index{constant!explicit}
+\index{ChangDe@常的!explicit}
 defined constant $f$ has a single defining equation
   \[ f(x_1,\dots,x_n)\defeq t,\]
 where $t$ does not involve $f$. 
@@ -213,7 +213,7 @@ natural numbers. We may call this kind of definition of a function a \emph{total
 In computer science and logic this kind of definition
 of a function on a recursive data type has been called a \define{definition by
   structural recursion}.
-\index{definition!by structural recursion}%
+\index{DingYi@定义!by structural recursion}%
 \index{structural!recursion}%
 \index{recursion!structural}%
 
@@ -228,7 +228,7 @@ the computation rule\index{computation rule!for function types}
   (\lam{x} t)(u) \defeq t[u/x],
 \]
 %
-and the rules which make it a \emph{congruence} with respect to application and $\lambda$-abstraction\index{lambda abstraction@$\lambda$-abstraction}:
+and the rules which make it a \emph{congruence} with respect to application and $\lambda$-abstraction\index{lambdaChouXiang@$\lambda$-抽象}:
 %
 \begin{itemize}
 \item if $t \conv t'$ and $s \conv s'$ then $t(s) \conv t'(s')$, and
@@ -251,7 +251,7 @@ The second presentation in \cref{sec:syntax-more-formally} includes the uniquene
 \subsection{Type universes}
 
 We postulate a hierarchy of \define{universes} denoted by primitive constants
-\index{type!universe}
+\index{LeiXing@类型!YuZhou@宇宙}
 %
 \begin{equation*}
   \UU_0, \quad \UU_1, \quad  \UU_2, \quad \ldots
@@ -275,7 +275,7 @@ then $\vdash (\Gamma, x:A)\; \ctx$.
 %
 In the body of the book, an equality judgment $A \jdeq B : \UU_n$ between types
 $A$ and $B$ is usually abbreviated to $A \jdeq B$. This is an instance of
-typical ambiguity\index{typical ambiguity}, as we can always switch to a larger universe, which however does not affect the validity of the judgment.
+typical ambiguity\index{DianXingQiYi@典型歧义}, as we can always switch to a larger universe, which however does not affect the validity of the judgment.
 
 The following conversion rule allows us to replace a type by one equal to it in a typing judgment:
 %
@@ -511,7 +511,7 @@ A context is a list
 \end{equation*}
 %
 which indicates that the distinct variables
-\index{variable}%
+\index{BianLiang@变量}%
 $x_1, \ldots, x_n$ are assumed to have types $A_1, \ldots, A_n$, respectively. The list may be empty. We abbreviate contexts with the letters $\Gamma$ and $\Delta$, and we may juxtapose them to form larger contexts.
 
 The judgment $\wfctx{\Gamma}$ formally expresses the fact that $\Gamma$ is a well-formed context, and is governed by the rules of inference
@@ -536,7 +536,7 @@ This choice is only one of the many possible ways to formulate a type theory pre
 
 \subsection{Structural rules}
 
-\index{structural!rules|(}%
+\index{structural!GuiZe@规则|(}%
 \index{GuiZe@规则!structural|(}%
 
 The fact that the context holds assumptions is expressed by the rule which says that we may derive those typing judgments which are listed in the context:
@@ -557,7 +557,7 @@ and
 need not be explicitly assumed. Rather, it is possible to
 show, by induction on the structure of all possible derivations, that whenever
 the hypotheses of these rules are derivable, their conclusion is also
-derivable.\footnote{Such rules are called \define{admissible}\indexdef{GuiZe@规则!admissible}\indexsee{admissible!rule}{rule, admissible}.}
+derivable.\footnote{Such rules are called \define{admissible}\indexdef{GuiZe@规则!RongXuDe@容许的}\indexsee{RongXuDe@容许的!GuiZe@规则}{rule, admissible}.}
 For the typing judgments these principles are manifested as
 %
 \begin{mathpar}
@@ -615,11 +615,11 @@ Taken together, these local principles (at every type) imply the global congruen
 $\Subst_2$ and $\Subst_3$ above. We will omit these local rules for brevity.
 
 \index{GuiZe@规则!structural|)}%
-\index{structural!rules|)}%
+\index{structural!GuiZe@规则|)}%
 
 \subsection{Type universes}
 
-\index{type!universe}%
+\index{LeiXing@类型!YuZhou@宇宙}%
 
 We postulate an infinite hierarchy of type universes
 %
@@ -646,8 +646,8 @@ implies $\oftp\Gamma{a}{A}$ and $\oftp\Gamma{b}{A}$.
 \subsection{Dependent function types (\texorpdfstring{$\Pi$}{Π}-types)}
 \label{sec:more-formal-pi}
 
-\index{type!dependent function}%
-\index{type!function}%
+\index{LeiXing@类型!YiZhiHanShu@依值函数}%
+\index{LeiXing@类型!HanShu@函数}%
 
 In \cref{sec:function-types}, we introduced non-dependent functions $A\to B$ in
 order to define a family of types as a function $\lam{x:A} B:A\to\UU_i$, which
@@ -669,7 +669,7 @@ In fact, henceforth each type former is introduced systematically by:
   \index{induction principle}\index{eliminator}
 \item \define{computation rules}, which are judgmental equalities explaining what happens when elimination rules are applied to results of introduction rules;
   \index{computation rule}
-  \indexsee{rule!computation}{computation rule}
+  \indexsee{GuiZe@规则!computation}{computation rule}
 \item optional \define{uniqueness principles}, which are judgmental equalities explaining how every element of the type is uniquely determined by the results of elimination rules applied to it.
   \index{uniqueness!principle}
   \indexsee{principle!uniqueness}{uniqueness principle}
@@ -713,8 +713,8 @@ that the omitted type $A$ should be filled in appropriately before type-checking
 \subsection{Dependent pair types (\texorpdfstring{$\Sigma$}{Σ}-types)}
 \label{sec:more-formal-sigma}
 
-\index{type!dependent pair}%
-\index{type!product}%
+\index{LeiXing@类型!YiZhiDui@依值对}%
+\index{LeiXing@类型!product}%
 
 In \cref{sec:sigma-types}, we needed $\to$ and $\prdsym$ types in order to
 define the introduction and elimination rules for $\smsym$; as with $\prdsym$, contexts allow us to state the rules for $\smsym$ independently.
@@ -749,7 +749,7 @@ $\ind{\tsm{x:A} B}$ has some arguments with free variables beyond those in $\Gam
 we bind (following the variable names above) $z$ in $C$, and $x$ and $y$ in $g$.
 These bindings are written as $z.C$ and $x.y.g$, to indicate the names of the bound
 variables.
-\index{variable!bound}%
+\index{BianLiang@变量!ShouXian@受限}%
 In particular, we treat $\ind{\tsm{x:A} B}$ as a primitive,
 two of whose arguments contain binders; this is superficially similar to, but
 different from, $\ind{\tsm{x:A} B}$ being a function that takes functions as
@@ -765,7 +765,7 @@ propositional uniqueness principle.
 
 \subsection{Coproduct types}
 
-\index{type!coproduct}%
+\index{LeiXing@类型!YuJi@余积}%
 
 \begin{mathparpagebreakable}
   \inferrule*[right=$+$-\rform]
@@ -807,7 +807,7 @@ $d$.
 
 \subsection{The empty type \texorpdfstring{$\emptyt$}{0}}
 
-\index{type!empty|(}%
+\index{LeiXing@类型!empty|(}%
 
 \begin{mathparpagebreakable}
   \inferrule*[right=$\emptyt$-\rform]
@@ -821,12 +821,12 @@ $d$.
 %
 In $\ind{\emptyt}$, $x$ is bound in $C$. The empty type has no introduction rule and no computation rule.
 
-\index{type!empty|)}%
+\index{LeiXing@类型!empty|)}%
 
 \subsection{The unit type \texorpdfstring{$\unit$}{1}}
 \label{sec:more-formal-unit}
 
-\index{type!unit|(}%
+\index{LeiXing@类型!unit|(}%
 
 \begin{mathparpagebreakable}
   \inferrule*[right=$\unit$-\rform]
@@ -855,7 +855,7 @@ Notice that we do not postulate a judgmental uniqueness principle for the unit
 type; see \cref{sec:finite-product-types} for a proof of the corresponding
 propositional uniqueness statement.
 
-\index{type!unit|)}%
+\index{LeiXing@类型!unit|)}%
 
 \subsection{The natural number type}
 
@@ -908,7 +908,7 @@ Other inductively defined types follow the same general scheme.
 
 \label{sec:more-formal-identity}
 
-\index{type!identity|(}%
+\index{LeiXing@类型!identity|(}%
 
 The presentation here corresponds to the (unbased) path induction principle for identity types in
 \cref{sec:identity-types}.
@@ -938,11 +938,11 @@ The presentation here corresponds to the (unbased) path induction principle for 
 In $\indid{A}$, $x$, $y$, and $p$ are bound in $C$, and $z$ is bound in
 $c$.
 
-\index{type!identity|)}%
+\index{LeiXing@类型!identity|)}%
 
 \subsection{Definitions}
 
-\index{definition}%
+\index{DingYi@定义}%
 
 Although the rules we have listed so far allow us to construct everything we need directly, we
 would still like to be able to use named constants, such as $\isequiv$, as a matter of
@@ -964,7 +964,7 @@ Then, strictly speaking, $g \circ f$ is not an abbreviation for $\lam{x : A} g(f
 because it involves additional \define{implicit arguments} which we want to suppress.
 \index{implicit argument}
 
-Inference of implicit arguments, typical ambiguity\index{typical ambiguity} (\cref{sec:universes}),
+Inference of implicit arguments, typical ambiguity\index{DianXingQiYi@典型歧义} (\cref{sec:universes}),
 ensuring that symbols are only defined once, etc., are collectively called
 \define{elaboration}. \index{elaboration, in type theory}
 Elaboration must take place prior to checking a derivation, and is
@@ -985,7 +985,7 @@ There are two basic ways of introducing axioms which do not introduce new syntax
 either add a primitive constant to inhabit the axiom, or prove all theorems which depend on the axiom by hypothesizing a variable that inhabits the axiom, cf.\ \cref{sec:axioms}.
 While these are essentially equivalent, we opt for the former approach because we feel that the axioms of homotopy type theory are an essential part of the core theory.
 
-\index{function extensionality}%
+\index{HanShuWaiYanXing@函数外延性}%
 \cref{axiom:funext} is formalized by introduction of a constant $\funext$ which
 asserts that $\happly$ is an equivalence:
 %
@@ -1013,7 +1013,7 @@ The definition of $\idtoeqv$ can be found in~\eqref{eq:uidtoeqv}.
 
 \subsection{The circle}
 
-\index{type!circle}%
+\index{LeiXing@类型!circle}%
 
 Here we give an example of a basic higher inductive type; others follow the same
 general scheme, albeit with elaborations.
@@ -1059,7 +1059,7 @@ differences are discussed in \cref{sec:dependent-paths}.
 \end{mathparpagebreakable}
 %
 In $\ind{\Sn^1}$, $x$ is bound in $C$. The notation ${\dpath C \lloop b b}$ for dependent paths was introduced in \cref{sec:dependent-paths}.
-\index{rules of type theory|)}%
+\index{LeiXingLunDeGuiZe@类型论的规则|)}%
 
 \section{Basic metatheory}
 \index{metatheory|(}%
@@ -1155,7 +1155,7 @@ simplifies to a normal term $a':\emptyt$. But by
  The system in \cref{sec:syntax-informally} is logically consistent.
 \end{cor}
 
-Similarly, we have the \emph{canonicity}\indexdef{canonicity} property that if $a:\N$ in the empty
+Similarly, we have the \emph{canonicity}\indexdef{DianFanXing@典范性} property that if $a:\N$ in the empty
 context, then $a$ simplifies to a normal term $\suc^k(0)$ for some numeral $k$.
 
 \begin{cor}
@@ -1238,8 +1238,8 @@ and a few features essential for homotopy type theory:
 %
 As a matter of convenience, the book primarily defines functions by induction
 using definition by \emph{pattern matching}.
-\index{pattern matching}%
-\index{definition!by pattern matching}%
+\index{MoShiPiPei@漠视匹配}%
+\index{DingYi@定义!by pattern matching}%
 It is possible to formalize the
 notion of pattern matching, as done in \cref{sec:syntax-informally}. However, the
 standard type-theoretic presentation, adopted in \cref{sec:syntax-more-formally}, is to introduce a single \emph{dependent
@@ -1249,8 +1249,8 @@ semantically, as it amounts to the universal property of the type former.
 The two approaches are equivalent; see \cref{sec:pattern-matching} for a
 longer discussion.
 
-\index{type theory!formal|)}%
-\index{formal!type theory|)}%
+\index{LeiXingLun@类型论!XingShiHuaDe@形式化的|)}%
+\index{XingShiHuaDe@形式化的!LeiXingLun@类型论|)}%
 
 
 %%% Local Variables: 

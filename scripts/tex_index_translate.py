@@ -7,6 +7,10 @@ tex_index_translate.py
 用途
 - 扫描当前仓库内所有 .tex 文件，提取 \index|\indexfoot|\indexdef 的条目，
   将分层（以 ! 分隔）的英文段落作为键写入 index_terms.json，值初始化为空串。
+- 识别 \indexsee 的第一个参数（键）并纳入提取/替换。
+ - 识别 \indexsee 的两个参数：
+     - 第一个参数按常规替换为 `pinyin@中文`；
+     - 第二个参数仅替换为中文显示名（不含 `key@` 前缀）。
 - 读取用户在 index_terms.json 中填写的中文翻译，对已翻译的键，
   将对应的索引命令段落从 `英文` 改写为 `pinyin@中文` 并回写 .tex 文件。
 
@@ -14,6 +18,8 @@ tex_index_translate.py
 - 保留已存在的 index_terms.json 中的翻译，不会覆盖非空值。
 - 仅对有翻译的段落进行替换，其他段落保持不变，可分多次翻译/应用。
 - 尽量解析带可选参数的命令形式（如 \index[general]{...}），并支持平衡花括号。
+- 解析分段内的 encap（形如 `key|textbf`、`key|(defstyle`、页码区间 `|(` / `|)`），
+    提取键时忽略 encap，应用替换时原样保留 encap。
 
 混合文本处理
 - 若 JSON 中的中文翻译包含中英混合（如："英文a中文1英文b"），
@@ -68,7 +74,7 @@ except Exception:  # pragma: no cover - optional import checked at runtime
     lazy_pinyin = None  # type: ignore
 
 
-INDEX_CMDS = {"index", "indexfoot", "indexdef"}
+INDEX_CMDS = {"index", "indexfoot", "indexdef", "indexsee"}
 
 
 def iter_tex_files(root: Path) -> Iterable[Path]:
@@ -81,9 +87,10 @@ def iter_tex_files(root: Path) -> Iterable[Path]:
 
 
 def _find_commands_positions(text: str) -> List[Tuple[str, int, int]]:
-    """
-    返回所有 \index|\indexfoot|\indexdef 命令在文本中的 (cmd, start_index, end_index) 位置，
+    r"""
+    返回所有 \index|\indexfoot|\indexdef|\indexsee 命令在文本中的 (cmd, start_index, end_index) 位置，
     其中 [start_index, end_index) 覆盖整个命令，包括可选参数和花括号内容。
+    对于 \indexsee，end 会覆盖到第二个必选参数的右花括号之后。
     """
     results: List[Tuple[str, int, int]] = []
     i = 0
@@ -136,6 +143,25 @@ def _find_commands_positions(text: str) -> List[Tuple[str, int, int]]:
                         elif ch == "}":
                             depth -= 1
                         k += 1
+                    # 对于 \indexsee 解析第二个 {...}
+                    if cmd == "indexsee":
+                        while k < n and text[k].isspace():
+                            k += 1
+                        if k < n and text[k] == "{":
+                            depth = 1
+                            k += 1
+                            while k < n and depth > 0:
+                                ch = text[k]
+                                if ch == "\\":
+                                    k += 1
+                                    if k < n:
+                                        k += 1
+                                    continue
+                                if ch == "{":
+                                    depth += 1
+                                elif ch == "}":
+                                    depth -= 1
+                                k += 1
                     results.append((cmd, i, k))
                     i = k
                     continue
@@ -176,6 +202,28 @@ def _segment_sort_and_display(segment: str) -> Tuple[str, Optional[str]]:
     return segment.strip(), None
 
 
+def _split_encap(segment: str) -> Tuple[str, Optional[str]]:
+    """
+    拆分 encap（以 '|' 标记的部分），返回 (main, encap)；若无 '|' 则 encap 为 None。
+    例如：
+      'dependent|(defstyle' -> ('dependent', '(defstyle)')
+      'key|textbf'         -> ('key', 'textbf')
+    注意：这里不解析 encap 的含义，只作为原样字符串保留，以便应用翻译时复原。
+    """
+    # 寻找未转义的第一个 '|'
+    esc = False
+    for i, ch in enumerate(segment):
+        if esc:
+            esc = False
+            continue
+        if ch == "\\":
+            esc = True
+            continue
+        if ch == "|":
+            return segment[:i], segment[i + 1 :]
+    return segment, None
+
+
 def _is_english_key(s: str) -> bool:
     # 将包含 ASCII 字母/数字/空格/连字符/下划线/斜杠/逗号/点 的当作“英文键”
     # 目的是避免把纯中文或明显命令片段加入键集合
@@ -189,40 +237,132 @@ def extract_terms_from_text(text: str, include_key_at: bool = False) -> List[str
         brace_open = text.find("{", start)
         if brace_open == -1 or brace_open >= end:
             continue
-        arg = text[brace_open + 1 : end - 1]
-        for seg in _split_hierarchy(arg):
-            sort, _display = _segment_sort_and_display(seg)
-            # 默认忽略已有 display（sort@display）的段落，除非显式包含
-            if _display is not None and not include_key_at:
+        # 提取第一个参数
+        depth = 1
+        k = brace_open + 1
+        while k < end and depth > 0:
+            ch = text[k]
+            if ch == "\\":
+                k += 1
+                if k < end:
+                    k += 1
                 continue
-            if sort and _is_english_key(sort):
-                keys.append(sort)
+            if ch == "{":
+                depth += 1
+            elif ch == "}":
+                depth -= 1
+            k += 1
+        arg1_end = k - 1  # '}' 的位置
+        arg1 = text[brace_open + 1 : arg1_end]
+
+        def process_arg_content(arg_content: str) -> None:
+            for seg in _split_hierarchy(arg_content):
+                main, _encap = _split_encap(seg)
+                sort, _display = _segment_sort_and_display(main)
+                # 默认忽略已有 display（sort@display）的段落，除非显式包含
+                if _display is not None and not include_key_at:
+                    continue
+                if sort and _is_english_key(sort):
+                    keys.append(sort)
+
+        process_arg_content(arg1)
+
+        # 若为 indexsee，则尝试读取第二个参数
+        if _cmd == "indexsee":
+            k2 = arg1_end + 1
+            while k2 < end and text[k2].isspace():
+                k2 += 1
+            if k2 < end and text[k2] == "{":
+                depth = 1
+                k2 += 1
+                start2 = k2
+                while k2 < end and depth > 0:
+                    ch = text[k2]
+                    if ch == "\\":
+                        k2 += 1
+                        if k2 < end:
+                            k2 += 1
+                        continue
+                    if ch == "{":
+                        depth += 1
+                    elif ch == "}":
+                        depth -= 1
+                    k2 += 1
+                arg2_end = k2 - 1
+                arg2 = text[start2:arg2_end]
+                process_arg_content(arg2)
     return keys
 
 
 def scan_usage_in_text(text: str) -> Dict[str, Tuple[bool, bool]]:
-    """
+    r"""
     扫描文本内每个 sort 键的使用形态：
     返回 { sort: (seen_plain, seen_display) }
     - seen_plain: 以不含 @ 的形式出现过
     - seen_display: 以 sort@display 形式出现过
+    识别 \indexsee 的两个参数，并处理分段内的 encap。
     """
     usage: Dict[str, Tuple[bool, bool]] = {}
     for _cmd, start, end in _find_commands_positions(text):
         brace_open = text.find("{", start)
         if brace_open == -1 or brace_open >= end:
             continue
-        arg = text[brace_open + 1 : end - 1]
-        for seg in _split_hierarchy(arg):
-            sort, display = _segment_sort_and_display(seg)
-            if not sort:
+        # 解析第一个参数
+        depth = 1
+        k = brace_open + 1
+        while k < end and depth > 0:
+            ch = text[k]
+            if ch == "\\":
+                k += 1
+                if k < end:
+                    k += 1
                 continue
-            seen_plain, seen_disp = usage.get(sort, (False, False))
-            if display is None:
-                seen_plain = True
-            else:
-                seen_disp = True
-            usage[sort] = (seen_plain, seen_disp)
+            if ch == "{":
+                depth += 1
+            elif ch == "}":
+                depth -= 1
+            k += 1
+        arg1_end = k - 1
+        arg1 = text[brace_open + 1 : arg1_end]
+
+        def process_arg(arg_content: str) -> None:
+            for seg in _split_hierarchy(arg_content):
+                main, _encap = _split_encap(seg)
+                sort, display = _segment_sort_and_display(main)
+                if not sort:
+                    continue
+                seen_plain, seen_disp = usage.get(sort, (False, False))
+                if display is None:
+                    seen_plain = True
+                else:
+                    seen_disp = True
+                usage[sort] = (seen_plain, seen_disp)
+
+        process_arg(arg1)
+
+        if _cmd == "indexsee":
+            k2 = arg1_end + 1
+            while k2 < end and text[k2].isspace():
+                k2 += 1
+            if k2 < end and text[k2] == "{":
+                depth = 1
+                k2 += 1
+                start2 = k2
+                while k2 < end and depth > 0:
+                    ch = text[k2]
+                    if ch == "\\":
+                        k2 += 1
+                        if k2 < end:
+                            k2 += 1
+                        continue
+                    if ch == "{":
+                        depth += 1
+                    elif ch == "}":
+                        depth -= 1
+                    k2 += 1
+                arg2_end = k2 - 1
+                arg2 = text[start2:arg2_end]
+                process_arg(arg2)
     return usage
 
 
@@ -285,25 +425,118 @@ def apply_translations_to_text(
             pieces.append(block)
             last = end
             continue
-        head = block[: brace_open + 1]
-        arg = block[brace_open + 1 : -1]
+        if cmd != "indexsee":
+            head = block[: brace_open + 1]
+            arg = block[brace_open + 1 : -1]
 
-        segs = _split_hierarchy(arg)
-        new_segs: List[str] = []
-        seg_changed = False
-        for seg in segs:
-            sort, display = _segment_sort_and_display(seg)
-            trans = mapping.get(sort, "").strip()
-            if trans:
-                pin = to_pinyin(trans)
-                new_segs.append(f"{pin}@{trans}")
-                seg_changed = True
+            segs = _split_hierarchy(arg)
+            new_segs: List[str] = []
+            seg_changed = False
+            for seg in segs:
+                main, encap = _split_encap(seg)
+                sort, display = _segment_sort_and_display(main)
+                trans = mapping.get(sort, "").strip()
+                if trans:
+                    pin = to_pinyin(trans)
+                    new_seg = f"{pin}@{trans}"
+                    if encap is not None:
+                        new_seg = new_seg + "|" + encap
+                    new_segs.append(new_seg)
+                    seg_changed = True
+                else:
+                    new_segs.append(seg)
+            if seg_changed:
+                changes += 1
+            new_arg = "!".join(new_segs)
+            pieces.append(head + new_arg + "}")
+        else:
+            # 针对 \indexsee：处理两个参数并保留中间空白
+            # 定位第一个参数闭合
+            depth = 1
+            k = brace_open + 1
+            while k < len(block) and depth > 0:
+                ch = block[k]
+                if ch == "\\":
+                    k += 1
+                    if k < len(block):
+                        k += 1
+                    continue
+                if ch == "{":
+                    depth += 1
+                elif ch == "}":
+                    depth -= 1
+                k += 1
+            arg1_close = k - 1
+            arg1 = block[brace_open + 1 : arg1_close]
+            # 定位第二个参数
+            k2 = arg1_close + 1
+            while k2 < len(block) and block[k2].isspace():
+                k2 += 1
+            if k2 < len(block) and block[k2] == "{":
+                brace2_open = k2
+                depth = 1
+                k2 += 1
+                while k2 < len(block) and depth > 0:
+                    ch = block[k2]
+                    if ch == "\\":
+                        k2 += 1
+                        if k2 < len(block):
+                            k2 += 1
+                        continue
+                    if ch == "{":
+                        depth += 1
+                    elif ch == "}":
+                        depth -= 1
+                    k2 += 1
+                arg2_close = k2 - 1
+                arg2 = block[brace2_open + 1 : arg2_close]
             else:
-                new_segs.append(seg)
-        if seg_changed:
-            changes += 1
-        new_arg = "!".join(new_segs)
-        pieces.append(head + new_arg + "}")
+                # 没有第二个参数（极少见），按单参数处理回退
+                brace2_open = -1
+                arg2_close = -1
+                arg2 = ""
+
+            def translate_arg(arg_text: str, display_only: bool = False) -> Tuple[str, bool]:
+                segs = _split_hierarchy(arg_text)
+                new_segs: List[str] = []
+                seg_changed_local = False
+                for seg in segs:
+                    main, encap = _split_encap(seg)
+                    sort, display = _segment_sort_and_display(main)
+                    trans = mapping.get(sort, "").strip()
+                    if trans:
+                        if display_only:
+                            new_seg = f"{trans}"
+                        else:
+                            pin = to_pinyin(trans)
+                            new_seg = f"{pin}@{trans}"
+                        if encap is not None:
+                            new_seg = new_seg + "|" + encap
+                        new_segs.append(new_seg)
+                        seg_changed_local = True
+                    else:
+                        new_segs.append(seg)
+                return "!".join(new_segs), seg_changed_local
+
+            new_arg1, ch1 = translate_arg(arg1, display_only=False)
+            if brace2_open != -1:
+                # 对第二参数，仅使用显示名（value），不含 key@
+                new_arg2, ch2 = translate_arg(arg2, display_only=True)
+                if ch1 or ch2:
+                    changes += 1
+                # 重建 block：开头到第一个 '{' 之前 + '{' + new_arg1 + '}' + 中间 + '{' + new_arg2 + '}' + 结尾
+                new_block = (
+                    block[: brace_open + 1]
+                    + new_arg1
+                    + block[arg1_close : brace2_open + 1]
+                    + new_arg2
+                    + block[arg2_close:]
+                )
+                pieces.append(new_block)
+            else:
+                if ch1:
+                    changes += 1
+                pieces.append(block[: brace_open + 1] + new_arg1 + block[arg1_close:])
         last = end
     pieces.append(text[last:])
     return "".join(pieces), changes

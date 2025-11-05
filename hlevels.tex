@@ -10,7 +10,7 @@ Homotopy $n$-types are also called \emph{$n$-truncated spaces}.
 We have mentioned this notion already in \cref{sec:basics-sets}; our first goal in this chapter is to give it a precise definition in homotopy type theory.
 
 A dual notion to truncatedness is connectedness: a space is \emph{$n$-connected} if it has no interesting homotopy in dimensions $n$ and \emph{below}.
-For instance, a space is $0$-connected (also called just ``connected'') if it has only one connected component, and $1$-connected (also called ``simply connected'') if it also has no nontrivial loops (though it may have nontrivial higher loops between loops\index{loop!n-@$n$-}).
+For instance, a space is $0$-connected (also called just ``connected'') if it has only one connected component, and $1$-connected (also called ``simply connected'') if it also has no nontrivial loops (though it may have nontrivial higher loops between loops\index{HuanLu@环路!n-@$n$-}).
 
 The duality between truncatedness and connectedness is most easily seen by extending both notions to maps.
 We call a map \emph{$n$-truncated} or \emph{$n$-connected} if all its fibers are so.
@@ -39,9 +39,9 @@ As mentioned in \cref{sec:basics-sets,sec:contractibility}, it turns out to be c
   \]
   We say that $X$ is an \define{$n$-type}, or sometimes that it is \emph{$n$-truncated},
   \indexdef{n-type@$n$-type}%
-  \indexsee{n-truncated@$n$-truncated!type}{$n$-type}%
-  \indexsee{type!n-type@$n$-type}{$n$-type}%
-  \indexsee{type!n-truncated@$n$-truncated}{$n$-type}%
+  \indexsee{n-truncated@$n$-truncated!LeiXing@类型}{$n$-type}%
+  \indexsee{LeiXing@类型!n-type@$n$-type}{$n$-type}%
+  \indexsee{LeiXing@类型!n-truncated@$n$-truncated}{$n$-type}%
  if $\istype{n}(X)$ is inhabited.
 \end{defn}
 
@@ -52,7 +52,7 @@ As mentioned in \cref{sec:basics-sets,sec:contractibility}, it turns out to be c
 \end{rmk}
 
 \begin{eg}
-  \index{set}
+  \index{JiHe@集合}
   We saw in \cref{thm:prop-minusonetype} that $X$ is a $(-1)$-type if and only if it is a mere proposition.
   Therefore, $X$ is a $0$-type if and only if it is a set.
 \end{eg}
@@ -66,7 +66,7 @@ Moreover, in \cref{sec:whitehead} will give an example of a type that is not an 
 We begin the general theory of $n$-types by showing they are closed under certain operations and constructors.
 
 \begin{thm}\label{thm:h-level-retracts}
-  \index{retract!of a type}%
+  \index{retract!LeiXingDe@类型的}%
   \index{retraction}%
  Let $p : X \to Y$ be a retraction and suppose that $X$ is an $n$-type, for any $n\geq -2$.
  Then $Y$ is also an $n$-type.
@@ -100,7 +100,7 @@ As an immediate corollary we obtain the stability of $n$-types under equivalence
 Recall also the notion of embedding from \cref{sec:mono-surj}.
 
 \begin{thm}\label{thm:isntype-mono}
-  \index{function!embedding}
+  \index{HanShu@函数!embedding}
   If $f:X\to Y$ is an embedding and $Y$ is an $n$-type for some $n\ge -1$, then so is $X$.
 \end{thm}
 \begin{proof}
@@ -236,7 +236,7 @@ are equivalent to \unit, and hence to each other.
 \section{Uniqueness of identity proofs and Hedberg's theorem}
 \label{sec:hedberg}
 
-\index{set|(}%
+\index{JiHe@集合|(}%
 
 In \cref{sec:basics-sets} we defined a type $X$ to be a \emph{set} if for all $x, y : X$ and $p, q : x =_X y$ we have $p = q$.
 In conventional type theory, this property goes by the name of \define{uniqueness of identity proofs (UIP)}.
@@ -246,7 +246,7 @@ Here is another equivalent characterization, involving Streicher's ``Axiom K'' \
 
 \begin{thm}\label{thm:h-set-uip-K}
  A type $X$ is a set if and only if it satisfies \define{Axiom K}:
- \indexdef{axiom!StreicherGongLiK@Streicher公理K}%
+ \indexdef{GongLi@公理!StreicherGongLiK@Streicher公理K}%
  for all $x : X$ and $p : (x =_A x)$ we have $p = \refl{x}$.
 \end{thm}
 
@@ -318,7 +318,7 @@ is a set.
 
 Another convenient way to show that a type is a set is the following.
 Recall from \cref{sec:intuitionism} that a type $X$ is said to have \emph{decidable equality}
-\index{decidable!equality|(}%
+\index{KePanDingDe@可判定的!equality|(}%
 if for all $x, y : X$ we have
 \[(x =_X y) + \neg (x =_X y).\]
 \index{continuity of functions in type theory@``continuity'' of functions in type theory}%
@@ -357,10 +357,10 @@ The statement \LEM{\infty} that is denied by \cref{thm:not-lem} clearly implies 
 \index{PaiZhongLv@排中律}%
 Note that the consistent axiom \LEM{} from \cref{sec:intuitionism} implies only that every type has \emph{merely decidable equality}, i.e.\ that for any $A$ we have
 \indexdef{equality!merely decidable}%
-\indexdef{merely!decidable equality}%
+\indexdef{merely!KePanDingXiangDengXing@可判定相等性}%
 \[ \prd{a,b:A} (\brck{a=b} + \neg\brck{a=b}). \]
 
-\index{decidable!equality|)}%
+\index{KePanDingDe@可判定的!equality|)}%
 
 As an example application of \cref{thm:hedberg}, recall that in \cref{thm:nat-set} we observed that $\nat$ is a set, using our characterization of its equality types in
 \cref{sec:compute-nat}.
@@ -383,11 +383,11 @@ characterization of \cref{thm:path-nat}, with \cref{thm:hedberg} to fill in the 
   And in the second case,~\eqref{eq:suc-injective} yields $\neg(\suc(m)=\suc(n))$.
 \end{proof}
 
-\index{set|)}%
+\index{JiHe@集合|)}%
 
 \index{GongLi@公理!StreicherGongLiK@Streicher公理K!generalization to n-types@generalization to $n$-types}%
 Although Hedberg's theorem appears rather special to sets ($0$-types), ``Axiom K'' generalizes naturally to $n$-types.
-Note that the ordinary Axiom K (as a property of a type $X$) states that for all $x:X$, the loop space\index{loop space} $\Omega(X,x)$ (see \cref{def:loopspace}) is contractible.
+Note that the ordinary Axiom K (as a property of a type $X$) states that for all $x:X$, the loop space\index{HuanLuKongJian@环路空间} $\Omega(X,x)$ (see \cref{def:loopspace}) is contractible.
 Since $\Omega(X,x)$ is always inhabited (by $\refl{x}$), this is equivalent to its being a mere proposition (a $(-1)$-type).
 Since $0 = (-1)+1$, this suggests the following generalization.
 
@@ -421,7 +421,7 @@ $n$-type.
 By induction and some slightly clever whiskering, we can obtain a generalization of the K property to $n>0$.
 
 \begin{thm}\label{thm:ntype-nloop}
-  \index{loop space!iterated}%
+  \index{HuanLuKongJian@环路空间!iterated}%
   For every $n\ge -1$, a type $A$ is an $n$-type if and only if $\Omega^{n+1}(A,a)$ is contractible for all $a:A$.
 \end{thm}
 \begin{proof}
@@ -457,7 +457,7 @@ In \cref{sec:hittruncations} we constructed this truncation as a higher inductiv
 We now explain a better generalization of this, which truncates any type into an $n$-type for any $n\geq -2$; in classical homotopy theory this would be called its \define{$n^{\mathrm{th}}$ Postnikov section}.\index{PostnikovTa@Postnikov塔}
 
 The idea is to make use of \cref{thm:ntype-nloop}, which states that $A$ is an $n$-type just when $\Omega^{n+1}(A,a)$
-\index{loop space!iterated}%
+\index{HuanLuKongJian@环路空间!iterated}%
 is contractible for
 all $a:A$, and \cref{lem:susp-loop-adj}, which implies that
 \narrowequation{\Omega^{n+1}(A,a) \eqvsym \Map_{*}(\Sn^{n+1},(A,a)),} where $\Sn^{n+1}$ is equipp\-ed with some basepoint which we may as well call \base.
@@ -539,7 +539,7 @@ Thus, $g=g'$.
 This yields the following universal property.
 
 \begin{lem}[Universal property of truncations]\label{thm:trunc-reflective}
-  \index{universal!property!of truncation}%
+  \index{FanDe@泛的!property!of truncation}%
   Let $n\ge-2$, $A:\type$ and $B:\typele{n}$. The following map is an
   equivalence:
   \[\function{(\trunc nA\to{}B)}{(A\to{}B)}{g}{g\circ\tprojf n}\]
@@ -794,7 +794,7 @@ Recall the following definitions from \cref{sec:colimits}.
 \begin{defn}
   Given a span $\Ddiag=(A,B,C,f,g)$ and a type $D$, a %$D:\P$, a
   \define{cocone under $\Ddiag$ with base $D$} is a triple $(i, j, h)$
-  \index{cocone} %
+  \index{YuZhui@余锥} %
   with $i:A\to{}D$, $j:B\to{}D$ and $h : \prd{c:C}i(f(c))=j(g(c))$:
   \[\uppercurveobject{{ }}\lowercurveobject{{ }}\twocellhead{{ }}
   \xymatrix{C \ar^g[r] \ar_f[d] \drtwocell{^h} & B \ar^j[d] \\ A \ar_i[r] & D
@@ -918,7 +918,7 @@ We now observe that the maps from each type to its $n$-truncation assemble into 
   \]
   be spans.
   A \define{map of spans}
-  \indexdef{map!of spans}%
+  \indexdef{YingShe@映射!of spans}%
   $\Ddiag \to \Ddiag'$ consists of functions $\alpha:A\to A'$, $\beta:B\to B'$, and $\gamma:C\to C'$ and homotopies $\phi: \alpha\circ f \htpy f'\circ \gamma$ and $\psi:\beta\circ g \htpy g' \circ \gamma$.
 \end{defn}
 
@@ -983,7 +983,7 @@ Now we can prove our desired theorem.
 
 \begin{thm}
   \label{reflectcommutespushout}
-  \index{universal!property!of pushout}%
+  \index{FanDe@泛的!property!of pushout}%
   Let $\Ddiag$ be a span and $(D,c)$ its pushout.
   Then $(\trunc nD,\trunc n c)$ is a pushout of $\trunc n\Ddiag$ in $n$-types.
 \end{thm}
@@ -1071,25 +1071,25 @@ It turns out to be natural to study a more general notion for functions as well.
 
 \begin{defn}
 A function $f:A\to B$ is said to be \define{$n$-connected}
-\indexdef{function!n-connected@$n$-connected}%
-\indexsee{n-connected@$n$-connected!function}{function, $n$-connected}%
+\indexdef{HanShu@函数!n-connected@$n$-connected}%
+\indexsee{n-connected@$n$-connected!HanShu@函数}{function, $n$-connected}%
 if for all $b:B$, the type $\trunc n{\hfiber f b}$ is contractible:
 \begin{equation*}
   \mathsf{conn}_n(f)\defeq \prd{b:B}\iscontr(\trunc n{\hfiber{f}b}).
 \end{equation*}
 A type $A$ is said to be \define{$n$-connected}
-\indexsee{n-connected@$n$-connected!type}{type, $n$-connected}%
-\indexdef{type!n-connected@$n$-connected}%
+\indexsee{n-connected@$n$-connected!LeiXing@类型}{type, $n$-connected}%
+\indexdef{LeiXing@类型!n-connected@$n$-connected}%
  if the unique function $A\to\unit$ is $n$-connected, i.e.\ if $\trunc nA$ is contractible.
 \end{defn}
-\indexsee{connected!function}{function, $n$-connected}
+\indexsee{connected!HanShu@函数}{function, $n$-connected}
 
 Thus, a function $f:A\to B$ is $n$-connected if and only if $\hfib{f}b$ is $n$-connected for every $b:B$.
 Of course, every function is $(-2)$-connected.
 At the next level, we have:
 
 \begin{lem}\label{thm:minusoneconn-surjective}
-  \index{function!surjective}%
+  \index{HanShu@函数!surjective}%
   A function $f$ is $(-1)$-connected if and only if it is surjective in the sense of \cref{sec:mono-surj}.
 \end{lem}
 \begin{proof}
@@ -1102,11 +1102,11 @@ Category-theoretically, $(-1)$-connectedness corresponds to essential surjectivi
 
 \cref{thm:minusoneconn-surjective} also implies that a type $A$ is $(-1)$-connected if and only if it is merely inhabited.
 When a type is $0$-connected we may simply say that it is \define{connected},
-\indexdef{connected!type}%
-\indexdef{type!connected}%
+\indexdef{connected!LeiXing@类型}%
+\indexdef{LeiXing@类型!connected}%
 and when it is $1$-connected we say it is \define{simply connected}.
 \indexdef{simply connected type}%
-\indexdef{type!simply connected}%
+\indexdef{LeiXing@类型!simply connected}%
 
 \begin{rmk}\label{rmk:connectedness-indexing}
   While our notion of $n$-connectedness for types agrees with the standard notion in homotopy theory, our notion of $n$-connectedness for \emph{functions} is off by one from a common indexing in classical homotopy theory.
@@ -1115,10 +1115,10 @@ and when it is $1$-connected we say it is \define{simply connected}.
 \end{rmk}
 
 We now observe a few closure properties of connected maps.
-\index{function!n-connected@$n$-connected}
+\index{HanShu@函数!n-connected@$n$-connected}
 
 \begin{lem}
-\index{retract!of a function}%
+\index{retract!HanShuDe@函数的}%
 Suppose that $g$ is a retract of a $n$-connected function $f$.  Then $g$ is
 $n$-connected.
 \end{lem}
@@ -1238,7 +1238,7 @@ Thus, $g$ is $n$-connected if and only if it is an equivalence.
 We can also characterize connected pointed types in terms of connectivity of the inclusion of their basepoint.
 
 \begin{lem}\label{thm:connected-pointed}
-  \index{basepoint}%
+  \index{JiDian@基点}%
   Let $A$ be a type and $a_0:\unit\to A$ a basepoint, with $n\ge -1$.
   Then $A$ is $n$-connected if and only if the map $a_0$ is $(n-1)$-connected.
 \end{lem}
@@ -1386,8 +1386,8 @@ Here is the corresponding generalization of injections.
 
 \begin{defn}
   A function $f:A\to B$ is \define{$n$-truncated}
-  \indexdef{n-truncated@$n$-truncated!function}%
-  \indexdef{function!n-truncated@$n$-truncated}%
+  \indexdef{n-truncated@$n$-truncated!HanShu@函数}%
+  \indexdef{HanShu@函数!n-truncated@$n$-truncated}%
 if the fiber $\hfib f b$ is an $n$-type for all $b:B$.
 \end{defn}
 
@@ -1397,8 +1397,8 @@ Moreover, $n$-truncated maps could equivalently be defined recursively, like $n$
 
 \begin{lem}\label{thm:modal-mono}
   For any $n\ge -2$, a function $f:A\to B$ is $(n+1)$-truncated if and only if for all $x,y:A$, the map $\apfunc{f}:(x=y) \to (f(x)=f(y))$ is $n$-truncated.
-  \index{function!embedding}%
-  \index{function!injective}%
+  \index{HanShu@函数!embedding}%
+  \index{HanShu@函数!injective}%
   In particular, $f$ is $(-1)$-truncated if and only if it is an embedding in the sense of \cref{sec:mono-surj}.
 \end{lem}
 \begin{proof}
@@ -1421,7 +1421,7 @@ Let $f:A\to B$ be a function. The \define{$n$-image}
 \indexdef{image}%
 \indexdef{image!n-image@$n$-image}%
 \indexdef{n-image@$n$-image}%
-\indexdef{function!n-image of@$n$-image of}%
+\indexdef{HanShu@函数!n-image of@$n$-image of}%
 of $f$ is defined as
 \begin{equation*}
 \im_n(f)\defeq \sm{b:B} \trunc n{\hfib{f}b}.
@@ -1822,8 +1822,8 @@ is an operation $\modal:\type\to\type$ for which there are
 \item For any $z,z':\modal(A)$, the function $\mreturn^\modal_{z=z'} : (z=z') \to \modal(z=z')$ is an equivalence.\label{item:modal4}
 \end{enumerate}
 We say that $A$ is \define{modal}
-\indexdef{modal!type}%
-\indexdef{type!modal}%
+\indexdef{modal!LeiXing@类型}%
+\indexdef{LeiXing@类型!modal}%
 for $\modal$ if $\mreturn^\modal_A:A\to\modal(A)$ is an equivalence, and we write
 \begin{equation}
   \modaltype\defeq\setof{X:\type | X \text{ is $\modal$-modal} }\label{eq:modaltype}
@@ -1837,7 +1837,7 @@ This allows us to state the condition purely in terms of the operation $\modal$,
 We do not know whether~\ref{item:modal4} follows from~\ref{item:modal1}--\ref{item:modal3}.)
 However, the stronger-looking property of \cref{thm:modal-char}\ref{item:mchr2} follows from \cref{defn:modality}\ref{item:modal2} and~\ref{item:modal3}, since for any $C:\modal A \to \modaltype$ we have $C(z) \eqvsym \modal C(z)$, and we can pass back across this equivalence.
 
-\index{universal!property!of a modality}%
+\index{FanDe@泛的!property!of a modality}%
 As with other induction principles, this implies a universal property.
 
 \begin{thm}\label{prop:lv_n_deptype_sec_equiv_by_precomp}
@@ -1875,16 +1875,16 @@ The symbol $\modal$ is somewhat common for an arbitrary modal operator\index{mod
 Under the propositions-as-types principle, a modality in the sense of modal logic corresponds to an operation on \emph{types}, and \cref{defn:modality} seems a reasonable candidate for how such an operation should be defined.
 (More precisely, we should perhaps call these \emph{idempotent, monadic} modalities; see the Notes.)
 \index{idempotent!modality}%
-As mentioned in \cref{subsec:when-trunc}, we may in general use adverbs\index{adverb} to speak informally about such modalities, such as ``merely''\index{merely} for the propositional truncation and ``purely''\index{purely} for the identity modality
+As mentioned in \cref{subsec:when-trunc}, we may in general use adverbs\index{FuCi@副词} to speak informally about such modalities, such as ``merely''\index{merely} for the propositional truncation and ``purely''\index{purely} for the identity modality
 \index{identity!modality}%
 \index{modality!identity}%
 (i.e.\ the one defined by $\modal A \defeq A$).
 
 For any modality $\modal$, we define a map $f:A\to B$ to be \define{$\modal$-connected}
-\indexdef{function!.circle-connected@$\modal$-connected}%
+\indexdef{HanShu@函数!.circle-connected@$\modal$-connected}%
 \indexdef{.circle-connected function@$\modal$-connected function}%
 if $\modal(\hfib f b)$ is contractible for all $b:B$, and to be \define{$\modal$-truncated}
-\indexdef{function!.circle-truncated@$\modal$-truncated}%
+\indexdef{HanShu@函数!.circle-truncated@$\modal$-truncated}%
 \indexdef{.circle-truncated function@$\modal$-truncated function}%
 if $\hfib f b$ is modal for all $b:B$.
 All of the theory of \cref{sec:connectivity,sec:image-factorization} which doesn't involve relating $n$-types for different values of $n$ applies verbatim in this generality.
@@ -1956,7 +1956,7 @@ The modalities we have considered in this chapter are all idempotent, whereas th
 
 \begin{ex}\label{ex:s2-colim-unit}
   For this exercise, we consider the following general notion of colimit.
-  Define a \define{graph}\indexdef{graph} $\Gamma$ to consist of a type $\Gamma_0$ and a family $\Gamma_1 : \Gamma_0 \to \Gamma_0 \to \UU$.
+  Define a \define{graph}\indexdef{Tu@图} $\Gamma$ to consist of a type $\Gamma_0$ and a family $\Gamma_1 : \Gamma_0 \to \Gamma_0 \to \UU$.
   A \define{diagram}\index{diagram} (of types) over a graph $\Gamma$ consists of a family $F:\Gamma_0 \to \UU$ together with for each $x,y:\Gamma_0$, a function $F_{x,y}:\Gamma_1(x,y) \to F(x) \to F(y)$.
   The \define{colimit}\index{colimit!of types} of such a diagram is the higher inductive type $\colim(F)$ generated by
   \begin{itemize}
@@ -2005,7 +2005,7 @@ The modalities we have considered in this chapter are all idempotent, whereas th
 \end{ex}
 
 \begin{ex}\label{ex:acnm}
-  \indexdef{axiom!XuanZe@选择!ACnm@$\choice{n,m}$}%
+  \indexdef{GongLi@公理!XuanZe@选择!ACnm@$\choice{n,m}$}%
   For $-1\le n,m\le\infty$, let $\choice{n,m}$ denote the statement
   \[ \prd{X:\set}{Y:X\to\ntype{n}}
   \Parens{\prd{x:X} \trunc m{Y(x)}}
@@ -2035,8 +2035,8 @@ The modalities we have considered in this chapter are all idempotent, whereas th
 
 \begin{ex}\label{ex:acconn}
   Define the \define{$n$-connected axiom of choice}
-  \indexdef{n-connected@$n$-connected!axiom of choice}%
-  \indexdef{axiom!XuanZe@选择!n-connected@$n$-connected}%
+  \indexdef{n-connected@$n$-connected!XuanZeGongLi@选择公理}%
+  \indexdef{GongLi@公理!XuanZe@选择!n-connected@$n$-connected}%
   to be the statement
   \begin{quote}
     If $X$ is a set and $Y:X\to \type$ is a family of types such that each $Y(x)$ is $n$-connected, then $\prd{x:X} Y(x)$ is $n$-connected.
@@ -2077,7 +2077,7 @@ The modalities we have considered in this chapter are all idempotent, whereas th
 \begin{ex}\label{ex:f-local-type}
   Let $f:A\to B$ be a map; a type $Z$ is \define{$f$-local}
   \indexdef{f-local type@$f$-local type}%
-  \indexdef{type!f-local@$f$-local}%
+  \indexdef{LeiXing@类型!f-local@$f$-local}%
   if $(\blank\circ f):(B\to Z) \to (A\to Z)$ is an equivalence.
   \begin{enumerate}
   \item Prove that the $f$-local types form a reflective subuniverse.
@@ -2092,7 +2092,7 @@ The modalities we have considered in this chapter are all idempotent, whereas th
 
 \begin{ex}\label{ex:s2-colim-unit-2}
   In this exercise, we consider a slightly fancier notion of colimit than in \cref{ex:s2-colim-unit}.
-  Define a \define{graph with composition}\indexdef{graph!with composition} $\Gamma$ to be a graph as in \cref{ex:s2-colim-unit} together with for each $x,y,z:\Gamma_0$, a function $\Gamma_1(y,z) \to \Gamma_1(x,y) \to \Gamma_1(x,z)$, written as $\delta\mapsto\gamma \mapsto \delta \circ \gamma$.
+  Define a \define{graph with composition}\indexdef{Tu@图!with composition} $\Gamma$ to be a graph as in \cref{ex:s2-colim-unit} together with for each $x,y,z:\Gamma_0$, a function $\Gamma_1(y,z) \to \Gamma_1(x,y) \to \Gamma_1(x,z)$, written as $\delta\mapsto\gamma \mapsto \delta \circ \gamma$.
   (For instance, any precategory as in \cref{cha:category-theory} is a graph with composition.)
   A \define{diagram}\index{diagram} $F$ over a graph with composition $\Gamma$ consists of a diagram over the underlying graph, together with for each $x,y,z:\Gamma_0$ and $\gamma:\Gamma_1(x,y)$ and $\delta:\Gamma_1(y,z)$, a homotopy $\cmp_{x,y,z}(\delta,\gamma) : F_{y,z}(\delta) \circ F_{x,y}(\gamma) \htpy F_{x,z}(\delta\circ\gamma)$.
   The \define{colimit}\index{colimit!of types} of such a diagram is the higher inductive type $\colim(F)$ generated by
@@ -2120,7 +2120,7 @@ The modalities we have considered in this chapter are all idempotent, whereas th
 
 \begin{ex}\label{ex:categorical-connectedness}
   We say a type $A$ is \define{categorically connected}
-  \indexdef{connected!categorically} if for every types $B, C$ the canonical map
+  \indexdef{connected!FanChouDi@范畴地} if for every types $B, C$ the canonical map
   $e_{A, B, C}:((A\to B) + (A\to C)) \to (A \to B + C)$ defined by
   \begin{align*}
     e_{A,B,C}(\inl(g)) &\defeq \lam{x} \inl(g(x)),\\

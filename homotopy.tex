@@ -67,16 +67,16 @@ as the universal cover of the circle and the Hopf fibration, using just the
 recursion principles for higher inductive types.  These descriptions are
 very direct, and many of the proofs in this chapter involve
 computational calculations with such fibrations.
-\index{mathematics!constructive}%
+\index{mathematics!GouZaoXingDe@构造性的}%
 Another new aspect of our proofs is that they are constructive (assuming
 univalence and higher inductives types are constructive); we describe an
 application of this to homotopy groups of spheres in
 \cref{sec:moreresults}.
 
-\index{mathematics!formalized}%
-\indexsee{formalization of mathematics}{mathematics, formalized}%
+\index{mathematics!XingShiHuaDe@形式化的}%
+\indexsee{ShuXueDeXingShiHua@数学的形式化}{mathematics, formalized}%
 Third, our synthetic approach is very amenable to computer-checked
-proofs in proof assistants\index{proof!assistant} such as \Coq and \Agda.
+proofs in proof assistants\index{proof!ZhuShou@助手} such as \Coq and \Agda.
 Almost all of the proofs
 described in this chapter have been computer-checked, and many of these
 proofs were first given in a proof assistant, and then ``unformalized''
@@ -91,12 +91,12 @@ Before turning to the presentation of our results, we briefly review some
  We also give an overview of the
 results proved in this chapter.
 
-\index{classical!homotopy theory|(}%
+\index{classical!TongLunLun@同伦论|(}%
 Homotopy theory is a branch of algebraic topology, and uses tools from abstract algebra,
 such as group theory, to investigate properties of spaces.  One question
 homotopy theorists investigate is how to tell whether two spaces are the
 same, where ``the same'' means \emph{homotopy equivalence}
-\index{homotopy!equivalence!topological}%
+\index{TongLun@同伦!equivalence!topological}%
 (continuous
 maps back and forth that compose to the identity up to homotopy --- this
 gives the opportunity to ``correct'' maps that don't exactly compose to
@@ -116,7 +116,7 @@ has a global difference, because it has a hole in it, and this difference
 is visible in the homotopy groups of these two spaces.
 
 The simplest example of a homotopy group is the \emph{fundamental group}
-\index{fundamental!group}%
+\index{JiChuDe@基础的!Qun@群}%
 of a space, which is written $\pi_1(X,x_0$): Given a space $X$ and a
 point $x_0$ in it, one can make a group whose elements are loops at
 $x_0$ (continuous paths from $x_0$ to $x_0$), considered up to homotopy, with the
@@ -129,7 +129,7 @@ identity, because its inside can be filled in.  In contrast, a loop on
 the torus that goes through the donut's hole is not homotopic to the
 identity, so there are non-trivial elements in the fundamental group.
 
-\index{homotopy!group}
+\index{TongLun@同伦!Qun@群}
 The \emph{higher homotopy groups} provide additional information about a
 space.  Fix a point $x_0$ in $X$, and consider the constant path
 $\refl{x_0}$.  Then the homotopy classes of homotopies between $\refl{x_0}$
@@ -199,10 +199,10 @@ $\pi_{13}$ & $0$     & $0$     & {\footnotesize $\Z_{12} {\times} \Z_{2}$} & {\f
 \bottomrule
 \end{tabular}
 
-\caption{Homotopy groups of spheres~\cite{wikipedia-groups}.\index{homotopy!group!of sphere}
+\caption{Homotopy groups of spheres~\cite{wikipedia-groups}.\index{TongLun@同伦!Qun@群!of sphere}
 The $k^{\textrm{th}}$ homotopy group $\pi_k$ of the $n$-dimensional sphere
 $\Sn^n$ is isomorphic to the group listed in each entry, where $\Z$ is
-the additive group of integers,\index{integers} and $\Z_{m}$ is the cyclic group\index{group!cyclic}\index{cyclic group} of order~$m$.
+the additive group of integers,\index{integers} and $\Z_{m}$ is the cyclic group\index{Qun@群!cyclic}\index{cyclic group} of order~$m$.
 }
 \label{tab:homotopy-groups-of-spheres}
 \end{table}
@@ -223,25 +223,25 @@ algebraic structure of an $\infty$-groupoid includes non-trivial
 interactions between levels, and these interactions create elements of
 higher homotopy groups.
 
-\index{classical!homotopy theory|)}%
+\index{classical!TongLunLun@同伦论|)}%
 
 Type theory provides a natural setting for investigating this structure, as
 we can easily define the higher homotopy groups.  Recall from \cref{def:loopspace} that for $n:\N$, the
-$n$-fold iterated loop space\index{loop space!iterated} of a pointed type $(A,a)$ is defined
+$n$-fold iterated loop space\index{HuanLuKongJian@环路空间!iterated} of a pointed type $(A,a)$ is defined
 recursively by:
 \begin{align*}
   \Omega^0(A,a)&=(A,a)\\
   \Omega^{n+1}(A,a)&=\Omega^n(\Omega(A,a)).
 \end{align*}
 %
-This gives a \emph{space} (i.e.\ a type) of $n$-dimensional loops\index{loop!n-@$n$-}, which itself has
+This gives a \emph{space} (i.e.\ a type) of $n$-dimensional loops\index{HuanLu@环路!n-@$n$-}, which itself has
 higher homotopies.  We obtain the set of $n$-dimensional loops by
 truncation (this was also defined as an example in
 \cref{sec:free-algebras}):
 
 \begin{defn}[Homotopy Groups]\label{def-of-homotopy-groups}
   Given $n\ge 1$ and $(A,a)$ a pointed type, we define the \define{homotopy groups} of $A$
-  \indexdef{homotopy!group}%
+  \indexdef{TongLun@同伦!Qun@群}%
   at $a$ by
   \[\pi_n(A,a)\defeq \Trunc0{\Omega^n(A,a)}\]
 \end{defn}
@@ -250,7 +250,7 @@ truncation (this was also defined as an example in
 Since $n\ge 1$, the path concatenation and inversion operations on
 $\Omega^n(A)$ induce operations on $\pi_n(A)$ making it into a group in
 a straightforward way.  If $n\ge 2$, then the group $\pi_n(A)$ is
-abelian\index{group!abelian}, by the Eckmann--Hilton argument \index{Eckmann--HiltonLunZheng@Eckmann--Hilton论证} (\cref{thm:EckmannHilton}).
+abelian\index{Qun@群!AbelDe@Abel的}, by the Eckmann--Hilton argument \index{Eckmann--HiltonLunZheng@Eckmann--Hilton论证} (\cref{thm:EckmannHilton}).
 It is convenient to also write $\pi_0(A) \defeq \trunc0 A$,
 but this case behaves somewhat differently: not only is it not a group,
 it is defined without reference to any basepoint in $A$.
@@ -305,12 +305,12 @@ $\pi_{n+1}(\Sn ^n)$ for $n\ge 3$, the Blakers--Massey theorem, and a
 construction of Eilenberg--Mac Lane spaces (\cref{sec:moreresults}).
 Prerequisites for this chapter include \cref{cha:typetheory,cha:basics,cha:hits,cha:hlevels} as well as parts of \cref{cha:logic}.
 
-\index{fundamental!group!of circle|(}
+\index{JiChuDe@基础的!Qun@群!of circle|(}
 \section{\texorpdfstring{$\pi_1(S^1)$}{π₁(S¹)}}
 \label{sec:pi1-s1-intro}
 
 In this section, our goal is to show that $\id {\pi_1(\Sn ^1)} {\Z}$.
-In fact, we will show that the loop space\index{loop space} ${\Omega(\Sn ^1)}$ is equivalent to $\Z$.
+In fact, we will show that the loop space\index{HuanLuKongJian@环路空间} ${\Omega(\Sn ^1)}$ is equivalent to $\Z$.
 This is a stronger statement, because $\id{\pi_1(\Sn ^1)} {\trunc 0 {\Omega(\Sn ^1)}}$ by
 definition; so if $\id {\Omega(\Sn ^1)} {\Z}$, then $\id {\trunc
   0 {\Omega(\Sn ^1)}} {\trunc 0 {\Z}}$ by congruence, and
@@ -349,17 +349,17 @@ We begin with the former.
 \subsection{The classical proof}
 \label{sec:pi1s1-classical-proof}
 
-\index{classical!homotopy theory|(}%
+\index{classical!TongLunLun@同伦论|(}%
 In classical homotopy theory, there is a standard proof of $\pi_1(\Sn^1)=\Z$ using universal covering spaces.
 Our proof can be regarded as a type-theoretic version of this proof, with covering spaces appearing here as fibrations whose fibers are sets.
 \index{fibration}%
 \index{total!space}%
 Recall that \emph{fibrations} over a space $B$ in homotopy theory correspond to type families $B\to\type$ in type theory.
-\index{path!fibration}%
+\index{DaoLu@道路!fibration}%
 \index{fibration!of paths}%
 In particular, for a point $x_0:B$, the type family $(x\mapsto (x_0=x))$ corresponds to the \emph{path fibration} $P_{x_0} B \to B$, in which the points of $P_{x_0} B$ are paths in $B$ starting at $x_0$, and the map to $B$ selects the other endpoint of such a path.
 This total space $P_{x_0} B$ is contractible, since we can ``retract'' any path to its initial endpoint $x_0$ --- we have seen the type-theoretic version of this as \cref{thm:contr-paths}.
-Moreover, the fiber over $x_0$ is the loop space\index{loop space} $\Omega(B,x_0)$ --- in type theory this is obvious by definition of the loop space.
+Moreover, the fiber over $x_0$ is the loop space\index{HuanLuKongJian@环路空间} $\Omega(B,x_0)$ --- in type theory this is obvious by definition of the loop space.
 
 \begin{figure}\centering
   \begin{tikzpicture}[xscale=1.4,yscale=.6]
@@ -385,29 +385,29 @@ Moreover, the fiber over $x_0$ is the loop space\index{loop space} $\Omega(B,x_0
 \end{figure}
 
 Now in classical homotopy theory, where $\Sn^1$ is regarded as a topological space, we may proceed as follows.
-\index{winding!map}%
+\index{winding!YingShe@映射}%
 Consider the ``winding'' map $w:\mathbb{R}\to \Sn ^1$, which looks like a helix projecting down onto the circle (see \cref{fig:winding}).
 This map $w$ sends each point on the helix\index{helix} to the point on the circle that it is ``sitting above''.
 It is a fibration, and the fiber over each point is isomorphic to the integers.\index{integers}
 If we lift the path that goes counterclockwise around the loop on the bottom, we go up one level in the helix, incrementing the integer in the fiber.
 Similarly, going clockwise around the loop on the bottom corresponds to going down one level in the helix, decrementing this count.
 This fibration is called the \emph{universal cover} of the circle.
-\index{universal!cover}%
-\index{cover!universal}%
-\index{covering space!universal}%
+\index{FanDe@泛的!cover}%
+\index{cover!FanDe@泛的}%
+\index{covering space!FanDe@泛的}%
 
 Now a basic fact in classical homotopy theory is that a map $E_1\to E_2$ of fibrations over $B$ which is a homotopy equivalence between $E_1$ and $E_2$ induces a homotopy equivalence on all fibers.
 (We have already seen the type-theoretic version of this as well in \cref{thm:total-fiber-equiv}.)
 Since $\mathbb{R}$ and $P_{\base} S^1$ are both contractible topological spaces, they are homotopy equivalent, and thus their fibers $\Z$ and $\Omega(\Sn ^1)$ over the basepoint are also homotopy equivalent.
 
-\index{classical!homotopy theory|)}%
+\index{classical!TongLunLun@同伦论|)}%
 
 \subsection{The universal cover in type theory}
 \label{sec:pi1s1-universal-cover}
 
-\index{universal!cover|(}%
-\index{cover!universal|(}%
-\index{covering space!universal|(}%
+\index{FanDe@泛的!cover|(}%
+\index{cover!FanDe@泛的|(}%
+\index{covering space!FanDe@泛的|(}%
 
 Let us consider how we might express the preceding proof in type theory.
 We have already remarked that the path fibration of $\Sn^1$ is represented by the type family $(x\mapsto (\base=x))$.
@@ -484,16 +484,16 @@ These are the same tools used to prove contractibility --- indeed, path inductio
 Since this is a book about homotopy type theory, we present the encode-decode proof first.
 A homotopy theorist who gets lost is encouraged to skip to the homotopy-theoretic proof (\cref{subsec:pi1s1-homotopy-theory}).
 
-\index{universal!cover|)}%
-\index{cover!universal|)}%
-\index{covering space!universal|)}%
+\index{FanDe@泛的!cover|)}%
+\index{cover!FanDe@泛的|)}%
+\index{covering space!FanDe@泛的|)}%
 
 \subsection{The encode-decode proof}
 \label{subsec:pi1s1-encode-decode}
 
 \index{encode-decode method|(}%
 \indexsee{encode}{encode-decode method}%
-\indexsee{decode}{encode-decode method}%
+\indexsee{JieMa@解码}{encode-decode method}%
 We begin with the function~\eqref{eq:pi1s1-encode} that maps paths to codes:
 \begin{defn}
 Define $\encode : \prd{x : \Sn ^1} (\base=x) \rightarrow  \code(x)$ by
@@ -680,7 +680,7 @@ For the other, we have:
   \item For each $z:\Z$, a path $\mathsf{p}_z:\mathsf{c}(z) = \mathsf{c}(\Zsuc(z))$.
   \end{itemize}
   We might call this type the \define{homotopical reals};
-  \indexdef{real numbers!homotopical}%
+  \indexdef{real numbers!TongLunDe@同伦的}%
   it plays the same role as the topological space $\mathbb{R}$ in the classical proof.
 
   Thus, it remains to show that $R$ is contractible.
@@ -716,7 +716,7 @@ For the other, we have:
 
 In essence, the two proofs are not very different: the encode-decode one may be seen as a ``reduction'' or ``unpackaging'' of the homotopy-theoretic one.
 Each has its advantages; the interplay between the two points of view is part of the interest of the subject.
-\index{fundamental!group!of circle|)}
+\index{JiChuDe@基础的!Qun@群!of circle|)}
 
 
 \subsection{The universal cover as an identity system}
@@ -888,7 +888,7 @@ The aim of this section is to prove that the operation of suspension from \cref{
 
 Let $(A,a)$ be a pointed type and $n:\N$.  Recall from
 \cref{thm:homotopy-groups} that if $n>0$ the set $\pi_n(A,a)$ has a group
-structure, and if $n>1$ the group is abelian\index{group!abelian}.
+structure, and if $n>1$ the group is abelian\index{Qun@群!AbelDe@Abel的}.
 
 We can now say something about homotopy groups of $n$-truncated and
 $n$-connected types.
@@ -948,17 +948,17 @@ We derive this by way of the \emph{fiber sequence} associated to such an $f$.
 
 \begin{defn}\label{def:pointedmap}
   A \define{pointed map}
-  \indexdef{pointed!map}%
-  \indexsee{function!pointed}{pointed map}%
+  \indexdef{pointed!YingShe@映射}%
+  \indexsee{HanShu@函数!pointed}{pointed map}%
   between pointed types $(X,x_0)$ and $(Y,y_0)$ is a
   map $f:X\to Y$ together with a path $f_0:f(x_0)=y_0$.
 \end{defn}
 
 For any pointed types $(X,x_0)$ and $(Y,y_0)$, there is a pointed map $(\lam{x} y_0) : X\to Y$ which is constant at the basepoint.
-We call this the \define{zero map}\indexdef{zero!map}\indexdef{function!zero} and sometimes write it as $0:X\to Y$.
+We call this the \define{zero map}\indexdef{Ling@零!YingShe@映射}\indexdef{HanShu@函数!Ling@零} and sometimes write it as $0:X\to Y$.
 
-Recall that every pointed type $(X,x_0)$ has a loop space\index{loop space} $\Omega (X,x_0)$.
-We now note that this operation is functorial on pointed maps.\index{loop space!functoriality of}\index{functor!loop space}
+Recall that every pointed type $(X,x_0)$ has a loop space\index{HuanLuKongJian@环路空间} $\Omega (X,x_0)$.
+We now note that this operation is functorial on pointed maps.\index{HuanLuKongJian@环路空间!DeHanZiXing@的函子性}\index{HanZi@函子!HuanLuKongJian@环路空间}
 
 \begin{defn}\label{def:loopfunctor}
   Given a pointed map between pointed types $f:X \to Y$, we define a pointed
@@ -995,7 +995,7 @@ Thus, this operation can be iterated.
 Thus, any adjacent pair of maps in this fiber sequence is of the form
 \[ \xymatrix{ X^{(n+1)} \jdeq \hfib{f^{(n-1)}}{x^{(n-1)}_0} \ar[rr]^-{f^{(n)}\jdeq \proj1} && X^{(n)} \ar[r]^{f^{(n-1)}} & X^{(n-1)}. } \]
 In particular, we have $f^{(n-1)} \circ f^{(n)} = 0$.
-We now observe that the types occurring in this sequence are the iterated loop spaces\index{loop space!iterated} of the base
+We now observe that the types occurring in this sequence are the iterated loop spaces\index{HuanLuKongJian@环路空间!iterated} of the base
 space $Y$, the total space\index{total!space} $X$, and the fiber $F\defeq \hfib f {y_0}$, and similarly for the maps.
 
 \begin{lem}\label{thm:fiber-of-the-fiber}
@@ -1050,8 +1050,8 @@ From this fiber sequence we will deduce an \emph{exact sequence of pointed sets}
 Let $A$ and $B$ be sets and $f:A\to B$ a function, and recall from \cref{defn:modal-image} the definition of the \emph{image} $\im(f)$, which can be regarded as a subset of $B$:
 \[\im(f) \defeq \setof{b:B | \exis{a:A} f(a)=b}. \]
 If $A$ and $B$ are moreover pointed with basepoints $a_0$ and $b_0$, and $f$ is a pointed map, we define the \define{kernel}
-\indexdef{kernel}%
-\indexdef{pointed!map!kernel of}%
+\indexdef{He@核}%
+\indexdef{pointed!YingShe@映射!DeHe@的核}%
 of $f$ to be the following subset of $A$:
 \symlabel{kernel}
 \[\ker(f) \defeq \setof{x:A | f(x) = b_0}. \]
@@ -1128,7 +1128,7 @@ When we speak of an \define{exact sequence of groups}, it is assumed moreover th
   Thus, we can modify our long exact sequence to obtain one involving $\pi_k(i)$ and $\pi_k(f)$ directly and in which all the maps are group homomorphisms (except the last three).
 \end{proof}
 
-The usual properties of exact sequences of abelian groups\index{group!abelian!exact sequence of} can be proved as
+The usual properties of exact sequences of abelian groups\index{Qun@群!AbelDe@Abel的!exact sequence of} can be proved as
 usual. In particular we have:
 \begin{lem}\label{thm:ses}
   Suppose given an exact sequence of abelian groups:
@@ -1186,7 +1186,7 @@ whose total space is $\Sn ^3$.
 The Hopf fibration will allow us to compute several homotopy groups of
 spheres.
 Indeed, it yields the following long exact sequence
-\index{homotopy!group!of sphere}
+\index{TongLun@同伦!Qun@群!of sphere}
 \index{sequence!exact}
 of homotopy groups
 (see
@@ -1399,14 +1399,14 @@ We have proven:
 \begin{lem}\label{lem:hopf-construction}
   Given a connected H-space $A$, there is a fibration, called the
   \define{Hopf construction},
-  \indexdef{Hopf!construction}%
+  \indexdef{Hopf!GouZao@构造}%
   over $\susp A$ with fiber $A$ and total space $A*A$.
 \end{lem}
 
 \subsection{The Hopf fibration}
 
-\index{Hopf fibration|(}
-\indexsee{fibration!Hopf}{Hopf fibration}
+\index{HopfXianWeiCong@Hopf纤维丛|(}
+\indexsee{fibration!Hopf}{HopfXianWei@Hopf纤维}
 We will first construct a structure of H-space on the circle $\Sn^1$, hence by
 \cref{lem:hopf-construction} we will get a fibration over $\Sn^2$ with fiber
 $\Sn^1$ and total space $\Sn^1*\Sn^1$. We will then prove that this join is
@@ -1459,7 +1459,7 @@ Now recall from \cref{sec:colimits} that the \emph{join} $A*B$ of types $A$ and 
 \[A \xleftarrow{\proj1}A\times B \xrightarrow{\proj2} B. \]
 
 \begin{lem}
-  \index{associativity!of join}%
+  \index{JieHeXing@结合性!of join}%
   The operation of join is associative: if $A$, $B$ and $C$ are three types
   then we have an equivalence $\eqv{(A*B)*C}{A*(B*C)}$.
 \end{lem}
@@ -1553,13 +1553,13 @@ We can now construct the Hopf fibration:
     =\Sn^3. \qedhere
   \end{equation*}
 \end{proof}
-\index{Hopf fibration|)}
+\index{HopfXianWeiCong@Hopf纤维丛|)}
 
 \section{The Freudenthal suspension theorem}
 \label{sec:freudenthal}
 
-\index{Freudenthal suspension theorem|(}%
-\index{DingLi@定理!Freudenthal suspension|(}%
+\index{FreudenthalWeiXuanDingLi@Freudenthal纬悬定理|(}%
+\index{DingLi@定理!FreudenthalWeiXuan@Freudenthal纬悬|(}%
 
 Before proving the Freudenthal suspension theorem, we need some auxiliary lemmas about connectedness.
 In \cref{cha:hlevels} we proved a number of facts about $n$-connected maps and $n$-types for fixed $n$; here we are now interested in what happens when we vary $n$.
@@ -1804,12 +1804,12 @@ equivalence on $2n$-truncations.
 
 \index{encode-decode method|)}%
 
-\index{Freudenthal suspension theorem|)}%
-\index{DingLi@定理!Freudenthal suspension|)}%
+\index{FreudenthalWeiXuanDingLi@Freudenthal纬悬定理|)}%
+\index{DingLi@定理!FreudenthalWeiXuan@Freudenthal纬悬|)}%
 
-\index{homotopy!group!of sphere}%
+\index{TongLun@同伦!Qun@群!of sphere}%
 \index{stability!of homotopy groups of spheres}%
-\index{type!n-sphere@$n$-sphere}%
+\index{LeiXing@类型!n-sphere@$n$-sphere}%
 One important corollary of the Freudenthal suspension theorem is that the homotopy groups of
 spheres are stable in a certain range (these are the northeast-to-southwest diagonals
 in \cref{tab:homotopy-groups-of-spheres}):
@@ -1882,7 +1882,7 @@ this equivalence, combined with the inductive hypothesis, gives the result.
 \index{van Kampen theorem|(}%
 \index{DingLi@定理!van Kampen|(}%
 
-\index{fundamental!group}%
+\index{JiChuDe@基础的!Qun@群}%
 The van Kampen theorem calculates the fundamental group $\pi_1$ of a (homotopy) pushout of spaces.
 It is traditionally stated for a topological space $X$ which is the union of two open subspaces $U$ and $V$, but in homotopy-theoretic terms this is just a convenient way of ensuring that $X$ is the pushout of $U$ and $V$ over their intersection.
 Thus, we will prove a version of the van Kampen theorem for arbitrary pushouts.
@@ -1895,7 +1895,7 @@ In \cref{sec:pi1-s1-intro} (as well as in \cref{sec:compute-coprod,sec:compute-n
 In the van Kampen theorem, our goal is only to characterize the fundamental group $\pi_1(W)$, and we do not have any explicit description of the loop spaces or the path spaces to use.
 
 It turns out that we can use the same technique directly for a truncated version of the path fibration, thereby characterizing not only the fundamental \emph{group} $\pi_1(W)$, but also the whole fundamental \emph{groupoid}.
-\index{fundamental!pregroupoid}%
+\index{JiChuDe@基础的!pregroupoid}%
 Spe\-cif\-ical\-ly, for a type $X$, write $\Pi_1 X: X\to X\to \type$ for the $0$-truncation of its identity type, i.e.\ $\Pi_1 X(x,y) \defeq \trunc0{x=y}$.
 Note that we have induced groupoid operations
 \begin{align*}
@@ -2108,7 +2108,7 @@ We could, however, define a concatenation operation on $\code$ (by concatenating
 (In the language of \cref{cha:category-theory}, these would be ``pregroupoids''.)
 We leave the details to the reader.
 
-\index{fundamental!group|(}%
+\index{JiChuDe@基础的!Qun@群|(}%
 
 \begin{eg}\label{eg:suspension}
   More generally, let $B\defeq\unit$ and $C\defeq \unit$ but $A$ be arbitrary, so that $P$ is the suspension of $A$.
@@ -2129,7 +2129,7 @@ We leave the details to the reader.
   Thus, we have $\pi_1(B\vee C) \cong \pi_1(B) * \pi_1(C)$.
 \end{eg}
 
-\index{fundamental!group|)}%
+\index{JiChuDe@基础的!Qun@群|)}%
 
 However, \cref{thm:naive-van-kampen} stops just short of being the full classical van Kampen theorem, which handles
 the case where $A$ is not necessarily a set,
@@ -2141,7 +2141,7 @@ For this reason, in the next subsection we consider a better version of the van 
 \subsection{The van Kampen theorem with a set of basepoints}
 \label{sec:better-vankampen}
 
-\index{basepoint!set of}%
+\index{JiDian@基点!DeJiHe@的集合}%
 The improvement of van Kampen we present now is closely analogous to a similar improvement in classical algebraic topology, where $A$ is equip\-ped with a \emph{set $S$ of base points}.
 In fact, it turns out to be unnecessary for our proof to assume that the ``set of basepoints'' is a \emph{set} --- it might just as well be an arbitrary type; the utility of assuming $S$ is a set arises later, when applying the theorem to obtain computations.
 What is important is that $S$ contains at least one point in each connected component of $A$.
@@ -2177,14 +2177,14 @@ There is an obvious induced function $\kbar:T\to A$ such that $\kbar \ell = k$, 
 \end{proof}
 
 \begin{rmk}
-  \index{kernel!pair}%
+  \index{He@核!YouXuDui@有序对}%
   $T$ can be regarded as the (homotopy) coequalizer of the ``kernel pair'' of $k$.
   If $S$ and $A$ were sets, then the $(-1)$-connectivity of $k$ would imply that $A$ is the $0$-truncation of this coequalizer (see \cref{cha:set-math}).
   For general types, higher topos theory suggests that $(-1)$-con\-nec\-tiv\-i\-ty of $k$ will imply instead that $A$ is the colimit (a.k.a.\ ``geometric realization'') of the ``simplicial kernel'' of $k$.
   \index{.WuQiong1TuoPuSi@$(\infty,1)$-拓扑斯}%
   \index{geometric realization}%
-  \index{simplicial!kernel}%
-  \index{kernel!simplicial}%
+  \index{simplicial!He@核}%
+  \index{He@核!simplicial}%
   The type $T$ is the colimit of the ``1-skeleton'' of this simplicial kernel, so it makes sense that it improves the connectivity of $k$ by $1$.
   More generally, we might expect the colimit of the $n$-skeleton\index{skeleton!of a CW-complex} to improve connectivity by $n$.
 \end{rmk}
@@ -2257,7 +2257,7 @@ Now we define $\code:P\to P\to \type$ by double induction as follows
 
 \index{encode-decode method|)}%
 
-\index{fundamental!group|(}%
+\index{JiChuDe@基础的!Qun@群|(}%
 \cref{thm:van-Kampen} allows us to calculate the fundamental group of a space~$A$,
 even when $A$ is not a set, provided $S$ is a set, for in that case,
 each $\code(u,v)$ is, by definition, a set-quotient of a \emph{set} by a
@@ -2268,8 +2268,8 @@ relation.  In that respect, it is an improvement over
   Suppose $S\defeq \unit$, so that $A$ has a basepoint $a \defeq k(\ttt)$ and is connected.
   Then code for loops in the pushout can be identified with alternating sequences of loops in $\pi_1(B,f(a))$ and $\pi_1(C,g(a))$, modulo an equivalence relation which allows us to slide elements of $\pi_1(A,a)$ between them (after applying $f$ and $g$ respectively).
   Thus, $\pi_1(P)$ can be identified with the \emph{amalgamated free product}
-  \index{amalgamated free product}%
-  \index{free!product!amalgamated}%
+  \index{RongHeZiYouJi@融合自由积}%
+  \index{ZiYou@自由!product!RongHeDe@融合的}%
   $\pi_1(B) *_{\pi_1(A)} \pi_1(C)$ (the pushout in the category of groups), as constructed in \cref{sec:free-algebras}.
   This (in the case when $B$ and $C$ are open subspaces of $P$ and $A$ their intersection) is probably the most classical version of the van Kampen theorem.
 \end{eg}
@@ -2287,8 +2287,8 @@ relation.  In that respect, it is an improvement over
   As a further special case of \cref{eg:cofiber}, let $B\defeq S^1 \vee S^1$, let $A\defeq S^1$, and let $f:A\to B$ pick out the composite loop $p \ct q \ct \opp p \ct \opp q$, where $p$ and $q$ are the generating loops in the two copies of $S^1$ comprising $B$.
   Then $P$ is a presentation of the torus $T^2$.
   Indeed, it is not hard to identify $P$ with the presentation of $T^2$ as described in \cref{sec:hubs-spokes}, using the cone on a particular loop.
-  Thus, $\pi_1(T^2)$ is the quotient of the free group on two generators\index{generator!of a group} (i.e., $\pi_1(B)$) by the relation $p \ct q \ct \opp p \ct \opp q = 1$.
-  This clearly yields the free \emph{abelian}\index{group!abelian} group on two generators, which is $\Z\times\Z$.
+  Thus, $\pi_1(T^2)$ is the quotient of the free group on two generators\index{ShengChengYuan@生成元!QunDe@群的} (i.e., $\pi_1(B)$) by the relation $p \ct q \ct \opp p \ct \opp q = 1$.
+  This clearly yields the free \emph{abelian}\index{Qun@群!AbelDe@Abel的} group on two generators, which is $\Z\times\Z$.
 \end{eg}
 
 
@@ -2324,7 +2324,7 @@ relation.  In that respect, it is an improvement over
 
 
 \begin{eg}\label{eg:kg1}
-  In particular, suppose given any presentation\index{presentation!of a group} of a (set-)group $G = \langle X \mid R \rangle$, with $X$ a set of generators and $R$ a set of words in these generators\index{generator!of a group}.
+  In particular, suppose given any presentation\index{presentation!QunDe@群的} of a (set-)group $G = \langle X \mid R \rangle$, with $X$ a set of generators and $R$ a set of words in these generators\index{ShengChengYuan@生成元!QunDe@群的}.
   Let $B\defeq \bigvee_X S^1$ and $A\defeq \bigvee_R S^1$, with $f:A\to B$ sending each copy of $S^1$ to the corresponding word in the generating loops of $B$.
   It follows that $\pi_1(P) \cong G$; thus we have constructed a connected type whose fundamental group is $G$.
   Since any group has a presentation, any group is the fundamental group of some type.
@@ -2332,7 +2332,7 @@ relation.  In that respect, it is an improvement over
   \indexdef{Eilenberg-Mac LaneKongJian@Eilenberg-Mac Lane空间}%
 \end{eg}
 
-\index{fundamental!group|)}%
+\index{JiChuDe@基础的!Qun@群|)}%
 
 \index{van Kampen theorem|)}%
 \index{DingLi@定理!van Kampen|)}%
@@ -2357,7 +2357,7 @@ These models are ``non-hypercomplete $\infty$-toposes''
 \index{.WuQiong1TuoPuSi@$(\infty,1)$-拓扑斯!non-hypercomplete}%
 (see~\cite{lurie:higher-topoi}); roughly speaking, they consist of sheaves of $\infty$-groupoids over $\infty$-dimensional base spaces.
 
-\index{GongLi@公理!Whitehead's principle|(}%
+\index{GongLi@公理!WhiteheadYuanLi@Whitehead原理|(}%
 \index{Whitehead's!principle|(}%
 
 From a foundational point of view, therefore, we may speak of \emph{Whitehead's principle} as a ``classicality axiom'', akin to \LEM{} and \choice{}.
@@ -2393,7 +2393,7 @@ It may be regarded as a type-theoretic, $\infty$-group\-oid\-al version of the c
   Hence $\hfib f b$ is inhabited, and thus merely inhabited.
 \end{proof}
 
-Since homotopy groups are truncations of loop spaces\index{loop space}, rather than path spaces, we need to modify this theorem to speak about these instead. Recall the map $\Omega f$ from \cref{def:loopfunctor}.
+Since homotopy groups are truncations of loop spaces\index{HuanLuKongJian@环路空间}, rather than path spaces, we need to modify this theorem to speak about these instead. Recall the map $\Omega f$ from \cref{def:loopfunctor}.
 
 \begin{cor}\label{thm:whitehead1}
   Suppose $f:A\to B$ is a function such that
@@ -2483,22 +2483,22 @@ As an application, we can deduce the converse of \cref{thm:conn-pik}.
 \end{proof}
 
 A map $f$ such that $\trunc0f$ is a bijection and $\pi_k(f)$ is a bijection for all $k$ is called \define{$\infty$-connected}%
-\indexdef{function!.infinity-connected@$\infty$-connected}%
+\indexdef{HanShu@函数!.infinity-connected@$\infty$-connected}%
 \indexdef{.infinity-connected function@$\infty$-connected function}
 or a \define{weak equivalence}.%
 \indexdef{equivalence!weak}%
 \indexdef{weak equivalence!of types}
 This is equivalent to asking that $f$ be $n$-connected for all $n$.
 A type $Z$ is called \define{$\infty$-truncated}%
-\indexdef{type!.infinity-truncated@$\infty$-truncated}%
+\indexdef{LeiXing@类型!.infinity-truncated@$\infty$-truncated}%
 \indexdef{.infinity-truncated type@$\infty$-truncated type}
 or \define{hypercomplete}%
-\indexdef{type!hypercomplete}%
+\indexdef{LeiXing@类型!hypercomplete}%
 \indexdef{hypercomplete type}
 if the induced map
 \[(\blank\circ f):(B\to Z) \to (A\to Z)\]
 is an equivalence whenever $f$ is $\infty$-connected --- that is, if $Z$ thinks every $\infty$-connected map is an equivalence.
-\indexdef{axiom!Whitehead's principle}%
+\indexdef{GongLi@公理!WhiteheadYuanLi@Whitehead原理}%
 Then if we want to assume Whitehead's principle as an axiom, we may use either of the following equivalent forms.
 \begin{itemize}
 \item Every $\infty$-connected function is an equivalence.
@@ -2510,7 +2510,7 @@ the $\infty$-truncated types form a reflective subuniverse in the sense of
 \cref{sec:modalities} (the ``hypercompletion'' of an $(\infty,1)$-topos), but we do not know whether this is
 true in general.
 
-\index{GongLi@公理!Whitehead's principle|)}%
+\index{GongLi@公理!WhiteheadYuanLi@Whitehead原理|)}%
 \index{Whitehead's!principle|)}%
 
 It may not be obvious that there \emph{are} any types which are not $n$-types for any $n$, but in fact there are.
@@ -2518,7 +2518,7 @@ Indeed, in classical homotopy theory, $\Sn^n$ has this property for any $n\ge 2$
 We have not proven this fact in homotopy type theory yet, but there are other types which we can prove to have ``infinite truncation level''.
 
 \begin{eg}
-  Suppose we have $B:\nat\to\type$ such that for each $n$, the type $B(n)$ contains an $n$-loop\index{loop!n-@$n$-} which is not equal to $n$-fold reflexivity, say $p_n:\Omega^n(B(n),b_n)$ with $p_n \neq \refl{b_n}^n$.
+  Suppose we have $B:\nat\to\type$ such that for each $n$, the type $B(n)$ contains an $n$-loop\index{HuanLu@环路!n-@$n$-} which is not equal to $n$-fold reflexivity, say $p_n:\Omega^n(B(n),b_n)$ with $p_n \neq \refl{b_n}^n$.
   (For instance, we could define $B(n)\defeq \Sn^n$, with $p_n$ the image of $1:\Z$ under the isomorphism $\pi_n(\Sn^n)\cong \Z$.)
   Consider $C\defeq \prd{n:\nat} B(n)$, with the point $c:C$ defined by $c(n)\defeq b_n$.
   Since loop spaces commute with products, for any $m$ we have
@@ -2569,7 +2569,7 @@ case is using an encode-decode method to characterize the loop space of a
 type, as in \cref{thm:path-coprod} and \cref{{cor:omega-s1}}.
 
 \begin{lem}[Encode-decode for Loop Spaces]\label{lem:encode-decode-loop}
-  \index{loop space}%
+  \index{HuanLuKongJian@环路空间}%
 Given a pointed type $(A,a_0)$ and a fibration
 $\code : A \to \type$, if
 \begin{enumerate}
@@ -2650,7 +2650,7 @@ the \encode, use assumption~\ref{item:decode-encode-loop-iv}.
 Though we do not present the proofs in this chapter, following results have also been established in homotopy type theory.
 
 \begin{thm}
-\index{homotopy!group!of sphere}
+\index{TongLun@同伦!Qun@群!of sphere}
 There exists a $k$ such that for all $n \ge 3$, $\pi_{n+1}(\Sn ^n) =
 \Z_k$.
 \end{thm}
@@ -2659,7 +2659,7 @@ There exists a $k$ such that for all $n \ge 3$, $\pi_{n+1}(\Sn ^n) =
 The proof consists of a calculation of $\pi_4(\Sn ^3)$, together with an
 appeal to stability (\cref{cor:stability-spheres}).  In the classical
 statement of this result, $k$ is $2$.  While we have not yet checked that
-$k$ is in fact $2$, our calculation of $\pi_4(\Sn ^3)$ is constructive,\index{mathematics!constructive}
+$k$ is in fact $2$, our calculation of $\pi_4(\Sn ^3)$ is constructive,\index{mathematics!GouZaoXingDe@构造性的}
 like all the rest of the proofs in this chapter.
 (More precisely, it doesn't use any additional axioms such as \LEM{} or \choice{}, making it as constructive as
 univalence and higher inductive types are.)  Thus, given a
@@ -2675,7 +2675,7 @@ for which we have not needed to know the answer in advance.
 
 \begin{thm}[Blakers--Massey theorem]\label{Blakers-Massey}
   \indexdef{theorem!Blakers--Massey}%
-  \indexsee{Blakers--Massey theorem}{theorem, Blakers--Massey}%
+  \indexsee{Blakers--MasseyDingLi@Blakers--Massey定理}{theorem, Blakers--Massey}%
   Suppose we are given maps $f : C  \rightarrow X$, and $g : C \rightarrow Y$. Taking first the pushout $X \sqcup^C Y $ of $f$ and $g$ and then the pullback of its inclusions $\inl : X \rightarrow X \sqcup^C Y \leftarrow Y : \inr$, we have an induced map $C \to X \times_{(X \sqcup^C Y)} Y$.
 
   If $f$ is $i$-connected and $g$ is $j$-connected, then this induced map is $(i+j)$-connected. In other words, for any points $x:X$, $y:Y$, the corresponding fiber $C_{x,y}$ of $(f,g) : C \to X \times Y $ gives an approximation to the path space $\id[X \sqcup^C Y]{\inl(x)}{\inr(y)}$ in the pushout.
@@ -2687,7 +2687,7 @@ We have seen another example of this in the van Kampen theorem (\cref{sec:van-ka
 
 \begin{thm}[Eilenberg--Mac Lane Spaces]\label{Eilenberg-Mac-Lane-Spaces}
 \index{Eilenberg-Mac LaneKongJian@Eilenberg-Mac Lane空间}
-For any abelian\index{group!abelian} group $G$ and positive integer $n$, there is an $n$-type
+For any abelian\index{Qun@群!AbelDe@Abel的} group $G$ and positive integer $n$, there is an $n$-type
 $K(G,n)$ such that $\pi_n(K(G,n)) = G$, and  $\pi_k(K(G,n)) = 0$
 for $k\neq n$.
 \end{thm}
@@ -2756,7 +2756,7 @@ discussions and seminars about these problems, or by giving feedback on
 results.  The following people were the principal authors of the first
 homotopy type theory proofs of the above theorems. Unless indicated otherwise, for the
 theorems that have been computer-checked, the principal authors were
-also the first ones to formalize\index{mathematics!formalized} the proof using a computer proof
+also the first ones to formalize\index{mathematics!XingShiHuaDe@形式化的} the proof using a computer proof
 assistant.
 \begin{itemize}
 \item
@@ -2820,7 +2820,7 @@ the connections between these two subjects.
 \end{ex}
 
 \begin{ex}\label{ex:decidable-equality-susp}
-  \index{decidable!equality}%
+  \index{KePanDingDe@可判定的!equality}%
   Prove that if $A$ is a set with decidable equality (see \cref{defn:decidable-equality}), then its suspension $\susp A$ is a 1-type.
   (It is an open question\index{KaiFang@开放!WenTi@问题} whether this is provable without the assumption of decidable equality.)
 \end{ex}

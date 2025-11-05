@@ -21,7 +21,7 @@ We will define three different types having properties~\ref{item:beb1}--\ref{ite
 \begin{itemize}
 \item half adjoint equivalences,
 \item bi-invertible maps,
-  \index{function!bi-invertible}
+  \index{HanShu@函数!bi-invertible}
   and
 \item contractible functions.
 \end{itemize}
@@ -69,7 +69,7 @@ Thus, what we need is some $A$ which admits a nontrivial element of $\prd{x:A}(x
 Thinking of $A$ as a higher groupoid, an inhabitant of $\prd{x:A}(x=x)$ is a natural transformation\index{natural!transformation} from the identity functor of $A$ to itself.
 Such transformations are said to form the \define{center of a category},
 \index{center!of a category}%
-\index{category!center of}%
+\index{FanChou@范畴!center of}%
 since the naturality axiom requires that they commute with all morphisms.
 Classically, if $A$ is simply a group regarded as a one-object groupoid, then this yields precisely its center in the usual group-theoretic sense.
 This provides some motivation for the following.
@@ -136,7 +136,7 @@ This provides some motivation for the following.
   Therefore, $\prd{x:X} (x=x)$ is not a mere proposition.
 \end{proof}
 
-More generally, \cref{lem:autohtpy} implies that any ``Eilenberg--Mac Lane space'' $K(G,1)$, where $G$ is a nontrivial abelian\index{group!abelian} group, will provide a counterexample; see \cref{cha:homotopy}.
+More generally, \cref{lem:autohtpy} implies that any ``Eilenberg--Mac Lane space'' $K(G,1)$, where $G$ is a nontrivial abelian\index{Qun@群!AbelDe@Abel的} group, will provide a counterexample; see \cref{cha:homotopy}.
 The type $X$ we used turns out to be equivalent to $K(\mathbb{Z}_2,1)$.
 In \cref{cha:hits} we will see that the circle $\Sn^1 = K(\mathbb{Z},1)$ is another easy-to-describe example.
 
@@ -151,7 +151,7 @@ We now move on to describing better notions of equivalence.
 
 \index{equivalence!half adjoint|(defstyle}%
 \index{half adjoint equivalence|(defstyle}%
-\index{adjoint!equivalence!of types, half|(defstyle}%
+\index{BanSui@伴随!equivalence!of types, half|(defstyle}%
 
 In \cref{sec:quasi-inverses} we concluded that $\qinv(f)$ is equivalent to $\prd{x:A} (x=x)$ by discarding a contractible type.
 Roughly, the type $\qinv(f)$ contains three data $g$, $\eta$, and $\epsilon$, of which two ($g$ and $\eta$) could together be seen to be contractible when $f$ is an equivalence.
@@ -249,7 +249,7 @@ For this, we will need to know that the fibers of an equivalence are contractibl
 \begin{defn}\label{defn:homotopy-fiber}
   The \define{fiber}
   \indexdef{fiber}%
-  \indexsee{function!fiber of}{fiber}%
+  \indexsee{HanShu@函数!fiber of}{fiber}%
   of a map $f:A\to B$ over a point $y:B$ is
   \[ \hfib f y \defeq \sm{x:A} (f(x) = y).\]
 \end{defn}
@@ -297,8 +297,8 @@ The following types put together the quasi-inverse $g$ with one of the homotopie
   \indexdef{inverse!right}%
   to $f$, respectively.
   We call $f$ \define{left invertible}
-  \indexdef{function!left invertible}%
-  \indexdef{function!right invertible}%
+  \indexdef{HanShu@函数!left invertible}%
+  \indexdef{HanShu@函数!right invertible}%
   if $\linv(f)$ is inhabited, and similarly \define{right invertible}
   \indexdef{left!invertible function}%
   \indexdef{right!invertible function}%
@@ -371,12 +371,12 @@ In the next two sections we consider a couple of other possibilities.
 
 \index{equivalence!half adjoint|)}%
 \index{half adjoint equivalence|)}%
-\index{adjoint!equivalence!of types, half|)}%
+\index{BanSui@伴随!equivalence!of types, half|)}%
 
 \section{Bi-invertible maps}
 \label{sec:biinv}
 
-\index{function!bi-invertible|(defstyle}%
+\index{HanShu@函数!bi-invertible|(defstyle}%
 \index{bi-invertible function|(defstyle}%
 \index{equivalence!as bi-invertible function|(defstyle}%
 
@@ -410,15 +410,15 @@ The difference is that instead of adding a \emph{higher} datum (a 2-dimensional 
   Since both $\ishae(f)$ and $\biinv(f)$ are mere propositions, the equivalence follows from \cref{lem:equiv-iff-hprop}.
 \end{proof}
 
-\index{function!bi-invertible|)}%
+\index{HanShu@函数!bi-invertible|)}%
 \index{bi-invertible function|)}%
 \index{equivalence!as bi-invertible function|)}%
 
 \section{Contractible fibers}
 \label{sec:contrf}
 
-\index{function!contractible|(defstyle}%
-\index{contractible!function|(defstyle}%
+\index{HanShu@函数!contractible|(defstyle}%
+\index{contractible!HanShu@函数|(defstyle}%
 \index{equivalence!as contractible function|(defstyle}%
 
 Note that our proofs about $\ishae(f)$ and $\biinv(f)$ made essential use of the fact that the fibers of an equivalence are contractible.
@@ -486,8 +486,8 @@ For instance, it implies that when proving a function to be an equivalence, we a
   But if $e:B\to \isequiv(f)$, then given any such $y$ we have $e(y):\isequiv(f)$, so that $f$ is an equivalence and hence $\hfib f y$ is contractible, as desired.
 \end{proof}
 
-\index{function!contractible|)}%
-\index{contractible!function|)}%
+\index{HanShu@函数!contractible|)}%
+\index{contractible!HanShu@函数|)}%
 \index{equivalence!as contractible function|)}%
 
 \section{On the definition of equivalences}
@@ -501,7 +501,7 @@ See \cref{ex:brck-qinv} and the exercises in this chapter for some more.)
 Thus, we may choose any one of them as ``the'' definition of $\isequiv (f)$.
 For definiteness, we choose to define
 \[ \isequiv(f) \defeq \ishae(f).\]
-\index{mathematics!formalized}%
+\index{mathematics!XingShiHuaDe@形式化的}%
 This choice is advantageous for formalization, since $\ishae(f)$ contains the most directly useful data.
 On the other hand, for other purposes, $\biinv(f)$ is often easier to deal with, since it contains no 2-dimensional paths and its two symmetrical halves can be treated independently.
 However, for purposes of this book, the specific choice will make little difference.
@@ -513,12 +513,12 @@ In the rest of this chapter, we study some other properties and characterization
 \section{Surjections and embeddings}
 \label{sec:mono-surj}
 
-\index{set}
+\index{JiHe@集合}
 When $A$ and $B$ are sets and $f:A\to B$ is an equivalence, we also call it as \define{isomorphism}
-\indexdef{isomorphism!of sets}%
+\indexdef{TongGou@同构!of sets}%
 or a \define{bijection}.
 \indexdef{bijection}%
-\indexsee{function!bijective}{bijection}%
+\indexsee{HanShu@函数!bijective}{bijection}%
 (We avoid these words for types that are not sets, since in homotopy theory and higher category theory they often denote a stricter notion of ``sameness'' than homotopy equivalence.)
 In set theory, a function is a bijection just when it is both injective and surjective.
 The same is true in type theory, if we formulate these conditions appropriately.
@@ -528,13 +528,13 @@ For clarity, when dealing with types that are not sets, we will speak of \emph{e
   Let $f:A\to B$.
   \begin{enumerate}
   \item We say $f$ is \define{surjective}
-    \indexsee{surjective!function}{function, surjective}%
-    \indexdef{function!surjective}%
+    \indexsee{surjective!HanShu@函数}{function, surjective}%
+    \indexdef{HanShu@函数!surjective}%
     (or a \define{surjection})
     \indexsee{surjection}{function, surjective}%
     if for every $b:B$ we have $\brck{\hfib f b}$.
   \item We say $f$ is an \define{embedding}
-    \indexdef{function!embedding}%
+    \indexdef{HanShu@函数!embedding}%
     \indexsee{embedding}{function, embedding}%
     if for every $x,y:A$ the function $\apfunc f : (\id[A]xy) \to (\id[B]{f(x)}{f(y)})$ is an equivalence.
   \end{enumerate}
@@ -545,11 +545,11 @@ In traditional logical notation, $f$ is surjective if $\fall{b:B}\exis{a:A} (f(a
 This must be distinguished from the stronger assertion that $\prd{b:B}\sm{a:A} (f(a)=b)$; if this holds we say that $f$ is a \define{split surjection}.
 \indexsee{split!surjection}{function, split surjective}%
 \indexsee{surjection!split}{function, split surjective}%
-\indexsee{surjective!function!split}{function, split surjective}%
-\indexdef{function!split surjective}%
+\indexsee{surjective!HanShu@函数!split}{function, split surjective}%
+\indexdef{HanShu@函数!split surjective}%
 (Since this latter type is equivalent to $\sm{g:B\to A}\prd{b:B} (f(g(b))=b)$, being a split surjection is the same as being a \emph{retraction} as defined in \cref{sec:contractibility}.)
 \index{retraction}%
-\index{function!retraction}%
+\index{HanShu@函数!retraction}%
 
 The axiom of choice from \cref{sec:axiom-choice} says exactly that every surjection \emph{between sets} is split.
 However, in the presence of the univalence axiom, it is simply false that \emph{all} surjections are split.
@@ -562,7 +562,7 @@ If $A$ and $B$ are sets, then by \cref{lem:equiv-iff-hprop}, $f$ is an embedding
 \end{equation}
 In this case we say that $f$ is \define{injective},
 \indexsee{injective function}{function, injective}%
-\indexdef{function!injective}%
+\indexdef{HanShu@函数!injective}%
 or an \define{injection}.
 \indexsee{injection}{function, injective}%
 We avoid these word for types that are not sets, because they might be interpreted as~\eqref{eq:injective}, which is an ill-behaved notion for non-sets.
@@ -629,7 +629,7 @@ Furthermore, we have:
 This is a standard closure condition on equivalences from homotopy theory.
 Also well-known is that they are closed under retracts, in the following sense.
 
-\index{retract!of a function|(defstyle}%
+\index{retract!HanShuDe@函数的|(defstyle}%
 
 \begin{defn}\label{defn:retract}
 A function $g:A\to B$ is said to be a \define{retract}
@@ -712,7 +712,7 @@ But this transportation computes as $\opp{g(R(a))}\ct K(s(a))\ct r'(L(a))\ct R'(
   Thus, by \cref{thm:retract-contr}, if the latter are all contractible, so are the former.
 \end{proof}
 
-\index{retract!of a function|)}%
+\index{retract!HanShuDe@函数的|)}%
 
 \index{fibration}%
 \index{total!space}%
@@ -720,10 +720,10 @@ Finally, we show that fiberwise equivalences can be characterized in terms of eq
 To explain the terminology, recall from \cref{sec:fibrations} that a type family $P:A\to\type$ can be viewed as a fibration over $A$ with total space $\sm{x:A} P(x)$, the fibration being the projection $\proj1:\sm{x:A} P(x) \to A$.
 From this point of view, given two type families $P,Q:A\to\type$, we may refer to a function $f:\prd{x:A} (P(x)\to Q(x))$ as a \define{fiberwise map} or a \define{fiberwise transformation}.
 \indexsee{transformation!fiberwise}{fiberwise transformation}%
-\indexsee{function!fiberwise}{fiberwise transformation}%
+\indexsee{HanShu@函数!fiberwise}{fiberwise transformation}%
 \index{fiberwise!transformation|(defstyle}%
-\indexsee{fiberwise!map}{fiberwise transformation}%
-\indexsee{map!fiberwise}{fiberwise transformation}
+\indexsee{fiberwise!YingShe@映射}{fiberwise transformation}%
+\indexsee{YingShe@映射!fiberwise}{fiberwise transformation}
 Such a map induces a function on total spaces:
 
 \begin{defn}\label{defn:total-map}
@@ -897,7 +897,7 @@ Therefore, we get homotopies $f\htpy\proj1\circ e$ and $\vartheta_f\htpy \proj2\
 \section{Univalence implies function extensionality}
 \label{sec:univalence-implies-funext}
 
-\index{function extensionality!proof from univalence}%
+\index{HanShuWaiYanXing@函数外延性!proof from univalence}%
 In the last section of this chapter we include a proof that the univalence axiom implies function
 extensionality. Thus, in this section we work \emph{without} the function extensionality axiom.
 The proof consists of two steps. First we show
@@ -911,7 +911,7 @@ Let $\type$ be a universe; we will explicitly indicate where we assume that it i
 
 \begin{defn}\label{weakfunext}
 The \define{weak function extensionality principle}
-\indexdef{function extensionality!weak}%
+\indexdef{HanShuWaiYanXing@函数外延性!weak}%
 asserts that there is a function
 \begin{equation*}
 \Parens{\prd{x:A}\iscontr(P(x))} \to\iscontr\Parens{\prd{x:A}P(x)}
@@ -978,7 +978,7 @@ converts equality of functions to homotopy. In the proof that follows, the univa
 axiom is not used.
 
 \begin{thm}\label{wfetofe}
-  \index{function extensionality}%
+  \index{HanShuWaiYanXing@函数外延性}%
 Weak function extensionality implies the function extensionality \cref{axiom:funext}.
 \end{thm}
 
@@ -1002,7 +1002,7 @@ Now \cref{thm:ttac} says that this is equivalent to
 \prd{x:A}\sm{u:P(x)}f(x)= u.
 \end{equation}
 The proof of \cref{thm:ttac} uses function extensionality, but only for one of the composites.
-Thus, without assuming function extensionality, we can conclude that~\eqref{eq:uatofesp} is a retract\index{retract!of a type} of~\eqref{eq:uatofeps}.
+Thus, without assuming function extensionality, we can conclude that~\eqref{eq:uatofesp} is a retract\index{retract!LeiXingDe@类型的} of~\eqref{eq:uatofeps}.
 And~\eqref{eq:uatofeps} is a product of contractible types, which is contractible by the weak function extensionality principle; hence~\eqref{eq:uatofesp} is also contractible.
 \end{proof}
 
@@ -1014,7 +1014,7 @@ In type theory, this would correspond most closely to $\sm{f:A\to B} \brck{\qinv
 
 The first definition of equivalence given in homotopy type theory was the one that we have called $\iscontr(f)$, which was due to Voevodsky.
 The possibility of the other definitions was subsequently observed by various people.
-The basic theorems about adjoint equivalences\index{adjoint!equivalence} such as \cref{lem:coh-equiv,thm:equiv-iso-adj} are adaptations of standard facts in higher category theory and homotopy theory.
+The basic theorems about adjoint equivalences\index{BanSui@伴随!equivalence} such as \cref{lem:coh-equiv,thm:equiv-iso-adj} are adaptations of standard facts in higher category theory and homotopy theory.
 Using bi-invertibility as a definition of equivalences was suggested by Andr\'e Joyal.
 
 The properties of equivalences discussed in \cref{sec:mono-surj,sec:equiv-closures} are well-known in homotopy theory.
@@ -1035,7 +1035,7 @@ Our proof is a simplification of his.
 \sectionExercises
 
 \begin{ex}\label{ex:two-sided-adjoint-equivalences}
-  Consider the type of ``two-sided adjoint equivalence\index{adjoint!equivalence} data'' for $f:A\to B$,
+  Consider the type of ``two-sided adjoint equivalence\index{BanSui@伴随!equivalence} data'' for $f:A\to B$,
   \begin{narrowmultline*}
     \sm{g:B\to A}{\eta: g \circ f \htpy \idfunc[A]}{\epsilon:f \circ g \htpy \idfunc[B]}
     \narrowbreak
@@ -1109,7 +1109,7 @@ Our proof is a simplification of his.
 
 \begin{ex}\label{ex:funext-from-nondep}
   The \textbf{na\"{i}ve non-dependent function extensionality axiom} says that for $A,B:\type$ and $f,g:A\to B$ there is a function $(\prd{x:A} f(x)=g(x)) \to (f=g)$.
-  \indexdef{function extensionality!non-dependent}%
+  \indexdef{HanShuWaiYanXing@函数外延性!non-dependent}%
   Modify the argument of \cref{sec:univalence-implies-funext} to show that this axiom implies the full function extensionality axiom (\cref{axiom:funext}).
 \end{ex}
 

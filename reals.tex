@@ -4,13 +4,13 @@
 \index{real numbers|(}%
 Any foundation of mathematics worthy of its name must eventually address the construction of real numbers as understood by mathematical analysis, namely as a complete archimedean ordered field.
 \index{ordered field}%
-There are two notions of completeness. The one by Cauchy requires that the reals be closed under limits of Cauchy sequences\index{Cauchy!sequence}, while the stronger one by Dedekind requires closure under Dedekind cuts.\index{cut!Dedekind}
+There are two notions of completeness. The one by Cauchy requires that the reals be closed under limits of Cauchy sequences\index{Cauchy!sequence}, while the stronger one by Dedekind requires closure under Dedekind cuts.\index{FenGe@分割!Dedekind}
 These lead to two ways of constructing reals, which we study in \cref{sec:dedekind-reals} and \cref{sec:cauchy-reals}, respectively. In \cref{RD-final-field,RC-initial-Cauchy-complete} we characterize the two constructions in terms of universal properties: the Dedekind reals are the final archimedean ordered field, and the Cauchy reals the initial Cauchy complete archimedean ordered field.
 
 In traditional constructive mathematics,
-\index{mathematics!constructive}%
+\index{mathematics!GouZaoXingDe@构造性的}%
 real numbers always seem to require certain compromises. For example, the Dedekind reals work better with power sets or some other form of impredicativity, while Cauchy reals work well in the presence of countable choice.
-\index{GongLi@公理!XuanZe@选择!countable}%
+\index{GongLi@公理!XuanZe@选择!KeShuDe@可数的}%
 However, we give a new construction of the Cauchy reals as a higher inductive-inductive type that seems to be a third possibility, which requires neither power sets nor countable choice.
 
 In~\cref{sec:comp-cauchy-dedek} we compare the two constructions of reals. The Cauchy reals are included in the Dedekind reals. They coincide if excluded middle or countable choice holds, but in general the inclusion might be proper.
@@ -18,7 +18,7 @@ In~\cref{sec:comp-cauchy-dedek} we compare the two constructions of reals. The C
 In~\cref{sec:compactness-interval} we consider three notions of compactness of the closed interval~$[0,1]$. We first show that $[0,1]$ is metrically compact\indexdef{metrically compact}\indexdef{compactness!metric} in the sense that it is complete and totally bounded, and that uniformly continuous maps on metrically compact spaces behave as expected. In contrast, the Bolzano--Weierstra\ss{} property that every sequence has a convergent subsequence implies the limited principle of omniscience, which is an instance of excluded middle. Finally, we discuss Heine--Borel compactness. A naive formulation of the finite subcover property does not work, but a proof relevant notion of inductive covers does.
 This section is basically standard constructive analysis.
 
-The development of real numbers and analysis in homotopy type theory can be easily made compatible with classical mathematics. By assuming excluded middle and the axiom of choice we get standard classical analysis:\index{mathematics!classical}\index{classical!analysis} the Dedekind and Cauchy reals coincide, foundational questions about the impredicative nature of the Dedekind reals disappear, and the interval is as compact as it could be.
+The development of real numbers and analysis in homotopy type theory can be easily made compatible with classical mathematics. By assuming excluded middle and the axiom of choice we get standard classical analysis:\index{mathematics!classical}\index{classical!FenXi@分析} the Dedekind and Cauchy reals coincide, foundational questions about the impredicative nature of the Dedekind reals disappear, and the interval is as compact as it could be.
 
 We close the chapter by constructing Conway's surreals as a higher inductive-inductive type in \cref{sec:surreals};
 the construction is more natural in univalent type theory than in  classical set theory.
@@ -41,9 +41,9 @@ with a non-trivial algebraic structure.
 \indexsee{number!rational}{rational numbers}%
 We first construct the rational numbers \Q, as the reals can then be seen as a completion
 of~\Q. An expert will point out that \Q could be replaced by any approximate field,
-\indexdef{field!approximate}%
+\indexdef{field!GuJi@估计}%
 i.e., a subring of \Q in which arbitrarily precise approximate inverses
-\index{inverse!approximate}%
+\index{inverse!GuJi@估计}%
 exist. An example is the
 ring of dyadic rationals,
 \index{rational numbers!dyadic}%
@@ -68,7 +68,7 @@ no division by zero because we cunningly added one to the denominator~$a$. Here 
 have a canonical choice of representatives, namely fractions in lowest terms. Thus we may
 apply \cref{lem:quotient-when-canonical-representatives} to obtain a set \Q, which
 again has a decidable equality.
-\index{decidable!equality}%
+\index{KePanDingDe@可判定的!equality}%
 
 We do not bother to write down the arithmetical operations on \Q as we trust that our readers
 know how to compute with fractions even in the case when one is added to the denominator.
@@ -89,8 +89,8 @@ Finally, we will denote by $\Qp \defeq \setof{ q : \Q | q > 0 }$ the type of pos
 Let us first recall the basic idea of Dedekind's construction. We use two-sided Dedekind
 cuts, as opposed to an often used one-sided version, because the symmetry makes
 constructions more elegant, and it works constructively as well as classically.
-\index{mathematics!constructive}%
-A \emph{Dedekind cut}\index{cut!Dedekind} consists of a pair $(L, U)$ of subsets $L, U \subseteq \Q$, called the
+\index{mathematics!GouZaoXingDe@构造性的}%
+A \emph{Dedekind cut}\index{FenGe@分割!Dedekind} consists of a pair $(L, U)$ of subsets $L, U \subseteq \Q$, called the
 \emph{lower} and \emph{upper cut} respectively, which are:
 %
 \begin{enumerate}
@@ -119,11 +119,11 @@ typical Dedekind cut looks like this:
 %
 We might naively translate the informal definition into type theory by saying that a cut
 is a pair of maps $L, U : \Q \to \prop$. But we saw in \cref{subsec:prop-subsets} that
-$\prop$ is an ambiguous\index{typical ambiguity} notation for $\prop_{\UU_i}$ where~$\UU_i$ is a universe. Once we
+$\prop$ is an ambiguous\index{DianXingQiYi@典型歧义} notation for $\prop_{\UU_i}$ where~$\UU_i$ is a universe. Once we
 use a particular $\UU_i$ to define cuts, the type of reals will reside in the next
 universe $\UU_{i+1}$, a property of reals two levels higher in $\UU_{i+2}$, a property of
 subsets of reals in $\UU_{i+3}$, etc. In principle we should be able to keep track of the
-universe levels\index{universe level}, especially with the help of a proof assistant, but doing so here would
+universe levels\index{YuZhouCengJi@宇宙层级}, especially with the help of a proof assistant, but doing so here would
 just burden us with bureaucracy that we prefer to avoid. We shall therefore make a
 simplifying assumption that a single type of propositions $\Omega$ is sufficient for all
 our purposes.
@@ -140,14 +140,14 @@ $\Omega$:
 \item We could assume the propositional resizing axiom,
   \index{propositional!resizing}%
   as in \cref{subsec:prop-subsets}, which essentially collapses the $\prop_{\UU_i}$'s to the
-  lowest level\index{universe level}, which we call $\Omega$.
+  lowest level\index{YuZhouCengJi@宇宙层级}, which we call $\Omega$.
 
 \item A classical mathematician who is not interested in the intricacies of type-theoretic
   universes or computation may simply assume the law of excluded middle~\eqref{eq:lem} for
   mere propositions so that $\Omega \jdeq \bool$.
   \index{PaiZhongLv@排中律}
   This not only eradicates questions about
-  levels\index{universe level} of $\prop$, but also turns everything we do into the standard classical\index{mathematics!classical}
+  levels\index{YuZhouCengJi@宇宙层级} of $\prop$, but also turns everything we do into the standard classical\index{mathematics!classical}
   construction of real numbers.
 
 \item On the other end of the spectrum one might ask for a minimal requirement that makes
@@ -156,7 +156,7 @@ $\Omega$:
   is a countable set. Thus we could take $\Omega$ to be the initial \emph{$\sigma$-frame},
   \index{initial!sigma-frame@$\sigma$-frame}%
   \index{sigma-frame@$\sigma$-frame!initial|defstyle}%
-  i.e., a lattice\index{lattice} with countable joins\index{join!in a lattice} in which binary meets distribute over countable
+  i.e., a lattice\index{Ge@格} with countable joins\index{join!in a lattice} in which binary meets distribute over countable
   joins. (The initial $\sigma$-frame cannot be the two-point lattice $\bool$ because
   $\bool$ is not closed under countable joins, unless we assume excluded middle.) This
   would lead to a construction of~$\Omega$ as a higher inductive-inductive type, but one
@@ -171,8 +171,8 @@ logical notation from \cref{defn:logical-notation}.
 
 \begin{defn} \label{defn:dedekind-reals}
   A \define{Dedekind cut}
-  \indexsee{Dedekind!cut}{cut, Dedekind}%
-  \indexdef{cut!Dedekind}%
+  \indexsee{Dedekind!FenGe@分割}{分割, Dedekind的}%
+  \indexdef{FenGe@分割!Dedekind}%
   is a pair $(L, U)$ of mere predicates $L : \Q \to \Omega$ and $U
   : \Q \to \Omega$ which is:
   %
@@ -227,7 +227,7 @@ as usual in intuitionistic logic. Rather than dwelling on details we point out t
 differences between the classical\index{mathematics!classical} and intuitionistic setup. Writing $L_x$ and $U_x$ for
 the lower and upper cut of a real number $x : \RD$, we define addition as%
 %
-\indexdef{addition!of Dedekind reals}%
+\indexdef{JiaFa@加法!of Dedekind reals}%
 \begin{align*}
   L_{x + y}(q) &\defeq \exis{r, s : \Q} L_x(r) \land L_y(s) \land q = r + s, \\
   U_{x + y}(q) &\defeq \exis{r, s : \Q} U_x(r) \land U_y(s) \land q = r + s,
@@ -240,7 +240,7 @@ and the additive inverse by
   U_{-x}(q) &\defeq \exis{r : \Q} L_x(r) \land q = - r.
 \end{align*}
 %
-With these operations $(\RD, 0, {+}, {-})$ is an abelian\index{group!abelian} group. Multiplication is a bit
+With these operations $(\RD, 0, {+}, {-})$ is an abelian\index{Qun@群!AbelDe@Abel的} group. Multiplication is a bit
 more cumbersome:
 %
 \indexdef{multiplication!of Dedekind reals}%
@@ -257,7 +257,7 @@ more cumbersome:
   \end{aligned}
 \end{align*}
 %
-\index{interval!arithmetic}%
+\index{interval!SuanShuDe@算数的}%
 These formulas are related to multiplication of intervals in interval arithmetic, where
 intervals $[a,b]$ and $[c,d]$ with rational endpoints multiply to the interval
 %
@@ -294,7 +294,7 @@ multiplicative inverses, we must first introduce order. Define $\leq$ and $<$ as
   of the proof is symmetric.
 \end{proof}
 
-\index{partial order}%
+\index{PianXu@偏序}%
 \index{transitivity!of . for reals@of $<$ for reals}
 \index{transitivity!of . for reals@of $\leq$ for reals}
 \index{relation!irreflexive}
@@ -345,7 +345,7 @@ from each other, written $x \apart y$, when $(x < y) \lor (y < x)$:
 %
 If $x \apart y$, then $\lnot (x = y)$.
 The converse is true if we assume excluded middle, but is not provable constructively.
-\index{mathematics!constructive}%
+\index{mathematics!GouZaoXingDe@构造性的}%
 Indeed, if $\lnot (x = y)$ implies $x\apart y$, then a little bit of excluded middle follows; see \cref{ex:reals-apart-neq-MP}.
 
 \begin{thm} \label{RD-inverse-apart-0}
@@ -387,7 +387,7 @@ Indeed, if $\lnot (x = y)$ implies $x\apart y$, then a little bit of excluded mi
   \end{align*}
 \end{proof}
 
-\index{ordered field!archimedean}%
+\index{ordered field!ArchimedesDe@Archimedes的}%
 \index{dense}%
 \indexsee{order-dense}{dense}%
 The archimedean principle can be stated in several ways. We find it most illuminating in the
@@ -451,8 +451,8 @@ axiomatization, but rather at a useful amount of structure and properties.
   %
   Every such field has a canonical embedding $\Q \to F$. An ordered field is
   \define{archimedean}
-  \indexdef{ordered field!archimedean}%
-  \indexsee{archimedean property}{ordered field, archi\-mede\-an}%
+  \indexdef{ordered field!ArchimedesDe@Archimedes的}%
+  \indexsee{ArchimedesXing@Archimedes性}{ordered field, archi\-mede\-an}%
   when for all $x, y : F$, if $x < y$ then there merely exists $q :
   \Q$ such that $x < q < y$.
 \end{defn}
@@ -487,7 +487,7 @@ approximation functions rather than with Cauchy sequences.
 
 \begin{defn} \label{defn:cauchy-approximation}
   A \define{Cauchy approximation}
-  \indexdef{Cauchy!approximation}%
+  \indexdef{Cauchy!GuJi@估计}%
   is a map $x : \Qp \to \RD$ which satisfies
   %
   \begin{equation}
@@ -565,7 +565,7 @@ For sake of completeness we record the classic formulation as well.
 \label{sec:RD-dedekind-complete}
 
 We obtained $\RD$ as the type of Dedekind cuts on $\Q$. But we could have instead started
-with any archimedean ordered field $F$ and constructed Dedekind cuts\index{cut!Dedekind} on $F$. These would
+with any archimedean ordered field $F$ and constructed Dedekind cuts\index{FenGe@分割!Dedekind} on $F$. These would
 again form an archimedean ordered field $\bar{F}$, the \define{Dedekind completion of $F$},%
 \index{completion!Dedekind}%
 \indexsee{Dedekind!completion}{completion, Dedekind}
@@ -574,8 +574,8 @@ $\RD$, do we get even more real numbers? The answer is negative. In fact, we sha
 stronger result: $\RD$ is final.
 
 Say that an ordered field~$F$ is \define{admissible for $\Omega$}
-\indexsee{admissible!ordered field}{ordered field, admissible}%
-\indexdef{ordered field!admissible}%
+\indexsee{RongXuDe@容许的!ordered field}{ordered field, admissible}%
+\indexdef{ordered field!RongXuDe@容许的}%
 when the strict order
 $<$ on~$F$ is a map ${<} : F \to F \to \Omega$.
 
@@ -594,7 +594,7 @@ $<$ on~$F$ is a map ${<} : F \to F \to \Omega$.
   \end{equation*}
   %
   (We have just used the assumption that $F$ is admissible for $\Omega$.)
-  Then $(L_x, U_x)$ is a Dedekind cut.\index{cut!Dedekind} Indeed, the cuts are inhabited and rounded because
+  Then $(L_x, U_x)$ is a Dedekind cut.\index{FenGe@分割!Dedekind} Indeed, the cuts are inhabited and rounded because
   $F$ is archimedean and $<$ is transitive, disjoint because $<$ is irreflexive, and
   located because $<$ is a weak linear order. Let $e : F \to \RD$ be the map $e(x) \defeq (L_x,
   U_x)$.
@@ -658,7 +658,7 @@ more lemma.
   By \cref{lem:cuts-preserve-admissibility} the Dedekind completion $\barRD$ of $\RD$
   is admissible for $\Omega$, so by \cref{RD-final-field} we have an embedding $\barRD
   \to \RD$, as well as an embedding $\RD \to \barRD$. But these embeddings must be
-  isomorphisms, because their compositions are order-preserving field homomorphisms\index{homomorphism!field} which
+  isomorphisms, because their compositions are order-preserving field homomorphisms\index{TongTai@同态!field} which
   fix the dense subfield~$\Q$, which means that they are the identity. The corollary now
   follows immediately from the fact that $\barRD \to \RD$ is an isomorphism.
 \end{proof}
@@ -675,10 +675,10 @@ The Cauchy reals are, by intent, the completion of \Q under limits of Cauchy seq
 In the classical construction of the Cauchy reals, we consider the set $\mathcal{C}$ of all Cauchy sequences in \Q and then form a suitable quotient $\mathcal{C}/{\approx}$.
 Then, to show that $\mathcal{C}/{\approx}$ is Cauchy complete, we consider a Cauchy sequence $x : \N \to \mathcal{C}/{\approx}$, lift it to a sequence of sequences $\bar{x} : \N \to \mathcal{C}$, and construct the limit of $x$ using $\bar{x}$. However, the lifting of~$x$ to $\bar{x}$ uses
 the axiom of countable choice (the instance of~\eqref{eq:ac} where $X=\N$) or the law of excluded middle, which we may wish to avoid.
-\indexdef{axiom!XuanZe@选择!countable}%
+\indexdef{GongLi@公理!XuanZe@选择!KeShuDe@可数的}%
 Every construction of reals whose last step is a quotient suffers from this deficiency.
 There are three common ways out of the conundrum in constructive mathematics:
-\index{mathematics!constructive}%
+\index{mathematics!GouZaoXingDe@构造性的}%
 %
 \index{bargaining}%
 \begin{enumerate}
@@ -695,7 +695,7 @@ There are three common ways out of the conundrum in constructive mathematics:
 \end{enumerate}
 
 Using higher inductive types, however, there is a fourth solution, which we believe to be preferable to any of the above, and interesting even to a classical mathematician.
-The idea is that the Cauchy real numbers should be the \emph{free complete metric space}\index{free!complete metric space} generated by~\Q.
+The idea is that the Cauchy real numbers should be the \emph{free complete metric space}\index{ZiYou@自由!complete metric space} generated by~\Q.
 In general, the construction of a free gadget of any sort requires applying the gadget operations repeatedly many times to the generators.
 For instance, the elements of the free group on a set $X$ are not just binary products and inverses of elements of $X$, but words obtained by iterating the product and inverse constructions.
 Thus, we might naturally expect the same to be true for Cauchy completion, with the relevant ``operation'' being ``take the limit of a Cauchy sequence''.
@@ -720,7 +720,7 @@ However, what we actually need for the notion of Cauchy sequence of reals is not
 This can be represented by a family of binary relations, which we will denote $\mathord{\close\epsilon} : \RC\to\RC\to \prop$.
 The intended meaning of $x \close\epsilon y$ is $|x - y| < \epsilon$, but since we do not have notions of subtraction, absolute value, or inequality available yet (we are only just defining $\RC$, after all), we will have to define these relations $\close\epsilon$ at the same time as we define $\RC$ itself.
 And since $\close\epsilon$ is a type family indexed by two copies of $\RC$, we cannot do this with an ordinary mutual (higher) inductive definition; instead we have to use a \emph{higher inductive-inductive definition}.
-\index{inductive-inductive type!higher}
+\index{inductive-inductive type!GaoJieDe@高阶的}
 
 Recall from \cref{sec:generalizations} that the ordinary notion of inductive-inductive definition allows us to define a type and a type family indexed by it by simultaneous induction.
 Of course, the ``higher'' version of this allows both the type and the family to have path constructors as well as point constructors.
@@ -755,7 +755,7 @@ Of course, our Cauchy approximations will now consist of Cauchy reals, rather th
     \end{equation}
     %
     there is a point $\rclim(x) : \RC$. We call $x$ a \define{Cauchy approximation}.
-    \indexdef{Cauchy!approximation}%
+    \indexdef{Cauchy!GuJi@估计}%
     \index{limit!of a Cauchy approximation}%
     %
   \item \emph{paths:}
@@ -844,9 +844,9 @@ Now, given a type family $A:\RC\to\type$ and a family of relations $\bsim$ as ab
   \end{equation}
   an element $f_{x,a}:A(\rclim(x))$.
   We call such $a$ a \define{dependent Cauchy approximation}
-  \indexdef{Cauchy!approximation!dependent}%
-  \indexsee{approximation, Cauchy}{Cauchy approximation}%
-  \indexdef{dependent!CauchyGuJi@Cauchy估计}%
+  \indexdef{Cauchy!GuJi@估计!YiZhiDe@依值的}%
+  \indexsee{KeXiGuJi@柯西估计}{CauchyGuJi@Cauchy估计}%
+  \indexdef{YiZhiDe@依值的!CauchyGuJi@Cauchy估计}%
   over $x$.
 \item For $u, v : \RC$ such that $h:\fall{\epsilon : \Qp} u \close\epsilon v$, and all $a:A(u)$ and $b:A(v)$ such that
   $\fall{\epsilon:\Qp} (u,a) \bsim_\epsilon (v,b)$,
@@ -939,7 +939,7 @@ We can also show that although $\RC$ may not be a quotient of the set of Cauchy 
 We define the type of Cauchy approximations to be
 %
 \symlabel{cauchy-approximations}%
-\index{Cauchy!approximation!type of}%
+\index{Cauchy!GuJi@估计!DeLeiXing@的类型}%
 \begin{equation*}
   \CAP \defeq
   \setof{ x : \Qp \to \RC |
@@ -973,7 +973,7 @@ The second constructor of $\RC$ gives a function $\rclim:\CAP\to\RC$.
   then $f$ factors uniquely through $\rclim : \CAP \to \RC$.
 \end{lem}
 \begin{proof}
-  Since $\rclim$ is surjective, by \cref{lem:images_are_coequalizers}, $\RC$ is the quotient of $\CAP$ by the kernel pair\index{kernel!pair} of $\rclim$.
+  Since $\rclim$ is surjective, by \cref{lem:images_are_coequalizers}, $\RC$ is the quotient of $\CAP$ by the kernel pair\index{He@核!YouXuDui@有序对} of $\rclim$.
   But this is exactly the statement of the lemma.
 \end{proof}
 
@@ -1051,14 +1051,14 @@ Moreover, we may also conclude
 \end{equation}
 
 As a paradigmatic example, $(\RC,\closesym)$-recursion allows us to extend functions defined on $\Q$ to all of $\RC$, as long as they are sufficiently continuous.
-\index{function!continuous}%
+\index{HanShu@函数!continuous}%
 
 \begin{defn}\label{defn:lipschitz}
   A function $f:\Q\to\RC$ is \define{Lipschitz}
-  \indexdef{function!Lipschitz}%
-  \indexdef{Lipschitz!function}%
-  \indexdef{Lipschitz!constant}%
-  \indexdef{constant!Lipschitz}%
+  \indexdef{HanShu@函数!Lipschitz}%
+  \indexdef{Lipschitz!HanShu@函数}%
+  \indexdef{Lipschitz!ChangDe@常的}%
+  \indexdef{ChangDe@常的!Lipschitz}%
   if there exists $L:\Qp$ (the \define{Lipschitz constant}) such that
   \[ |q - r|<\epsilon \Rightarrow (f(q) \close{L\epsilon} f(r)) \]
   for all $\epsilon:\Qp$ and $q,r:\Q$.
@@ -1370,7 +1370,7 @@ With the triangle inequality in hand, we can show that ``limits'' of Cauchy appr
 As an application, \cref{thm:RC-sim-lim-term} enables us to show that the extensions of Lipschitz functions from \cref{RC-extend-Q-Lipschitz} are unique.
 
 \begin{lem}\label{RC-continuous-eq}
-  \index{function!continuous}%
+  \index{HanShu@函数!continuous}%
   Let $f,g:\RC\to\RC$ be continuous, in the sense that
   \[ \fall{u:\RC}{\epsilon:\Qp}\exis{\delta:\Qp}\fall{v:\RC} (u\close\delta v) \to (f(u) \close\epsilon f(v)) \]
   and analogously for $g$.
@@ -1423,7 +1423,7 @@ with Lipschitz constant~$1$. We have to work a bit harder for addition.
 
 \begin{proof}
   We use $(\RC, {\closesym})$-recursion to construct the curried form of $\bar{f}$ as a map
-  $\RC \to A$ where $A$ is the space of non-expanding\index{function!non-expanding}\index{non-expanding function} real-valued
+  $\RC \to A$ where $A$ is the space of non-expanding\index{HanShu@函数!non-expanding}\index{non-expanding function} real-valued
   functions:
   %
   \begin{equation*}
@@ -1482,13 +1482,13 @@ with Lipschitz constant~$1$. We have to work a bit harder for addition.
 We may apply \cref{RC-binary-nonexpanding-extension} to any bivariate rational function
 which is non-expanding separately in each variable. Addition is such a function, therefore
 we get ${+} : \RC \times \RC \to \RC$.
-\indexdef{addition!of Cauchy reals}%
+\indexdef{JiaFa@加法!of Cauchy reals}%
 Furthermore, the extension is unique as long as we
 require it to be non-expanding in each variable, and just as in the univariate case,
 identities on rationals extend to identities on reals. Since composition of non-expanding
 maps is again non-expanding, we may conclude that addition satisfies the usual properties,
 such as commutativity and associativity.
-\index{associativity!of addition!of Cauchy reals}%
+\index{JieHeXing@结合性!of addition!of Cauchy reals}%
 Therefore, $(\RC, 0, {+}, {-})$ is a commutative
 group.
 
@@ -1507,7 +1507,7 @@ The relation $\leq$ is a partial order because it is such on $\Q$, and the axiom
 partial order are expressible as equations in terms of $\min$ and $\max$, so they transfer
 to $\RC$.
 
-\index{absolute value}%
+\index{JueDuiZhi@绝对值}%
 Another function which extends to $\RC$ by the same method is the absolute value $|{\blank}|$.
 Again, it has the expected properties because they transfer from $\Q$ to $\RC$.
 
@@ -1525,7 +1525,7 @@ That is, $u < v$ holds when there merely exists a pair of rational numbers $q < 
 transitive, and has other properties that are expected for an ordered field.
 The archimedean principle follows directly from the definition of~$<$.
 
-\index{ordered field!archimedean}%
+\index{ordered field!ArchimedesDe@Archimedes的}%
 \begin{thm}[Archimedean principle for $\RC$] \label{RC-archimedean}
   %
   For every $u, v : \RC$ such that $u < v$ there merely exists $q : \Q$ such that $u < q < v$.
@@ -1609,7 +1609,7 @@ We are now able to show that the auxiliary relation $\closesym$ is what we think
 Next, we would like to equip $\RC$ with multiplicative structure. For each $q : \Q$ the
 map $r \mapsto q \cdot r$ is Lipschitz with constant\footnote{We defined Lipschitz
   constants as \emph{positive} rational numbers.} $|q| + 1$, and so we can extend it to
-multiplication by $q$ on the real numbers. Therefore $\RC$ is a vector space\index{vector!space} over $\Q$.
+multiplication by $q$ on the real numbers. Therefore $\RC$ is a vector space\index{XiangLiang@向量!space} over $\Q$.
 In general, we can define multiplication of real numbers as
 %
 \begin{equation}
@@ -1784,7 +1784,7 @@ The Cauchy reals are the least such field.
 
 Let us also say something about the relationship between the Cauchy and Dedekind reals. By
 \cref{RC-archimedean-ordered-field}, $\RC$ is an archimedean ordered field. It is also
-admissible\index{ordered field!admissible} for $\Omega$, as can be easily checked. (In case $\Omega$ is the initial
+admissible\index{ordered field!RongXuDe@容许的} for $\Omega$, as can be easily checked. (In case $\Omega$ is the initial
 $\sigma$-frame
 \index{initial!sigma-frame@$\sigma$-frame}%
 \index{sigma-frame@$\sigma$-frame!initial}%
@@ -1819,7 +1819,7 @@ without further assumptions.
   real merely is the limit of a Cauchy sequence\index{Cauchy!sequence} of rational numbers.
 
   Consider any $x : \RD$. By assumption there merely exists $c$ as in the statement of the
-  lemma, and by inhabitation of cuts\index{cut!Dedekind} there merely exist $a, b : \Q$ such that $a < x < b$.
+  lemma, and by inhabitation of cuts\index{FenGe@分割!Dedekind} there merely exist $a, b : \Q$ such that $a < x < b$.
   We construct a sequence\index{sequence} $f : \N \to \setof{ \pairr{q, r} \in \Q \times \Q | q < r }$ by
   recursion:
   %
@@ -1842,7 +1842,7 @@ The lemma implies that either countable choice or excluded middle suffice for co
 of $\RC$ and $\RD$.
 
 \begin{cor} \label{when-reals-coincide}
-  \index{GongLi@公理!XuanZe@选择!countable}%
+  \index{GongLi@公理!XuanZe@选择!KeShuDe@可数的}%
   \index{PaiZhongLv@排中律}%
   If excluded middle or countable choice holds then $\RC$ and $\RD$ are equivalent.
 \end{cor}
@@ -1877,15 +1877,15 @@ of $\RC$ and $\RD$.
 \label{sec:compactness-interval}
 
 \index{mathematics!classical|(}%
-\index{mathematics!constructive|(}%
+\index{mathematics!GouZaoXingDe@构造性的|(}%
 
 We already pointed out that our constructions of reals are entirely compatible with
 classical logic. Thus, by assuming the law of excluded middle~\eqref{eq:lem} and the axiom
-of choice~\eqref{eq:ac} we could develop classical analysis,\index{classical!analysis}\index{analysis!classical} which would essentially
+of choice~\eqref{eq:ac} we could develop classical analysis,\index{classical!FenXi@分析}\index{FenXi@分析!classical} which would essentially
 amount to copying any standard book on analysis.
 
-\index{analysis!constructive}%
-\index{constructive!analysis}%
+\index{FenXi@分析!GouZaoXingDe@构造性的}%
+\index{GouZaoXingDe@构造性的!FenXi@分析}%
 Nevertheless, anyone interested in computation, for example a numerical analyst, ought to
 be curious about developing analysis in a computationally meaningful setting. That
 analysis in a constructive setting is even possible was demonstrated by~\cite{Bishop1967}.
@@ -1936,7 +1936,7 @@ definitions.
 
 \begin{defn} \label{defn:complete-metric-space}
   A \define{Cauchy approximation}
-  \index{Cauchy!approximation}%
+  \index{Cauchy!GuJi@估计}%
   in $M$ is a sequence $x : \Qp \to M$ satisfying
   %
   \begin{equation*}
@@ -1985,7 +1985,7 @@ definitions.
 
 \begin{rmk}
   In the definition of total boundedness we used sloppy notation $\sm{n : \N}{x_1, \ldots, x_n : M}$. Formally, we should have written $\sm{x : \lst{M}}$ instead,
-  where $\lst{M}$ is the inductive type of finite lists\index{type!of lists} from \cref{sec:bool-nat}.
+  where $\lst{M}$ is the inductive type of finite lists\index{LeiXing@类型!of lists} from \cref{sec:bool-nat}.
   However, that would make the rest of the statement a bit more cumbersome to express.
 \end{rmk}
 
@@ -1999,8 +1999,8 @@ asking for a non-constant map from $\R$ to $\Q$ or $\N$. For instance, here is t
 
 \begin{defn} \label{defn:uniformly-continuous}
   A map $f : M \to \R$ on a metric space is \define{uniformly continuous}
-  \indexdef{function!uniformly continuous}%
-  \indexdef{uniformly continuous function}%
+  \indexdef{HanShu@函数!YiZhiLianXu@一致连续}%
+  \indexdef{YiZhiLianXuHanShu@一致连续函数}%
   when
   %
   \begin{equation*}
@@ -2048,7 +2048,7 @@ We thus have at least one good notion of compactness in homotopy type theory.
 Unfortunately, it is limited to metric spaces because total boundedness is a metric
 notion. We shall consider the other two notions shortly, but first we prove that a
 uniformly continuous map on a totally bounded space has a \define{supremum},
-\indexsee{least upper bound}{supremum}%
+\indexsee{ShangQueJie@上确界}{supremum}%
 i.e.\ an upper bound which is less than or equal to all other upper bounds.
 
 \begin{thm} \label{ctb-uniformly-continuous-sup}
@@ -2117,7 +2117,7 @@ Bolzano--Weierstra\ss{} compactness.
 Unfortunately, these are both somewhat problematic. Let
 us first show that Bolzano--Weierstra\ss{} compactness implies an instance of excluded middle
 known as the \define{limited principle of omniscience}:
-\indexsee{axiom!limited principle of omniscience}{limited principle of omniscience}%
+\indexsee{GongLi@公理!limited principle of omniscience}{limited principle of omniscience}%
 \indexdef{limited principle of omniscience}%
 for every $\alpha : \N \to \bool$,
 %
@@ -2184,7 +2184,7 @@ $[\mathcal{F}(i_1), \ldots, \mathcal{F}(i_n)]$.
 
 As long as we are aware of the distinction between a pair $(q, r)$ and the corresponding
 interval $\setof{ x : \R | q < x < r}$, we may safely use the same notation $(q, r)$ for
-both. Intersections\indexdef{intersection!of intervals} and inclusions\indexdef{inclusion!of intervals}\indexdef{containment!of intervals} of intervals are expressible in terms of their
+both. Intersections\indexdef{intersection!QuJianDe@区间的} and inclusions\indexdef{inclusion!QuJianDe@区间的}\indexdef{containment!QuJianDe@区间的} of intervals are expressible in terms of their
 endpoints:
 %
 \symlabel{interval-intersection}
@@ -2266,7 +2266,7 @@ which we could obtain by assuming propositional resizing;
 but instead we can steal ideas from the predicative cousin of locale theory,
 \index{mathematics!predicative}%
 which is called ``formal topology''.
-\index{formal!topology}%
+\index{XingShiHuaDe@形式化的!topology}%
 
 \index{acceptance|(}
 
@@ -2391,7 +2391,7 @@ Say that \define{$\pairr{I, \mathcal{F}}$ inductively covers
   $(a - \epsilon/2, b + \epsilon/2)$, which is therefore a finite subcover of $[a, b]$.
 \end{proof}
 
-Experience from formal topology\index{topology!formal} shows that the rules for inductive covers are sufficient
+Experience from formal topology\index{topology!XingShiHuaDe@形式化的} shows that the rules for inductive covers are sufficient
 for a constructive development of pointfree topology. But we can also provide our own
 evidence that they are a reasonable notion.
 
@@ -2461,7 +2461,7 @@ constructive versions of the intermediate value theorem.
 \index{acceptance|)}
 
 \index{mathematics!classical|)}%
-\index{mathematics!constructive|)}%
+\index{mathematics!GouZaoXingDe@构造性的|)}%
 
 \section{The surreal numbers}
 \label{sec:surreals}
@@ -2480,7 +2480,7 @@ We will choose to make it inductive-inductive, for the same reasons we made that
 
 Moreover, we will define strict inequality $<$ and non-strict inequality $\le$ for surreals separately (and mutually inductively).
 Conway defines $<$ in terms of $\le$, in a way which is sensible classically but not constructively.
-\index{mathematics!constructive}%
+\index{mathematics!GouZaoXingDe@构造性的}%
 Furthermore, a negative definition of $<$ would make it unacceptable as a hypothesis of the constructor of a higher inductive type (see \cref{sec:strictly-positive}).
 
 Secondly, Conway says that $L$ and $R$ in $\surr L R$ should be ``sets of surreal numbers'', but the naive meaning of this as a predicate $\NO\to\prop$ is not positive, hence cannot be used as input to an inductive constructor.
@@ -2510,7 +2510,7 @@ Of course, we can solve this problem in the same way we did for Cauchy reals, by
   \item For any $x,y:\NO$ such that $x\le y$ and $y\le x$, we have $\noeq(x,y):x=y$.
   \end{itemize}
   We will refer to the inputs of the first constructor as a \define{cut}.
-  \indexdef{cut!of surreal numbers}%
+  \indexdef{FenGe@分割!of surreal numbers}%
   If $x$ is the surreal number constructed from a cut, then the notation $x^L$ will implicitly assume $L:\LL$, and similarly $x^R$ will assume $R:\RR$.
   In this way we can usually avoid naming the indexing types $\LL$ and $\RR$, which is convenient when there are many different cuts under discussion.
   Following Conway, we call $x^L$ a \emph{left option}\indexdef{option of a surreal number} of $x$ and $x^R$ a \emph{right option}.
@@ -2651,8 +2651,8 @@ With these notations, the hypotheses of the induction principle are the followin
   \end{enumerate}
   there is a specified element $f_a:A(x)$.
   We call such data a \define{dependent cut}
-  \indexdef{cut!of surreal numbers!dependent}%
-  \indexdef{dependent!cut}%
+  \indexdef{FenGe@分割!of surreal numbers!YiZhiDe@依值的}%
+  \indexdef{YiZhiDe@依值的!FenGe@分割}%
   over the cut defining~$x$.
 \item For any $x,y:\NO$ with $a:A(x)$ and $b:A(y)$, if $x\le y$ and $y\le x$ and also $(x,a) \ble (y,b)$
   and $(y,b) \ble (x,a)$,
@@ -2731,7 +2731,7 @@ Suppose $A$ is a type equipped with relations $\mathord\ble:A\to A\to\prop$ and 
 Then we can define $f:\NO\to A$ by doing the following.
 \begin{enumerate}
 \item For any $x$ defined by a cut, assuming $f(x^L)$ and $f(x^R)$ to be defined such that $f(x^L)\blt f(x^R)$ for all $L$ and $R$, we must define $f(x)$.  (We call this the \emph{primary clause} of the recursion.)\label{item:NO-rec-primary}
-\item Prove that $\ble$ is \emph{antisymmetric}\index{relation!antisymmetric}: if $a\ble b$ and $b\ble a$, then $a=b$.
+\item Prove that $\ble$ is \emph{antisymmetric}\index{relation!FanDuiChenXing@反对称性}: if $a\ble b$ and $b\ble a$, then $a=b$.
 \item For $x,y$ defined by cuts such that $x^L<y$ for all $L$ and $x<y^R$ for all $R$, and assuming inductively that $f(x^L)\blt f(y)$ for all $L$, $f(x)\blt f(y^R)$ for all $R$, and also that $f(x^L)\blt f(x^R)$ and $f(y^L)\blt f(y^R)$ for all $L$ and $R$, we must prove $f(x)\ble f(y)$.
 \item For $x,y$ defined by cuts and an $L_0$ such that $x\le y^{L_0}$, and assuming inductively that $f(x)\ble f(y^{L_0})$, and also that $f(x^L)\blt f(x^R)$ and $f(y^L)\blt f(y^R)$ for all $L$ and $R$, we must prove $f(x)\blt f(y)$.
 \item For $x,y$ defined by cuts and an $R_0$ such that $x^{R_0}\le y$, and assuming inductively that $f(x^{R_0})\ble f(y)$, and also that $f(x^L)\blt f(x^R)$ and $f(y^L)\blt f(y^R)$ for all $L$ and $R$, we must prove $f(x)\blt f(y)$.\label{item:NO-rec-last}
@@ -2942,7 +2942,7 @@ Also as there, we will have to simultaneously prove a couple of essential proper
 As with the Cauchy reals, the joint $(\NO,\le,<)$-recursion principle remains essential when defining all operations on $\NO$.
 
 \begin{eg}\label{eg:surreal-addition}
-\index{addition!of surreal numbers}%
+\index{JiaFa@加法!of surreal numbers}%
 We define $\mathord+:\NO\to\NO\to\NO$ by recursion on the first argument, followed by induction on the second argument.
 For the outer recursion, we take the codomain to be the subset of $\NO\to\NO$ consisting of functions $g$ such that $(x<y) \to (g(x)<g(y))$ and $(x\le y) \to (g(x)\le g(y))$ for all $x,y$.
 For such $g,h$ we define $(g\ble h)\defeq \fall{x:\NO} g(x)\le h(x)$ and $(g\blt h)\defeq \fall{x:\NO} g(x)< h(x)$.
@@ -2979,7 +2979,7 @@ After an $\NO$-induction, this proceeds in exactly the same way.
 \end{eg}
 
 \index{acceptance|(}%
-\index{mathematics!formalized}%
+\index{mathematics!XingShiHuaDe@形式化的}%
 In the Appendix to Part Zero of~\cite{conway:onag}, Conway discusses how the surreal numbers may be formalized in ZFC set theory: by iterating along the ordinals and passing to sets of representatives of lowest rank for each equivalence class, or by representing numbers with ``sign-expansions''.
 He then remarks that
 \begin{quote}\footnotesize
@@ -3043,8 +3043,8 @@ In constructive set theory augmented by the ``regular extension axiom'', one may
 It would also be interesting to check whether this construction agrees with ours.
 
 It is constructive folklore that coincidence of Cauchy and Dedekind reals requires dependent choice but it is less well known that countable choice suffices. Recall that \define{dependent choice}
-\indexdef{axiom!XuanZe@选择!dependent}%
-\index{GongLi@公理!XuanZe@选择!countable}%
+\indexdef{GongLi@公理!XuanZe@选择!YiZhiDe@依值的}%
+\index{GongLi@公理!XuanZe@选择!KeShuDe@可数的}%
 \index{total!relation}%
 states that for a total relation $R$ on $A$, by which we mean $\fall{x : A} \exis{y : A} R(x,y)$, and for any $a : A$ there merely exists $f : \N \to A$ such that $f(0) = a$ and $R(f(n), f(n+1))$ for all $n : \N$. Our \cref{when-reals-coincide} uses the typical trick for converting an application of dependent choice to one using countable choice. Namely, we use countable choice once to make in advance all the choices that could come up, and then use the choice function to avoid the dependent choices.
 
@@ -3087,7 +3087,7 @@ The \emph{higher} inductive-inductive version presented here, which builds in th
   \indexdef{real numbers!Dedekind!lower}%
   \indexdef{lower Dedekind reals}%
   \indexdef{upper Dedekind reals}%
-  \index{cut!Dedekind}%
+  \index{FenGe@分割!Dedekind}%
   respectively. For example, a lower real is given by a predicate $L : \Q \to \Omega$
   which is
   %
@@ -3104,10 +3104,10 @@ The \emph{higher} inductive-inductive version presented here, which builds in th
 
 \begin{ex} \label{ex:RD-interval-arithmetic}
   %
-  \index{interval!arithmetic}%
+  \index{interval!SuanShuDe@算数的}%
   Suppose we remove the locatedness condition in \cref{defn:dedekind-reals}.
   Then we obtain the \define{interval domain}
-  \indexdef{interval!domain}%
+  \indexdef{interval!DingYiYu@定义域}%
   $\mathbb{I}$ because cuts are allowed
   to have ``gaps'', which are just intervals. Define the partial order $\sqsubseteq$ on
   $\mathbb{I}$ by
@@ -3156,7 +3156,7 @@ The \emph{higher} inductive-inductive version presented here, which builds in th
 \end{ex}
 
 \begin{ex} \label{ex:traditional-archimedean}
-  \index{ordered field!archimedean}%
+  \index{ordered field!ArchimedesDe@Archimedes的}%
   Show that in an ordered field $F$, density of $\Q$ and the traditional archimedean axiom
   are equivalent:
   %
@@ -3193,9 +3193,9 @@ The \emph{higher} inductive-inductive version presented here, which builds in th
     The idea is that $f$ looks like it is measuring the distance from a point.
   \end{enumerate}
   %
-  \index{universal!property!of metric completion}%
+  \index{FanDe@泛的!property!of metric completion}%
   Finally, prove the following universal property of metric completions: a locally uniformly continuous map from a metric space to a Cauchy complete metric space extends uniquely to a locally uniformly continuous map on the completion. (We say that a map is \define{locally uniformly continuous}
-  \indexdef{function!locally uniformly continuous}%
+  \indexdef{HanShu@函数!locally uniformly continuous}%
   \indexdef{locally uniformly continuous map}%
   if it is uniformly continuous on open balls.)
 \end{ex}
@@ -3204,7 +3204,7 @@ The \emph{higher} inductive-inductive version presented here, which builds in th
 
 \begin{ex} \label{ex:reals-apart-neq-MP}
   \define{Markov's principle}
-  \indexdef{axiom!MarkovYuanLi@Markov原理}%
+  \indexdef{GongLi@公理!MarkovYuanLi@Markov原理}%
   \indexdef{MarkovYuanLi@Markov原理}%
   says that for all $f : \nat \to \bool$,
   %

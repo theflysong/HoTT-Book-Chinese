@@ -1,16 +1,16 @@
 \chapter{集合论}
 \label{cha:set-math}
 
-\index{set|(}%
+\index{JiHe@集合|(}%
 
 Our conception of sets as types with particularly simple homotopical character, cf.\
-\cref{sec:basics-sets}, is quite different from the sets of Zermelo--Fraenkel\index{set theory!Zermelo--Fraenkel} set theory, which form a
+\cref{sec:basics-sets}, is quite different from the sets of Zermelo--Fraenkel\index{JiHeLun@集合论!Zermelo--Fraenkel} set theory, which form a
 cumulative hierarchy with an intricate nested membership structure.
 For many mathematical purposes, the homotopy-the\-o\-ret\-ic sets are just as good as
 the Zermelo--Fraenkel ones, but there are important differences.
 
 We begin this chapter in \cref{sec:piw-pretopos} by showing that the category $\uset$ has (most of) the usual properties of the category of sets.
-\index{mathematics!constructive}%
+\index{mathematics!GouZaoXingDe@构造性的}%
 \index{mathematics!predicative}%
 In constructive, predicative, univalent foundations, it is a ``$\Pi\mathsf{W}$-pretopos''; whereas if we assume propositional resizing
 \index{propositional!resizing}%
@@ -24,8 +24,8 @@ These are traditionally defined in set theory using the global membership relati
 
 Finally, in \cref{sec:cumulative-hierarchy} we consider the possibility of constructing \emph{inside} of homotopy type theory a cumulative hierarchy of sets, equipped with a binary membership relation akin to that of Zermelo--Fraenkel set theory.
 This combines higher inductive types with ideas from the field of algebraic set theory.
-\index{algebraic set theory}%
-\index{set theory!algebraic}%
+\index{DaiShuJiHeLun@代数集合论}%
+\index{JiHeLun@集合论!DaiShuDe@代数的}%
 
 In this chapter we will often use the traditional logical notation described in \cref{subsec:prop-trunc}.
 In addition to the basic theory of \cref{cha:basics,cha:logic}, we use higher inductive types for colimits and quotients as in \cref{sec:colimits,sec:set-quotients}, as well as some of the theory of truncation from \cref{cha:hlevels}, particularly the factorization system of \cref{sec:image-factorization} in the case $n=-1$.
@@ -50,14 +50,14 @@ In fact, infinite products follow just as easily from the equivalence
 \[ \Parens{X\to \prd{a:A} B(a)} \eqvsym \Parens{\prd{a:A} (X\to B(a))}.\]
 And we saw in \cref{ex:pullback}\index{pullback} that the pullback of $f:A\to C$ and $g:B\to C$ can be defined as $\sm{a:A}{b:B} f(a)=g(b)$; this is a set if $A,B,C$ are and inherits the correct universal property.
 Thus, \uset is a \emph{complete} category in the obvious sense.
-\index{category!complete}%
-\index{complete!category}%
+\index{FanChou@范畴!complete}%
+\index{complete!FanChou@范畴}%
 
 Since sets are closed under $+$ and contain \emptyt, \uset has finite coproducts.
 Similarly, since $\sm{a:A}B(a)$ is a set whenever $A$ and each $B(a)$ are, it yields a coproduct of the family $B$ in \uset.
 Finally, we showed in \cref{sec:pushouts} that pushouts exist in $n$-types, which includes \uset in particular.
 Thus, \uset is also \emph{cocomplete}.
-\index{category!cocomplete}%
+\index{FanChou@范畴!cocomplete}%
 \index{cocomplete category}%
 
 \subsection{Images}
@@ -65,14 +65,14 @@ Thus, \uset is also \emph{cocomplete}.
 
 %We will show that $\uset$ is a $\Pi$W-pretopos.
 Next, we show that $\uset$ is a \define{regular category}, i.e.:
-\indexdef{category!regular}%
-\indexdef{regular!category}%
+\indexdef{FanChou@范畴!regular}%
+\indexdef{regular!FanChou@范畴}%
 %
 \begin{enumerate}
 \item $\uset$ is finitely complete.\label{item:reg1}
 \item The kernel pair $\proj1,\proj2: (\sm{x,y:A} f(x)= f(y)) \to A$ of any
   function $f : A \to B$ has a coequalizer.\label{item:reg2}
-  \indexdef{kernel!pair}
+  \indexdef{He@核!YouXuDui@有序对}
 \item Pullbacks of regular epimorphisms are again regular epimorphisms.\label{item:reg3}
 \end{enumerate}
 %
@@ -110,11 +110,11 @@ fitting into a diagram:
 \end{equation*}
 
 Recall that a function $f:A\to B$ is called \emph{surjective} if
-\index{function!surjective}%
+\index{HanShu@函数!surjective}%
 \narrowequation{\fall{b:B}\brck{\hfib f b},}
 or equivalently $\fall{b:B} \exis{a:A} f(a)=b$.
 We have also said that a function $f:A\to B$ between sets is called \emph{injective} if
-\index{function!injective}%
+\index{HanShu@函数!injective}%
 $\fall{a,a':A} (f(a) = f(a')) \Rightarrow (a=a')$, or equivalently if each of its fibers is a mere proposition.
 Since these are the $(-1)$-connected and $(-1)$-truncated maps in the sense of \cref{cha:hlevels}, the general theory there implies that $\tilde f$ above is surjective and $i_f$ is injective, and that this factorization is stable under pullback.
 
@@ -156,11 +156,11 @@ We now show that in \uset, the epimorphisms are precisely the surjections, and a
 The coequalizer of a pair of maps $f,g:A\to B$ in $\uset$ is defined as the 0-truncation of a general (homotopy) coequalizer.
 For clarity, we may call this the \define{set-coequalizer}.
 \indexdef{set-coequalizer}%
-\indexsee{coequalizer!of sets}{set-coequalizer}%
+\indexsee{YuDengHuaZi@余等化子!of sets}{set-coequalizer}%
 It is convenient to express its universal property as follows.
 
 \begin{lem}
-\index{universal!property!of set-coequalizer}%
+\index{FanDe@泛的!property!of set-coequalizer}%
 Let $f,g:A\to B$ be functions between sets $A$ and $B$. The
 {set-co}equalizer $c_{f,g}:B\to Q$ has the property that, for any set $C$ and any $h:B\to C$ with $h\circ f = h\circ g$, the type
 \begin{equation*}
@@ -189,7 +189,7 @@ For any function $f:A\to B$ between sets, the following are equivalent:
     {C_f}
   }
 \end{equation*}
-in $\uset$ defining the mapping cone\index{cone!of a function}. Then the type $C_f$ is contractible.
+in $\uset$ defining the mapping cone\index{Zhui@锥!HanShuDe@函数的}. Then the type $C_f$ is contractible.
 \item $f$ is surjective.
 \end{enumerate}
 \end{lem}
@@ -284,7 +284,7 @@ Pullbacks of regular epis in \uset are regular epis.
   By \cref{lem:images_are_coequalizers}, it suffices to apply this when $n=-1$.
 \end{proof}
 
-\indexdef{image!of a subset}
+\indexdef{image!ZiJiDe@子集的}
 One of the consequences of \uset being a regular category is that we have an ``image'' operation on subsets.
 That is, given $f:A\to B$, any subset $P:\power A$ (i.e.\ a predicate $P:A\to \prop$) has an \define{image} which is a subset of $B$.
 This can be defined directly as $\setof{ y:B | \exis{x:A} f(x)=y \land P(x)}$, or indirectly as the image (in the previous sense) of the composite function
@@ -303,7 +303,7 @@ equivalence relation is effective.
 In other words, given an equivalence
 relation $R:A\to A\to\prop$, there is a coequalizer $c_R$ of the pair
 $\proj1,\proj2:\sm{x,y:A} R(x,y)\to A$ and, moreover, the $\proj1$ and $\proj2$
-form the kernel\index{kernel!pair} pair of $c_R$.
+form the kernel\index{He@核!YouXuDui@有序对} pair of $c_R$.
 
 We have already seen, in \cref{sec:set-quotients}, two general ways to construct the quotient of a set by an equivalence relation $R:A\to A\to\prop$.
 The first can be described as the set-coequalizer of the two projections
@@ -468,18 +468,18 @@ quotient. The reader is invited to check the details.
 \subsection{\texorpdfstring{$\uset$}{Set} is a \texorpdfstring{$\Pi\mathsf{W}$}{ΠW}-pretopos}
 \label{subsec:piw}
 
-\index{structural!set theory|(}%
+\index{structural!JiHeLun@集合论|(}%
 
 The notion of a \emph{$\Pi\mathsf{W}$-pretopos}
 \index{PiW-YuTuoPu@PiW-预拓扑}%
 \indexsee{pretopos}{$\Pi\mathsf{W}$-pretopos}
 --- that is, a locally cartesian closed category
 \index{locally cartesian closed category}%
-\index{category!locally cartesian closed}%
+\index{FanChou@范畴!locally cartesian closed}%
 with disjoint finite coproducts, effective equivalence relations, and initial algebras for polynomial endofunctors --- is intended as a ``predicative''
 \index{mathematics!predicative}%
 notion of topos, i.e.\ a category of ``predicative sets'', which can serve the purpose for constructive mathematics
-\index{mathematics!constructive}%
+\index{mathematics!GouZaoXingDe@构造性的}%
 that the usual category of sets does for classical
 \index{mathematics!classical}%
 mathematics.
@@ -494,8 +494,8 @@ Typically, in constructive type theory, one resorts to an external construction 
 \end{thm}
 \begin{proof}
   We have an initial object
-  \index{initial!set}%
-  $\emptyt$ and finite, disjoint sums $A+B$.  These are stable under pullback, simply because pullback has a right adjoint\index{adjoint!functor}.  Indeed, $\uset$ is locally cartesian closed, since for any map $f:A\to B$ between sets, the ``fibrant replacement'' \index{fibrant replacement} $\sm{a:A}f(a)=b$ is equivalent to $A$ (over $B$), and we have dependent function types for the replacement.
+  \index{initial!JiHe@集合}%
+  $\emptyt$ and finite, disjoint sums $A+B$.  These are stable under pullback, simply because pullback has a right adjoint\index{BanSui@伴随!HanZi@函子}.  Indeed, $\uset$ is locally cartesian closed, since for any map $f:A\to B$ between sets, the ``fibrant replacement'' \index{fibrant replacement} $\sm{a:A}f(a)=b$ is equivalent to $A$ (over $B$), and we have dependent function types for the replacement.
 We've just shown that $\uset$ is regular (\cref{thm:set_regular}) and that quotients are effective (\cref{lem:sets_exact}). We thus have a locally cartesian closed pretopos. Finally, since the $n$-types are closed under the formation of $W$-types by \cref{ex:ntypes-closed-under-wtypes}, and by \cref{thm:w-hinit} $W$-types are initial algebras for polynomial endofunctors, we see that $\uset$ is a $\Pi\mathsf{W}$-pretopos.
 \end{proof}
 
@@ -523,7 +523,7 @@ A sufficient condition for this is the law of excluded middle, in the ``mere-pro
 Moreover, in topos theory a well-known sufficient condition for \LEM{} is the axiom of choice, which is of course often assumed as an axiom in classical\index{mathematics!classical} set theory.
 In the next section, we briefly investigate the relation between these conditions in our setting.
 
-\index{structural!set theory|)}%
+\index{structural!JiHeLun@集合论|)}%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{The axiom of choice implies excluded middle}
@@ -666,8 +666,8 @@ Finally, since $(f(\bfalse)=f(\btrue)) = (\north=\south) = A$ by \cref{prop:trun
 \index{denial}
 \begin{thm}\label{thm:ETCS}
   \index{JiHeFanChouChuDengLiLun@集合范畴初等理论}%
-  \index{category!well-pointed}%
-  If the axiom of choice holds then the category $\uset$ is a well-pointed boolean\index{topos!boolean}\index{boolean!topos} elementary topos\index{TuoPuSi@拓扑斯} with choice.
+  \index{FanChou@范畴!well-pointed}%
+  If the axiom of choice holds then the category $\uset$ is a well-pointed boolean\index{topos!BuErZhi@布尔值}\index{BuErZhi@布尔值!topos} elementary topos\index{TuoPuSi@拓扑斯} with choice.
 \end{thm}
 
 \begin{proof}
@@ -685,7 +685,7 @@ an exercise for the reader (\cref{ex:well-pointed}).
 
 \begin{defn}\label{defn:card}
   The \define{type of cardinal numbers}
-  \indexdef{type!of cardinal numbers}%
+  \indexdef{LeiXing@类型!of cardinal numbers}%
   \indexdef{cardinal number}%
   \indexsee{number!cardinal}{cardinal number}%
   is the 0-truncation of the type \set of sets:
@@ -705,8 +705,8 @@ It also inherits the structure of a semiring from \set.
 
 \begin{defn}
   The operation of \define{cardinal addition}
-  \indexdef{addition!of cardinal numbers}%
-  \index{cardinal number!addition of}%
+  \indexdef{JiaFa@加法!of cardinal numbers}%
+  \index{cardinal number!...DeJiaFa@...的加法}%
   \[ (\blank+\blank) : \card \to \card \to \card \]
   is defined by induction on truncation:
   \[ \cd{A} + \cd{B} \defeq \cd{A+B}.\]
@@ -780,7 +780,7 @@ It also inherits the structure of a semiring from \set.
   \symlabel{inj}
   \[ \cd{A} \le \cd{B} \defeq \brck{\inj(A,B)} \]
   where $\inj(A,B)$ is the type of injections from $A$ to $B$.
-  \index{function!injective}%
+  \index{HanShu@函数!injective}%
   In other words, $\cd{A} \le \cd{B}$ means that there merely exists an injection from $A$ to $B$.
 \end{defn}
 
@@ -803,8 +803,8 @@ It also inherits the structure of a semiring from \set.
 We may likewise show that cardinal inequality is compatible with the semiring operations.
 
 \begin{lem}\label{thm:injsurj}
-  \index{function!injective}%
-  \index{function!surjective}%
+  \index{HanShu@函数!injective}%
+  \index{HanShu@函数!surjective}%
   Consider the following statements:
   \begin{enumerate}
   \item There is an injection $A\to B$.\label{item:cle-inj}
@@ -894,8 +894,8 @@ Finally, we can reproduce Cantor's theorem, showing that for every cardinal ther
   \[(\blank<\blank):A\to A\to \prop\]
   a binary relation on $A$.
   We define by induction what it means for an element $a:A$ to be \define{accessible}
-  \indexdef{accessibility}%
-  \indexsee{accessible}{accessibility}%
+  \indexdef{KeDaXing@可达性}%
+  \indexsee{KeDaDe@可达的}{可达性}%
   by $<$:
   \begin{itemize}
   \item If $b$ is accessible for every $b<a$, then $a$ is accessible.
@@ -926,7 +926,7 @@ That is, we assume every $b<a$ is accessible and $g(b):P(b)$ is defined, and fro
 The omission of the second argument of $P$ is justified by the following lemma, whose proof is the only place where we use the more general form of the induction principle.
 
 \begin{lem}
-  Accessibility\index{accessibility} is a mere property.
+  Accessibility\index{KeDaXing@可达性} is a mere property.
 \end{lem}
 \begin{proof}
   We must show that for any $a:A$ and $s_1,s_2:\acc(a)$ we have $s_1=s_2$.
@@ -1089,7 +1089,7 @@ Rather, it is a ``local'' counterpart of the axiom of extensionality in classica
 \begin{defn}\label{def:simulation}
   If $(A,<)$ and $(B,<)$ are extensional and well-founded, a \define{simulation}
   \indexdef{simulation}%
-  \indexsee{function!simulation}{simulation}%
+  \indexsee{HanShu@函数!simulation}{simulation}%
   is a function $f:A\to B$ such that
   \begin{enumerate}
   \item if $a<a'$, then $f(a)<f(a')$, and\label{item:sim1}
@@ -1192,8 +1192,8 @@ Thus the function $a\mapsto \ordsl A a$ is an injection $A\to \ord$.
 
 \begin{defn}
   For ordinals $A$ and $B$, a simulation $f:A\to B$ is said to be \define{bounded}
-  \indexdef{simulation!bounded}%
-  \indexdef{bounded!simulation}%
+  \indexdef{simulation!ShouXianDe@受限的}%
+  \indexdef{ShouXianDe@受限的!simulation}%
   if there exists $b:B$ such that $A = \ordsl B b$.
 \end{defn}
 
@@ -1207,7 +1207,7 @@ Since simulations are unique, $A<B$ is also a mere proposition.
 \end{thm}
 
 \noindent
-More precisely, this theorem says that the type $\ord_{\UU_i}$ of ordinals in one universe\index{universe level} is itself an ordinal in the next higher universe, i.e.\ $(\ord_{\UU_i},<):\ord_{\UU_{i+1}}$.
+More precisely, this theorem says that the type $\ord_{\UU_i}$ of ordinals in one universe\index{YuZhouCengJi@宇宙层级} is itself an ordinal in the next higher universe, i.e.\ $(\ord_{\UU_i},<):\ord_{\UU_{i+1}}$.
 
 \begin{proof}
   Let $A$ be an ordinal; we first show that $\ordsl A a$ is accessible (in \ord) for all $a:A$.
@@ -1243,7 +1243,7 @@ For instance, consider the following lemma, where we pay attention to how univer
 
 The ordinal $B$ constructed in the proof of \cref{thm:ordsucc} is called the \define{successor}\indexdef{successor!of an ordinal} of $A$.
 
-This lemma illustrates a potential pitfall of the ``typically ambiguous''\index{typical ambiguity} style of using \UU to denote an arbitrary, unspecified universe.
+This lemma illustrates a potential pitfall of the ``typically ambiguous''\index{DianXingQiYi@典型歧义} style of using \UU to denote an arbitrary, unspecified universe.
 Consider the following alternative proof of it.
 
 \begin{proof}[Another putative proof of \cref{thm:ordsucc}]
@@ -1399,7 +1399,7 @@ Of course,~\ref{item:wop1} is a standard classical\index{mathematics!classical} 
 \end{proof}
 
 \begin{rmk}
-  If we had given the wrong proof of \cref{thm:ordsucc} or \cref{thm:ordunion}, then the resulting proof of \cref{thm:wop} would be invalid: there would be no way to consistently assign universe levels\index{universe level}.
+  If we had given the wrong proof of \cref{thm:ordsucc} or \cref{thm:ordunion}, then the resulting proof of \cref{thm:wop} would be invalid: there would be no way to consistently assign universe levels\index{YuZhouCengJi@宇宙层级}.
   As it is, we require propositional resizing (which follows from \LEM{}) to ensure that $X'$ lives in the same universe as $X$ (up to equivalence).
 \end{rmk}
 
@@ -1450,8 +1450,8 @@ We can define a cumulative hierarchy $V$ of all sets in a given universe $\UU$ a
 
 \begin{defn}\label{defn:V}
   The \define{cumulative hierarchy}
-  \indexdef{cumulative!hierarchy, set-theoretic}%
-  \indexdef{hierarchy!cumulative, set-theoretic}%
+  \indexdef{LeiJiDe@累积的!hierarchy, set-theoretic}%
+  \indexdef{hierarchy!LeiJiDe, JiHeLunDe@累积的, 集合论的}%
   $V$ relative to a type universe $\UU$ is the
   higher inductive type generated by the following constructors.
   %
@@ -1528,7 +1528,7 @@ A \define{class}
 \indexdef{class}%
 may be taken to be a mere predicate on~$V$. We can say that a class $C : V \to \prop$ is a
 \define{$V$-set}
-\indexdef{set!in the cumulative hierarchy}%
+\indexdef{JiHe@集合!in the cumulative hierarchy}%
 if there merely exists $v:V$ such that
 %
 \begin{equation*}
@@ -1602,7 +1602,7 @@ For every $u:V$ there is a given $A_u:\UU$ and monic $m_u: A_u \mono V$ such tha
 
 \begin{defn}\label{def:TypeOfElements}
   For $u:V$, the just constructed monic presentation $m_u: A_u \mono V$ such that $u = \vset(A_u, m_u)$ may be called the \define{type of members}
-  \indexdef{type!of members}%
+  \indexdef{LeiXing@类型!of members}%
   of $u$ and denoted $m_u : [u] \mono V$, or even $[u] \mono V$.  We can think of $[u]$ as the ``subclass of $V$ consisting of members of $u$''.
 \end{defn}
 
@@ -1661,7 +1661,7 @@ For every $u:V$ there is a given $A_u:\UU$ and monic $m_u: A_u \mono V$ such tha
   \item Empty set: suppose $x\in \emptyset = \vset(\emptyt,\rec\emptyt(V))$.  Then $\exis{a:\emptyt}x=\, \rec\emptyt(V,a)$, which is absurd.
 
   \item Pairing: given $u$ and $v$, let $w=\vset(\bool,\rec\bool(V,u,v))$.
-    \index{pair!unordered}
+    \index{YouXuDui@有序对!WuXuDe@无序的}
 
   \item Infinity: take $w = \vset(\nat,I)$, where $I: \nat \to V$ is given by the recursion $I(0) \defeq \emptyset$ and $I(n+1) \defeq I(n)\cup \{I(n)\}$.
 
@@ -1698,7 +1698,7 @@ We need to show that any $\UU$-small  $C: V \to \propU$ is separable. Indeed, gi
 \end{enumerate}
 \end{proof}
 
-It is also convenient to have a strictly syntactic criterion of separability, so that one can read off from the expression for a class that it produces a $V$-set.  One such familiar condition is being ``$\Delta_0$'', which means that the expression is built up from equality $x=_V y$ and membership $x\in y$, using only mere-propositional connectives $\neg$, $\land$, $\lor$, $\Rightarrow$ and quantifiers $\forall$, $\exists$ over particular sets, i.e.\ of the form $\exists(x\in a)$ and $\forall(y\in b)$ (these are called \define{bounded} quantifiers\index{bounded!quantifier}\index{quantifier!bounded}).\indexdef{separation!.Delta0@$\Delta_0$}%
+It is also convenient to have a strictly syntactic criterion of separability, so that one can read off from the expression for a class that it produces a $V$-set.  One such familiar condition is being ``$\Delta_0$'', which means that the expression is built up from equality $x=_V y$ and membership $x\in y$, using only mere-propositional connectives $\neg$, $\land$, $\lor$, $\Rightarrow$ and quantifiers $\forall$, $\exists$ over particular sets, i.e.\ of the form $\exists(x\in a)$ and $\forall(y\in b)$ (these are called \define{bounded} quantifiers\index{ShouXianDe@受限的!quantifier}\index{quantifier!ShouXianDe@受限的}).\indexdef{separation!.Delta0@$\Delta_0$}%
 
 \begin{cor}\label{cor:Delta0sep}
 If the class $C: V \to \prop$ is $\Delta_0$ in the above sense, then it is separable.
@@ -1728,7 +1728,7 @@ The right-hand side does remain in $\UU$, since both $[a]$ and $P(x)$ are in $\U
 \end{proof}
 
 We have shown that in type theory with a universe $\UU$, the cumulative hierarchy $V$ is a model of a ``constructive set theory''
-\index{constructive!set theory}%
+\index{GouZaoXingDe@构造性的!JiHeLun@集合论}%
 with many of the standard axioms.
 However, as far as we know, it lacks the \emph{strong collection}
 \index{GongLi@公理!strong collection}%
@@ -1748,12 +1748,12 @@ Thus we have shown:
 
 \begin{lem}\label{lem:fullsep}
   In type theory with $\choice{}$, the law of \define{(full) separation}
-  \indexdef{separation!full}%
+  \indexdef{separation!Man@满}%
   holds for $V$: given \emph{any} class $C : V \to \prop$ and $a : V$, the class $a \cap C$ is a $V$-set.
 \end{lem}
 
 \begin{thm}\label{thm:zfc}
-In type theory with $\choice{}$ and a universe $\UU$, the cumulative hierarchy $V$ is a model of Zermelo--Fraenkel\index{set theory!Zermelo--Fraenkel} set theory with choice, ZFC.
+In type theory with $\choice{}$ and a universe $\UU$, the cumulative hierarchy $V$ is a model of Zermelo--Fraenkel\index{JiHeLun@集合论!Zermelo--Fraenkel} set theory with choice, ZFC.
 \end{thm}
 
 \begin{proof}
@@ -1782,11 +1782,11 @@ The implication in \cref{thm:1surj_to_surj_to_pem} from $\choice{}$ to $\LEM{}$ 
 theory of a theorem from topos theory due to Diaconescu~\cite{Diaconescu}; it was posed as a problem already by Bishop~\cite[Problem~2]{Bishop1967}.
 
 For the intuitionistic theory of ordinal numbers, see~\cite{taylor:ordinals,Taylor99} and also \cite{JoyalMoerdijk1995}.
-Definitions of well-foundedness in type theory by an induction principle, including the inductive predicate of accessibility\index{accessibility}, were studied in~\cite{Huet80,Paulson86,Nordstrom88}, although the idea dates back to Gentzen's proof of the consistency\index{YiZhiXing@一致性!of arithmetic} of arithmetic~\cite{Gentzen36}.
+Definitions of well-foundedness in type theory by an induction principle, including the inductive predicate of accessibility\index{KeDaXing@可达性}, were studied in~\cite{Huet80,Paulson86,Nordstrom88}, although the idea dates back to Gentzen's proof of the consistency\index{YiZhiXing@一致性!SuanShuDe@算数的} of arithmetic~\cite{Gentzen36}.
 
 The idea of algebraic set theory, which informs our development in \cref{sec:cumulative-hierarchy} of the cumulative hierarchy, is due to~\cite{JoyalMoerdijk1995}, but it derives from earlier work by~\cite{AczelCZF}.
-\index{algebraic set theory}%
-\index{set theory!algebraic}%
+\index{DaiShuJiHeLun@代数集合论}%
+\index{JiHeLun@集合论!DaiShuDe@代数的}%
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1804,16 +1804,16 @@ The idea of algebraic set theory, which informs our development in \cref{sec:cum
 
 \begin{ex}\label{ex:well-pointed}
   Show that with $\LEM{}$, the category $\uset$ is well-pointed,
-  \indexdef{category!well-pointed}%
+  \indexdef{FanChou@范畴!well-pointed}%
   in the sense that the following statement holds: for any $f, g : A\to B$, if $f \neq g$ then there is a function $a : 1\to A$ such that $f(a) \neq g(a)$.
   Show that the slice category
-  \index{category!slice}%
+  \index{FanChou@范畴!slice}%
   $\uset/\bool$ consisting of functions $A\to \bool$ and commutative triangles does not have this property.
   (Hint: the terminal object in $\uset/\bool$ is the identity function $\bool \to \bool$, so in this category, there are objects $X$ that have no elements $1\to X$.)
 \end{ex}
 
 \begin{ex}\label{ex:add-ordinals}
-  \index{addition!of ordinal numbers}%
+  \index{JiaFa@加法!of ordinal numbers}%
   Prove that if $(A,<_A)$ and $(B,<_B)$ are well-founded, extensional, or ordinals, then so is $A+B$, with $<$ defined by
   \begin{align*}
     (a<a') &\defeq (a<_A a') & \text{for }& a,a':A\\
@@ -1900,7 +1900,7 @@ The idea of algebraic set theory, which informs our development in \cref{sec:cum
 
 \begin{ex}\label{ex:strong-collection}
   In \CZF, the \define{axiom of strong collection}
-  \indexdef{axiom!strong collection}%
+  \indexdef{GongLi@公理!strong collection}%
   \indexdef{collection!strong}%
   \indexdef{strong!collection}%
   has the form:
@@ -1945,7 +1945,7 @@ Verify that, if we assume $\choice{}$, then the cumulative hierarchy $V$ satisfi
 
 \begin{ex}\label{ex:ZF-algebras}
   A \define{ZF-algebra}~\cite{JoyalMoerdijk1995}
-  \index{ZF-algebra}%
+  \index{ZF-DaiShu@ZF-代数}%
   relative to a universe $\UU_i$ is a poset (see \cref{ct:orders}) $V:\UU_{i+1}$, which has all suprema indexed by types in $\UU_i$, and is equipped with a ``successor'' function $s:V\to V$ (not necessarily respecting $\le$ in any way).
   \begin{enumerate}
   \item Show that the cumulative hierarchy $(V_{\UU_i},\subseteq,s)$ is the initial ZF-algebra, where $s(x)$ is the singleton $\setof{x}$.
@@ -1963,7 +1963,7 @@ Verify that, if we assume $\choice{}$, then the cumulative hierarchy $V$ satisfi
   \end{enumerate}
 \end{ex}
 
-\index{set|)}%
+\index{JiHe@集合|)}%
 
 % Local Variables:
 % TeX-master: "hott-online"
