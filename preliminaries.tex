@@ -563,7 +563,7 @@ $(\lamu{x:A} \Phi)(a) \jdeq \Phi'$, 其中 $\Phi'$ 是通过将 $\Phi$ 中所有
     对于其他类型, 唯一性原理说每个从该类型\emph{出发}的映射(函数)由某些数据唯一确定. (一个例子是在\S\ref{sec:coproduct-types}中引入的余积类型, 其唯一性原理在\S\ref{sec:universal-properties}中提到。)
     当唯一性原理不作为判断相等的规则时, 通常, 仍然可以从该类型的其他规则出发, 将其证明为一个\emph{命题}等式。 在这种情况下, 我们称它为\define{命题性唯一性原理}。
     \indexdef{uniqueness!principle, propositional} \indexsee{propositional!uniqueness principle}{uniqueness principle, propositional} 
-    (在后续章节中, 我们也会偶尔遇到\emph{命题性计算规则}。)indexdef{JiSuanGuiZe@计算规则!propositional}%
+    (在后续章节中, 我们也会偶尔遇到\emph{命题性计算规则}。)\indexdef{JiSuanGuiZe@计算规则!propositional}%
   
   \end{enumerate}
   
@@ -645,7 +645,7 @@ $(\lamu{x:A} \Phi)(a) \jdeq \Phi'$, 其中 $\Phi'$ 是通过将 $\Phi$ 中所有
 }
 来定义一个函数 $f : \prd{x : A \times B} C(x)$, 其定义方程为
 \[ f(\tup x y) \defeq g(x)(y). \] 
-例如, 通过这种方式我们可以证明命题唯一性原理, 该原理表明 $A\times B$ 的每个元素都等于一个有序对。
+例如, 通过这种方式我们可以证明命题性唯一性原理, 该原理表明 $A\times B$ 的每个元素都等于一个有序对。
 \index{uniqueness!principle, propositional!for product types}%
 具体地, 我们可以构造一个函数
 \[ \uniq{A\times B} : \prd{x:A \times B} (\id[A\times B]{\tup{\fst {(x)}}{\snd {(x)}}}{x}). \]
@@ -669,7 +669,7 @@ $(\lamu{x:A} \Phi)(a) \jdeq \Phi'$, 其中 $\Phi'$ 是通过将 $\Phi$ 中所有
 \Parens{\prd{x:A}{y:B} C(\tup{x}{y})} \to \prd{x:A \times B} C(x) \]
 其定义方程为 
 \[ \ind{A\times B}(C,g,\tup{a}{b}) \defeq g(a)(b). \]
-类似地, 我们可以说定义在有序对上的依值函数可以通过Cartesian积的\define{归纳原理}得到。
+类似地, 我们可以说定义在有序对上的依值函数可以通过Cartesian积的\define{归纳法}得到。
 \index{induction principle}%
 \index{induction principle!for product}%
 容易看出, 递归子只是归纳法在 $C$ 为常类型族时的特例。
@@ -685,12 +685,12 @@ $(\lamu{x:A} \Phi)(a) \jdeq \Phi'$, 其中 $\Phi'$ 是通过将 $\Phi$ 中所有
 \[ \ind{\unit} : \prd{C:\unit \to \UU} C(\ttt) \to \prd{x:\unit}C(x)\]
 其定义方程为
 \[ \ind{\unit}(C,c,\ttt) \defeq c. \]
-归纳法使我们能够证明 $\unit$ 的命题唯一性原理, 该原理断言其唯一的居留元是 $\ttt$。
+归纳法使我们能够证明 $\unit$ 的命题性唯一性原理, 该原理断言其唯一的居留元是 $\ttt$。
 也就是说, 我们可以通过使用定义方程
 \label{uniquenessunit}
 \[\uniq{\unit}(\ttt) \defeq \refl{\ttt} \]
 或者等价地使用归纳法来构造
-\[\uniq{\unit} : \prd{x:\unit} \id{x}{\ttt} \]:
+\[\uniq{\unit} : \prd{x:\unit} \id{x}{\ttt} \]
 \[\uniq{\unit} \defeq \ind{\unit}(\lamu{x:\unit} \id{x}{\ttt},\refl{\ttt}). \]
 
 \index{LeiXing@类型!product|)}%
@@ -774,7 +774,7 @@ $\Sigma$-类型上的所有构造都是积类型上对应构造的直接推广, 
 \[ \snd(\tup{a}{b})  \defeq  b. \]
 为了证明这是正确的, 我们注意到 $B (\fst(\tup{a}{b})) \jdeq B(a)$。应用了 $\fst$ 的定义方程后, 并且确实有 $b : B(a)$。
 
-我们可以将递归原理和归纳原理打包到 $\Sigma$ 的递归子中:
+我们可以将递归原理和归纳法打包到 $\Sigma$ 的递归子中:
 \symlabel{defn:recursor-sm}%
 \[ \rec{\sm{x:A}B(x)} : \dprd{C:\UU}\Parens{\tprd{x:A} B(x) \to C} \to
 \Parens{\tsm{x:A}B(x)} \to C \]
@@ -790,7 +790,7 @@ $\Sigma$-类型上的所有构造都是积类型上对应构造的直接推广, 
 \end{narrowmultline*}
 其定义方程为 
 \[ \ind{\sm{x:A}B(x)}(C,g,\tup{a}{b}) \defeq g(a)(b). \]
-如前所述, 递归子是归纳原理在 $C$ 为常类型族时的特例。
+如前所述, 递归子是归纳法在 $C$ 为常类型族时的特例。
 
 更进一步地, 考虑以下原理作为例子, 其中 $A$ 和 $B$ 是类型且 $R:A\to B\to \UU$:
 \[ \ac : \Parens{\tprd{x:A} \tsm{y :B} R(x,y)} \to
@@ -848,69 +848,63 @@ $\Sigma$-类型上的所有构造都是积类型上对应构造的直接推广, 
 \section{余积类型}
 \label{sec:coproduct-types}
 
-Given $A,B:\UU$, we introduce their \define{coproduct} type $A+B:\UU$.
+给定 $A,B:\UU$, 我们引入它们的 \define{余积}类型 $A+B:\UU$。
 \indexsee{coproduct}{类型, 余积}%
 \index{LeiXing@类型!coproduct|(defstyle}%
 \indexsee{disjoint!sum}{类型, 余积}%
 \indexsee{disjoint!union}{类型, 余积}%
 \indexsee{sum!disjoint}{类型, 余积}%
 \indexsee{union!disjoint}{类型, 余积}%
-This corresponds to the \emph{disjoint union} in set theory, and we may also use that name for it.
-In type theory, as was the case with functions and products, the coproduct must be a fundamental construction, since there is no previously given notion of ``union of types''.
-We also introduce a
-nullary version: the \define{empty type $\emptyt:\UU$}.
+这在集合论中对应于\emph{无交并}, 我们也可以使用该名称。
+在类型论中, 与函数和乘积的情况一样, 由于之前没有给出``类型并''的概念, 所以余积必须是一个基本构造。
+我们还为其引入一个单位元: \define{空类型 $\emptyt:\UU$}。
 \indexsee{nullary!coproduct}{类型, 空}%
 \indexsee{empty type}{类型, 空}%
 \index{LeiXing@类型!empty|(defstyle}%
 
-There are two ways to construct elements of $A+B$, either as $\inl(a) : A+B$ for $a:A$, or as
-$\inr(b):A+B$ for $b:B$.
-(The names $\inl$ and $\inr$ are short for ``left injection'' and ``right injection''.)
-There are no ways to construct elements of the empty type. 
+构造 $A+B$ 元素有两种方式, 对于 $a:A$ 来说是 $\inl(a) : A+B$, 对于 $b:B$ 来说是 $\inr(b):A+B$。
+(名称 $\inl$ 和 $\inr$ 是``左注入''和``右注入''的缩写。)
+没有构造空类型元素的方法。
 
 \index{recursion principle!for coproduct}
-To construct a non-dependent function $f : A+B \to C$, we need 
-functions $g_0 : A \to C$ and $g_1 : B \to C$. Then $f$ is defined
-via the defining equations
+要构造一个非依值函数 $f : A+B \to C$, 我们需要函数 $g_0 : A \to C$ 和 $g_1 : B \to C$。并通过定义方程
 \begin{align*}
   f(\inl(a)) &\defeq g_0(a), \\
   f(\inr(b)) &\defeq g_1(b).
 \end{align*}
-That is, the function $f$ is defined by \define{case analysis}.
+来构造$f$ 。
+也就是说, 函数 $f$ 是通过 \define{分类讨论} 来定义的。
 \indexdef{FenLeiTaoLun@分类讨论}%
-As before, we can derive the recursor:
+如前所述, 我们可以推导出递归子:
 \symlabel{defn:recursor-plus}%
 \[ \rec{A+B} : \dprd{C:\UU}(A \to C) \to (B\to C) \to A+B \to C\]
-with the defining equations
+其定义方程为
 \begin{align*}
 \rec{A+B}(C,g_0,g_1,\inl(a)) &\defeq g_0(a), \\
 \rec{A+B}(C,g_0,g_1,\inr(b)) &\defeq g_1(b).
 \end{align*}
 
 \index{recursion principle!for empty type}
-We can always construct a function $f : \emptyt \to C$ without
-having to give any defining equations, because there are no elements of \emptyt on which to define $f$.
-Thus, the recursor for $\emptyt$ is
+我们总是可以构造一个函数 $f : \emptyt \to C$ 而无需给出任何定义方程, 因为 \emptyt 中没有元素来定义 $f$。
+因此, $\emptyt$ 的递归子是
 \symlabel{defn:recursor-emptyt}%
 \[\rec{\emptyt} : \tprd{C:\UU} \emptyt \to C,\]
-which constructs the canonical function from the empty type to any other type.
-Logically, it corresponds to the principle \textit{ex falso quodlibet}.
-\index{ex falso quodlibet@\textit{ex falso quodlibet}}
+它构造了从空类型到任何其他类型的典范函数。
+在逻辑上, 它对应于原则 \emph{由空推全部}。
+\index{YouKongTuiQuanBu@\emph{由空推全部}}
 
 \index{induction principle!for coproduct}
-To construct a dependent function $f:\prd{x:A+B}C(x)$ out of a coproduct, we assume as given the family 
-$C: (A + B) \to \UU$, and 
-require 
+要构造一个从余积出发的依值函数 $f:\prd{x:A+B}C(x)$, 我们假设给定类型族 $C: (A + B) \to \UU$, 并要求
 \begin{align*}
   g_0 &: \prd{a:A} C(\inl(a)), \\
   g_1 &: \prd{b:B} C(\inr(b)).
 \end{align*}
-This yields $f$ with the defining equations:\index{JiSuanGuiZe@计算规则!for coproduct type}
+从而得到 $f$ 及其定义方程: \index{JiSuanGuiZe@计算规则!for coproduct type}
 \begin{align*}
   f(\inl(a)) &\defeq g_0(a), \\
   f(\inr(b)) &\defeq g_1(b).
 \end{align*}
-We package this scheme into the induction principle for coproducts:
+我们将此方案打包成余积的归纳法:
 \symlabel{defn:induction-plus}%
 \begin{narrowmultline*}
   \ind{A+B} :
@@ -918,124 +912,109 @@ We package this scheme into the induction principle for coproducts:
   \Parens{\tprd{a:A} C(\inl(a))} \to \narrowbreak
   \Parens{\tprd{b:B} C(\inr(b))} \to \tprd{x:A+B}C(x). 
 \end{narrowmultline*}
-As before, the recursor arises in the case that the family $C$ is
-constant. 
+如前所述, 当类型族 $C$ 为常数时, 递归子便会出现。
 
 \index{induction principle!for empty type}
-The induction principle for the empty type
+空类型的归纳法
 \symlabel{defn:induction-emptyt}%
 \[ \ind{\emptyt} : \prd{C:\emptyt \to \UU}{z:\emptyt} C(z) \]
-gives us a way to define a trivial dependent function out of the
-empty type. % In the presence of $\eta$-equality it is derivable
-% from the recursor.
-% ex
+给出一种从空类型定义平凡依值函数的方法。
 
 \index{LeiXing@类型!coproduct|)}%
 \index{LeiXing@类型!empty|)}%
-
 
 \section{布尔类型}
 \label{sec:type-booleans}
 
 \indexsee{BuErZhi@布尔值!DeLeiXing@的类型}{布尔类型}%
 \index{LeiXing@类型!of booleans|(defstyle}%
-The type of booleans $\bool:\UU$ is intended to have exactly two elements 
-$\bfalse,\btrue : \bool$. It is clear that we could construct this
-type out of coproduct
+布尔类型 $\bool:\UU$ 被设计为恰好有两个元素 $\bfalse,\btrue : \bool$。显然, 我们可以从余积类型
 % this one results in a warning message just because it's on the same page as the previous entry 
 % for {type!coproduct}, so it's not our fault
 \index{LeiXing@类型!YuJi@余积}%
-and unit\index{LeiXing@类型!unit} types as $\unit + \unit$. However,
-since it is used frequently, we give the explicit rules here.
-Indeed, we are going to observe that we can also go the other way
-and derive binary coproducts from $\Sigma$-types and $\bool$.
+和单位\index{LeiXing@类型!unit}类型中将它构造为 $\unit + \unit$。然而, 由于我们经常使用这一类型, 我们在此给出显式的规则。
+实际上, 我们将观察到我们也可以反过来从 $\Sigma$-类型和 $\bool$ 中推导出二元余积。
 
 \index{recursion principle!for type of booleans}
-To derive a function $f : \bool \to C$ we need $c_0,c_1 : C$ and
-add the defining equations
+要导出一个函数 $f : \bool \to C$, 我们需要 $c_0,c_1 : C$ 并附加一个定义方程
 \begin{align*}
   f(\bfalse) &\defeq c_0, \\
   f(\btrue)  &\defeq c_1.
 \end{align*}
-The recursor corresponds to the if-then-else construct in
-functional programming:
+该递归子对应于函数式编程中的 if-then-else 构造:
 \symlabel{defn:recursor-bool}%
 \[ \rec{\bool} : \prd{C:\UU}  C \to C \to \bool \to C \]
-with the defining equations
+其定义方程为
 \begin{align*}
   \rec{\bool}(C,c_0,c_1,\bfalse) &\defeq c_0, \\
   \rec{\bool}(C,c_0,c_1,\btrue)  &\defeq c_1.
 \end{align*}
 
 \index{induction principle!for type of booleans}
-Given $C : \bool \to \UU$, to derive a dependent function 
-$f : \prd{x:\bool}C(x)$ we need $c_0:C(\bfalse)$ and $c_1 : C(\btrue)$, in which case we can give the defining equations
+给定 $C : \bool \to \UU$, 要导出一个依值函数 $f : \prd{x:\bool}C(x)$, 我们需要 $c_0:C(\bfalse)$ 和 $c_1 : C(\btrue)$, 在这种情况下我们可以给出定义方程
 \begin{align*}
   f(\bfalse) &\defeq c_0, \\
   f(\btrue)  &\defeq c_1.
 \end{align*}
-We package this up into the induction principle
+我们将其打包成归纳法
 \symlabel{defn:induction-bool}%
 \[ \ind{\bool} : \dprd{C:\bool \to \UU}  C(\bfalse) \to C(\btrue)
 \to \tprd{x:\bool} C(x) \]
-with the defining equations
+其定义方程为
 \begin{align*}
   \ind{\bool}(C,c_0,c_1,\bfalse) &\defeq c_0, \\
   \ind{\bool}(C,c_0,c_1,\btrue)  &\defeq c_1.
 \end{align*}
 
-As an example, using the induction principle we can deduce that, as we expect, every element of $\bool$ is either $\btrue$ or $\bfalse$.
-As before, in order to state this we use the equality types which we have not yet introduced, but we need only the fact that everything is equal to itself by $\refl{x}:x=x$.
-Thus, we construct an element of
+例如, 通过归纳法, 我们可以推断出, 正如期望的那样, $\bool$ 的每个元素要么是 $\btrue$ 要么是 $\bfalse$。
+如前所述, 为了陈述这一点, 我们使用了尚未引入的相等类型, 但我们只需要每个东西都通过 $\refl{x}:x=x$ 与自身相等这一事实。
+因此, 我们构造一个
 \begin{equation}\label{thm:allbool-trueorfalse}
   \prd{x:\bool}(x=\bfalse)+(x=\btrue),
 \end{equation}
-i.e.\ a function assigning to each $x:\bool$ either an equality $x=\bfalse$ or an equality $x=\btrue$.
-We define this element using the induction principle for \bool, with $C(x) \defeq (x=\bfalse)+(x=\btrue)$;
-the two inputs are $\inl(\refl{\bfalse}) : C(\bfalse)$ and $\inr(\refl{\btrue}):C(\btrue)$.
-In other words, our element of~\eqref{thm:allbool-trueorfalse} is
+的元素, 即一个函数, 为每个 $x:\bool$ 分配一个等式 $x=\bfalse$ 或一个等式 $x=\btrue$。
+我们使用 \bool 的归纳法定义这个元素, 其中 $C(x) \defeq (x=\bfalse)+(x=\btrue)$;
+两个输入是 $\inl(\refl{\bfalse}) : C(\bfalse)$ 和 $\inr(\refl{\btrue}):C(\btrue)$。
+换句话说, 我们的~\eqref{thm:allbool-trueorfalse} 的元素是
 \[ \ind{\bool}\big(\lam{x}(x=\bfalse)+(x=\btrue),\, \inl(\refl{\bfalse}),\, \inr(\refl{\btrue})\big). \]
 
-We have remarked that $\Sigma$-types can be regarded as analogous to indexed disjoint unions, while coproducts are binary disjoint unions.
-It is natural to expect that a binary disjoint union $A+B$ could be constructed as an indexed one over the two-element type \bool.
-For this we need a type family $P:\bool\to\type$ such that $P(\bfalse)\jdeq A$ and $P(\btrue)\jdeq B$.
-Indeed, we can obtain such a family precisely by the recursion principle for $\bool$.
+我们曾指出 $\Sigma$-类型可以视为类似于索引不交并, 而余积是二元不交并。
+自然地, 我们期望二元不交并 $A+B$ 可以构造为在二元类型 \bool 上的索引不交并。
+为此我们需要一个类型族 $P:\bool\to\type$ 使得 $P(\bfalse)\jdeq A$ 且 $P(\btrue)\jdeq B$。
+实际上, 我们可以通过 $\bool$ 的递归原理精确地得到这样的族。
 \index{LeiXing@类型!family of}%
-(The ability to define \emph{type families} by induction and recursion, using the fact that the universe $\UU$ is itself a type, is a subtle and important aspect of type theory.)
-Thus, we could have defined
+(通过利用宇宙 $\UU$ 本身是一个类型这一事实, 从而归纳和递归定义\emph{类型族}, 是类型论的一个微妙而重要的能力。)
+因此, 我们可以定义
 \index{LeiXing@类型!YuJi@余积}%
 \[ A + B \defeq \sm{x:\bool} \rec{\bool}(\UU,A,B,x) \]
-with
+其中
 \begin{align*}
   \inl(a) &\defeq \tup{\bfalse}{a}, \\
   \inr(b) &\defeq \tup{\btrue}{b}.
 \end{align*}
-We leave it as an exercise to derive the induction principle of a coproduct type from this definition.
-(See also \cref{ex:sum-via-bool,sec:appetizer-univalence}.)
+我们将其留作练习, 以从这个定义推导出余积类型的归纳法。
+(另见练习\ref{ex:sum-via-bool}和第\ref{sec:appetizer-univalence}节。)
 
-We can apply the same idea to products and $\Pi$-types: we could have defined
+我们可以将同样的想法应用于乘积和 $\Pi$-类型: 我们可以定义
 \[ A \times B \defeq \prd{x:\bool}\rec{\bool}(\UU,A,B,x). \]
-Pairs could then be constructed using induction for \bool:
+然后可以使用 \bool 的归纳构造对:
 \[ \tup{a}{b} \defeq \ind{\bool}(\rec{\bool}(\UU,A,B),a,b) \]
-while the projections are straightforward applications
+而投影是对其直接的应用
 \begin{align*}
   \fst(p) &\defeq p(\bfalse), \\
   \snd(p) &\defeq p(\btrue).
 \end{align*}
-The derivation of the induction principle for binary products defined in this way is a bit more involved, and requires function extensionality, which we will introduce in \cref{sec:compute-pi}.
-Moreover, we do not get the same judgmental equalities; see \cref{ex:prod-via-bool}.
-This is a recurrent issue when encoding one type as another; we will return to it in \cref{sec:htpy-inductive}. 
+以这种方式定义的二元积的归纳法的推导稍微复杂一些, 并且需要函数外延性, 我们将在第\ref{sec:compute-pi}节介绍它。
+此外, 我们得不到相同的判断相等性; 见练习\ref{ex:prod-via-bool}。
+这是将一种类型编码为另一种类型时经常出现的问题; 我们将在第\ref{sec:htpy-inductive}节回到这个问题。
 
-We may occasionally refer to the elements $\bfalse$ and $\btrue$ of $\bool$ as ``false'' and ``true'' respectively.
-However, note that unlike in classical\index{mathematics!JingDianDe@经典的} mathematics, we do not use elements of $\bool$ as truth values
+我们可能偶尔将 $\bool$ 的元素 $\bfalse$ 和 $\btrue$ 分别称为``假''和``真''。
+但请注意, 与经典\index{mathematics!JingDianDe@经典的}数学不同, 我们不使用 $\bool$ 的元素作为真值
 \index{Zhi@值!truth}%
-or as propositions.
-(Instead we identify propositions with types; see \cref{sec:pat}.)
-In particular, the type $A \to \bool$ is not generally the power set\index{power set} of $A$; it represents only the ``decidable'' subsets of $A$ (see \cref{cha:logic}).
+或作为命题。
+(相反, 我们将命题与类型等同; 见第\ref{sec:pat}节。)
+特别地, 类型 $A \to \bool$ 通常不是 $A$ 的幂集\index{power set}; 它仅表示 $A$ 的``可判定''子集(见第\ref{cha:logic}章)。
 \index{KePanDingDe@可判定的!subset}%
-
-\index{LeiXing@类型!of booleans|)}%
-
 
 \section{自然数}
 \label{sec:inductive-types}
@@ -1043,37 +1022,38 @@ In particular, the type $A \to \bool$ is not generally the power set\index{power
 \indexsee{LeiXing@类型!of natural numbers}{natural numbers}%
 \index{natural numbers|(defstyle}%
 \indexsee{number!natural}{natural numbers}%
-So far we have rules for constructing new types by abstract operations, but for doing concrete mathematics we also require some concrete types, such as types of numbers.
-The most basic such is the type $\nat : \UU$ of natural numbers; once we have this we can construct integers, rational numbers, real numbers, and so on (see \cref{cha:real-numbers}).
 
-The elements of $\nat$ are constructed using $0 : \nat$\indexdef{Ling@零} and the successor\indexdef{successor} operation $\suc : \nat \to \nat$.
-When denoting natural numbers, we adopt the usual decimal notation $1 \defeq \suc(0)$, $2 \defeq \suc(1)$, $3 \defeq \suc(2)$, \dots.
+到目前为止, 我们拥有通过抽象运算构造新类型的规则, 但为了进行具体的数学研究, 我们还需要一些具体的类型, 例如数的类型。
+其中最基础的是自然数的类型 $\nat : \UU$; 一旦有了该类型, 我们就可以构造整数、有理数、实数等等(见第\ref{cha:real-numbers}章)。
 
-The essential property of the natural numbers is that we can define functions by recursion and perform proofs by induction --- where now the words ``recursion'' and ``induction'' have a more familiar meaning.
+$\nat$ 的元素使用 $0 : \nat$\indexdef{Ling@零} 和后继\indexdef{successor}运算 $\suc : \nat \to \nat$ 构造。
+在表示自然数时, 我们采用通常的十进制记法 $1 \defeq \suc(0)$, $2 \defeq \suc(1)$, $3 \defeq \suc(2)$,
+
+自然数的基本性质是我们可以通过递归定义函数并通过归纳进行证明 --- 此时``递归''和``归纳''这两个词具有更熟悉的含义。
 \index{recursion principle!for natural numbers}%
-To construct a non-dependent function $f : \nat \to C$ out of the natural numbers by recursion, it is enough to provide a starting point $c_0 : C$ and a ``next step'' function $c_s : \nat \to C \to C$.
-This gives rise to $f$ with the defining equations\index{JiSuanGuiZe@计算规则!for natural numbers}
+要通过递归的方法从自然数构造一个非依值函数 $f : \nat \to C$, 只需提供一个起点 $c_0 : C$ 和一个``下一步''函数 $c_s : \nat \to C \to C$。
+从而通过下列定义方程构造 $f$\index{JiSuanGuiZe@计算规则!for natural numbers}
 \begin{align*}
   f(0) &\defeq c_0, \\
   f(\suc(n)) &\defeq c_s(n,f(n)).
 \end{align*}
-We say that $f$ is defined by \define{primitive recursion}.
+此时我们说, $f$ 是通过 \define{原始递归} 定义的。
 \indexdef{primitive!recursion}%
 \indexdef{recursion!primitive}%
 
-As an example, we look at how to define a function on natural numbers which doubles its argument.
-In this case we have $C\defeq \nat$.
-We first need to supply the value of $\dbl(0)$, which is easy: we put $c_0 \defeq 0$.
-Next, to compute the value of $\dbl(\suc(n))$ for a natural number $n$, we first compute the value of $\dbl(n)$ and then perform the successor operation twice.
-This is captured by the recurrence\index{recurrence} $c_s(n,y) \defeq \suc(\suc(y))$.
-Note that the second argument $y$ of $c_s$ stands for the result of the \emph{recursive call}\index{recursive call} $\dbl(n)$.
+例如, 让我们看看如何定义一个将参数翻倍的自然数函数。
+在这种情况下, 我们有 $C\defeq \nat$。
+首先需要提供 $\dbl(0)$ 的值, 这很简单: 令 $c_0 \defeq 0$。
+接下来, 对自然数 $n$, 要计算 $\dbl(\suc(n))$, 我们首先计算 $\dbl(n)$ , 再执行两次后继运算。
+这由递推式\index{recurrence} $c_s(n,y) \defeq \suc(\suc(y))$ 捕获。
+注意 $c_s$ 的第二个参数 $y$ 代表 \emph{递归调用}\index{recursive call} $\dbl(n)$ 的结果。
 
-Defining $\dbl:\nat\to\nat$ by primitive recursion in this way, therefore, we obtain the defining equations:
+因此, 通过这种原始递归定义的方式来定义 $\dbl:\nat\to\nat$, 可以得到定义方程:
 \begin{align*}
   \dbl(0) &\defeq 0\\
   \dbl(\suc(n)) &\defeq \suc(\suc(\dbl(n))).
 \end{align*}
-This indeed has the correct computational behavior: for example, we have 
+其计算行为确实正确: 例如, 我们有
 \begin{align*}
   \dbl(2) &\jdeq \dbl(\suc(\suc(0)))\\
   & \jdeq c_s(\suc(0), \dbl(\suc(0))) \\
@@ -1084,101 +1064,105 @@ This indeed has the correct computational behavior: for example, we have
                  & \jdeq \suc(\suc(\suc(\suc(0))))\\
                  &\jdeq 4.
 \end{align*}
-We can define multi-variable functions by primitive recursion as well, by currying and allowing $C$ to be a function type.
+
+我们也可以通过柯里化并允许 $C$ 是函数类型, 用原始递归定义多变量函数。
 \indexdef{JiaFa@加法!of natural numbers}
-For example, we define addition $\add : \nat \to \nat \to \nat$ with $C \defeq \nat \to \nat$ and the following ``starting point'' and ``next step'' data:
+例如, 我们可以定义加法 $\add : \nat \to \nat \to \nat$, 其中 $C \defeq \nat \to \nat$ 且具有以下``起点''和``下一步''数据:
 \begin{align*}
   c_0 & : \nat \to \nat \\
   c_0 (n) & \defeq n \\
   c_s & : \nat \to (\nat \to \nat) \to (\nat \to \nat) \\
   c_s(m,g)(n) & \defeq \suc(g(n)).
 \end{align*}
-We thus obtain $\add : \nat \to \nat \to \nat$ satisfying the definitional equalities
+由此我们得到 $\add : \nat \to \nat \to \nat$ 满足定义等式
 \begin{align*}
   \add(0,n) &\jdeq n \\
   \add(\suc(m),n) &\jdeq \suc(\add(m,n)). 
 \end{align*}
-As usual, we write $\add(m,n)$ as $m+n$.
-The reader is invited to verify that $2+2\jdeq 4$.
+照常, 我们将 $\add(m,n)$ 写作 $m+n$。
+邀请读者验证 $2+2\jdeq 4$。
 % ex: define multiplication and exponentiation.
 
-As in previous cases, we can package the principle of primitive recursion into a recursor:
+与之前的情况一样, 我们可以将原始递归法打包成一个递归子:
 \[\rec{\nat}  : \dprd{C:\UU} C \to (\nat \to C \to C) \to \nat \to C \]
-with the defining equations
+其定义方程为
 \symlabel{defn:recursor-nat}%
 \begin{align*}
 \rec{\nat}(C,c_0,c_s,0)  &\defeq c_0, \\
 \rec{\nat}(C,c_0,c_s,\suc(n)) &\defeq c_s(n,\rec{\nat}(C,c_0,c_s,n)).
 \end{align*}
 %ex derive rec from it
-Using $\rec{\nat}$ we can present $\dbl$ and $\add$ as follows:
+使用 $\rec{\nat}$ 我们可以如下表示 $\dbl$ 和 $\add$:
 \begin{align}
 \dbl &\defeq \rec\nat\big(\nat,\, 0,\, \lamu{n:\nat}{y:\nat} \suc(\suc(y))\big) \label{eq:dbl-as-rec}\\
 \add &\defeq \rec{\nat}\big(\nat \to \nat,\, \lamu{n:\nat} n,\, \lamu{m:\nat}{g:\nat \to \nat}{n :\nat} \suc(g(n))\big).
 \end{align}
-Of course, all functions definable only using the primitive recursion principle will be \emph{computable}.
-(The presence of higher function types --- that is, functions with other functions as arguments --- does, however, mean we can define more than the usual primitive recursive functions; see e.g.~\cref{ex:ackermann}.)
-This is appropriate in constructive mathematics;
+
+当然, 仅使用原始递归法可定义的所有函数都将是\emph{可计算的}。
+(然而, 高阶函数类型的存在 --- 即以其他函数为参数的函数 --- 意味着我们可以定义比通常的原始递归函数更多的函数; 例如参见练习\ref{ex:ackermann}。)
+这在构造性数学中是合适的;
 \index{mathematics!GouZaoXingDe@构造性的}%
-in \cref{sec:intuitionism,sec:axiom-choice} we will see how to augment type theory so that we can define more general mathematical functions.
+在第\ref{sec:intuitionism}节和第\ref{sec:axiom-choice}节, 我们将看到如何扩充类型论以便定义更一般的数学函数。
 
 \index{induction principle!for natural numbers}
-We now follow the same approach as for other types, generalizing primitive recursion to dependent functions to obtain an \emph{induction principle}.
-Thus, assume as given a family $C : \nat \to \UU$, an element $c_0 : C(0)$, and a function $c_s : \prd{n:\nat} C(n) \to C(\suc(n))$; then we can construct $f : \prd{n:\nat} C(n)$ with the defining equations:\index{JiSuanGuiZe@计算规则!for natural numbers}
+我们现在遵循与其他类型相同的方法, 将原始递归推广到依值函数以获得一个\emph{归纳法}。
+因此, 假设给定一个类型族 $C : \nat \to \UU$, 一个元素 $c_0 : C(0)$, 和一个函数 $c_s : \prd{n:\nat} C(n) \to C(\suc(n))$; 
+那么我们可以构造 $f : \prd{n:\nat} C(n)$ 其定义方程为:\index{JiSuanGuiZe@计算规则!for natural numbers}
 \begin{align*}
   f(0) &\defeq c_0, \\
   f(\suc(n)) &\defeq c_s(n,f(n)).
 \end{align*}
-We can also package this into a single function
+我们也可以将其打包成一个单一函数
 \symlabel{defn:induction-nat}%
 \[\ind{\nat}  : \dprd{C:\nat\to \UU} C(0) \to \Parens{\tprd{n : \nat} C(n) \to C(\suc(n))} \to \tprd{n : \nat} C(n) \]
-with the defining equations
+其定义方程为
 \begin{align*}
 \ind{\nat}(C,c_0,c_s,0)  &\defeq c_0, \\
 \ind{\nat}(C,c_0,c_s,\suc(n)) &\defeq c_s(n,\ind{\nat}(C,c_0,c_s,n)).
 \end{align*}
-Here we finally see the connection to the classical notion of proof by induction.
-Recall that in type theory we represent propositions by types, and proving a proposition by inhabiting the corresponding type.
-In particular, a \emph{property} of natural numbers is represented by a family of types $P:\nat\to\type$.
-From this point of view, the above induction principle says that if we can prove $P(0)$, and if for any $n$ we can prove $P(\suc(n))$ assuming $P(n)$, then we have $P(n)$ for all $n$.
-This is, of course, exactly the usual principle of proof by induction on natural numbers.
+
+在这里我们终于看到了与经典的归纳证明概念的联系。
+回忆在类型论中, 我们用类型表示命题, 并通过居留相应的类型来证明命题。
+特别地, 自然数的\emph{性质}由一个类型族 $P:\nat\to\type$ 表示。
+从这个观点来看, 上述归纳法是说, 如果我们能证明 $P(0)$, 并且对于任何 $n$, 在假设 $P(n)$ 的情况下我们能证明 $P(\suc(n))$, 那么我们对所有 $n$ 都有 $P(n)$。
+当然, 这正是通常的数学归纳法。
 
 \index{JieHeXing@结合性!of addition!of natural numbers}
-As an example, consider how we might represent an explicit proof that $+$ is associative.
-(We will not actually write out proofs in this style, but it serves as a useful example for understanding how induction is represented formally in type theory.)
-To derive
+例如, 考虑我们如何表示 $+$ 满足结合律的一个显式证明。
+(我们实际上不会以这种风格写出证明, 但它作为一个有用的例子来理解归纳在类型论中如何形式化表示。)
+要推导
 \[\assoc : \prd{i,j,k:\nat} \id{i + (j + k)}{(i + j) + k}, \]
-it is sufficient to supply
+只需提供
 \[ \assoc_0 :  \prd{j,k:\nat} \id{0 + (j + k)}{(0+ j) + k} \]
-and
+和
 \begin{narrowmultline*}
   \assoc_s  : \prd{i:\nat} \left(\prd{j,k:\nat} \id{i + (j + k)}{(i + j) + k}\right)
    \narrowbreak
    \to \prd{j,k:\nat} \id{\suc(i) + (j + k)}{(\suc(i) + j) + k}.
 \end{narrowmultline*}
-To derive $\assoc_0$, recall that $0+n \jdeq n$, and hence  $0 + (j + k) \jdeq j+k \jdeq (0+ j) + k$.
-Hence we can just set
+
+要推导 $\assoc_0$, 回想起 $0+n \jdeq n$, 因此 $0 + (j + k) \jdeq j+k \jdeq (0+ j) + k$。
+因此我们可以直接设
 \[ \assoc_0(j,k) \defeq \refl{j+k}. \]
-For $\assoc_s$, recall that the definition of $+$ gives $\suc(m)+n \jdeq \suc(m+n)$, and hence 
+对于 $\assoc_s$, 回想起 $+$ 的定义给出 $\suc(m)+n \jdeq \suc(m+n)$, 因此
 \begin{align*}
-   \suc(i) + (j + k)  &\jdeq \suc(i+(j+k)) \qquad\text{and}\\
+   \suc(i) + (j + k)  &\jdeq \suc(i+(j+k)) \qquad\text{且}\\
    (\suc(i)+j)+k &\jdeq \suc((i+j)+k).
 \end{align*}
-Thus, the output type of $\assoc_s$ is equivalently $\id{\suc(i+(j+k))}{\suc((i+j)+k)}$.
-But its input (the ``inductive hypothesis'')
+因此, $\assoc_s$ 的输出类型等价于 $\id{\suc(i+(j+k))}{\suc((i+j)+k)}$。
+但其输入(``归纳假设'')
 \index{hypothesis!inductive}%
 \index{inductive!hypothesis}%
-yields $\id{i+(j+k)}{(i+j)+k}$, so it suffices to invoke the fact that if two natural numbers are equal, then so are their successors.
-(We will prove this obvious fact in \cref{lem:map}, using the induction principle of identity types.)
-We call this latter fact
+产生 $\id{i+(j+k)}{(i+j)+k}$, 因此只需援引以下事实: 如果两个自然数相等, 那么它们的后继也相等。
+(我们将在引理\ref{lem:map}中使用恒等类型的归纳法证明这个明显的事实。)
+我们称后一个事实为
 $\apfunc{\suc} : %\prd{m,n:\nat}
-(\id[\nat]{m}{n}) \to (\id[\nat]{\suc(m)}{\suc(n)})$, so we can define
+(\id[\nat]{m}{n}) \to (\id[\nat]{\suc(m)}{\suc(n)})$, 因此我们可以定义
 \[\assoc_s(i,h,j,k) \defeq \apfunc{\suc}( %n+(j+k),(n+j)+k,
 h(j,k)). \]
-Putting these together with $\ind{\nat}$, we obtain a proof of associativity.
+将这些与 $\ind{\nat}$ 放在一起, 我们得到结合性的一个证明。
 
 \index{natural numbers|)}%
-
 
 \section{模式匹配与递归}
 \label{sec:pattern-matching}
