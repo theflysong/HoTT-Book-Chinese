@@ -2,14 +2,14 @@
 \label{cha:induction}
 
 In \cref{cha:typetheory}, we introduced many ways to form new types from old ones.
-Except for (dependent) function types and universes, all these rules are special cases of the general notion of \emph{inductive definition}.\index{DingYi@定义!inductive}\index{inductive!DingYi@定义}
+Except for (dependent) function types and universes, all these rules are special cases of the general notion of \emph{inductive definition}.\index{DingYi@定义!GuiNaDe@归纳的}\index{GuiNaDe@归纳的!DingYi@定义}
 In this chapter we study inductive definitions more generally.
 
 
 \section{Introduction to inductive types}
 \label{sec:bool-nat}
 
-\index{LeiXing@类型!inductive|(}%
+\index{LeiXing@类型!GuiNaDe@归纳的|(}%
 \index{generation!LeiXingDe, GuiNaDe@类型的, 归纳的|(}
 An \emph{inductive type} $X$ can be intuitively understood as a type ``freely generated'' by a certain finite collection of \emph{constructors}, each of which is a function (of some number of arguments) with codomain $X$.
 This includes functions of zero arguments, which are simply elements of $X$.
@@ -56,7 +56,7 @@ That is, the elements of an inductive type are exactly what can be obtained by s
 For instance, in the case of \bool, we should expect that the only elements are $\bfalse$ and $\btrue$.
 Similarly, in the case of \nat, we should expect that every element is either $0$ or obtained by applying $\suc$ to some ``previously constructed'' natural number.
 
-\index{induction principle}%
+\index{GuiNaFa@归纳法}%
 Rather than assert properties such as this directly, however, we express them by means of an \emph{induction principle}, also called a \emph{(dependent) elimination rule}.
 We have seen these principles already in \cref{cha:typetheory}.
 For instance, the induction principle for \bool is:
@@ -75,7 +75,7 @@ Furthermore, the resulting proof $\ind\bool(E,e_0,e_1): \prd{b : \bool}E(b)$ beh
 Thus, the induction principle for the type $\bool$ of booleans allows us to reason by \emph{case analysis}.
 Since neither of the two constructors takes any arguments, this is all we need for booleans.
 
-\index{natural numbers}%
+\index{ZiRanShu@自然数}%
 For natural numbers, however, case analysis is generally not sufficient: in the case corresponding to the inductive step $\suc(n)$, we also want to presume that the statement being proven has already been shown for $n$.
 This gives us the following induction principle:
 \begin{itemize}
@@ -83,19 +83,19 @@ This gives us the following induction principle:
 for $n$, i.e., we construct $e_z : E(0)$ and $e_s : \prd{n : \nat} E(n) \to E(\suc(n))$.
 \end{itemize}
 As in the case of booleans, we also have the associated computation rules for the function $\ind\nat(E,e_z,e_s) : \prd{x:\nat} E(x)$:
-\index{JiSuanGuiZe@计算规则!for natural numbers}%
+\index{JiSuanGuiZe@计算规则!ZiRanShuDe@自然数的}%
 \begin{itemize}
 \item $\ind\nat(E,e_z,e_s,0) \jdeq e_z$.
 \item $\ind\nat(E,e_z,e_s,\suc(n)) \jdeq e_s(n,\ind\nat(E,e_z,e_s,n))$ for any $n : \nat$.
 \end{itemize}
-The dependent function $\ind\nat(E,e_z,e_s)$ can thus be understood as being defined recursively on the argument $x : \nat$, via the functions $e_z$ and $e_s$ which we call the \define{recurrences}\indexdef{recurrence}.
+The dependent function $\ind\nat(E,e_z,e_s)$ can thus be understood as being defined recursively on the argument $x : \nat$, via the functions $e_z$ and $e_s$ which we call the \define{recurrences}\indexdef{DiTui@递推}.
 When $x$ is zero,\index{Ling@零} the function simply returns $e_z$.
 When $x$ is the successor\index{successor} of another natural number $n$, the result is obtained by taking the recurrence $e_s$ and substituting the specific predecessor\index{predecessor} $n$ and the recursive call value $\ind\nat(E,e_z,e_s,n)$.
 
 The induction principles for all the examples mentioned above share this family resemblance.
 In \cref{sec:strictly-positive} we will discuss a general notion of ``inductive definition'' and how to derive an appropriate \emph{induction principle} for it, but first we investigate various commonalities between inductive definitions.
 
-\index{recursion principle}%
+\index{DiGuiFa@递归法}%
 For instance, we have remarked in every case in \cref{cha:typetheory} that from the induction principle we can derive a \emph{recursion principle} in which the codomain is a simple type (rather than a family).
 Both induction and recursion principles may seem odd, since they yield only the \emph{existence} of a function without seeming to characterize it uniquely.
 However, in fact the induction principle is strong enough also to prove its own \emph{uniqueness principle}\index{uniqueness!principle, propositional!for functions on N@for functions on $\nat$}, as in the following theorem.
@@ -139,7 +139,7 @@ From a homotopical viewpoint it is natural to ask whether this path is \emph{coh
 Of course, similar uniqueness theorems for functions can generally be formulated and shown for other inductive types as well.
 In the next section, we show how this uniqueness property, together with univalence, implies that an inductive type such as the natural numbers is completely characterized by its introduction, elimination, and computation rules.
 
-\index{LeiXing@类型!inductive|)}%
+\index{LeiXing@类型!GuiNaDe@归纳的|)}%
 \index{generation!LeiXingDe, GuiNaDe@类型的, 归纳的|)}%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -150,7 +150,7 @@ In the next section, we show how this uniqueness property, together with univale
 \index{uniqueness!of identity types}%
 We have defined ``the'' natural numbers to be a particular type \nat with particular inductive generators $0$ and $\suc$.
 However, by the general principle of inductive definitions in type theory described in the previous section, there is nothing preventing us from defining \emph{another} type in an identical way.
-\index{natural numbers!isomorphic definition of}
+\index{ZiRanShu@自然数!isomorphic definition of}
 That is, suppose we let $\natp$ be the inductive type generated by the constructors
 \begin{itemize}
 \item $\zerop:\natp$
@@ -215,7 +215,7 @@ This involves considerably less overhead.
 For simplicity, we have described this method in the case of two types \nat and \natp with \emph{identical}-looking definitions.
 However, a more common situation in practice is when the definitions are not literally identical, but nevertheless one induction principle implies the other.
 \index{LeiXing@类型!unit}%
-\index{natural numbers!encoded as list(unit)@encoded as $\lst\unit$}%
+\index{ZiRanShu@自然数!encoded as list(unit)@encoded as $\lst\unit$}%
 Consider, for instance, the type of lists from a one-element type, $\lst\unit$, which is generated by
 \begin{itemize}
 \item an element $\nil:\lst\unit$, and
@@ -262,7 +262,7 @@ $\w$-types are a generalization of such types as natural numbers, lists, and bin
 
 A particular $\w$-type is specified by giving two parameters $A : \type$ and $B : A \to \type$, in which case the resulting $\w$-type is written $\wtype{a:A} B(a)$.
 The type $A$ represents the type of \emph{labels} for $\wtype{a :A} B(a)$, which function as constructors (however, we reserve that word for the actual functions which arise in inductive definitions). For instance, when defining natural numbers as a $\w$-type,%
-\index{natural numbers!encoded as a W-type@encoded as a $\w$-type}
+\index{ZiRanShu@自然数!encoded as a W-type@encoded as a $\w$-type}
 the type $A$ would be the type $\bool$ inhabited by the two elements $\bfalse$ and $\btrue$, since there are precisely two ways to obtain a natural number --- either it will be zero or a successor of another natural number.
 
 The type family $B : A \to \type$ is used to record the arity\index{arity} of labels: a label $a : A$ will take a family of inductive arguments, indexed over $B(a)$. We can therefore think of the ``$B(a)$-many'' arguments of $a$. These arguments are represented by a function $f : B(a) \to \wtype{a :A} B(a)$, with the understanding that for any $b : B(a)$, $f(b)$ is the ``$b$-th'' argument to the label $a$. The $\w$-type $\wtype{a :A} B(a)$ can thus be thought of as the type of well-founded trees, where nodes are labeled by elements of $A$ and each node labeled by $a : A$ has $B(a)$-many branches.
@@ -295,7 +295,7 @@ Put differently, we use the label $\bfalse$ to construct $\zerow$. Then, $\rec\b
 \end{align*}
 
 
-\index{induction principle!for W-types@for $\w$-types}%
+\index{GuiNaFa@归纳法!for W-types@for $\w$-types}%
 We have the following induction principle for $\w$-types:
 \begin{itemize}
 \item When proving a statement $E : \big(\wtype{x:A} B(x)\big) \to \type$ about \emph{all} elements of the $\w$-type $\wtype{x:A} B(x)$, it suffices to prove it for $\supp(a,f)$, assuming it holds for all $f(b)$ with $b : B(a)$.
@@ -388,7 +388,7 @@ They are \emph{homotopy-initial algebras}: initial objects (up to coherent homot
 As a simple example, consider the natural numbers.
 The appropriate sort of ``algebra'' here is a type equipped with the same structure that the constructors of $\nat$ give to it.
 
-\index{natural numbers!as homotopy-initial algebra}
+\index{ZiRanShu@自然数!as homotopy-initial algebra}
 \begin{defn}\label{defn:nalg}
   A \define{$\nat$-algebra}
   \indexdef{N-DaiShu@N-代数}%
@@ -417,7 +417,7 @@ Of course, since our types behave like $\infty$-groupoids\index{.WuQiongQunPei@$
 Fortunately, we can formulate this without needing to define $(\infty,1)$-categories.
 
 \begin{defn}
-  \index{FanDe@泛的!property!of natural numbers}%
+  \index{FanDe@泛的!property!ZiRanShuDe@自然数的}%
   A $\nat$-algebra $I$ is called \define{homotopy-initial},
   \indexdef{homotopy-initial!N-DaiShu@N-代数}%
   \indexdef{N-DaiShu@N-代数!homotopy-initial (h-initial)}%
@@ -740,7 +740,7 @@ involving the naturality properties of operations of the form $p_{\, * \,}$.
 \end{proof}
 %%%%%
 
-\index{natural numbers!encoded as a W-type@encoded as a $\w$-type}%
+\index{ZiRanShu@自然数!encoded as a W-type@encoded as a $\w$-type}%
 Finally, as desired, we can encode homotopy-natural-numbers as homo\-topy-$\w$-types:
 
 \begin{thm}
@@ -752,8 +752,8 @@ The rules for natural numbers with propositional computation rules can be derive
 \section{The general syntax of inductive definitions}
 \label{sec:strictly-positive}
 
-\index{LeiXing@类型!inductive|(}%
-\indexsee{inductive!LeiXing@类型}{类型, 归纳的}%
+\index{LeiXing@类型!GuiNaDe@归纳的|(}%
+\indexsee{GuiNaDe@归纳的!LeiXing@类型}{类型, 归纳的}%
 
 So far, we have been discussing only particular inductive types: $\emptyt$, $\unit$, $\bool$, $\nat$, coproducts, products, $\Sigma$-types, $\w$-types, etc.
 However, an important aspect of type theory is the ability to define \emph{new} inductive types, rather than being restricted only to some particular fixed list of them.
@@ -887,7 +887,7 @@ For instance, a constructor such as $\nat \to W \to W$ can be thought of as equi
 (Of course, the infinity is now \emph{internal} to the type theory, but this is as it should be for any foundational system.)
 Similarly, if we want a constructor that takes ``infinitely many arguments'', we can allow it to take a family of arguments parametrized by some infinite type, such as $(\nat\to W) \to W$ which takes an infinite sequence\index{sequence} of elements of $W$.
 
-\index{recursion principle!for an inductive type}%
+\index{DiGuiFa@递归法!for an inductive type}%
 Now, once we have such an inductive definition, what can we do with it?
 Firstly, there is a \define{recursion principle} stating that in order to define a function $f:W\to P$, it suffices to consider the case when the input $w:W$ arises from one of the constructors, allowing ourselves to recursively call $f$ on the inputs to that constructor.
 For the example constructor~\eqref{eq:example-constructor}, we would require $P$ to be equipped with a function of type
@@ -904,7 +904,7 @@ For instance, in the example~\eqref{eq:example-constructor}, the computation rul
 \end{equation}
 % As we have before in particular cases, when defining a particular function $f$, we may write these rules with $\defeq$ as a way of specifying the data $d$, and say that $f$ is defined by them.
 
-\index{induction principle!for an inductive type}%
+\index{GuiNaFa@归纳法!for an inductive type}%
 The \define{induction principle} for a general inductive type $W$ is only a little more complicated.
 Of course, we start with a type family $P:W\to\type$, which we require to be equipped with constructor data ``lying over'' the constructor data of $W$.
 That means the ``recursive call'' arguments such as $A\to P$ above must be replaced by dependent functions with types such as $\prd{a:A} P(\alpha(a))$.
@@ -949,7 +949,7 @@ With practice, one learns to automatically deduce the induction and recursion pr
 \section{Generalizations of inductive types}
 \label{sec:generalizations}
 
-\index{LeiXing@类型!inductive!generalizations}%
+\index{LeiXing@类型!GuiNaDe@归纳的!generalizations}%
 The notion of inductive type has been studied in type theory for many years, and admits many, many generalizations: inductive type families, mutual inductive types, inductive-inductive types, inductive-recur\-sive types, etc.
 In this section we give an overview of some of these, a few of which will be used later in the book.
 (In \cref{cha:hits} we will study in more depth a very different generalization of inductive types, which is particular to \emph{homotopy} type theory.)
@@ -966,8 +966,8 @@ Similarly, the type $\lst A$ of lists\index{LeiXing@类型!of lists} is a family
 
 In mathematics, this sort of thing is so obvious as to not be worth mentioning, but we bring it up in order to contrast it with the next example.
 Note that each type $A+B$ is \emph{independently} defined inductively, as is each type $\lst A$.
-\index{LeiXing@类型!family of!inductive}%
-\index{inductive!LeiXingZu@类型族}%
+\index{LeiXing@类型!family of!GuiNaDe@归纳的}%
+\index{GuiNaDe@归纳的!LeiXingZu@类型族}%
 By contrast, we might also consider defining a whole type family $B:A\to\type$ by induction \emph{together}.
 The difference is that now the constructors may change the index $a:A$, and as a consequence we cannot say that the individual types $B(a)$ are inductively defined, only that the entire family is inductively defined.
 
@@ -985,8 +985,8 @@ While $A$ is a parameter, we say that $n:\nat$ is an \define{index}
 of the inductive family.
 An individual type such as $\vect3A$ is not inductively defined: the constructors which build elements of $\vect3A$ take input from a different type in the family, such as $\cons:A \to \vect2A \to \vect3A$.
 
-\index{induction principle!for type of vectors}
-\index{XiangLiang@向量!induction principle for}
+\index{GuiNaFa@归纳法!for type of vectors}
+\index{XiangLiang@向量!...DeGuiNaFa@...的归纳法}
 In particular, the induction principle must refer to the entire type family as well; thus the hypotheses and the conclusion must quantify over the indices appropriately.
 In the case of vectors, the induction principle states that given a type family $C:\prd{n:\nat} \vect n A \to \type$, together with
 \begin{itemize}
@@ -999,8 +999,8 @@ there exists a function $f:\prd{n:\nat}{\ell:\vect n A} C(n,\ell)$ such that
   f(\suc(n),\cons(a,\ell)) &\jdeq c_\cons(n,a,\ell,f(\ell)).
 \end{align*}
 
-\index{predicate!inductive}%
-\index{inductive!predicate}%
+\index{predicate!GuiNaDe@归纳的}%
+\index{GuiNaDe@归纳的!predicate}%
 One use of inductive families is to define \emph{predicates} inductively.
 For instance, we might define the predicate $\mathsf{iseven}:\nat\to\type$ as an inductive family indexed by $\nat$, with the following constructors:
 \begin{itemize}
@@ -1051,8 +1051,8 @@ there exist $f:\prd{n:\mathsf{even}} C(n)$ and $g:\prd{n:\mathsf{odd}}D(n)$ such
 In particular, just as we can only induct over an inductive family ``all at once'', we have to induct on $\mathsf{even}$ and $\mathsf{odd}$ simultaneously.
 We will not have much use for mutual inductive definitions in this book either.
 
-\index{LeiXing@类型!inductive-inductive}%
-\index{inductive-inductive type}%
+\index{LeiXing@类型!GuiNaDe-GuiNaDe@归纳的-归纳的}%
+\index{GuiNaDe-GuiNaLeiXing@归纳的-归纳类型}%
 A further, more radical, generalization is to allow definition of a type family $B:A\to \type$ in which not only the types $B(a)$, but the type $A$ itself, is defined as part of one big induction.
 In other words, not only do we specify constructors for the $B(a)$s which can take inputs from other $B(a')$s, as with inductive families, we also at the same time specify constructors for $A$ itself, which can take inputs from the $B(a)$s.
 This can be regarded as an inductive family in which the indices are inductively defined simultaneously with the indexed types, or as a mutual inductive definition in which one of the types can depend on the other.
@@ -1060,13 +1060,13 @@ More complicated dependency structures are also possible.
 In general, these are called \define{inductive-inductive definitions}.
 For the most part, we will not use them in this book, but their higher variant (see \cref{cha:hits}) will appear in a couple of experimental examples in \cref{cha:real-numbers}.
 
-\index{LeiXing@类型!inductive-recursive}%
-\index{inductive-recursive type}%
+\index{LeiXing@类型!GuiNaDe-DiGuiDe@归纳的-递归的}%
+\index{GuiNaDe-DiGuiLeiXing@归纳的-递归类型}%
 The last generalization we wish to mention is \define{inductive-recursive definitions}, in which a type is defined inductively at the same time as a \emph{recursive} function on it.
 That is, we fix a known type $P$, and give constructors for an inductive type $A$ and at the same time define a function $f:A\to P$ using the recursion principle for $A$ resulting from its constructors --- with the twist that the constructors of $A$ are allowed to refer also to the values of $f$.
 We do not yet know how to justify such definitions from a homotopical perspective, and we will not use any of them in this book.
 
-\index{LeiXing@类型!inductive|)}%
+\index{LeiXing@类型!GuiNaDe@归纳的|)}%
 
 \section{Identity types and identity systems}
 \label{sec:identity-systems}
@@ -1230,8 +1230,8 @@ together with $\idfunc : \prd{A:\UU} (\eqv AA)$ satisfies \cref{thm:ML-identity-
 Therefore, it is equivalent to the corresponding version of~\ref{item:MLis1}, which we can state as follows.
 
 \begin{cor}[Equivalence induction]\label{thm:equiv-induction}
-  \index{induction principle!for equivalences}%
-  \index{equivalence!induction}%
+  \index{GuiNaFa@归纳法!for equivalences}%
+  \index{equivalence!GuiNaFa@归纳法}%
   Given any type family \narrowequation{D:\prd{A,B:\UU} (\eqv AB) \to \type} and function $d:\prd{A:\UU} D(A,A,\idfunc[A])$, there exists \narrowequation{f : \prd{A,B:\UU}{e:\eqv AB} D(A,B,e)} such that $f(A,A,\idfunc[A]) = d(A)$ for all $A:\UU$.
 \end{cor}
 
@@ -1245,8 +1245,8 @@ together with $\lamu{f:\prd{a:A} B(a)}{a:A} \refl{f(a)}$ satisfies \cref{thm:ML-
 Thus, it is also equivalent to the corresponding version of~\ref{item:MLis1}.
 
 \begin{cor}[Homotopy induction]\label{thm:htpy-induction}
-  \index{induction principle!for homotopies}%
-  \index{TongLun@同伦!induction}%
+  \index{GuiNaFa@归纳法!for homotopies}%
+  \index{TongLun@同伦!GuiNaFa@归纳法}%
   Given any \narrowequation{D:\prd{f,g:\prd{a:A} B(a)} (f\htpy g) \to \type} and $d:\prd{f:\prd{a:A} B(a)} D(f,f,\lam{x}\refl{f(x)})$, there exists
   %
   \begin{equation*}
@@ -1282,7 +1282,7 @@ For actual constructions of inductive types in homotopy-theoretic semantics of t
 \end{ex}
 
 \begin{ex}\label{ex:same-recurrence-not-defeq}
-  Construct two functions on natural numbers which satisfy the same recurrence\index{recurrence} $(e_z, e_s)$ judgmentally, but are not judgmentally equal.
+  Construct two functions on natural numbers which satisfy the same recurrence\index{DiTui@递推} $(e_z, e_s)$ judgmentally, but are not judgmentally equal.
 \end{ex}
 
 \begin{ex}\label{ex:one-function-two-recurrences}
@@ -1301,7 +1301,7 @@ For actual constructions of inductive types in homotopy-theoretic semantics of t
 
 \begin{ex}\label{ex:no-dep-uniqueness-failure}
   Show that if we assume simple instead of dependent elimination for $\w$-types, the uniqueness property (analogue of \cref{thm:w-uniq}) fails to hold.
-  That is, exhibit a type satisfying the recursion principle of a $\w$-type, but for which functions are not determined uniquely by their recurrence\index{recurrence}.
+  That is, exhibit a type satisfying the recursion principle of a $\w$-type, but for which functions are not determined uniquely by their recurrence\index{DiTui@递推}.
 \end{ex}
 
 \begin{ex}\label{ex:loop}

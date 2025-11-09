@@ -908,7 +908,7 @@ It may seem that such an inductive definition can never get off the ground, but 
 Note that this is an inductive definition of a family of types, like the type of vectors considered in \cref{sec:generalizations}.
 More precisely, it has one constructor, say $\acc_<$, with type
 \[ \acc_< : \prd{a:A} \Parens{\prd{b:A} (b<a) \to \acc(b)} \to \acc(a). \]
-\index{induction principle!for accessibility}%
+\index{GuiNaFa@归纳法!for accessibility}%
 The induction principle for $\acc$ says that for any $P:\prd{a:A} \acc(a) \to \type$, if we have
 \[f:\prd{a:A}{h:\prd{b:A} (b<a) \to \acc(b)}
 \Parens{\prd{b:A}{l:b<a} P(b,h(b,l))} \to
@@ -965,7 +965,7 @@ The omission of the second argument of $P$ is justified by the following lemma, 
 
 The point of well-foundedness is that for $P:A\to \type$, we can use the induction principle of $\acc$ to conclude $\prd{a:A} \acc(a) \to P(a)$, and then apply well-foundedness to conclude $\prd{a:A} P(a)$.
 In other words, if from $\fall{b:A} (b<a) \to P(b)$ we can prove $P(a)$, then $\fall{a:A} P(a)$.
-This is called \define{well-founded induction}\indexdef{well-founded!induction}.
+This is called \define{well-founded induction}\indexdef{well-founded!GuiNaFa@归纳法}.
 
 \begin{lem}
   Well-foundedness is a mere property.
@@ -977,7 +977,7 @@ This is called \define{well-founded induction}\indexdef{well-founded!induction}.
 \begin{eg}\label{thm:nat-wf}
   Perhaps the most familiar well-founded relation is the usual strict ordering on \nat.
   To show that this is well-founded, we must show that $n$ is accessible for each $n:\nat$.
-  \index{strong!induction}%
+  \index{strong!GuiNaFa@归纳法}%
   This is just the usual proof of ``strong induction'' from ordinary induction on \nat.
 
   Specifically, we prove by induction on $n:\nat$ that $k$ is accessible for all $k\le n$.
@@ -1484,7 +1484,7 @@ It certainly does not fit the general scheme described in \cref{sec:naturality},
 Fortunately, like our first definition of the 0-truncation in \cref{sec:hittruncations}, it can be re-expressed using auxiliary higher inductive types.
 We leave it to the reader to work out the details (see \cref{ex:cumhierhit}).
 
-\index{induction principle!for cumulative hierarchy}%
+\index{GuiNaFa@归纳法!for cumulative hierarchy}%
 At the end of the day, the induction principle for $V$ (written in pattern matching language) says that given $P:V\to \set$, in order to construct $h:\prd{x:V} P(x)$, it suffices to give the following.
 \begin{enumerate}
 \item For any $f:A\to V$, construct $h(\vset(A,f))$, assuming as given $h(f(a))$ for all $a:A$.

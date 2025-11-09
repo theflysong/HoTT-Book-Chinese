@@ -623,11 +623,11 @@ $(\lamu{x:A} \Phi)(a) \jdeq \Phi'$, 其中 $\Phi'$ 是通过将 $\Phi$ 中所有
 而不是直接通过定义方程定义诸如 $\fst$ 和 $\snd$ 这样的函数。
 
 我们将函数 $\rec{A\times B}$ 称为乘积类型的\define{递归子}。
-\indexsee{recursor}{recursion principle}%
+\indexsee{DiGuiZi@递归子}{递归法}%
 不幸的是, 因为没有任何递归发生, ``递归子''的名称在此不太合适。
 其原因是, 在归纳类型的一般框架下, 乘积类型是一个退化的例子, 而对于诸如自然数这样的类型, 递归子确实是递归的。
 我们也可以谈论Cartesian积的\define{递归原则}, 其含义为我们可以通过给出函数在有序对上的值来定义如上所述的函数$f:A\times B\to C$。
-\index{recursion principle!for cartesian product}%
+\index{DiGuiFa@递归法!for cartesian product}%
 
 关于如何从投影函数中推导出递归子且反之亦然, 我们将其留给读者作为一个简单的练习。
 % Ex: Derive from projections
@@ -669,18 +669,18 @@ $(\lamu{x:A} \Phi)(a) \jdeq \Phi'$, 其中 $\Phi'$ 是通过将 $\Phi$ 中所有
 \Parens{\prd{x:A}{y:B} C(\tup{x}{y})} \to \prd{x:A \times B} C(x) \]
 其定义方程为 
 \[ \ind{A\times B}(C,g,\tup{a}{b}) \defeq g(a)(b). \]
-类似地, 我们可以说定义在有序对上的依值函数可以通过Cartesian积的\define{归纳法}得到。
-\index{induction principle}%
-\index{induction principle!for product}%
+类似地, 我们可以说定义在有序对上的依值函数可以通过Cartesian积的\define{归纳原理}得到。
+\index{GuiNaFa@归纳法}%
+\index{GuiNaFa@归纳法!for product}%
 容易看出, 递归子只是归纳法在 $C$ 为常类型族时的特例。
 因为归纳法描述了如何使用乘积类型的元素, 所以归纳法也称为\define{(依值)消去子},
-\indexsee{eliminator!of inductive type!YiZhiDe@依值的}{induction principle}%
+\indexsee{eliminator!of inductive type!YiZhiDe@依值的}{归纳法}%
 而递归规则称为\define{非依值消去子}。
-\indexsee{eliminator!of inductive type!non-dependent}{recursion principle}%
-\indexsee{non-dependent eliminator}{recursion principle}%
-\indexsee{dependent eliminator}{induction principle}%
+\indexsee{eliminator!of inductive type!non-dependent}{递归法}%
+\indexsee{non-dependent eliminator}{递归法}%
+\indexsee{dependent eliminator}{归纳法}%
 
-单位类型的归纳法结果比递归子更有用: 
+单位类型的归纳法比递归子更有用: 
 \symlabel{defn:induction-unit}%
 \[ \ind{\unit} : \prd{C:\unit \to \UU} C(\ttt) \to \prd{x:\unit}C(x)\]
 其定义方程为
@@ -732,13 +732,13 @@ $(\lamu{x:A} \Phi)(a) \jdeq \Phi'$, 其中 $\Phi'$ 是通过将 $\Phi$ 中所有
 $\Sigma$-类型上的所有构造都是积类型上对应构造的直接推广, 其中非依值函数常常被依值函数所取代。
 
 例如, 递归原理指出
-\index{recursion principle!for dependent pair type}%
+\index{DiGuiFa@递归法!for dependent pair type}%
 通过提供一个函数 $g : \prd{x:A} B(x) \to C$, 我们可以定义一个从 $\Sigma$-类型出发的非依值函数 $f : (\sm{x:A} B(x)) \to C$, 再通过定义方程
 \[ f(\tup{a}{b}) \defeq g(a)(b). \]
 来定义 $f$。
 
 \indexdef{projection!from dependent pair type}%
-例如, 我们可以从 $\Sigma$-类型推导出第一分量上的投影:
+例如, 我们可以从 $\Sigma$-类型推导出第一投影:
 \symlabel{defn:dependent-proj1}%
 \begin{equation*}
   \fst : \Parens{\sm{x : A}B(x)} \to A
@@ -752,12 +752,12 @@ $\Sigma$-类型上的所有构造都是积类型上对应构造的直接推广, 
 \narrowequation{
   (a,b):\sm{x:A} B(x)
 }
-的第二个分量的类型是 $B(a)$, 第二分量上的投影必须是一个\emph{依值}函数, 其类型依赖于第一分量上的投影函数:
+的第二个分量的类型是 $B(a)$, 第二投影必须是一个\emph{依值}函数, 其类型依赖于第一投影函数:
 \symlabel{defn:dependent-proj2}%
 \[ \snd : \prd{p:\sm{x : A}B(x)}B(\fst(p)). \]
 
 因此我们需要 $\Sigma$-类型的\emph{归纳}原理%
-\index{induction principle!for dependent pair type}
+\index{GuiNaFa@归纳法!for dependent pair type}
 (即``依值消去器'')。
 该原理指出, 给定一个函数 
 \[ g : \prd{a:A}{b:B(a)} C(\tup{a}{b}). \]
@@ -774,7 +774,7 @@ $\Sigma$-类型上的所有构造都是积类型上对应构造的直接推广, 
 \[ \snd(\tup{a}{b})  \defeq  b. \]
 为了证明这是正确的, 我们注意到 $B (\fst(\tup{a}{b})) \jdeq B(a)$。应用了 $\fst$ 的定义方程后, 并且确实有 $b : B(a)$。
 
-我们可以将递归原理和归纳法打包到 $\Sigma$ 的递归子中:
+我们可以将递归原理和归纳原理打包到 $\Sigma$ 的递归子中:
 \symlabel{defn:recursor-sm}%
 \[ \rec{\sm{x:A}B(x)} : \dprd{C:\UU}\Parens{\tprd{x:A} B(x) \to C} \to
 \Parens{\tsm{x:A}B(x)} \to C \]
@@ -830,7 +830,7 @@ $\Sigma$-类型上的所有构造都是积类型上对应构造的直接推广, 
 由于这对的第二分量 $m$ 的类型 $A\to A\to A$ 依赖于其第一分量 $A$, 这样的对属于一个依值对类型。
 因此, 定义``一个原群是一个类型 $A$ 连同其上二元运算 $m:A\to A\to A$''应理解为将\emph{原群的类型}定义为
 \[ \mathsf{Magma} \defeq \sm{A:\UU} (A\to A\to A). \]
-给定一个原群, 我们用第一分量上的投影 $\proj1$ 提取其底层类型(其``载体''\index{carrier}), 用第二分量上的投影 $\proj2$ 提取其运算。
+给定一个原群, 我们用第一投影 $\proj1$ 提取其底层类型(其``载体''\index{carrier}), 用第二投影 $\proj2$ 提取其运算。
 当然, 如果结构由多于两个数据片段构建, 就需要迭代出现的对类型, 它们可能只是部分依值的; 例如, 带点原群(配备有基点 $e:A$ 的原群 $(A,m)$)的类型是
 \[ \mathsf{PointedMagma} \defeq \sm{A:\UU} (A\to A\to A) \times A. \]
 我们通常还希望对此类结构施加公理, 例如使一个带点原群成为幺半群或群。
@@ -866,7 +866,7 @@ $\Sigma$-类型上的所有构造都是积类型上对应构造的直接推广, 
 (名称 $\inl$ 和 $\inr$ 是``左注入''和``右注入''的缩写。)
 没有构造空类型元素的方法。
 
-\index{recursion principle!for coproduct}
+\index{DiGuiFa@递归法!for coproduct}
 要构造一个非依值函数 $f : A+B \to C$, 我们需要函数 $g_0 : A \to C$ 和 $g_1 : B \to C$。并通过定义方程
 \begin{align*}
   f(\inl(a)) &\defeq g_0(a), \\
@@ -884,7 +884,7 @@ $\Sigma$-类型上的所有构造都是积类型上对应构造的直接推广, 
 \rec{A+B}(C,g_0,g_1,\inr(b)) &\defeq g_1(b).
 \end{align*}
 
-\index{recursion principle!for empty type}
+\index{DiGuiFa@递归法!for empty type}
 我们总是可以构造一个函数 $f : \emptyt \to C$ 而无需给出任何定义方程, 因为 \emptyt 中没有元素来定义 $f$。
 因此, $\emptyt$ 的递归子是
 \symlabel{defn:recursor-emptyt}%
@@ -893,7 +893,7 @@ $\Sigma$-类型上的所有构造都是积类型上对应构造的直接推广, 
 在逻辑上, 它对应于原则 \emph{由空推全部}。
 \index{YouKongTuiQuanBu@\emph{由空推全部}}
 
-\index{induction principle!for coproduct}
+\index{GuiNaFa@归纳法!for coproduct}
 要构造一个从余积出发的依值函数 $f:\prd{x:A+B}C(x)$, 我们假设给定类型族 $C: (A + B) \to \UU$, 并要求
 \begin{align*}
   g_0 &: \prd{a:A} C(\inl(a)), \\
@@ -914,8 +914,8 @@ $\Sigma$-类型上的所有构造都是积类型上对应构造的直接推广, 
 \end{narrowmultline*}
 如前所述, 当类型族 $C$ 为常数时, 递归子便会出现。
 
-\index{induction principle!for empty type}
-空类型的归纳法
+\index{GuiNaFa@归纳法!for empty type}
+空类型的归纳原理
 \symlabel{defn:induction-emptyt}%
 \[ \ind{\emptyt} : \prd{C:\emptyt \to \UU}{z:\emptyt} C(z) \]
 给出一种从空类型定义平凡依值函数的方法。
@@ -935,7 +935,7 @@ $\Sigma$-类型上的所有构造都是积类型上对应构造的直接推广, 
 和单位\index{LeiXing@类型!unit}类型中将它构造为 $\unit + \unit$。然而, 由于我们经常使用这一类型, 我们在此给出显式的规则。
 实际上, 我们将观察到我们也可以反过来从 $\Sigma$-类型和 $\bool$ 中推导出二元余积。
 
-\index{recursion principle!for type of booleans}
+\index{DiGuiFa@递归法!for type of booleans}
 要导出一个函数 $f : \bool \to C$, 我们需要 $c_0,c_1 : C$ 并附加一个定义方程
 \begin{align*}
   f(\bfalse) &\defeq c_0, \\
@@ -950,13 +950,13 @@ $\Sigma$-类型上的所有构造都是积类型上对应构造的直接推广, 
   \rec{\bool}(C,c_0,c_1,\btrue)  &\defeq c_1.
 \end{align*}
 
-\index{induction principle!for type of booleans}
+\index{GuiNaFa@归纳法!for type of booleans}
 给定 $C : \bool \to \UU$, 要导出一个依值函数 $f : \prd{x:\bool}C(x)$, 我们需要 $c_0:C(\bfalse)$ 和 $c_1 : C(\btrue)$, 在这种情况下我们可以给出定义方程
 \begin{align*}
   f(\bfalse) &\defeq c_0, \\
   f(\btrue)  &\defeq c_1.
 \end{align*}
-我们将其打包成归纳法
+我们将其打包成归纳原理
 \symlabel{defn:induction-bool}%
 \[ \ind{\bool} : \dprd{C:\bool \to \UU}  C(\bfalse) \to C(\btrue)
 \to \tprd{x:\bool} C(x) \]
@@ -973,7 +973,7 @@ $\Sigma$-类型上的所有构造都是积类型上对应构造的直接推广, 
   \prd{x:\bool}(x=\bfalse)+(x=\btrue),
 \end{equation}
 的元素, 即一个函数, 为每个 $x:\bool$ 分配一个等式 $x=\bfalse$ 或一个等式 $x=\btrue$。
-我们使用 \bool 的归纳法定义这个元素, 其中 $C(x) \defeq (x=\bfalse)+(x=\btrue)$;
+我们使用 \bool 的归纳原理定义这个元素, 其中 $C(x) \defeq (x=\bfalse)+(x=\btrue)$;
 两个输入是 $\inl(\refl{\bfalse}) : C(\bfalse)$ 和 $\inr(\refl{\btrue}):C(\btrue)$。
 换句话说, 我们的~\eqref{thm:allbool-trueorfalse} 的元素是
 \[ \ind{\bool}\big(\lam{x}(x=\bfalse)+(x=\btrue),\, \inl(\refl{\bfalse}),\, \inr(\refl{\btrue})\big). \]
@@ -992,7 +992,7 @@ $\Sigma$-类型上的所有构造都是积类型上对应构造的直接推广, 
   \inl(a) &\defeq \tup{\bfalse}{a}, \\
   \inr(b) &\defeq \tup{\btrue}{b}.
 \end{align*}
-我们将其留作练习, 以从这个定义推导出余积类型的归纳法。
+我们将其留作练习, 以从这个定义推导出余积类型的归纳原理。
 (另见练习\ref{ex:sum-via-bool}和第\ref{sec:appetizer-univalence}节。)
 
 我们可以将同样的想法应用于乘积和 $\Pi$-类型: 我们可以定义
@@ -1004,7 +1004,7 @@ $\Sigma$-类型上的所有构造都是积类型上对应构造的直接推广, 
   \fst(p) &\defeq p(\bfalse), \\
   \snd(p) &\defeq p(\btrue).
 \end{align*}
-以这种方式定义的二元积的归纳法的推导稍微复杂一些, 并且需要函数外延性, 我们将在第\ref{sec:compute-pi}节介绍它。
+以这种方式定义的二元积的归纳原理的推导稍微复杂一些, 并且需要函数外延性, 我们将在第\ref{sec:compute-pi}节介绍它。
 此外, 我们得不到相同的判断相等性; 见练习\ref{ex:prod-via-bool}。
 这是将一种类型编码为另一种类型时经常出现的问题; 我们将在第\ref{sec:htpy-inductive}节回到这个问题。
 
@@ -1019,9 +1019,9 @@ $\Sigma$-类型上的所有构造都是积类型上对应构造的直接推广, 
 \section{自然数}
 \label{sec:inductive-types}
 
-\indexsee{LeiXing@类型!of natural numbers}{natural numbers}%
-\index{natural numbers|(defstyle}%
-\indexsee{number!natural}{natural numbers}%
+\indexsee{LeiXing@类型!ZiRanShuDe@自然数的}{自然数}%
+\index{ZiRanShu@自然数|(defstyle}%
+\indexsee{number!ZiRanDe@自然的}{自然数}%
 
 到目前为止, 我们拥有通过抽象运算构造新类型的规则, 但为了进行具体的数学研究, 我们还需要一些具体的类型, 例如数的类型。
 其中最基础的是自然数的类型 $\nat : \UU$; 一旦有了该类型, 我们就可以构造整数、有理数、实数等等(见第\ref{cha:real-numbers}章)。
@@ -1030,23 +1030,23 @@ $\nat$ 的元素使用 $0 : \nat$\indexdef{Ling@零} 和后继\indexdef{successo
 在表示自然数时, 我们采用通常的十进制记法 $1 \defeq \suc(0)$, $2 \defeq \suc(1)$, $3 \defeq \suc(2)$,
 
 自然数的基本性质是我们可以通过递归定义函数并通过归纳进行证明 --- 此时``递归''和``归纳''这两个词具有更熟悉的含义。
-\index{recursion principle!for natural numbers}%
+\index{DiGuiFa@递归法!ZiRanShuDe@自然数的}%
 要通过递归的方法从自然数构造一个非依值函数 $f : \nat \to C$, 只需提供一个起点 $c_0 : C$ 和一个``下一步''函数 $c_s : \nat \to C \to C$。
-从而通过下列定义方程构造 $f$\index{JiSuanGuiZe@计算规则!for natural numbers}
+从而通过下列定义方程构造 $f$\index{JiSuanGuiZe@计算规则!ZiRanShuDe@自然数的}
 \begin{align*}
   f(0) &\defeq c_0, \\
   f(\suc(n)) &\defeq c_s(n,f(n)).
 \end{align*}
 此时我们说, $f$ 是通过 \define{原始递归} 定义的。
-\indexdef{primitive!recursion}%
-\indexdef{recursion!primitive}%
+\indexdef{YuanShiDe@原始的!DiGui@递归}%
+\indexdef{DiGui@递归!YuanShiDe@原始的}%
 
 例如, 让我们看看如何定义一个将参数翻倍的自然数函数。
 在这种情况下, 我们有 $C\defeq \nat$。
 首先需要提供 $\dbl(0)$ 的值, 这很简单: 令 $c_0 \defeq 0$。
 接下来, 对自然数 $n$, 要计算 $\dbl(\suc(n))$, 我们首先计算 $\dbl(n)$ , 再执行两次后继运算。
-这由递推式\index{recurrence} $c_s(n,y) \defeq \suc(\suc(y))$ 捕获。
-注意 $c_s$ 的第二个参数 $y$ 代表 \emph{递归调用}\index{recursive call} $\dbl(n)$ 的结果。
+这由递推式\index{DiTui@递推} $c_s(n,y) \defeq \suc(\suc(y))$ 捕获。
+注意 $c_s$ 的第二个参数 $y$ 代表 \emph{递归调用}\index{DiGuiDiaoYong@递归调用} $\dbl(n)$ 的结果。
 
 因此, 通过这种原始递归定义的方式来定义 $\dbl:\nat\to\nat$, 可以得到定义方程:
 \begin{align*}
@@ -1066,7 +1066,7 @@ $\nat$ 的元素使用 $0 : \nat$\indexdef{Ling@零} 和后继\indexdef{successo
 \end{align*}
 
 我们也可以通过柯里化并允许 $C$ 是函数类型, 用原始递归定义多变量函数。
-\indexdef{JiaFa@加法!of natural numbers}
+\indexdef{JiaFa@加法!ZiRanShuDe@自然数的}
 例如, 我们可以定义加法 $\add : \nat \to \nat \to \nat$, 其中 $C \defeq \nat \to \nat$ 且具有以下``起点''和``下一步''数据:
 \begin{align*}
   c_0 & : \nat \to \nat \\
@@ -1104,10 +1104,10 @@ $\nat$ 的元素使用 $0 : \nat$\indexdef{Ling@零} 和后继\indexdef{successo
 \index{mathematics!GouZaoXingDe@构造性的}%
 在第\ref{sec:intuitionism}节和第\ref{sec:axiom-choice}节, 我们将看到如何扩充类型论以便定义更一般的数学函数。
 
-\index{induction principle!for natural numbers}
-我们现在遵循与其他类型相同的方法, 将原始递归推广到依值函数以获得一个\emph{归纳法}。
+\index{GuiNaFa@归纳法!ZiRanShuDe@自然数的}
+我们现在遵循与其他类型相同的方法, 将原始递归推广到依值函数以获得一个\emph{归纳原理}。
 因此, 假设给定一个类型族 $C : \nat \to \UU$, 一个元素 $c_0 : C(0)$, 和一个函数 $c_s : \prd{n:\nat} C(n) \to C(\suc(n))$; 
-那么我们可以构造 $f : \prd{n:\nat} C(n)$ 其定义方程为:\index{JiSuanGuiZe@计算规则!for natural numbers}
+那么我们可以构造 $f : \prd{n:\nat} C(n)$ 其定义方程为:\index{JiSuanGuiZe@计算规则!ZiRanShuDe@自然数的}
 \begin{align*}
   f(0) &\defeq c_0, \\
   f(\suc(n)) &\defeq c_s(n,f(n)).
@@ -1124,10 +1124,10 @@ $\nat$ 的元素使用 $0 : \nat$\indexdef{Ling@零} 和后继\indexdef{successo
 在这里我们终于看到了与经典的归纳证明概念的联系。
 回忆在类型论中, 我们用类型表示命题, 并通过居留相应的类型来证明命题。
 特别地, 自然数的\emph{性质}由一个类型族 $P:\nat\to\type$ 表示。
-从这个观点来看, 上述归纳法是说, 如果我们能证明 $P(0)$, 并且对于任何 $n$, 在假设 $P(n)$ 的情况下我们能证明 $P(\suc(n))$, 那么我们对所有 $n$ 都有 $P(n)$。
+从这个观点来看, 上述归纳原理是说, 如果我们能证明 $P(0)$, 并且对于任何 $n$, 在假设 $P(n)$ 的情况下我们能证明 $P(\suc(n))$, 那么我们对所有 $n$ 都有 $P(n)$。
 当然, 这正是通常的数学归纳法。
 
-\index{JieHeXing@结合性!of addition!of natural numbers}
+\index{JieHeXing@结合性!of addition!ZiRanShuDe@自然数的}
 例如, 考虑我们如何表示 $+$ 满足结合律的一个显式证明。
 (我们实际上不会以这种风格写出证明, 但它作为一个有用的例子来理解归纳在类型论中如何形式化表示。)
 要推导
@@ -1151,8 +1151,8 @@ $\nat$ 的元素使用 $0 : \nat$\indexdef{Ling@零} 和后继\indexdef{successo
 \end{align*}
 因此, $\assoc_s$ 的输出类型等价于 $\id{\suc(i+(j+k))}{\suc((i+j)+k)}$。
 但其输入(``归纳假设'')
-\index{hypothesis!inductive}%
-\index{inductive!hypothesis}%
+\index{hypothesis!GuiNaDe@归纳的}%
+\index{GuiNaDe@归纳的!hypothesis}%
 产生 $\id{i+(j+k)}{(i+j)+k}$, 因此只需援引以下事实: 如果两个自然数相等, 那么它们的后继也相等。
 (我们将在引理\ref{lem:map}中使用恒等类型的归纳法证明这个明显的事实。)
 我们称后一个事实为
@@ -1162,7 +1162,7 @@ $\apfunc{\suc} : %\prd{m,n:\nat}
 h(j,k)). \]
 将这些与 $\ind{\nat}$ 放在一起, 我们得到结合性的一个证明。
 
-\index{natural numbers|)}%
+\index{ZiRanShu@自然数|)}%
 
 \section{模式匹配与递归}
 \label{sec:pattern-matching}
@@ -1170,57 +1170,57 @@ h(j,k)). \]
 \index{MoShiPiPei@模式匹配|(defstyle}%
 \indexsee{matching}{模式匹配}%
 \index{DingYi@定义!TongGuoMoShiPiPei@通过模式匹配|(}%
-The natural numbers introduce an additional subtlety over the types considered up until now.
-In the case of coproducts, for instance, we could define a function $f:A+B\to C$ either with the recursor:
+自然数带来了出乎迄今为止所考虑的所有类型的一个微妙特性。
+例如, 考虑余积类型, 我们可以用递归子定义一个函数 $f:A+B\to C$:
 \[ f \defeq \rec{A+B}(C, g_0, g_1) \]
-or by giving the defining equations:
+或者通过给出定义方程:
 \begin{align*}
   f(\inl(a)) &\defeq g_0(a)\\
   f(\inr(b)) &\defeq g_1(b).
 \end{align*}
-To go from the former expression of $f$ to the latter, we simply use the computation rules for the recursor.
-Conversely, given any defining equations
+要从 $f$ 的前一种表达式得到后一种, 我们只需使用递归子的计算规则。
+相反地, 给定任何定义方程
 \begin{align*}
   f(\inl(a)) &\defeq \Phi_0\\
   f(\inr(b)) &\defeq \Phi_1
 \end{align*}
-where $\Phi_0$ and $\Phi_1$ are expressions that may involve the variables
+其中 $\Phi_0$ 和 $\Phi_1$ 是可能分别涉及变量
 \index{BianLiang@变量}%
-$a$ and $b$ respectively, we can express these equations equivalently in terms of the recursor by using $\lambda$-abstraction\index{lambdaChouXiang@$\lambda$-抽象}:
+$a$ 和 $b$ 的表达式, 我们可以通过使用 $\lambda$-抽象\index{lambdaChouXiang@$\lambda$-抽象} 等价地用递归子表达这些方程:
 \[ f\defeq \rec{A+B}(C, \lam{a} \Phi_0, \lam{b} \Phi_1).\]
-In the case of the natural numbers, however, the ``defining equations'' of a function such as $\dbl$:
+然而, 在自然数的情况下, 对诸如 $\dbl$ 的函数的``定义方程'':
 \begin{align}
   \dbl(0) &\defeq 0 \label{eq:dbl0}\\
   \dbl(\suc(n)) &\defeq \suc(\suc(\dbl(n)))\label{eq:dblsuc}
 \end{align}
-involve \emph{the function $\dbl$ itself} on the right-hand side.
-However, we would still like to be able to give these equations, rather than~\eqref{eq:dbl-as-rec}, as the definition of \dbl, since they are much more convenient and readable.
-The solution is to read the expression ``$\dbl(n)$'' on the right-hand side of~\eqref{eq:dblsuc} as standing in for the result of the recursive call, which in a definition of the form $\dbl\defeq \rec{\nat}(\nat,c_0,c_s)$ would be the second argument of $c_s$.
+在右侧会涉及\emph{函数 $\dbl$ 本身}。
+然而, 我们仍然希望能够给出这些方程, 而不是~\eqref{eq:dbl-as-rec}, 作为 \dbl 的定义, 因为它们更方便且更易读。
+解决方案是将~\eqref{eq:dblsuc} 右侧的表达式``$\dbl(n)$''视为递归调用结果的占位符, 在形式为 $\dbl\defeq \rec{\nat}(\nat,c_0,c_s)$ 的定义中, 该结果将是 $c_s$ 的第二个参数。
 
-More generally, if we have a ``definition'' of a function $f:\nat\to C$ such as
+更一般地, 如果我们有一个函数 $f:\nat\to C$ 的``定义'', 例如
 \begin{align*}
   f(0) &\defeq \Phi_0\\
   f(\suc(n)) &\defeq \Phi_s
 \end{align*}
-where $\Phi_0$ is an expression of type $C$, and $\Phi_s$ is an expression of type $C$ which may involve the variable $n$ and also the symbol ``$f(n)$'', we may translate it to a definition
+其中 $\Phi_0$ 是类型 $C$ 的一个表达式, 而 $\Phi_s$ 是类型 $C$ 的一个表达式, 它可能涉及变量 $n$ 以及符号``$f(n)$'', 我们可以将其转换为定义
 \[ f \defeq \rec{\nat}(C,\,\Phi_0,\,\lam{n}{r} \Phi_s') \]
-where $\Phi_s'$ is obtained from $\Phi_s$ by replacing all occurrences of ``$f(n)$'' by the new variable $r$.
+其中 $\Phi_s'$ 是通过将``$f(n)$''的所有出现替换为新变量 $r$ 从 $\Phi_s$ 得到的。
 
-This style of defining functions by recursion (or, more generally, dependent functions by induction) is so convenient that we frequently adopt it.
-It is called definition by \define{pattern matching}.
-Of course, it is very similar to how a computer programmer may define a recursive function with a body that literally contains recursive calls to itself.
-However, unlike the programmer, we are restricted in what sort of recursive calls we can make: in order for such a definition to be re-expressible using the recursion principle, the function $f$ being defined can only appear in the body of $f(\suc(n))$ as part of the composite symbol ``$f(n)$''.
-Otherwise, we could write nonsense functions such as
+这种通过递归定义函数(或者更一般地, 通过归纳定义依值函数)的风格非常方便, 因此我们经常采用它。
+它被称为通过 \define{模式匹配} 定义。
+当然, 它非常类似于计算机程序员如何定义一个递归函数, 其函数体字面上包含对自身的递归调用。
+然而, 与程序员不同, 在进行何种递归调用时, 我们会在这一方面受到限制: 为了使这样的定义能够使用递归原理重新表达, 正在定义的函数 $f$ 在 $f(\suc(n))$ 的函数体中只能作为复合符号``$f(n)$''的一部分出现。
+否则, 我们可能会写出无意义的函数, 例如
 \begin{align*}
   f(0)&\defeq 0\\
   f(\suc(n)) &\defeq f(\suc(\suc(n))).
 \end{align*}
-If a programmer wrote such a function, it would simply call itself forever on any positive input, going into an infinite loop and never returning a value.
-In mathematics, however, to be worthy of the name, a \emph{function} must always associate a unique output value to every input value, so this would be unacceptable.
+如果程序员写出这样的函数, 它将在任何正输入上永远调用自身, 进入无限循环且永不返回值。
+然而在数学中, 要配得上\emph{函数}这个名字, 必须始终为每个输入值关联一个唯一的输出值, 因此这是不可接受的。
 
-This point will be even more important when we introduce more complicated inductive types in \cref{cha:induction,cha:hits,cha:real-numbers}.
-Whenever we introduce a new kind of inductive definition, we always begin by deriving its induction principle.
-Only then do we introduce an appropriate sort of ``pattern matching'' which can be justified as a shorthand for the induction principle.
+当我们引入更复杂的归纳类型时(见第\ref{cha:induction}章、第\ref{cha:hits}章和第\ref{cha:real-numbers}章), 这一点将更加重要。
+每当我们引入一种新的归纳定义时, 我们总是首先推导其归纳原理。
+只有这样, 我们才引入一种适当的``模式匹配'', 它可以被证明是归纳法的简写。
 
 \index{MoShiPiPei@模式匹配|)}%
 \index{DingYi@定义!TongGuoMoShiPiPei@通过模式匹配|)}%
@@ -1230,22 +1230,22 @@ Only then do we introduce an appropriate sort of ``pattern matching'' which can 
 
 \index{proposition!JiLeiXing@即类型|(defstyle}%
 \index{LuoJi@逻辑!propositions as types|(}%
-As mentioned in the introduction, to show that a proposition is true in type theory corresponds to exhibiting an element of the type corresponding to that proposition.
+如引言中所述, 在类型论中, 证明一个命题为真对应于展示与该命题对应的类型的一个元素。
 \index{evidence, of the truth of a proposition}%
 \index{JianZheng@见证!to the truth of a proposition}%
 \index{proof|(}
-We regard the elements of this type as \emph{evidence} or \emph{witnesses} that the proposition is true. (They are sometimes even called \emph{proofs}, but this terminology can be misleading, so we generally avoid it.)
-In general, however, we will not construct witnesses explicitly; instead we present the proofs in ordinary mathematical prose, in such a way that they could be translated into an element of a type.
-This is no different from reasoning in classical set theory, where we don't expect to see an explicit derivation using the rules of predicate logic and the axioms of set theory.
+我们将该类型的元素视为该命题为真的\emph{证据}或\emph{见证}。(它们有时甚至被称为\emph{证明}, 但这种术语可能引起误解, 因此我们通常避免使用它。)
+然而, 一般来说, 我们不会显式地构造见证; 相反, 我们将用普通的数学行文风格呈现证明, 使得它们可以被翻译成类型的元素。
+这与经典集合论中的推理没有什么不同, 在其中, 我们并不期望看到使用谓词逻辑规则和集合论公理的显式推导。
 
-However, the type-theoretic perspective on proofs is nevertheless different in important ways.
-The basic principle of the logic of type theory is that a proposition is not merely true or false, but rather can be seen as the collection of all possible witnesses of its truth.
-Under this conception, proofs are not just the means by which mathematics is communicated, but rather are mathematical objects in their own right, on a par with more familiar objects such as numbers, mappings, groups, and so on.
-Thus, since types classify the available mathematical objects and govern how they interact, propositions are nothing but special  types --- namely, types whose elements are proofs.
+然而, 在某些重要方面, 类型论观点的证明仍有不同。
+类型论逻辑的基本原理是, 一个命题不仅仅为真或假, 而是可以被视为其真理性的所有可能见证的集合。
+在这种构想下, 证明不仅仅是交流数学的手段, 而且本身就是数学对象, 与更熟悉的对象如数字、映射、群等并列。
+因此, 由于类型对可用的数学对象进行分类并支配它们如何交互, 命题无非是特殊的类型 --- 即其元素是证明的类型。
 
 \index{propositional!LuoJiLuoJi@LuoJi逻辑}%
 \index{LuoJi@逻辑!propositional}%
-The basic observation which makes this identification feasible is that we have the following natural correspondence between \emph{logical} operations on propositions, expressed in English, and \emph{type-theoretic} operations on their corresponding types of witnesses.
+使这种等同可行的基本观察是, 我们有以下在命题上的\emph{逻辑}运算(用英语表达)与其对应见证类型上的\emph{类型论}运算之间的自然对应。
 \index{false}%
 \index{true}%
 \index{conjunction}%
@@ -1255,252 +1255,250 @@ The basic observation which makes this identification feasible is that we have t
 \medskip
 \begin{tabular}{ll}
   \toprule
-  English & Type Theory\\
+  英语 & 类型论\\
   \midrule
-  True & $\unit$ \\
-  False & $\emptyt$ \\
-  $A$ and $B$ & $A \times B$ \\
-  $A$ or $B$ & $A + B$ \\
-  If $A$ then $B$ & $A \to B$ \\
-  $A$ if and only if $B$ & $(A \to B) \times (B \to A)$ \\
-  Not $A$ &  $A \to \emptyt$ \\
+  真 & $\unit$ \\
+  假 & $\emptyt$ \\
+  $A$ 且 $B$ & $A \times B$ \\
+  $A$ 或 $B$ & $A + B$ \\
+  若 $A$ 则 $B$ & $A \to B$ \\
+  $A$ 当且仅当 $B$ & $(A \to B) \times (B \to A)$ \\
+  非 $A$ &  $A \to \emptyt$ \\
   \bottomrule
 \end{tabular}
 \medskip
 \end{center}
 
-The point of the correspondence is that in each case, the rules for constructing and using elements of the type on the right correspond to the rules for reasoning about the proposition on the left.
-For instance, the basic way to prove a statement of the form ``$A$ and $B$'' is to prove $A$ and also prove $B$, while the basic way to construct an element of $A\times B$ is as a pair $(a,b)$, where $a$ is an element (or witness) of $A$ and $b$ is an element (or witness) of $B$.
-And if we want to use ``$A$ and $B$'' to prove something else, we are free to use both $A$ and $B$ in doing so, analogously to how the induction principle for $A\times B$ allows us to construct a function out of it by using elements of $A$ and of $B$.
+对应的要点在于, 在每种情况下, 构造和使用右侧类型元素的规则对应于推理左侧命题的规则。
+例如, 证明形式为``$A$ 且 $B$''的陈述的基本方法是证明 $A$ 并且也证明 $B$, 而构造 $A\times B$ 元素的基本方式是作为一个对 $(a,b)$, 其中 $a$ 是 $A$ 的一个元素(或见证), $b$ 是 $B$ 的一个元素(或见证)。
+如果我们想使用``$A$ 且 $B$''来证明其他东西, 我们可以自由地在这样做时使用 $A$ 和 $B$, 类似于 $A\times B$ 的归纳原理允许我们通过使用 $A$ 和 $B$ 的元素来构造一个从它出发的函数。
 
-Similarly, the basic way to prove an implication\index{implication} ``if $A$ then $B$'' is to assume $A$ and prove $B$, while the basic way to construct an element of $A\to B$ is to give an expression which denotes an element (witness) of $B$ which may involve an unspecified variable element (witness) of type $A$.
-And the basic way to use an implication ``if $A$ then $B$'' is deduce $B$ if we know $A$, analogously to how we can apply a function $f:A\to B$ to an element of $A$ to produce an element of $B$.
-We strongly encourage the reader to do the exercise of verifying that the rules governing the other type constructors translate sensibly into logic.
+类似地, 证明蕴涵\index{implication}``若 $A$ 则 $B$''的基本方法是假设 $A$ 并证明 $B$, 而构造 $A\to B$ 元素的基本方式是给出一个表示 $B$ 元素(见证)的表达式, 该表达式可能涉及类型 $A$ 的未指定变量元素(见证)。
+而使用蕴涵``若 $A$ 则 $B$''的基本方法是, 如果我们知道 $A$ 则推导出 $B$, 类似于我们可以将函数 $f:A\to B$ 应用于 $A$ 的元素以产生 $B$ 的元素。
+我们强烈鼓励读者做这个练习: 验证支配其他类型构造子的规则是否合理地转化为逻辑。
 
-Of special note is that the empty type $\emptyt$ corresponds to falsity.\index{false}
-When speaking logically, we refer to an inhabitant of $\emptyt$ as a \define{contradiction}:
+特别值得注意的是, 空类型 $\emptyt$ 对应于假\index{false}。
+在逻辑上说话时, 我们将 $\emptyt$ 的居留元称为\define{矛盾}:
 \indexdef{MaoDun@矛盾}%
-thus there is no way to prove a contradiction,%
-\footnote{More precisely, there is no \emph{basic} way to prove a contradiction, i.e.\ \emptyt has no constructors.
-If our type theory were inconsistent, then there would be some more complicated way to construct an element of \emptyt.}
-while from a contradiction anything can be derived.
-We also define the \define{negation}
+因此没有方法证明一个矛盾,%
+\footnote{更准确地说, 没有\emph{基本}方法证明一个矛盾, 即 \emptyt 没有构造子。
+如果我们的类型论不一致, 那么会有某种更复杂的方法来构造 \emptyt 的一个元素。}
+而从矛盾可以推导出任何东西。
+我们也将类型 $A$ 的\define{否定}
 \indexdef{negation}%
-of a type $A$ as
+定义为
 %
 \begin{equation*}
   \neg A \ \defeq\ A \to \emptyt.
 \end{equation*}
 %
-Thus, a witness of $\neg A$ is a function $A \to \emptyt$, which we may construct by assuming $x : A$ and deriving an element of~$\emptyt$.
+因此, $\neg A$ 的一个见证是一个函数 $A \to \emptyt$, 我们可以通过假设 $x : A$ 并推导出~$\emptyt$ 的一个元素来构造它。
 \index{proof!TongGuoFanZhengFa@通过反证法}%
 \index{LuoJi@逻辑!GouZaoXingDevsJingDianDe@构造性的vs经典的}
-Note that although the logic we obtain is ``constructive'', as discussed in the introduction, this sort of ``proof by contradiction'' (assume $A$ and derive a contradiction, concluding $\neg A$) is perfectly valid constructively: it is simply invoking the \emph{meaning} of ``negation''.
-The sort of ``proof by contradiction'' which is disallowed is to assume $\neg A$ and derive a contradiction as a way of proving $A$.
-Constructively, such an argument would only allow us to conclude $\neg\neg A$, and the reader can verify that there is no obvious way to get from $\neg\neg A$ (that is, from $(A\to \emptyt)\to\emptyt$) to $A$.
+注意, 尽管如引言中所讨论的, 我们得到的逻辑是``构造性的'', 但这种``反证法''\index{proof!TongGuoFanZhengFa@通过反证法}(假设 $A$ 并推导出矛盾, 从而断定 $\neg A$)
+在构造性意义下是完全有效的: 它只是援引了``否定''的\emph{含义}。
+不被允许的那种``反证法''是通过假设 $\neg A$ 并推导出矛盾来证明 $A$。
+在构造性意义下, 这样的论证只允许我们断定 $\neg\neg A$, 并且读者可以验证的是, 没有明显的方法从 $\neg\neg A$ (即从 $(A\to \emptyt)\to\emptyt$) 得到 $A$。
 
 \mentalpause
 
-The above translation of logical connectives into type-forming operations is referred to as \define{propositions as types}: it gives us a way to translate propositions and their proofs, written in English, into types and their elements.
-For example, suppose we want to prove the following tautology (one of ``de Morgan's laws''):
+上述将逻辑连接词翻译为类型形成操作被称为 \define{命题即类型}: 它为我们提供了一种将用英语书写的命题及其证明翻译为类型及其元素的方法。
+例如, 假设我们想证明以下重言式(``德摩根律''之一):
 \index{Lv@律!De Morgan@De Morgan|(}%
 \index{De MorganLv@De Morgan律|(}%
 \begin{equation}\label{eq:tautology1}
-  \text{\emph{``If not $A$ and not $B$, then not ($A$ or $B$)''}.}
+  \text{\emph{``若非 $A$ 且非 $B$, 则非($A$ 或 $B$)''}.}
 \end{equation}
-An ordinary English proof of this fact might go as follows.
+这个事实的一个普通英语证明可能如下进行。
 \begin{quote}
-  Suppose not $A$ and not $B$, and also suppose $A$ or $B$; we will derive a contradiction.
-  There are two cases.
-  If $A$ holds, then since not $A$, we have a contradiction.
-  Similarly, if $B$ holds, then since not $B$, we also have a contradiction.
-  Thus we have a contradiction in either case, so not ($A$ or $B$).
+  假设非 $A$ 且非 $B$, 并且也假设 $A$ 或 $B$; 我们将推导出一个矛盾。
+  有两种情况。
+  如果 $A$ 成立, 那么由于非 $A$, 我们有一个矛盾。
+  类似地, 如果 $B$ 成立, 那么由于非 $B$, 我们也有一个矛盾。
+  因此我们在两种情况下都有一个矛盾, 所以非($A$ 或 $B$)。
 \end{quote}
-Now, the type corresponding to our tautology~\eqref{eq:tautology1}, according to the rules given above, is
+现在, 根据上面给出的规则, 对应我们的重言式~\eqref{eq:tautology1} 的类型是
 \begin{equation}\label{eq:tautology2}
   (A\to \emptyt) \times (B\to\emptyt) \to (A+B\to\emptyt)
 \end{equation}
-so we should be able to translate the above proof into an element of this type.
+因此我们应该能够将上述证明翻译成这个类型的一个元素。
 
-As an example of how such a translation works, let us describe how a mathematician reading the English proof above might simultaneously construct, in their head, an element of~\eqref{eq:tautology2}.
-The introductory phrase ``Suppose not $A$ and not $B$'' translates into defining a function, with an implicit application of the recursion principle for the cartesian product in its domain $(A\to\emptyt)\times (B\to\emptyt)$.
-This introduces unnamed variables
+作为这种翻译如何工作的一个例子, 让我们描述一个阅读上述英语证明的数学家如何同时在脑海中构造~\eqref{eq:tautology2} 的一个元素。
+引导短语``假设非 $A$ 且非 $B$''翻译为定义一个函数, 隐式地应用了其定义域 $(A\to\emptyt)\times (B\to\emptyt)$ 上Cartesian积的递归原理。
+这引入了(假设)类型为 $A\to\emptyt$ 和 $B\to\emptyt$ 的未命名变量.
 \index{BianLiang@变量}%
-(hypotheses)
 \index{hypothesis}%
-of types $A\to\emptyt$ and $B\to\emptyt$.
-When translating into type theory, we have to give these variables names; let us call them $x$ and $y$.
-At this point our partial definition of an element of~\eqref{eq:tautology2} can be written as
+在翻译成类型论时, 我们必须给这些变量命名; 让我们称它们为 $x$ 和 $y$。
+在这一点上, 我们对~\eqref{eq:tautology2} 的一个元素的部分定义可以写成
 \[ f((x,y)) \defeq\; \Box\;:A+B\to\emptyt \]
-with a ``hole'' $\Box$ of type $A+B\to\emptyt$ indicating what remains to be done.
-(We could equivalently write $f \defeq \rec{(A\to\emptyt)\times (B\to\emptyt)}(A+B\to\emptyt,\lam{x}{y} \Box)$, using the recursor instead of pattern matching.)
-The next phrase ``also suppose $A$ or $B$; we will derive a contradiction'' indicates filling this hole by a function definition, introducing another unnamed hypothesis $z:A+B$, leading to the proof state:
+其中``洞'' $\Box$ 的类型为 $A+B\to\emptyt$, 表示还有待完成的部分。
+(我们可以等价地写成 $f \defeq \rec{(A\to\emptyt)\times (B\to\emptyt)}(A+B\to\emptyt,\lam{x}{y} \Box)$, 使用递归子而不是模式匹配。)
+下一个短语``并且也假设 $A$ 或 $B$; 我们将推导出一个矛盾''表示通过一个函数定义来填充这个洞, 引入另一个未命名假设 $z:A+B$, 导致证明状态:
 \[ f((x,y))(z) \defeq \;\Box\; :\emptyt. \]
-Now saying ``there are two cases'' indicates a case split, i.e.\ an application of the recursion principle for the coproduct $A+B$.
-If we write this using the recursor, it would be
+现在说``有两种情况''表示情况分析, 即应用余积 $A+B$ 的递归原理。
+如果我们使用递归子来写这个, 它将是
 \[ f((x,y))(z) \defeq \rec{A+B}(\emptyt,\lam{a} \Box,\lam{b}\Box,z) \]
-while if we write it using pattern matching, it would be
+而如果我们使用模式匹配来写它, 它将是
 \begin{align*}
   f((x,y))(\inl(a)) &\defeq \;\Box\;:\emptyt\\
   f((x,y))(\inr(b)) &\defeq \;\Box\;:\emptyt.
 \end{align*}
-Note that in both cases we now have two ``holes'' of type $\emptyt$ to fill in, corresponding to the two cases where we have to derive a contradiction.
-Finally, the conclusion of a contradiction from $a:A$ and $x:A\to\emptyt$ is simply application of the function $x$ to $a$, and similarly in the other case.
+注意在两种情况下, 我们现在有两个类型为 $\emptyt$ 的``洞''需要填充, 对应于我们必须推导出矛盾的两种情况。
+最后, 从 $a:A$ 和 $x:A\to\emptyt$ 得出矛盾的结论只是将函数 $x$ 应用于 $a$, 另一种情况类似。
 \index{YingYong@应用!of hypothesis or theorem}%
-(Note the convenient coincidence of the phrase ``applying a function'' with that of ``applying a hypothesis'' or theorem.)
-Thus our eventual definition is
+(注意``应用一个函数''与``应用一个假设''或定理的短语的方便巧合。)
+因此我们最终的定义是
 \begin{align*}
   f((x,y))(\inl(a)) &\defeq x(a)\\
   f((x,y))(\inr(b)) &\defeq y(b).
 \end{align*}
 
-As an exercise, you should verify 
-the converse tautology \emph{``If not ($A$ or $B$), then  (not $A$) and (not $B$)}'' by exhibiting an element of 
+对于任何类型$A$ 和 $B$, 使用我们刚刚引入的规则, 可以通过展示
 \[ ((A + B) \to \emptyt) \to (A \to \emptyt) \times (B \to \emptyt), \]
-for any types $A$ and $B$, using the rules we have just introduced.
+来验证逆重言式\emph{``若非($A$ 或 $B$), 则 (非 $A$) 且 (非 $B$)''}。我们将此作为一个练习。
 
 \index{LuoJi@逻辑!JingDianDevsKeGouZaoXingDe@经典的vs可构造性的|(}
-However, not all classical\index{mathematics!JingDianDe@经典的} tautologies hold under this interpretation.
-For example, the rule 
-\emph{``If not ($A$ and $B$), then (not $A$) or (not $B$)''} is not valid: we cannot, in general, construct an element of the corresponding type
+然而, 并非所有经典\index{mathematics!JingDianDe@经典的}重言式在这种解释下都成立。
+例如, 规则
+\emph{``若非($A$ 且 $B$), 则 (非 $A$) 或 (非 $B$)''} 是无效的: 我们通常不能构造对应类型
 \[ ((A \times B) \to \emptyt) \to (A \to \emptyt) + (B \to \emptyt).\]
-This reflects the fact that the ``natural'' propositions-as-types logic of type theory is \emph{constructive}.
-This means that it does not include certain classical principles, such as the law of excluded middle (\LEM{})\index{PaiZhongLv@排中律}
-or proof by contradiction,\index{proof!TongGuoFanZhengFa@通过反证法}
-and others which depend on them, such as this instance of de Morgan's law.
+的一个元素。
+这反映了类型论的``自然''命题即类型逻辑是\emph{构造性的}。
+这意味着它不包括某些经典原理, 例如排中律 (\LEM{})\index{PaiZhongLv@排中律}
+或反证法,\index{proof!TongGuoFanZhengFa@通过反证法}
+以及依赖于它们的其他原理, 例如德摩根律的这个实例。
 \index{Lv@律!De Morgan@De Morgan|)}%
 \index{De MorganLv@De Morgan律|)}%
 
-Philosophically, constructive logic is so-called because it confines itself to constructions that can be carried out \emph{effectively}, which is to say those with a computational meaning.
-Without being too precise, this means there is some sort of algorithm\index{SuanFa@算法} specifying, step-by-step, how to build an object (and, as a special case, how to see that a theorem is true).
-This requires omission of \LEM{}, since there is no \emph{effective}\index{effective!procedure} procedure for deciding whether a proposition is true or false.
+从哲学上讲, 构造性逻辑之所以如此命名, 是因为它将自身限制在可以\emph{有效地}执行的构造, 也就是说那些具有计算意义的构造。
+在不过于精确的情况下, 这意味着有某种算法\index{SuanFa@算法}逐步指定如何构建一个对象(并且, 作为一种特殊情况, 如何看到定理为真)。
+这需要省略 \LEM{}, 因为没有\emph{有效的}\index{effective!procedure}程序来决定一个命题是真还是假。
 
-The constructivity of type-theoretic logic means it has an intrinsic computational meaning, which is of interest to computer scientists.
-It also means that type theory provides \emph{axiomatic freedom}.\index{WuGongLi@无公理}
-For example, while by default there is no construction witnessing \LEM{}, the logic is still compatible with the existence of one (see \cref{sec:intuitionism}).
-Thus, because type theory does not \emph{deny} \LEM{}, we may consistently add it as an assumption, and work conventionally without restriction.
-In this respect, type theory enriches, rather than constrains, conventional mathematical practice.
+类型论逻辑的构造性意味着它具有内在的计算意义, 这对计算机科学家来说是有趣的。
+这也意味着类型论提供了\emph{公理自由}\index{GongLiZiYou@公理自由}。
+例如, 虽然默认情况下没有构造见证 \LEM{}, 但逻辑仍然与它的存在兼容(见第\ref{sec:intuitionism}节)。
+因此, 因为类型论并不\emph{否认} \LEM{}, 我们可以一致地将其作为假设添加, 并无限制地进行常规工作。
+在这方面, 类型论丰富而非约束了常规的数学实践。
 
-We encourage the reader who is unfamiliar with constructive logic to work through some more examples as a means of getting familiar with it.
-See \cref{ex:tautologies,ex:not-not-lem} for some suggestions.
+我们鼓励不熟悉构造性逻辑的读者通过更多例子来熟悉它。
+参见练习\ref{ex:tautologies}和练习\ref{ex:not-not-lem}获取一些建议。
 \index{LuoJi@逻辑!JingDianDevsKeGouZaoXingDe@经典的vs可构造性的|)}
 
 \mentalpause
 
-So far we have discussed only propositional logic.
+到目前为止, 我们只讨论了命题逻辑。
 \index{quantifier}%
 \index{quantifier!existential}%
 \index{quantifier!FanDe@泛的}%
 \index{predicate!LuoJiLuoJi@LuoJi逻辑}%
 \index{LuoJi@逻辑!predicate}%
-Now we consider \emph{predicate} logic, where in addition to logical connectives like ``and'' and ``or'' we have quantifiers ``there exists'' and ``for all''.
-In this case, types play a dual role: they serve as propositions and also as types in the conventional sense, i.e., domains we quantify over.
-A predicate over a type $A$ is represented as a family $P : A \to \UU$, assigning to every element $a : A$ a type $P(a)$ corresponding to the proposition that $P$ holds for $a$. We now extend the above translation with an explanation of the quantifiers:
+现在我们考虑\emph{谓词}逻辑, 其中除了像``且''和``或''这样的逻辑连接词之外, 我们还有量词``存在''和``任意''。
+在这种情况下, 类型扮演双重角色: 它们既作为命题, 也作为传统意义上的类型, 即我们量化的论域。
+在类型 $A$ 上的谓词被表示为一个族 $P : A \to \UU$, 为每个元素 $a : A$ 分配一个类型 $P(a)$ 对应 $P$ 对 $a$ 成立的命题。我们现在扩展上述翻译, 解释量词:
 \begin{center}
   \medskip
   \begin{tabular}{ll}
     \toprule
-    English & Type Theory\\
+    英语 & 类型论\\
     \midrule
-    For all $x:A$, $P(x)$ holds & $\prd{x:A} P(x)$ \\
-    There exists $x:A$ such that $P(x)$ & $\sm{x:A}$ $P(x)$ \\
+    对所有 $x:A$, $P(x)$ 成立 & $\prd{x:A} P(x)$ \\
+    存在 $x:A$ 使得 $P(x)$ & $\sm{x:A}$ $P(x)$ \\
     \bottomrule
   \end{tabular}
   \medskip
 \end{center}
-As before, we can show that tautologies of (constructive) predicate logic translate into inhabited types.
-For example, \emph{If for all $x:A$, $P(x)$ and $Q(x)$ then (for all $x:A$, $P(x)$) and (for all $x:A$, $Q(x)$)} translates to
+
+如前所述, 我们可以证明(构造性)谓词逻辑的重言式翻译为被居留的类型。
+例如, \emph{若对所有 $x:A$, $P(x)$ 且 $Q(x)$ 则 (对所有 $x:A$, $P(x)$) 且 (对所有 $x:A$, $Q(x)$)} 翻译为
 \[ (\tprd{x:A} P(x) \times Q(x)) \to (\tprd{x:A} P(x)) \times (\tprd{x:A} Q(x)). \]
-An informal proof of this tautology might go as follows:
+这个重言式的一个非正式证明可能如下进行:
 \begin{quote}
-  Suppose for all $x$, $P(x)$ and $Q(x)$.
-  First, we suppose given $x$ and prove $P(x)$.
-  By assumption, we have $P(x)$ and $Q(x)$, and hence we have $P(x)$.
-  Second, we suppose given $x$ and prove $Q(x)$.
-  Again by assumption, we have $P(x)$ and $Q(x)$, and hence we have $Q(x)$.
+  假设对所有 $x$, $P(x)$ 且 $Q(x)$。
+  首先, 我们假设给定 $x$ 并证明 $P(x)$。
+  由假设, 我们有 $P(x)$ 且 $Q(x)$, 因此我们有 $P(x)$。
+  其次, 我们假设给定 $x$ 并证明 $Q(x)$。
+  再次由假设, 我们有 $P(x)$ 且 $Q(x)$, 因此我们有 $Q(x)$。
 \end{quote}
-The first sentence begins defining an implication as a function, by introducing a witness for its hypothesis:\index{hypothesis}
+第一句开始通过引入其假设的一个见证来将一个蕴涵定义为一个函数:\index{hypothesis}
 \[ f(p) \defeq \;\Box\; : (\tprd{x:A} P(x)) \times (\tprd{x:A} Q(x)). \]
-At this point there is an implicit use of the pairing constructor to produce an element of a product type, which is somewhat signposted in this example by the words ``first'' and ``second'':
+在这一点上, 隐式使用了配对构造子来产生一个积类型的元素, 在这个例子中通过词语``首先''和``其次''有所指示:
 \[ f(p) \defeq \Big( \;\Box\; : \tprd{x:A} P(x) \;,\; \Box\; : \tprd{x:A}Q(x) \;\Big). \]
-The phrase ``we suppose given $x$ and prove $P(x)$'' now indicates defining a \emph{dependent} function in the usual way, introducing a variable
+短语``我们假设给定 $x$ 并证明 $P(x)$''现在表示以通常方式定义一个\emph{依值}函数, 为其输入引入一个变量。
 \index{BianLiang@变量}%
-for its input.
-Since this is inside a pairing constructor, it is natural to write it as a $\lambda$-abstraction\index{lambdaChouXiang@$\lambda$-抽象}:
+由于这是在配对构造子内部, 自然地将其写为 $\lambda$-抽象\index{lambdaChouXiang@$\lambda$-抽象}:
 \[ f(p) \defeq \Big( \; \lam{x} \;\big(\Box\; : P(x)\big) \;,\; \Box\; : \tprd{x:A}Q(x) \;\Big). \]
-Now ``we have $P(x)$ and $Q(x)$'' invokes the hypothesis, obtaining $p(x) : P(x)\times Q(x)$, and ``hence we have $P(x)$'' implicitly applies the appropriate projection:
+现在``我们有 $P(x)$ 且 $Q(x)$''调用假设, 获得 $p(x) : P(x)\times Q(x)$, 而``因此我们有 $P(x)$''隐式应用了适当的投影:
 \[ f(p) \defeq \Big( \; \lam{x} \proj1(p(x))  \;,\; \Box\; : \tprd{x:A}Q(x) \;\Big). \]
-The next two sentences fill the other hole in the obvious way:
+接下来两句以明显的方式填充另一个空缺:
 \[ f(p) \defeq \Big( \; \lam{x} \proj1(p(x))  \;,\; \lam{x} \proj2(p(x)) \; \Big). \]
-Of course, the English proofs we have been using as examples are much more verbose than those that mathematicians usually use in practice; they are more like the sort of language one uses in an ``introduction to proofs'' class.
-The practicing mathematician has learned to fill in the gaps, so in practice we can omit plenty of details, and we will generally do so.
-The criterion of validity for proofs, however, is always that they can be translated back into the construction of an element of the corresponding type.
+
+当然, 我们用作例子的英语证明比数学家在实践中通常使用的要冗长得多; 它们更像是在``证明入门''课程中使用的语言。
+在实践中, 数学懂得如何填补空白, 因此我们可以省略大量细节, 并且我们通常会这样做。
+然而, 证明的有效性标准始终是它们可以被翻译回对应类型的元素的构造。
 
 \symlabel{leq-nat}%
-As a more concrete example, consider how to define inequalities of natural numbers.
-One natural definition is that $n\le m$ if there exists a $k:\nat$ such that $n+k=m$.
-(This uses again the identity types that we will introduce in the next section, but we will not need very much about them.)
-Under the propositions-as-types translation, this would yield:
+作为一个更具体的例子, 考虑如何定义自然数的不等式。
+一个自然的定义是, $n\le m$ 当存在一个 $k:\nat$ 使得 $n+k=m$。
+(这再次使用了我们将在下一节介绍的恒等类型, 但我们不需要太多关于它们的知识。)
+在命题即类型的翻译下, 这将产生:
 \[ (n\le m) \defeq \sm{k:\nat} (\id{n+k}{m}). \]
-The reader is invited to prove the familiar properties of $\le$ from this definition.
-For strict inequality, there are a couple of natural choices, such as
+邀请读者从这个定义证明 $\le$ 的熟悉性质。
+对于严格不等式, 有几个自然的选择, 例如
 \[ (n<m) \defeq \sm{k:\nat} (\id{n+\suc(k)}{m}) \]
-or
+或
 \[ (n<m) \defeq (n\le m) \times \neg(\id{n}{m}). \]
-The former is more natural in constructive mathematics, but in this case it is actually equivalent to the latter, since $\nat$ has ``decidable equality'' (see \cref{sec:intuitionism,prop:nat-is-set}).
+前者在构造性数学中更自然, 但在这种情况下它实际上等价于后者, 因为 $\nat$ 具有``可判定的相等性''(见第\ref{sec:intuitionism}节和命题\ref{prop:nat-is-set})。
 \index{KePanDingDe@可判定的!equality}%
 
-There is also another interpretation of the type $\sm{x:A} P(x)$.
-Since an inhabitant of it is an element $x:A$ together with a witness that $P(x)$ holds, instead of regarding $\sm{x:A} P(x)$ as the proposition ``there exists an $x:A$ such that $P(x)$'', we can regard it as ``the type of all elements $x:A$ such that $P(x)$'', i.e.\ as a ``subtype'' of $A$.
+类型 $\sm{x:A} P(x)$ 也有另一种解释。
+由于它的一个居留元是一个元素 $x:A$ 连同 $P(x)$ 成立的一个见证, 我们可以将 $\sm{x:A} P(x)$ 视为``所有满足 $P(x)$ 的元素 $x:A$ 的类型'', 即作为 $A$ 的一个``子类型'', 而不是将其视为命题``存在 $x:A$ 使得 $P(x)$''。
 \index{subtype}%
 
-We will return to this interpretation in \cref{subsec:prop-subsets}.
-For now, we note that it allows us to incorporate axioms into the definition of types as mathematical structures which we discussed in \cref{sec:sigma-types}.
-For example, suppose we want to define a \define{semigroup}\index{semigroup} to be a type $A$ equipped with a binary operation $m:A\to A\to A$ (that is, a magma\index{magma}) and such that for all $x,y,z:A$ we have $m(x,m(y,z)) = m(m(x,y),z)$.
-This latter proposition is represented by the type
+我们将在第\ref{subsec:prop-subsets}节回到这种解释。
+现在, 我们注意到它允许我们将公理纳入我们在第\ref{sec:sigma-types}节讨论的作为数学结构的类型的定义中。
+例如, 假设我们想定义一个\define{半群}\index{semigroup}为一个类型 $A$ 配备一个二元运算 $m:A\to A\to A$ (即一个原群\index{magma})并且使得对所有 $x,y,z:A$ 我们有 $m(x,m(y,z)) = m(m(x,y),z)$。
+后一个命题由类型
 \[\prd{x,y,z:A} m(x,m(y,z)) = m(m(x,y),z),\]
-so the type of semigroups is
+表示, 所以半群的类型是
 \[ \semigroup \defeq \sm{A:\UU}{m:A\to A\to A} \prd{x,y,z:A} m(x,m(y,z)) = m(m(x,y),z), \]
-i.e.\ the subtype of $\mathsf{Magma}$ consisting of the semigroups.
-From an inhabitant of $\semigroup$ we can extract the carrier $A$, the operation $m$, and a witness of the axiom, by applying appropriate projections.
-We will return to this example in \cref{sec:equality-of-structures}.
+即由半群组成的 $\mathsf{Magma}$ 的子类型。
+从 $\semigroup$ 的一个居留元中, 我们可以通过应用适当的投影来提取载体 $A$、运算 $m$ 和公理的一个见证。
+我们将在第\ref{sec:equality-of-structures}节回到这个例子。
 
-Note also that we can use the universes in type theory to represent ``higher order logic'' --- that is, we can quantify over all propositions or over all predicates.
-For example, we can represent the proposition \emph{for all properties $P : A \to \UU$, if $P(a)$ then $P(b)$} as
+还要注意, 我们可以使用类型论中的宇宙来表示``高阶逻辑'' --- 即我们可以量化所有命题或所有谓词。
+例如, 我们可以将命题\emph{对所有性质 $P : A \to \UU$, 若 $P(a)$ 则 $P(b)$} 表示为
 \[ \prd{P : A \to \UU} P(a) \to P(b) \]
-where $A : \UU$ and $a,b : A$.
-However, \emph{a priori} this proposition lives in a different, higher, universe than the
-propositions we are quantifying over; that is
+其中 $A : \UU$ 且 $a,b : A$。
+然而, \emph{先验地}, 这个命题存在于与我们正在量化的命题不同的、更高的宇宙中; 即
 \[ \Parens{\prd{P : A \to \UU_i} P(a) \to P(b)} : \UU_{i+1}. \]
-We will return to this issue in \cref{subsec:prop-subsets}.
-
+我们将在第\ref{subsec:prop-subsets}节回到这个问题。
 \mentalpause
 
-We have described here a ``proof-relevant''
+我们在这里描述了一种``证明相关''
 \index{mathematics!proof-relevant}%
-translation of propositions, where the proofs of disjunctions and existential statements carry some information.
-For instance, if we have an inhabitant of $A+B$, regarded as a witness of ``$A$ or $B$'', then we know whether it came from $A$ or from $B$.
-Similarly, if we have an inhabitant of $\sm{x:A} P(x)$, regarded as a witness of ``there exists $x:A$ such that $P(x)$'', then we know what the element $x$ is (it is the first projection of the given inhabitant).
+的命题翻译, 其中析取和存在陈述的证明携带一些信息。
+例如, 如果我们有 $A+B$ 的一个居留元, 被视为``$A$ 或 $B$''的一个见证, 那么我们知道它是来自 $A$ 还是来自 $B$。
+类似地, 如果我们有 $\sm{x:A} P(x)$ 的一个居留元, 被视为``存在 $x:A$ 使得 $P(x)$''的一个见证, 那么我们知道元素 $x$ 是什么(它是给定居留元的第一投影)。
 
-As a consequence of the proof-relevant nature of this logic, we may have ``$A$ if and only if $B$'' (which, recall, means $(A\to B)\times (B\to A)$), and yet the types $A$ and $B$ exhibit different behavior.
-For instance, it is easy to verify that ``$\mathbb{N}$ if and only if $\unit$'', and yet clearly $\mathbb{N}$ and $\unit$ differ in important ways.
-The statement ``$\mathbb{N}$ if and only if $\unit$'' tells us only that \emph{when regarded as a mere proposition}, the type $\mathbb{N}$ represents the same proposition as $\unit$ (in this case, the true proposition).
-We sometimes express ``$A$ if and only if $B$'' by saying that $A$ and $B$ are \define{logically equivalent}.
+作为这种逻辑的证明相关性质的一个结果, 我们可能有``$A$ 当且仅当 $B$''(回想一下, 这意味着 $(A\to B)\times (B\to A)$), 然而类型 $A$ 和 $B$ 表现出不同的行为。
+例如, 很容易验证``$\mathbb{N}$ 当且仅当 $\unit$'', 然而显然 $\mathbb{N}$ 和 $\unit$ 在重要方面不同。
+陈述``$\mathbb{N}$ 当且仅当 $\unit$''仅告诉我们, 当被视为单纯命题时, 类型 $\mathbb{N}$ 表示与 $\unit$ 相同的命题(在这种情况下, 真命题)。
+我们有时通过说 $A$ 和 $B$ 是\define{逻辑等价的}来表达``$A$ 当且仅当 $B$''。
 \indexdef{logical equivalence}%
 \indexdef{equivalence!LuoJiLuoJial@LuoJi逻辑al}%
-This is to be distinguished from the stronger notion of \emph{equivalence of types} to be introduced in \cref{sec:basics-equivalences,cha:equivalences}:
-although $\mathbb{N}$ and $\unit$ are logically equivalent, they are not equivalent types.
+这要与在第\ref{sec:basics-equivalences}章和第\ref{cha:equivalences}章引入的更强的\emph{类型等价}概念区分开来:
+尽管 $\mathbb{N}$ 和 $\unit$ 是逻辑等价的, 但它们不是等价的类型。
 
-In \cref{cha:logic} we will introduce a class of types called ``mere propositions'' for which equivalence and logical equivalence coincide.
-Using these types, we will introduce a modification to the above-described logic that is sometimes appropriate, in which the additional information contained in disjunctions and existentials is discarded.
+在第\ref{cha:logic}章, 我们将引入一类称为``单纯命题''的类型, 对于它们, 等价和逻辑等价是一致的。
+使用这些类型, 我们将引入对上述逻辑的一种修改, 这种修改有时是合适的, 其中析取和存在量词中包含的额外信息被丢弃。
 
-Finally, we note that the propositions-as-types correspondence can be viewed in reverse, allowing us to regard any type $A$ as a proposition, which we prove by exhibiting an element of $A$.
-Sometimes we will state this proposition as ``$A$ is \define{inhabited}''.
+最后, 我们注意到命题即类型的对应关系可以反向看待, 允许我们将任何类型 $A$ 视为一个命题, 我们通过展示 $A$ 的一个元素来证明它。
+有时我们将这个命题陈述为``$A$ 是\define{被居留的}''。
 \indexdef{inhabited type}%
 \indexsee{LeiXing@类型!inhabited}{inhabited type}%
-That is, when we say that $A$ is inhabited, we mean that we have given a (particular) element of $A$, but that we are choosing not to give a name to that element.
-Similarly, to say that $A$ is \emph{not inhabited} is the same as to give an element of $\neg A$.
-In particular, the empty type $\emptyt$ is obviously not inhabited, since $\neg \emptyt \jdeq (\emptyt \to \emptyt)$ is inhabited by $\idfunc[\emptyt]$.\footnote{This should not be confused with the statement that type theory is consistent, which is the \emph{meta-theoretic} claim that it is not possible to obtain an element of $\emptyt$ by following the rules of type theory.\indexfoot{YiZhiXing@一致性}}
+也就是说, 当我们说 $A$ 被居留时, 我们的意思是我们已经给出了 $A$ 的一个(特定)元素, 但我们选择不给予该元素一个名称。
+类似地, 说 $A$ \emph{不被居留}等同于给出 $\neg A$ 的一个元素。
+特别地, 空类型 $\emptyt$ 显然不被居留, 因为 $\neg \emptyt \jdeq (\emptyt \to \emptyt)$ 被 $\idfunc[\emptyt]$ 居留。\footnote{这不应与类型论是一致的陈述混淆, 后者是\emph{元理论}的声称, 即不可能通过遵循类型论的规则获得 $\emptyt$ 的一个元素。\indexfoot{YiZhiXing@一致性}}
 
 \index{proof|)}%
 \index{proposition!JiLeiXing@即类型|)}%
@@ -1513,102 +1511,104 @@ In particular, the empty type $\emptyt$ is obviously not inhabited, since $\neg 
 \indexsee{identity!LeiXing@类型}{类型, 恒等的}%
 \indexsee{LeiXing@类型!equality}{类型, 恒等的}%
 \indexsee{equality!LeiXing@类型}{类型, 恒等的}%
-While the previous constructions can be seen as generalizations of
-standard set theoretic constructions, our way of handling identity  seems to be
-specific to type theory.
-According to the propositions-as-types conception, the \emph{proposition} that two elements of the same type $a,b:A$ are equal must correspond to some \emph{type}.
-Since this proposition depends on what $a$ and $b$ are, these \define{equality types} or \define{identity types} must be type families dependent on two copies of $A$.
+虽然之前的构造可以视为标准集合论构造的推广, 但我们处理相等性的方式似乎是类型论特有的。
+根据命题即类型的构想, 两个相同类型的元素 $a,b:A$ 相等的\emph{命题}必须对应某个\emph{类型}。
+由于这个命题依赖于 $a$ 和 $b$ 是什么, 这些\define{相等类型}或\define{恒等类型}必须是依赖于 $A$ 的两个副本的类型族。
 
-We may write the family as $\idtypevar{A}:A\to A\to\type$ (not to be mistaken for the identity function $\idfunc[A]$), so that $\idtype[A]ab$ is the type representing the proposition of equality between $a$ and $b$.
-Once we are familiar with propositions-as-types, however, it is convenient to also use the standard equality symbol for this; thus ``$\id{a}{b}$'' will also be a notation for the \emph{type} $\idtype[A]ab$ corresponding to the proposition that $a$ equals $b$.
-For clarity, we may also write ``$\id[A]{a}{b}$'' to specify the type $A$.
-If we have an element of $\id[A]{a}{b}$, we may say that $a$ and $b$ are \define{equal}, or sometimes \define{propositionally equal} if we want to emphasize that this is different from the judgmental equality $a\jdeq b$ discussed in \cref{sec:types-vs-sets}.
+我们可以将该类型族写作 $\idtypevar{A}:A\to A\to\type$ (不要与恒等函数 $\idfunc[A]$ 混淆), 使得 $\idtype[A]ab$ 是表示 $a$ 和 $b$ 之间相等命题的类型。
+然而, 一旦我们熟悉了命题即类型的思想, 为了方便起见, 也使用标准的等号表示这一类型; 因此 ``$\id{a}{b}$'' 也将是\emph{类型} $\idtype[A]ab$ 的记法, 对应 $a$ 等于 $b$ 的命题。
+为清晰起见, 我们也可以写作 ``$\id[A]{a}{b}$'' 来指定类型 $A$。
+如果我们有 $\id[A]{a}{b}$ 的一个元素, 我们可以说 $a$ 和 $b$ 是\define{相等的}, 或者有时说\define{命题性相等的}, 以强调这与第\ref{sec:types-vs-sets}节讨论的判断相等 $a\jdeq b$ 不同。
 \indexdef{equality!propositional}%
 \indexdef{propositional!equality}%
 
-Just as we remarked in \cref{sec:pat} that the propositions-as-types versions of ``or'' and ``there exists'' can include more information than just the fact that the proposition is true, nothing prevents  the type $\id{a}{b}$ from also including more information.
-Indeed, this is the cornerstone of the homotopical interpretation, where we regard witnesses of $\id{a}{b}$ as \emph{paths}\indexdef{DaoLu@道路} or \emph{equivalences} between $a$ and $b$ in the space $A$.  Just as there can be more than one path between two points of a space, there can be more than one witness that two objects are equal.  Put differently, we may regard $\id{a}{b}$ as the type of \emph{identifications}\indexdef{identification} of $a$ and $b$, and there may be many different ways in which $a$ and $b$ can be identified.
-We will return to the interpretation in \cref{cha:basics}; for now we focus on the basic rules for the identity type.
-Just like all the other types considered in this chapter, it will have rules for formation, introduction, elimination, and computation, which behave formally in exactly the same way.
+正如我们在第\ref{sec:pat}节中提到的, ``或''和``存在''的命题即类型版本可以包含比命题为真这一事实更多的信息, 没有什么能阻止类型 $\id{a}{b}$ 也包含更多信息。
+实际上, 这是同伦诠释的基石, 我们将 $\id{a}{b}$ 的见证视为空间 $A$ 中 $a$ 和 $b$ 之间的\emph{道路}\indexdef{DaoLu@道路}或\emph{等价}。
+正如一个空间中两点之间可以有多条道路, 两个对象相等的见证也可以不止一个。
+换句话说, 我们可以将 $\id{a}{b}$ 视为 $a$ 和 $b$ 的\emph{等同化}\indexdef{identification}类型, 并且 $a$ 和 $b$ 可以以多种不同方式被等同化。
+我们将在第\ref{cha:basics}章回到这个诠释; 现在我们将专注于恒等类型的基本规则。
+就像本章中考虑的所有其他类型一样, 它将有形成、引入、消去和计算的规则, 这些规则在形式上表现完全相同。
 
-The formation rule says that given a type $A:\UU$ and two elements $a,b:A$, we can form the type $(\id[A]{a}{b}):\UU$ in the same universe.
-The basic way to construct an element of $\id{a}{b}$ is to know that $a$ and $b$ are the same.
-Thus, the introduction rule is a dependent function
+形成规则说, 给定一个类型 $A:\UU$ 和两个元素 $a,b:A$, 我们可以在同一宇宙中形成类型 $(\id[A]{a}{b}):\UU$。
+构造 $\id{a}{b}$ 元素的基本方式是知道 $a$ 和 $b$ 是相同的。
+因此, 引入规则是一个依值函数
 \[\refl{} : \prd{a:A} (\id[A]{a}{a})\]
-called \define{reflexivity},
+称为\define{自反性},
 \indexdef{reflexivity!XiangDengXingDe@相等性的}%
-which says that every element of $A$ is equal to itself (in a specified way).  We regard $\refl{a}$ as being the
-constant path\indexdef{DaoLu@道路!ChangDe@常的}\indexsee{HuanLu@环路!ChangDe@常的}{道路, 常的}
-at the point $a$.
+它说 $A$ 的每个元素都等于它自己(以指定的方式)。
+我们将 $\refl{a}$ 视为点 $a$ 处的常道路。\indexdef{DaoLu@道路!ChangDe@常的}\indexsee{HuanLu@环路!ChangDe@常的}{道路, 常的}
 
-In particular, this means that if $a$ and $b$ are \emph{judgmentally} equal, $a\jdeq b$, then we also have an element $\refl{a} : \id[A]{a}{b}$.
-This is well-typed because $a\jdeq b$ means that also the type $\id[A]{a}{b}$ is judgmentally equal to $\id[A]{a}{a}$, which is the type of $\refl{a}$.
+特别地, 这意味着如果 $a$ 和 $b$ 是\emph{判断}相等的, $a\jdeq b$, 那么我们也有一个元素 $\refl{a} : \id[A]{a}{b}$。
+这是良类型的, 因为 $a\jdeq b$ 意味着类型 $\id[A]{a}{b}$ 也判断相等于 $\id[A]{a}{a}$, 而后者是 $\refl{a}$ 的类型。
 
-The induction principle (i.e.\ the elimination rule) for the identity types is one of the most subtle parts of type theory, and crucial to the homotopy interpretation.
-We begin by considering an important consequence of it, the principle that ``equals may be substituted for equals'', as expressed by the following:
+恒等类型的归纳原理(即消去规则)是类型论中最微妙的部分之一, 并且对同伦诠释至关重要。
+我们首先考虑它的一个重要推论, 即``相等者可以相互替换''的原则, 如下所述:
 \index{indiscernibility of identicals}%
 \index{equals may be substituted for equals}%
 \begin{description}
-\item[Indiscernibility of identicals:]
-For every family 
+\item[同一者的不可分性:]
+对于每个族
 \[
 C : A \to \UU
 \]
-there is a function
+存在一个函数
 \[
 f : \prd{x,y:A}{p:\id[A] x y} C(x) \to C(y)
 \]
-such that
+使得
 \[
 f(x,x,\refl{x}) \defeq \idfunc[C(x)].
 \]
 \end{description}
-This says that every family of types $C$ respects equality, in the sense that applying $C$ to \emph{equal} elements of $A$ also results in a function between the resulting types. The displayed equality states that the function associated to reflexivity is the identity function (and we shall see that, in general, the function $f(x,y,p): C(x) \to C(y)$ is always an equivalence of types).
+这表示每个类型族 $C$ 都尊重相等性, 意思是将 $C$ 应用于 $A$ 的\emph{相等}元素也会在结果类型之间产生一个函数。
+所显示的等式表明与自反性关联的函数是恒等函数(并且我们将看到, 一般来说, 函数 $f(x,y,p): C(x) \to C(y)$ 总是类型的一个等价)。
 
-Indiscernibility of identicals can be regarded as a recursion principle for the identity type, analogous to those given for booleans and natural numbers above.
-Just as $\rec{\nat}$ gives a specified map $\nat\to C$ for any other type $C$ of a certain sort, indiscernibility of identicals gives a specified map from $\id[A] x y$ to certain other reflexive, binary relations on $A$, namely those of the form $C(x) \to C(y)$ for some unary predicate $C(x)$.
-We could also formulate a more general recursion principle with respect to reflexive relations of the more general form $C(x,y)$.
-However, in order to fully characterize the identity type, we must generalize this recursion principle to an induction principle, which not only considers maps out of $\id[A] x y$ but also families over it.
-Put differently, we consider not only allowing equals to be substituted for equals, but also taking into account the evidence $p$ for the equality.
-    
-\subsection{Path induction}
+同一者的不可分性可以视为恒等类型的递归原理, 类似于上面为布尔值和自然数给出的递归原理。
+正如 $\rec{\nat}$ 为任何其他某种类型 $C$ 给出一个指定的映射 $\nat\to C$, 
+同一者的不可性给出一个从 $\id[A] x y$ 到 $A$ 上某些其他自反二元关系的指定映射, 即对于某个一元谓词 $C(x)$ 形如 $C(x) \to C(y)$ 的那些关系。
+我们也可以针对更一般形式 $C(x,y)$ 的自反关系制定一个更一般的递归原理。
+然而, 为了完全刻画恒等类型, 我们必须将这个递归原理推广为归纳原理, 它不仅考虑从 $\id[A] x y$ 出发的映射, 而且考虑其上的族。
+换句话说, 我们不仅考虑允许用相等者替换相等者, 而且考虑相等性的证据 $p$。
+
+\subsection{道路归纳}
 
 \index{generation!LeiXingDe, GuiNaDe@类型的, 归纳的|(}
-The induction principle for the identity type is called \define{path induction},
-\index{DaoLu@道路!induction|(}%
-\index{induction principle!for identity type|(}%
-in view of the homotopical interpretation to be explained in  the introduction to \cref{cha:basics}.  It can be seen as stating that the family of identity types is freely generated by the elements of the form $\refl{x}: \id{x}{x}$.
+恒等类型的归纳原理称为\define{道路归纳},
+\index{DaoLu@道路!GuiNaFa@归纳法|(}%
+\index{GuiNaFa@归纳法!for identity type|(}%
+考虑到将在第\ref{cha:basics}章引言中解释的同伦诠释。
+它可以被视为这样一个陈述: 恒等类型族是由形式为 $\refl{x}: \id{x}{x}$ 的元素自由生成的。
 
 \begin{description}
-\item[Path induction:] 
-  Given a family 
-  \[ C : \prd{x,y:A} (\id[A]{x}{y}) \to \UU \]
-  and a function
-  \[ c :  \prd{x:A} C(x,x,\refl{x}),\]
-  there is a function
-  \[ f : \prd{x,y:A}{p:\id[A]{x}{y}} C(x,y,p) \]
-  such that 
-  \[ f(x,x,\refl{x}) \defeq c(x). \]
+\item[道路归纳:]
+给定一个族
+\[ C : \prd{x,y:A} (\id[A]{x}{y}) \to \UU \]
+和一个函数
+\[ c :  \prd{x:A} C(x,x,\refl{x}),\]
+存在一个函数
+\[ f : \prd{x,y:A}{p:\id[A]{x}{y}} C(x,y,p) \]
+使得
+\[ f(x,x,\refl{x}) \defeq c(x). \]
 \end{description}
 
-Note that just like the induction principles for products, coproducts, natural numbers, and so on, path induction allows us to define \emph{specified} functions which exhibit appropriate computational behavior.
-Just as we have \emph{the} function $f:\nat\to C$ defined by recursion from $c_0:C$ and $c_s:\nat \to C \to C$, which moreover satisfies $f(0)\jdeq c_0$ and $f(\suc(n))\jdeq c_s(n,f(n))$, we have \emph{the} function $f : \dprd{x,y:A}{p:\id[A]{x}{y}} C(x,y,p)$ defined by path induction from $c :  \prd{x:A} C(x,x,\refl{x})$, which moreover satisfies $f(x,x,\refl{x}) \jdeq c(x)$.
+注意, 就像乘积、余积、自然数等等的归纳原理一样, 道路归纳允许我们定义\emph{指定的}函数, 这些函数展现出适当的计算行为。
+正如我们有通过从 $c_0:C$ 和 $c_s:\nat \to C \to C$ 递归定义的\emph{这样一个}函数 $f:\nat\to C$, 
+并且它满足 $f(0)\jdeq c_0$ 和 $f(\suc(n))\jdeq c_s(n,f(n))$, 我们有\emph{这样一个}函数 $f : \dprd{x,y:A}{p:\id[A]{x}{y}} C(x,y,p)$ 
+从 $c :  \prd{x:A} C(x,x,\refl{x})$通过道路归纳定义, 其进一步满足 $f(x,x,\refl{x}) \jdeq c(x)$。
 
-To understand the meaning of this principle, consider first the simpler case when $C$
-does not depend on $p$.  Then we have $C:A\to A\to \UU$, which we may
-regard as a predicate depending on two elements of $A$.  We are
-interested in knowing when the proposition $C(x,y)$ holds for some pair
-of elements $x,y:A$.  In this case, the hypothesis of path induction
-says that we know $C(x,x)$ holds for all $x:A$, i.e.\ that if we
-evaluate $C$ at the pair $x, x$, we get a true proposition --- so $C$ is
-a reflexive relation.  The conclusion then tells us that $C(x,y)$ holds
-whenever $\id{x}{y}$.  This is exactly the more general recursion principle
-for reflexive relations mentioned above.
+为了理解这个原理的含义, 首先考虑 $C$ 不依赖于 $p$ 的更简单情况。
+那么我们有 $C:A\to A\to \UU$, 我们可以将其视为依赖于 $A$ 的两个元素的谓词。
+我们感兴趣的是知道命题 $C(x,y)$ 何时对某些元素对 $x,y:A$ 成立。
+在这种情况下, 道路归纳的假设说我们知道 $C(x,x)$ 对所有 $x:A$ 成立, 即如果我们在对 $x, x$ 处计算 $C$, 我们得到一个真命题 --- 所以 $C$ 是一个自反关系。
+然后结论告诉我们, 只要 $\id{x}{y}$, $C(x,y)$ 就成立。
+这正是上面提到的更一般的自反关系递归原理。
 
-The general, inductive form of the rule allows $C$ to also depend on the witness $p:\id{x}{y}$ to the identity between $x$ and $y$.  In the premise, we not only replace $x, y$ by $x,x$, but also simultaneously replace $p$ by reflexivity: to prove a property for all elements $x,y$ and paths $p : \id{x}{y}$ between them, it suffices to consider all the cases where the elements are $x,x$ and the path is $\refl{x}: \id{x}{x}$.  If we were viewing types just as sets, it would be unclear what this buys us, but since there may be many different identifications $p : \id{x}{y}$ between $x$ and $y$, it makes sense to keep track of them in considering families over the type $\id[A]{x}{y}$.
-In \cref{cha:basics} we will see that this is very important to the homotopy interpretation.
+一般的归纳形式的规则允许 $C$ 也依赖于 $x$ 和 $y$ 之间等同性的见证 $p:\id{x}{y}$。
+在前提中, 我们不仅将 $x, y$ 替换为 $x,x$, 而且同时将 $p$ 替换为自反性: 要证明对所有元素 $x,y$ 和它们之间的道路 $p : \id{x}{y}$ 的某个性质, 只需考虑所有元素是 $x,x$ 且道路是 $\refl{x}: \id{x}{x}$ 的情况。
+如果我们只将类型视为集合, 不清楚这能给我们带来什么, 但由于可能有许多不同的等同化 $p : \id{x}{y}$ 在 $x$ 和 $y$ 之间, 在考虑类型 $\id[A]{x}{y}$ 上的族时跟踪它们是有意义的。
+在第\ref{cha:basics}章中, 我们将看到这对同伦诠释非常重要。
 
-If we package up path induction into a single function, it takes the form:
+如果我们将道路归纳打包成一个单一函数, 它采取以下形式:
 \symlabel{defn:induction-ML-id}%
 \begin{narrowmultline*}
   \indid{A} :  \dprd{C : \prd{x,y:A} (\id[A]{x}{y}) \to \UU}
@@ -1616,136 +1616,137 @@ If we package up path induction into a single function, it takes the form:
   \narrowbreak
   \dprd{x,y:A}{p:\id[A]{x}{y}}   C(x,y,p)
 \end{narrowmultline*}
-with the equality\index{JiSuanGuiZe@计算规则!for identity types}
+具有等式\index{JiSuanGuiZe@计算规则!for identity types}
 \[ \indid{A}(C,c,x,x,\refl{x}) \defeq c(x). \]
-The function $ \indid{A}$ is traditionally called $J$.
-\indexsee{J@$J$}{induction principle for identity type}%
-We will show in \cref{lem:transport} that indiscernibility of identicals is an instance of path induction, and also give it a new name and notation.
+函数 $ \indid{A}$ 传统上称为 $J$。
+\indexsee{J@$J$}{恒等类型的归纳法}%
+我们将在引理\ref{lem:transport}中展示同一者的不可性是道路归纳的一个实例, 并给它一个新的名称和记号。
 
 \mentalpause
 
-Given a proof $p : \id{a}{b}$,
-path induction requires us to replace \emph{both} $a$ and $b$ with the same unknown element $x$; thus in order to define an element of a family
-$C$, for all pairs of equal elements of $A$, it suffices to define it on the diagonal.
-In some proofs, however, it is simpler to make use of an equation $p : \id{a}{b}$ by replacing all occurrences of $b$ with $a$ (or vice versa), because it is sometimes easier to do the remainder of the proof for the specific element $a$ mentioned in the equality than for a general unknown~$x$.  This motivates a second induction principle for identity types, which says that the family of types $\id[A]{a}{x}$ is generated by the element $\refl{a} : \id{a}{a}$.  As we show below, this second principle is equivalent to the first; it is just sometimes a more convenient formulation.
+给定一个证明 $p : \id{a}{b}$, 道路归纳要求我们将\emph{两者} $a$ 和 $b$ 替换为相同的未知元素 $x$; 因此为了定义族 $C$ 的一个元素, 对于 $A$ 的所有相等元素对, 只需在对角线上定义它。
+然而, 在一些证明中, 通过将所有出现的 $b$ 替换为 $a$ (或反之)来利用等式 $p : \id{a}{b}$ 更简单, 因为对于等式中提到的特定元素 $a$ 完成证明的剩余部分有时比对于一般未知的 $x$ 更容易。
+这激发了恒等类型的第二个归纳原理, 它说类型族 $\id[A]{a}{x}$ 是由元素 $\refl{a} : \id{a}{a}$ 生成的。
+如下所示, 第二个原理等价于第一个; 它只是有时更方便的表述。
 
-\index{DaoLu@道路!induction based}%
-\index{induction principle!for identity type!based}%
+\index{DaoLu@道路!JiYuGuiNaDe@基于归纳的}%
+\index{GuiNaFa@归纳法!for identity type!based}%
 \begin{description}
-\item[Based path induction:] 
-  Fix an element $a:A$, and suppose given a family
-  \[ C : \prd{x:A} (\id[A]{a}{x}) \to \UU \]
-  and an element
-  \[ c : C(a,\refl{a}). \]
-  Then we obtain a function
-  \[ f : \prd{x:A}{p:\id{a}{x}} C(x,p) \]
-  such that
-  \[ f(a,\refl{a}) \defeq c.\]
+\item[基点道路归纳:]
+固定一个元素 $a:A$, 并假设给定一个族
+\[ C : \prd{x:A} (\id[A]{a}{x}) \to \UU \]
+和一个元素
+\[ c : C(a,\refl{a}). \]
+那么我们得到一个函数
+\[ f : \prd{x:A}{p:\id{a}{x}} C(x,p) \]
+使得
+\[ f(a,\refl{a}) \defeq c.\]
 \end{description}
 
-Here, $C(x,p)$ is a family of types, where $x$ is an element of $A$ and $p$ is an element of the identity type $\id[A]{a}{x}$, for fixed $a$ in $A$. The based path induction principle says that to define an element of this family for all $x$ and $p$, it suffices to consider
-just the case where $x$ is $a$ and $p$ is $\refl{a} : \id{a}{a}$.
+此处, $C(x,p)$ 是一个类型族, 其中 $x$ 是 $A$ 的一个元素, $p$ 是恒等类型 $\id[A]{a}{x}$ 的一个元素, 对于 $A$ 中固定的 $a$。
+基点道路归纳原理说的是, 要为所有 $x$ 和 $p$ 定义这个族的一个元素, 只需考虑 $x$ 是 $a$ 且 $p$ 是 $\refl{a} : \id{a}{a}$ 的情况。
 
-Packaged as a function, based path induction becomes:
+打包为一个函数, 基点道路归纳变为:
 \symlabel{defn:induction-PM-id}%
 \begin{align*}
   \indidb{A} :  \dprd{a:A}{C : \prd{x:A} (\id[A]{a}{x}) \to \UU}
   C(a,\refl{a}) \to \dprd{x:A}{p : \id[A]{a}{x}} C(x,p) 
 \end{align*}
-with the equality
+具有等式
 \[ \indidb{A}(a,C,c,a,\refl{a}) \defeq c. \]
 %\[ g(x)(x,\refl{x}) \defeq d(x) \]
 
-Below, we show that path induction and based path induction are equivalent.  Because of this, we will sometimes be sloppy and also refer to based path induction simply as ``path induction'', relying on the reader to infer which principle is meant from the form of the proof.
+下面, 我们展示道路归纳和基点道路归纳是等价的。
+因此, 我们有时会马虎地也将基点道路归纳简称为``道路归纳'', 依靠读者从证明的形式推断出是哪个原理。
 
 \begin{rmk}\label{rmk:the-only-path-is-refl}
-  Intuitively, the induction principle for the natural numbers expresses the fact that every natural number is either $0$ or of the form $\suc(n)$ for some natural number $n$, so that if we prove a property for these cases (with induction hypothesis in the second case), then we have proved it for all natural numbers.
-  Similarly, the induction principle for $A+B$ expresses the fact that every element of $A+B$ is either of the form $\inl(a)$ or $\inr(b)$, and so on.
-  Applying this same reading to path induction, we might say that path induction expresses the fact that every path is of the form \refl{a}, so that if we prove a property for reflexivity paths, then we have proved it for all paths.
+直观上, 自然数的归纳原理表达了每个自然数要么是 $0$ 要么是某个自然数 $n$ 的形式 $\suc(n)$ 这一事实, 因此如果我们在这些情况下证明一个性质(在第二种情况下使用归纳假设), 那么我们就为所有自然数证明了它。
+类似地, $A+B$ 的归纳原理表达了 $A+B$ 的每个元素要么是形式 $\inl(a)$ 要么是 $\inr(b)$ 等等这一事实。
+将这种读法应用于道路归纳, 我们可能会说道路归纳表达了每条道路都是形式 \refl{a} 这一事实, 因此如果我们在自反性道路上证明一个性质, 那么我们就为所有道路证明了它。
 
-  However, this reading is quite confusing in the context of the homotopy interpretation of paths, where there may be many different ways in which two elements $a$ and $b$ can be identified, and therefore many different elements of the identity type!
-  How can there be many different paths, but at the same time we have an induction principle asserting that the only path is reflexivity?
+然而, 在道路的同伦诠释背景下, 这种读法相当令人困惑, 因为两个元素 $a$ 和 $b$ 可以以许多不同方式被等同化, 因此恒等类型可能有许多不同的元素!
+怎么可能有许多不同的道路, 但同时我们有一个归纳原理断言唯一的道路是自反性?
 
-The key observation is that it is not the identity \emph{type} that is inductively defined, but the identity \emph{family}.
-In particular, path induction says that the \emph{family} of types $(\id[A]{x}{y})$, as $x,y$ vary over all elements of $A$, is inductively defined by the elements of the form $\refl{x}$.
-This means that to give an element of any other family $C(x,y,p)$ dependent on a \emph{generic} element $(x,y,p)$ of the identity family, it suffices to consider the cases of the form $(x,x,\refl{x})$.
-In the homotopy interpretation, this says that the type of triples $(x,y,p)$, where $x$ and $y$ are the endpoints of the path $p$ (in other words, the $\Sigma$-type $\sm{x,y:A}(\id{x}{y})$), is inductively generated by the constant loops\index{DaoLu@道路!ChangDe@常的} at each point $x$.
-As we will see in \cref{cha:basics}, in homotopy theory the space corresponding to $\sm{x,y:A}(\id{x}{y})$ is the \emph{free path space} --- the space of paths in $A$ whose endpoints may vary --- and it is in fact the case that any point of this space is homotopic to the constant loop at some point, since we can simply retract one of its endpoints along the given path.
-The analogous fact is also true in type theory: we can prove by path induction on $p:x=y$ that $\id[\sm{x,y:A}(\id{x}{y})]{(x,y,p)}{(x,x,\refl{x})}$.
+关键在于, 要观察到通过归纳定义的不是恒等\emph{类型}, 而是恒等\emph{族}。
+特别地, 道路归纳说, 类型\emph{族} $(\id[A]{x}{y})$, 当 $x,y$ 在 $A$ 的所有元素上变化时, 是由形式为 $\refl{x}$ 的元素归纳定义的。
+这意味着要为依赖于恒等族的\emph{一般}元素 $(x,y,p)$ 的任何其他族 $C(x,y,p)$ 给出一个元素, 只需考虑形式为 $(x,x,\refl{x})$ 的情况。
+在同伦诠释中, 这说三元组 $(x,y,p)$ 的类型, 其中 $x$ 和 $y$ 是道路 $p$ 的端点(换句话说, $\Sigma$-类型 $\sm{x,y:A}(\id{x}{y})$), 是由每个点 $x$ 处的常环路\index{DaoLu@道路!ChangDe@常的}归纳生成的。
+正如我们将在第\ref{cha:basics}章中看到的, 在同伦论中对应于 $\sm{x,y:A}(\id{x}{y})$ 的空间是\emph{自由道路空间} --- $A$ 中端点可以变化的道路的空间 --- 
+并且事实上这个空间的任何点都同伦于某个点处的常环路, 因为我们可以简单地沿着给定的道路收缩它的一个端点。
+类似的事实也在类型论中成立: 我们可以通过对 $p:x=y$ 的道路归纳证明 $\id[\sm{x,y:A}(\id{x}{y})]{(x,y,p)}{(x,x,\refl{x})}$。
 
-Similarly, based path induction says that for a fixed $a:A$, the \emph{family} of types $(\id[A]{a}{y})$, as $y$ varies over all elements of $A$, is inductively defined by the element $\refl{a}$.
-Thus, to give an element of any other family $C(y,p)$ dependent on a generic element $(y,p)$ of this family, it suffices to consider the case $(a,\refl{a})$.
-Homotopically, this expresses the fact that the space of paths starting at some chosen point (the \emph{based path space} at that point, which type-theoretically is $\sm{y:A} (\id{a}{y})$) is contractible to the constant loop on the chosen point.
-Again, the corresponding fact is also true in type theory: we can prove by based path induction on $p:a=y$ that $\id[\sm{y:A}(\id{a}{y})]{(y,p)}{(a,\refl{a})}$.
-Note also that according to the interpretation of $\Sigma$-types as subtypes mentioned in \cref{sec:pat}, the type $\sm{y:A}(\id{a}{y})$ can be regarded as ``the type of all elements of $A$ which are equal to $a$'', a type-theoretic version of the ``singleton\index{LeiXing@类型!singleton} subset'' $\{a\}$.
+类似地, 基点道路归纳说, 对于固定的 $a:A$, 类型\emph{族} $(\id[A]{a}{y})$, 当 $y$ 在 $A$ 的所有元素上变化时, 是由元素 $\refl{a}$ 归纳定义的。
+因此, 要为依赖于这个族的一般元素 $(y,p)$ 的任何其他族 $C(y,p)$ 给出一个元素, 只需考虑情况 $(a,\refl{a})$。
+在同伦上, 这表达了从某个选定点出发的道路空间(该点处的\emph{基于道路的空间}, 类型论上是 $\sm{y:A} (\id{a}{y})$)可缩到选定点上的常环路这一事实。
+同样, 相应的事实也在类型论中成立: 我们可以通过对 $p:a=y$ 的基点道路归纳证明 $\id[\sm{y:A}(\id{a}{y})]{(y,p)}{(a,\refl{a})}$。
+还要注意, 根据在第\ref{sec:pat}节提到的将 $\Sigma$-类型解释为子类型, 类型 $\sm{y:A}(\id{a}{y})$ 可以被视为``所有等于 $a$ 的 $A$ 元素的类型'', 
+这是``独元\index{LeiXing@类型!singleton}子集'' $\{a\}$ 的类型论版本。
 
-Neither path induction nor based path induction provides a way to give an element of a family $C(p)$ where $p$ has \emph{two fixed endpoints} $a$ and $b$.
-In particular, for a family $C: (\id[A]{a}{a}) \to \UU$ dependent on a loop, we \emph{cannot} apply path induction and consider only the case for $C(\refl{a})$, and consequently, we cannot prove that all loops are reflexivity.
-Thus, inductively defining the identity family does not prohibit non-reflexivity paths in specific instances of the identity type.
-In other words, a path $p:\id{x}{x}$ may  be not equal to reflexivity as an element of $(\id{x}{x})$, but the pair $(x,p)$ will nevertheless be equal to the pair $(x,\refl{x})$ as elements of $\sm{y:A}(\id{x}{y})$.
+道路归纳和基点道路归纳都没有提供一种方法来给出族 $C(p)$ 的一个元素, 其中 $p$ 有\emph{两个固定端点} $a$ 和 $b$。
+特别地, 对于依赖于一个环路的族 $C: (\id[A]{a}{a}) \to \UU$, 我们\emph{不能}应用道路归纳而只考虑 $C(\refl{a})$ 的情况, 因此, 我们不能证明所有环路都是自反性。
+因此, 归纳定义恒等族并不禁止恒等类型的特定实例中的非自反性道路。
+换句话说, 一条道路 $p:\id{x}{x}$ 作为 $(\id{x}{x})$ 的一个元素可能不等于自反性, 但对 $(x,p)$ 将仍然等于对 $(x,\refl{x})$ 作为 $\sm{y:A}(\id{x}{y})$ 的元素。
 
-As a topological example, consider a loop in the punctured disc \narrowequation{\setof{ (x,y) | 0 < x^2+y^2 < 2 }} which starts at $(1,0)$ and goes around the hole at $(0,0)$ once before returning back to $(1,0)$.
-If we hold both endpoints fixed at $(1,0)$, this loop cannot be deformed into a constant path while staying within the punctured disc, just as a rope looped around a pole cannot be pulled in if we keep hold of both ends.
-However, the loop can be contracted back to a constant if we allow one endpoint to vary, just as we can always gather in a rope if we only hold onto one end.
+作为一个拓扑例子, 考虑在穿孔圆盘 \narrowequation{\setof{ (x,y) | 0 < x^2+y^2 < 2 }} 中的一个环路, 它从 $(1,0)$ 开始, 绕孔 $(0,0)$ 一圈后返回到 $(1,0)$。
+如果我们将两个端点都固定在 $(1,0)$, 这个环路不能在穿孔圆盘内形变为一条常道路, 就像绕在杆子上的绳子圈如果我们握住两端就不能拉进来一样。
+然而, 如果我们允许一个端点变化, 环路可以收缩回常道路, 就像如果我们只握住一端, 我们总是可以收进绳子一样。
 \end{rmk}
 
-\index{DaoLu@道路!induction|)}%
-\index{induction principle!for identity type|)}%
+\index{DaoLu@道路!GuiNaFa@归纳法|)}%
+\index{GuiNaFa@归纳法!for identity type|)}%
 \index{generation!LeiXingDe, GuiNaDe@类型的, 归纳的|)}
 
-\subsection{Equivalence of path induction and based path induction}
+\subsection{道路归纳与基点道路归纳的等价性}
 
-The two induction principles for the identity type introduced above are equivalent.
-It is easy to see that path induction follows from the based path induction principle.
-Indeed, let us assume the premises of path induction:
+上面介绍的恒等类型的两个归纳原理是等价的。
+很容易看出道路归纳可以从基点道路归纳原理推导出来。
+确实, 让我们假设道路归纳的前提:
 \begin{align*}
 C &: \prd{x,y:A}(\id[A]{x}{y}) \to \UU,\\
 c &: \prd{x:A} C(x,x,\refl{x}).
 \end{align*}
-Now, given an element $x:A$, we can instantiate both of the above, obtaining
+现在, 给定一个元素 $x:A$, 我们可以实例化上述两者, 得到
 \begin{align*}
 C' &: \prd{y:A} (\id[A]{x}{y}) \to \UU,  \\
 C' &\defeq C(x), \\
 c' &: C'(x,\refl{x}), \\
 c' &\defeq c(x).
 \end{align*}
-Clearly, $C'$ and $c'$ match the premises of based path induction and hence we can construct 
+显然, $C'$ 和 $c'$ 匹配基点道路归纳的前提, 因此我们可以构造
 \begin{equation*}
   g : \prd{y:A}{p : \id{x}{y}} C'(y,p)
 \end{equation*}
-with the defining equality
+具有定义等式
 \[ g(x,\refl{x}) \defeq c'.\]
-Now we observe that $g$'s codomain is equal to $C(x,y,p)$.
-Thus, discharging our assumption $x:A$, we can derive a function 
+现在我们观察到 $g$ 的陪域等于 $C(x,y,p)$。
+因此, 解除我们对 $x:A$ 的假设, 我们可以推导出一个函数
 \[ f : \prd{x,y:A}{p : \id[A]{x}{y}} C(x,y,p) \]
-with the required judgmental equality $f(x,x,\refl{x}) \judgeq g(x,\refl{x}) \defeq c' \defeq c(x)$.
+具有所需的判断等式 $f(x,x,\refl{x}) \judgeq g(x,\refl{x}) \defeq c' \defeq c(x)$。
 
-Another proof of this fact is to observe that any such $f$ can be obtained as an instance of $\indid{A}$,
-so it suffices to define $\indid{A}$ in terms of $\indidb{A}$ as
+这个事实的另一个证明是观察到任何这样的 $f$ 都可以作为 $\indid{A}$ 的一个实例获得, 因此只需用 $\indidb{A}$ 定义 $\indid{A}$ 为
 \[ \indid{A}(C,c,x,y,p) \defeq \indidb{A}(x,C(x),c(x),y,p). \]
 
-The other direction is a bit trickier; it is not clear how we can use a particular instance of path induction to derive a particular instance of
-based path induction. What we can do instead is to construct one instance of path induction which shows 
-all possible instantiations of based path induction at once.
-Define
+另一个方向有点棘手; 我们不清楚如何使用道路归纳的一个特定实例来推导基点道路归纳的一个特定实例。
+相反, 我们可以做的是构造一个道路归纳的实例, 它一次展示所有可能的基点道路归纳的实例化。
+定义
 \begin{align*}
 D &: \prd{x,y:A} (\id[A]{x}{y}) \to \UU, \\
 D(x,y,p) &\defeq \prd{C : \prd{z:A} (\id[A]{x}{z}) \to \UU} C(x,\refl{x}) \to C(y,p).
 \end{align*}
-Then we can construct the function
+然后我们可以构造函数
 \begin{align*}
 d &: \prd{x : A} D(x,x,\refl{x}), \\
 d &\defeq \lamu{x:A}\lamu{C:\prd{z:A}{p : \id[A]{x}{z}} \UU}\lam{c:C(x,\refl{x})} c
 \end{align*}
-and hence using path induction obtain
+因此使用道路归纳得到
 \[ f : \prd{x,y:A}{p:\id[A]{x}{y}} D(x,y,p) \]
-with $f(x,x,\refl{x}) \defeq d(x)$. Unfolding the definition of $D$, we can expand the type of $f$:
+其中 $f(x,x,\refl{x}) \defeq d(x)$。展开 $D$ 的定义, 我们可以扩展 $f$ 的类型:
 \[ f : \prd{x,y:A}{p:\id[A]{x}{y}}{C : \prd{z:A} (\id[A]{x}{z}) \to \UU} C(x,\refl{x}) \to C(y,p). \]
-Now given $a:A$ along with $x:A$ and $p:\id[A]{a}{x}$, we can derive the conclusion of based path induction:
+现在给定 $a:A$ 连同 $x:A$ 和 $p:\id[A]{a}{x}$, 我们可以推导出基点道路归纳的结论:
 \[ f(a,x,p,C,c) : C(x,p). \]
-Notice that we also obtain the correct definitional equality.
+注意我们也得到了正确的定义等式。
 
-Another proof is to observe that any use of based path induction is an instance of $\indidb{A}$  and to define
+另一个证明是观察到任何基点道路归纳的使用都是 $\indidb{A}$ 的一个实例, 并定义
 \begin{narrowmultline*}
 \indidb{A}(a,C,c,x,p) \defeq \narrowbreak
 \indid{A}
@@ -1757,213 +1758,202 @@ Another proof is to observe that any use of based path induction is an instance 
    \end{aligned}
 \end{narrowmultline*}
 
-
-Note that the construction given above uses universes. That is, if we want to
-model $\indidb{A}$ with $C : \prd{x:A} (\id[A]{a}{x}) \to \UU_i$, we need
-to use $\indid{A}$ with 
+注意上面给出的构造使用了宇宙。
+也就是说, 如果我们想用 $C : \prd{x:A} (\id[A]{a}{x}) \to \UU_i$ 来建模 $\indidb{A}$, 我们需要使用 $\indid{A}$ 与
 %
 \[ D:\prd{x,y:A} (\id[A]{x}{y}) \to \UU_{i+1} \]
 %
-since $D$ quantifies over all $C$ of the given type. While this is
-compatible with our definition of universes, it is also possible to
-derive $\indidb{A}$ without using universes: we can show that $\indid{A}$ entails \cref{lem:transport,thm:contr-paths}, and that these two principles imply $\indidb{A}$ directly.
-We leave the details to the reader as \cref{ex:pm-to-ml}.
+因为 $D$ 量化了所有给定类型的 $C$。
+虽然这与我们对宇宙的定义兼容, 但也可以在不使用宇宙的情况下推导 $\indidb{A}$: 我们可以证明 $\indid{A}$ 蕴含引理\ref{lem:transport}和定理\ref{thm:contr-paths}, 并且这两个原理直接蕴含 $\indidb{A}$。
+我们将细节留给读者作为练习\ref{ex:pm-to-ml}。
 
-We can use either of the foregoing formulations of identity types
-to establish that equality is an equivalence relation, that every function preserves equality and that every family respects equality. We leave the details to the next chapter, where this will be derived  and explained in the context of homotopy type theory.
+我们可以使用上述任一恒等类型的公式化来建立相等性是一个等价关系, 每个函数都保持相等性, 并且每个族都尊重相等性。
+我们将细节留给下一章, 在那里这将在同伦类型论的背景下被推导和解释。
 
 \begin{rmk}\label{rmk:propeq-vs-jdeq}
-  We emphasize that despite having some unfamiliar features, propositional equality is \emph{the} equality of mathematics in homotopy type theory.
-  This distinction does not belong to judgmental equality, which is rather a metatheoretic feature of the rules of type theory.
-  For instance, the associativity of addition for natural numbers proven in \cref{sec:inductive-types} is a \emph{propositional} equality, not a judgmental one.
-  The same is true of the commutative law (\cref{ex:add-nat-commutative}).
-  Even the very simple commutativity $n+1=1+n$ is not a judgmental equality for a generic $n$ (though it is judgmental for any specific $n$, e.g. $3+1\jdeq 1+3$, since both are judgmentally equal to $4$ by the computation rules defining $+$).
-  We can only prove such facts by using the identity type, since we can only apply the induction principle for \nat with a type as output (not a judgment).
+我们强调, 尽管具有一些不熟悉的特征, 命题相等是同伦类型论中数学的\emph{那个}相等性。
+这种区分不属于判断相等, 判断相等更像是类型论规则的元理论特征。
+例如, 在第\ref{sec:inductive-types}节中证明的自然数加法的结合律是一个\emph{命题}相等, 而不是判断相等。
+交换律也是如此(练习\ref{ex:add-nat-commutative})。
+甚至非常简单的交换律 $n+1=1+n$ 对于一般的 $n$ 也不是判断相等(尽管对于任何特定的 $n$ 它是判断的, 例如 $3+1\jdeq 1+3$, 因为根据定义 $+$ 的计算规则, 两者都判断相等于 $4$)。
+我们只能通过使用恒等类型来证明这样的事实, 因为我们只能将 \nat 的归纳原理应用于一个类型作为输出(而不是一个判断)。
 \end{rmk}
 
-\subsection{Disequality}
+\subsection{不相等性}
 \label{sec:disequality}
 
-Finally, let us also say something about \define{disequality},
+最后, 让我们也谈谈\define{不相等性},
 \indexdef{disequality}%
-which is negation of equality:%
-\footnote{We use ``inequality''
-  to refer to $<$ and $\leq$. Also, note that this is negation of the \emph{propositional} identity type.
-Of course, it makes no sense to negate judgmental equality $\jdeq$, because judgments are not subject to logical operations.}
+它是相等性的否定:%
+\footnote{我们使用``不等式''
+来指 $<$ 和 $\leq$。另外, 注意这是\emph{命题}恒等类型的否定。
+当然, 否定判断相等 $\jdeq$ 没有意义, 因为判断不受逻辑操作影响。}
 %
 \begin{equation*}
   (x \neq_A y) \ \defeq\ \lnot (\id[A]{x}{y}).
 \end{equation*}
-If $x\neq y$, we say that $x$ and $y$ are \define{unequal}
+如果 $x\neq y$, 我们说 $x$ 和 $y$ 是\define{不相等的}
 \indexdef{unequal}%
-or \define{not equal}.
+或\define{不相等}。
 %
-Just like negation, disequality plays a less important role here than it does in classical\index{mathematics!JingDianDe@经典的}
-mathematics. For example, we cannot prove that two things are equal by proving that they
-are not unequal: that would be an application of the classical law of double negation, see \cref{sec:intuitionism}.
+就像否定一样, 不相等性在这里的作用不如在经典\index{mathematics!JingDianDe@经典的}数学中那么重要。
+例如, 我们不能通过证明两个东西不是不相等来证明它们相等: 那将是经典双重否定律的应用, 见第\ref{sec:intuitionism}节。
 
-Sometimes it is useful to phrase disequality in a positive way. For example,
-in~\cref{RD-inverse-apart-0} we shall prove that a real number $x$ has an inverse if,
-and only if, its distance from~$0$ is positive, which is a stronger requirement than $x
-\neq 0$.
+有时以积极的方式表述不相等性是有用的。
+例如, 在~\cref{RD-inverse-apart-0}中, 我们将证明一个实数 $x$ 有逆当且仅当它与~$0$ 的距离是正的, 这是一个比 $x
+\neq 0$ 更强的要求。
 
 \index{LeiXing@类型!identity|)}%
 
 \sectionNotes
 
-The type theory presented here is a version of Martin-L\"{o}f's intuitionistic type 
-theory~\cite{Martin-Lof-1972,Martin-Lof-1973,Martin-Lof-1979,martin-lof:bibliopolis}, which itself is based on and influenced 
-by the foundational work of Brouwer \cite{beeson}, Heyting~\cite{heyting1966intuitionism}, Scott~\cite{scott70}, de 
-Bruijn~\cite{deBruijn-1973}, Howard~\cite{howard:pat}, Tait~\cite{Tait-1966,Tait-1968}, and Lawvere~\cite{lawvere:adjinfound}\index{Lawvere}.
+这里介绍的类型论是 Martin-L\"{o}f 的直觉主义类型论~\cite{Martin-Lof-1972,Martin-Lof-1973,Martin-Lof-1979,martin-lof:bibliopolis} 的一个版本, 
+它本身基于并受到 Brouwer \cite{beeson}, Heyting~\cite{heyting1966intuitionism}, Scott~\cite{scott70}, de Bruijn~\cite{deBruijn-1973}, Howard~\cite{howard:pat}, Tait~\cite{Tait-1966,Tait-1968}, 
+以及 Lawvere~\cite{lawvere:adjinfound}\index{Lawvere} 的基础性工作的影响.
 \index{proof!ZhuShou@助手}%
-Three principal variants of Martin-L\"{o}f's type theory underlie the \NuPRL \cite{constable+86nuprl-book}, \Coq~\cite{Coq}, and 
-\Agda \cite{norell2007towards} computer implementations of type theory.  The theory given here differs from these formulations in a number 
-of respects, some of which are critical to the homotopy interpretation, while others are technical conveniences or involve concepts that 
-have not yet been studied in the homotopical setting.
+Martin-L\"{o}f 类型论的三个主要变体构成了 \NuPRL \cite{constable+86nuprl-book}, \Coq~\cite{Coq}, 和 \Agda \cite{norell2007towards} 这些类型论计算机实现的基础. 
+这里给出的理论与这些形式化在若干方面有所不同, 其中一些对同伦诠释至关重要, 而其他一些则是技术上的便利或涉及尚未在同伦设定下研究的概念.
 
 \index{LeiXingLun@类型论!intensional}%
 \index{LeiXingLun@类型论!extensional}%
 \index{intensional type theory}%
 \index{extensional!LeiXingLun@类型论}%
-Most significantly, the type theory described here is derived from the \emph{intensional} version of Martin-L\"{o}f's type 
-theory~\cite{Martin-Lof-1973}, rather than the \emph{extensional} version~\cite{Martin-Lof-1979}.  Whereas the extensional theory makes no 
-distinction between judgmental and propositional equality, the intensional theory regards judgmental equality as purely definitional, and 
-admits a much broader, proof-relevant interpretation of the identity type that is central to the homotopy interpretation.  From the 
-homotopical perspective, extensional type theory confines itself to homotopically discrete sets (see \cref{sec:basics-sets}), whereas the 
-intensional theory admits types with higher-dimensional structure.  The \NuPRL system~\cite{constable+86nuprl-book} is extensional, whereas 
-both \Coq~\cite{Coq} and \Agda~\cite{norell2007towards} are intensional.  Among intensional type theories, there are a number of variants 
-that differ in the structure of identity proofs.  The most liberal interpretation, on which we rely here, admits a \emph{proof-relevant} 
-interpretation of equality, whereas more restricted variants impose restrictions such as \emph{uniqueness of identity proofs 
-  (UIP)}~\cite{Streicher93},
+最重要的是, 这里描述的类型论源自 Martin-L\"{o}f 类型论的\emph{内涵}版本~\cite{Martin-Lof-1973}, 而非\emph{外延}版本~\cite{Martin-Lof-1979}. 
+外延理论不区分判断相等和命题相等, 而内涵理论将判断相等视为纯粹定义性的, 并允许对恒等类型进行更广泛, 证明相关的解释, 这对同伦诠释至关重要. 
+从同伦视角看, 外延类型论将自身局限于同伦离散集(见\S\ref{sec:basics-sets}), 而内涵理论则允许具有更高维结构的类型. 
+\NuPRL 系统~\cite{constable+86nuprl-book} 是外延的, 而 \Coq~\cite{Coq} 和 \Agda~\cite{norell2007towards} 都是内涵的. 
+在内涵类型论中, 存在许多在恒等证明结构上不同的变体. 我们这里依赖的最自由的解释允许对相等性进行\emph{证明相关}的解释, 而更受限制的变体则施加了诸如\emph{恒等证明唯一性 (UIP)}~\cite{Streicher93} 之类的限制,
 \indexsee{UIP}{uniqueness of identity proofs}%
 \index{uniqueness!of identity proofs}%
-stating that any two proofs of equality are judgmentally equal, and \emph{Axiom K}~\cite{Streicher93},
+该性质断言任何两个相等性证明都是判断相等的, 以及\emph{公理 K}~\cite{Streicher93},
 \index{GongLi@公理!StreicherGongLiK@Streicher公理K}
-stating that 
-the only proof of equality is reflexivity (up to judgmental equality).  These additional requirements may be selectively imposed in the \Coq 
-and \Agda\ systems.
+它断言唯一的相等性证明是自反性(模判断相等). 这些额外要求可以在 \Coq 和 \Agda 系统中选择性地施加.
+
+内涵理论之间的另一个不同之处在于判断相等的强度, 特别是关于函数类型的对象. 
+这里我们包含唯一性原理\index{uniqueness!principle} ($\eta$-转换) $f \jdeq \lam{x} f(x)$ 作为判断相等的一条原则. 
+例如, 在\S\ref{sec:univalence-implies-funext}中, 这个原理被用于证明泛等公理蕴含命题函数外延性. 唯一性原理有时也考虑用于其他类型. 
+例如, Cartesian积 $A\times B$ 的唯一性原理\index{uniqueness!principle!for product types} 将是我们在\S\ref{sec:finite-product-types}中构造的命题等式 $\uniq{A\times B}$ 的判断版本, 
+即断言 $u \jdeq (\proj1(u),\proj2(u))$. 这个以及相应的依值对版本将是合理的选择(我们并未采用), 
+但我们不能包含所有这样的规则, 因为恒等类型的相应唯一性原理将使所有高阶同伦结构变得平凡. 因此我们\emph{被迫}将其排除, 
+问题实际在于在哪里划清界限. 关于归纳类型, 我们在\S\ref{sec:htpy-inductive}中进一步讨论这些点.
 
 %(In the terminology of \cref{cha:hlevels} such a type theory is about $0$-truncated types.)
 
-Another point of variation among intensional theories is the strength of judgmental equality, particularly as regards objects of function type.  Here we include the uniqueness principle\index{uniqueness!principle} ($\eta$-conversion) $f \jdeq \lam{x} f(x)$, as a principle of judgmental equality.  This principle is used, for example, in \cref{sec:univalence-implies-funext}, to show that univalence implies propositional function extensionality.  Uniqueness principles are sometimes considered for other types.
-For instance, the uniqueness principle\index{uniqueness!principle!for product types} for the cartesian product $A\times B$ would be a judgmental version of the propositional equality $\uniq{A\times B}$ which we constructed in \cref{sec:finite-product-types}, saying that $u \jdeq (\proj1(u),\proj2(u))$.
-This and the corresponding version for dependent pairs would be reasonable choices (which we did not make), but we cannot include all such rules, because the corresponding uniqueness principle for identity types would trivialize all the higher homotopical structure.  So we are \emph{forced} to leave it out, and the question then becomes where to draw the line. With regards to inductive types, we discuss these points further in~\cref{sec:htpy-inductive}.
-
-It is important for our purposes that (propositional) equality of functions is taken to be \emph{extensional} (in a different sense than that used above!).
-This is not a consequence of the rules in this chapter; it will be expressed by \cref{axiom:funext}.
+对于我们的目的而言, 重要的是函数的(命题)相等被看作是\emph{外延的}(此处的意义与上文不同!). 
+这并非本章规则的推论; 它将由\S\ref{axiom:funext}表达.
 \index{HanShuWaiYanXing@函数外延性}%
-This decision is significant for our purposes, because it specifies that equality of functions is as expected in mathematics.  Although we include \cref{axiom:funext} as an axiom, it may be derived from the univalence axiom and the uniqueness principle for functions\index{uniqueness!principle!for function types} (see \cref{sec:univalence-implies-funext}), as well as from the existence of an interval type (see \cref{thm:interval-funext}).
+这个决定对我们的目的是重要的, 因为它规定了函数的相等性符合数学中的预期. 尽管我们将\S\ref{axiom:funext}作为一个公理包含, 
+但它可以从泛等公理和函数的唯一性原理\index{uniqueness!principle!for function types}(见\S\ref{sec:univalence-implies-funext})推导出来, 
+也可以从区间类型的存在性(见定理\ref{thm:interval-funext})推导出来.
 
-Regarding inductive types such as products, $\Sigma$-types, coproducts, natural numbers, and so on (see \cref{cha:induction}), there are additional choices regarding the formulation of induction and recursion.
+关于积, $\Sigma$-类型, 余积, 自然数等归纳类型(见第\ref{cha:induction}章), 在归纳和递归的表述上存在额外的选择.
 \index{MoShiPiPei@模式匹配}%
-We have taken \emph{induction principles} as basic and \emph{pattern matching} as derived from them, but one may also do the other; see \cref{cha:rules}.
-Usually in the latter case one allows also \emph{deep} pattern matching; see~\cite{Coquand92Pattern}.
-There are several reasons for our choice.
-One reason is that induction principles are what we obtain naturally in categorical semantics.
-Another is that specifying the allowable kinds of (deep) pattern matching is quite tricky;
-for instance, \Agda's
+我们以\emph{归纳原理}为基础, 并将\emph{模式匹配}视为从中派生出来的, 但也可以反过来做; 见第\ref{cha:rules}章. 在后一种情况下, 
+通常也允许\emph{深度}模式匹配; 见~\cite{Coquand92Pattern}. 
+我们做出这个选择有几个原因. 一个原因是归纳原理是我们在范畴语义中自然得到的. 
+另一个原因是指定允许的(深度)模式匹配种类相当棘手; 例如, \Agda 的
 \index{proof!ZhuShou@助手!Agda@\textsc{Agda}}%
-pattern matching can prove Axiom K by default,
+模式匹配默认可以证明公理 K,
 \index{GongLi@公理!StreicherGongLiK@Streicher公理K}%
-although a flag \texttt{--without-K} prevents this~\cite{CDP14}.
-Finally, deep pattern matching is not well-understood for \emph{higher} inductive types (see \cref{cha:hits}).
-Therefore, we will only use pattern matches such as those described in \cref{sec:pattern-matching}, which are directly equivalent to the application of an induction principle.
+尽管有一个标志 \texttt{--without-K} 可以防止这一点~\cite{CDP14}. 
+最后, 对于\emph{高阶}归纳类型(见第\ref{cha:hits}章), 深度模式匹配尚未得到很好的理解. 
+因此, 我们将只使用诸如\S\ref{sec:pattern-matching}中描述的那些模式匹配, 它们直接等价于归纳原理的应用.
 
 \index{proof!ZhuShou@助手!Coq@\textsc{Coq}}%
-Unlike the type theory of \Coq, we do not include a primitive type of propositions.  Instead, as discussed in \cref{sec:pat}, we embrace 
-the \emph{propositions-as-types (PAT)} principle, identifying propositions with types.
-This was suggested originally by de Bruijn~\cite{deBruijn-1973}, Howard~\cite{howard:pat}, Tait~\cite{Tait-1968}, and Martin-L\"{o}f~\cite{Martin-Lof-1972}.
-(Our decision is explained more fully in \cref{subsec:pat?,subsec:hprops}.)
+与 \Coq 的类型论不同, 我们不包含一个原始命题类型. 相反, 如\S\ref{sec:pat}中所讨论的, 我们遵循\emph{命题即类型 (PAT)}原则, 
+将命题与类型等同. 这最初由 de Bruijn~\cite{deBruijn-1973}, Howard~\cite{howard:pat}, Tait~\cite{Tait-1968}, 和 Martin-L\"{o}f~\cite{Martin-Lof-1972} 提出.
+ (我们的决定在\S\ref{subsec:pat?}和\S\ref{subsec:hprops}中有更充分的解释. )
 
-We do, however, include a full cumulative hierarchy of universes, so that the type formation and equality judgments become instances of the membership and equality judgments for a universe.
-As a convenience, we regard objects of a universe as types, rather than as codes for types; in the terminology of \cite{martin-lof:bibliopolis}, this means we use ``Russell-style universes'' rather than ``Tarski-style universes''.
+然而, 我们确实包含了一个完整的累积宇宙层次结构, 使得类型形成和相等判断成为宇宙的成员关系和相等判断的实例. 
+为方便起见, 我们将宇宙的对象视为类型, 而不是类型的代码; 用 \cite{martin-lof:bibliopolis} 的术语来说, 这意味着我们使用``Russell式宇宙''而非``Tarski式宇宙''.
 \index{LeiXing@类型!YuZhou@宇宙!TarskiShiDe@Tarski式的}%
 \index{LeiXing@类型!YuZhou@宇宙!RussellShi@Russell式}%
-An alternative would be to use Tarski-style universes, with an explicit coercion\index{coercion, universe-raising} function required to make an element $A:\UU$ of a universe into a type $\mathsf{El}(A)$, and just say that the coercion is omitted when working informally.
+另一种选择是使用 Tarski 式宇宙, 需要一个显式的强制转换\index{coercion, universe-raising}函数将宇宙的元素 $A:\UU$ 转换为类型 $\mathsf{El}(A)$, 并且只说在非形式化工作时省略了强制转换.
 
-We also treat the universe hierarchy as cumulative, in that every type in $\UU_i$ is also in $\UU_j$ for each $j\geq i$.
-There are different ways to implement cumulativity formally: the simplest is just to include a rule that if $A:\UU_i$ then $A:\UU_j$.
-However, this has the annoying consequence that for a type family $B:A\to \UU_i$ we cannot conclude $B:A\to\UU_j$, although we can conclude $\lam{a} B(a) : A\to\UU_j$.
-A more sophisticated approach that solves this problem is to introduce a judgmental subtyping relation $<:$ generated by $\UU_i<:\UU_j$, but this makes the type theory more complicated to study.
-Another alternative would be to include an explicit coercion function $\uparrow : \UU_i \to \UU_j$, which could be omitted when working informally.
+我们还将宇宙层次结构视为累积的, 即每个在 $\UU_i$ 中的类型也在每个 $j\geq i$ 的 $\UU_j$ 中. 
+在形式化实现累积性上有不同的方法: 最简单的是只包含一条规则, 如果 $A:\UU_i$ 则 $A:\UU_j$. 
+然而, 这带来了恼人的后果, 即对于类型族 $B:A\to \UU_i$, 我们不能得出 $B:A\to\UU_j$, 尽管我们可以得出 $\lam{a} B(a) : A\to\UU_j$. 
+一个解决这个问题的更复杂的方法是引入一个由 $\UU_i<:\UU_j$ 生成的判断子类型关系 $<:$, 
+但这使得类型论的研究更加复杂. 另一个替代方案是包含一个显式的强制转换函数 $\uparrow : \UU_i \to \UU_j$, 在非形式化工作时可以省略它.
 
-It is also not necessary that the universes be indexed by natural numbers and linearly ordered.
-For some purposes, it is more appropriate to assume only that every universe is an element of some larger universe, together with a ``directedness'' property that any two universes are jointly contained in some larger one.
-There are many other possible variations, such as including a universe ``$\UU_{\omega}$'' that contains all $\UU_i$ (or even higher ``large cardinal'' type universes), or by internalizing the hierarchy into a type family $\lam{i} \UU_i$.
-The latter is in fact done in \Agda.
+宇宙也不必由自然数索引并线性排序. 对于某些目的, 更合适的假设是每个宇宙都是某个更大宇宙的元素, 再加上一个``有向性''性质, 
+即任何两个宇宙都共同包含在某个更大的宇宙中. 还有许多其他可能的变体, 例如包含一个包含所有 $\UU_i$ 的宇宙``$\UU_{\omega}$''(甚至更高的``大基数''类型宇宙), 
+或者通过将层次结构内部化为一个类型族 $\lam{i} \UU_i$. 后者实际上在 \Agda 中实现了.
 
-The path induction principle for identity types was formulated by Martin-L\"{o}f~\cite{Martin-Lof-1973}.
-The based path induction rule in the setting of Martin-L\"of type theory is due to Paulin-Mohring \cite{Moh93}; it can be seen as an intensional generalization of the concept of ``pointwise functionality''\index{pointwise!HanShuXing@函数性} for hypothetical judgments from \NuPRL~\cite[Section~8.1]{constable+86nuprl-book}.
-The fact that Martin-L\"of's rule implies Paulin-Mohring's was proved by Streicher using Axiom K (see~\cref{sec:hedberg}), by Altenkirch and Goguen as in \cref{sec:identity-types}, and finally by Hofmann without universes (as in \cref{ex:pm-to-ml}); see~\cite[\S1.3 and Addendum]{Streicher93}.
+恒等类型的道路归纳原理由 Martin-L\"{o}f~\cite{Martin-Lof-1973} 阐述.
+Martin-L\"of 类型论设定下的基点道路归纳规则归功于 Paulin-Mohring \cite{Moh93}; 
+它可以看作是 \NuPRL~\cite[Section~8.1]{constable+86nuprl-book} 中假设判断的``逐点函数性''\index{pointwise!HanShuXing@函数性}的内涵推广. 
+Martin-L\"of 的规则蕴含 Paulin-Mohring 的规则这一事实由 Streicher 使用公理 K 证明(见\S\ref{sec:hedberg}), 由 Altenkirch 和 Goguen 如\S\ref{sec:identity-types}中证明,
+最后由 Hofmann 在没有宇宙的情况下证明(如练习\ref{ex:pm-to-ml}); 见~\cite[\S1.3 and Addendum]{Streicher93}.
 
 \sectionExercises
 
 \begin{ex}\label{ex:composition}
-  Given functions $f:A\to B$ and $g:B\to C$, define their \define{composite}
+  给定函数 $f:A\to B$ 和 $g:B\to C$, 定义它们的\define{复合}
   \indexdef{FuHe@复合!HanShuDe@函数的}%
   \indexdef{HanShu@函数!FuHe@复合}%
  $g\circ f:A\to C$.
   \index{JieHeXing@结合性!HanShuFuHeDe@函数复合的}%
-  Show that we have $h \circ (g\circ f) \jdeq (h\circ g)\circ f$.
+  证明我们有 $h \circ (g\circ f) \jdeq (h\circ g)\circ f$.
 \end{ex}
 
 \begin{ex}\label{ex:pr-to-rec}
-  Derive the recursion principle for products $\rec{A\times B} $ using only the projections, and verify that the definitional equalities are valid.
-  Do the same for $\Sigma$-types.
+  仅使用投影推导积的递归原理 $\rec{A\times B}$, 并验证定义等式是有效的.
+  对 $\Sigma$-类型做同样的事情.
 \end{ex}
 
 \begin{ex}\label{ex:pr-to-ind}
-  Derive the induction principle for products $\ind{A\times B}$, using only the projections and the propositional uniqueness principle $\uniq{A\times B}$.
-  Verify that the definitional equalities are valid.
-  Generalize $\uniq{A\times B}$ to $\Sigma$-types, and do the same for $\Sigma$-types.
-  \emph{(This requires concepts from \cref{cha:basics}.)}
+  仅使用投影和命题唯一性原理 $\uniq{A\times B}$ 推导积的归纳原理 $\ind{A\times B}$.
+  验证定义等式是有效的.
+  将 $\uniq{A\times B}$ 推广到 $\Sigma$-类型, 并对 $\Sigma$-类型做同样的事情.
+  \emph{(这需要第\ref{cha:basics}章中的概念.)}
 \end{ex}
 
 \begin{ex}\label{ex:iterator}
-\index{iterator!for natural numbers}
-Assuming as given only the \emph{iterator} for natural numbers
+\index{iterator!ZiRanShuDe@自然数的}
+假设仅给定自然数的\emph{迭代器}
 \[\ite : \prd{C:\UU} C \to (C \to C) \to \nat \to C \]
-with the defining equations
+及其定义方程
 \begin{align*}
 \ite(C,c_0,c_s,0)  &\defeq c_0, \\
 \ite(C,c_0,c_s,\suc(n)) &\defeq c_s(\ite(C,c_0,c_s,n)),
 \end{align*}
-derive a function having the type of the recursor $\rec{\nat}$.
-Show that the defining equations of the recursor hold propositionally for this function, using the induction principle for $\nat$.
+推导一个具有递归子 $\rec{\nat}$ 类型的函数.
+使用 $\nat$ 的归纳原理证明该函数的递归子定义等式在命题意义下成立.
 \end{ex}
 
 \begin{ex}\label{ex:sum-via-bool}
 \index{LeiXing@类型!YuJi@余积}%
-Show that if we define $A + B \defeq \sm{x:\bool} \rec{\bool}(\UU,A,B,x)$, then we can give a definition of $\ind{A+B}$ for which the definitional equalities stated in \cref{sec:coproduct-types} hold.
+证明如果定义 $A + B \defeq \sm{x:\bool} \rec{\bool}(\UU,A,B,x)$, 那么我们可以给出 $\ind{A+B}$ 的一个定义, 使得在\S\ref{sec:coproduct-types}中所述的定义等式成立.
 \end{ex}
 
 \begin{ex}\label{ex:prod-via-bool}
 \index{LeiXing@类型!product}%
-Show that if we define $A \times B \defeq \prd{x:\bool}\rec{\bool}(\UU,A,B,x)$, then we can give a definition of  $\ind{A\times B}$ for which the definitional equalities stated in \cref{sec:finite-product-types} hold propositionally (i.e.\ using equality types).
-\emph{(This requires the function extensionality axiom, which is introduced in \cref{sec:compute-pi}.)}
+证明如果定义 $A \times B \defeq \prd{x:\bool}\rec{\bool}(\UU,A,B,x)$, 那么我们可以给出 $\ind{A\times B}$ 的一个定义, 使得在\S\ref{sec:finite-product-types}中所述的定义等式在命题意义下成立(即使用相等类型).
+\emph{(这需要函数外延性公理, 该公理在\S\ref{sec:compute-pi}中介绍.)}
 \end{ex}
 
 \begin{ex}\label{ex:pm-to-ml}
-Give an alternative derivation of $\indidb{A}$ from $\indid{A}$ which avoids the use of universes.
-  \emph{(This is easiest using concepts from later chapters.)}
+给出 $\indidb{A}$ 从 $\indid{A}$ 的另一种推导, 避免使用宇宙.
+  \emph{(使用后续章节的概念会更容易.)}
 \end{ex}
 
 \begin{ex}\label{ex:nat-semiring}
-  \index{multiplication!of natural numbers}%
-  Define multiplication and exponentiation using $\rec{\nat}$.
-  Verify that $(\nat,+,0,\times,1)$ is a semiring\index{semiring} using only $\ind{\nat}$.
-  You will probably also need to use symmetry and transitivity of equality, \cref{lem:opp,lem:concat}.
+  \index{multiplication!ZiRanShuDe@自然数的}%
+  使用 $\rec{\nat}$ 定义乘法和幂运算.
+  仅使用 $\ind{\nat}$ 验证 $(\nat,+,0,\times,1)$ 是一个半环\index{semiring}.
+  你可能还需要使用相等的对称性和传递性, 即\S\ref{lem:opp}和\S\ref{lem:concat}.
 \end{ex}
 
 \begin{ex}\label{ex:fin}
   \index{finite!sets, family of}%
-  Define the type family $\Fin : \nat \to \UU$ mentioned at the end of \cref{sec:universes}, and the dependent function $\fmax : \prd{n:\nat} \Fin(n+1)$ mentioned in \cref{sec:pi-types}.
+  定义在\S\ref{sec:universes}末尾提到的类型族 $\Fin : \nat \to \UU$, 以及在\S\ref{sec:pi-types}中提到的依值函数 $\fmax : \prd{n:\nat} \Fin(n+1)$.
 \end{ex}
 
 \begin{ex}\label{ex:ackermann}
   \indexdef{HanShu@函数!Ackermann}%
   \indexdef{AckermannHanShu@Ackermann函数}%
-  Show that the Ackermann function $\ack : \nat \to \nat \to \nat$ is definable using only $\rec{\nat}$ satisfying the following equations:
+  证明 Ackermann 函数 $\ack : \nat \to \nat \to \nat$ 可以仅使用 $\rec{\nat}$ 定义, 并满足以下方程:
   \begin{align*}
     \ack(0,n) &\jdeq \suc(n), \\
     \ack(\suc(m),0) &\jdeq \ack(m,1), \\
@@ -1972,34 +1962,35 @@ Give an alternative derivation of $\indidb{A}$ from $\indid{A}$ which avoids the
 \end{ex}
 
 \begin{ex}\label{ex:neg-ldn}
-  Show that for any type $A$, we have $\neg\neg\neg A \to \neg A$.
+  证明对于任何类型 $A$, 我们有 $\neg\neg\neg A \to \neg A$.
 \end{ex}
 
 \begin{ex}\label{ex:tautologies}
-  Using the propositions as types interpretation, derive the following tautologies.
+  使用命题即类型解释, 推导以下重言式.
   \begin{enumerate}
-  \item If $A$, then (if $B$ then $A$).
-  \item If $A$, then not (not $A$).
-  \item If (not $A$ or not $B$), then not ($A$ and $B$).
+  \item 若 $A$, 则 (若 $B$ 则 $A$).
+  \item 若 $A$, 则 非(非 $A$).
+  \item 若 (非 $A$ 或 非 $B$), 则 非($A$ 且 $B$).
   \end{enumerate}
 \end{ex}
 
 \begin{ex}\label{ex:not-not-lem}
-  Using propositions-as-types, derive the double negation of the principle of excluded middle, i.e.\ prove \emph{not (not ($P$ or not $P$))}.
+  使用命题即类型, 推导排中律的双重否定, 即证明\emph{非(非($P$ 或 非 $P$))}.
 \end{ex}
 
 \begin{ex}\label{ex:without-K}
-  Why do the induction principles for identity types not allow us to construct a function $f: \prd{x:A}{p:\id{x}{x}} (\id{p}{\refl{x}})$ with the defining equation
+  为什么恒等类型的归纳原理不允许我们构造一个函数 $f: \prd{x:A}{p:\id{x}{x}} (\id{p}{\refl{x}})$ 并具有定义等式
   \[ f(x,\refl{x}) \defeq \refl{\refl{x}} \quad ?\]
 \end{ex}
 
 \begin{ex}\label{ex:subtFromPathInd}
-  Show that indiscernibility of identicals follows from path induction.  
+  证明同一者的不可分性可以从道路归纳推导出来.  
 \end{ex}
 
 \begin{ex}\label{ex:add-nat-commutative}
-  Show that addition of natural numbers is commutative: $\prd{i,j:\nat} (i+j=j+i)$.
+  证明自然数的加法是可交换的: $\prd{i,j:\nat} (i+j=j+i)$.
 \end{ex}
+
 
 % Local Variables:
 % TeX-master: "hott-online"

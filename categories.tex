@@ -301,8 +301,8 @@ Note that by induction on identity, a functor also preserves \idtoiso.
 
 \begin{defn}\label{ct:nattrans}
   For functors $F,G:A\to B$, a \define{natural transformation}
-  \indexdef{natural!transformation}%
-  \indexsee{transformation!natural}{natural transformation}%
+  \indexdef{ZiRanDe@自然的!transformation}%
+  \indexsee{transformation!ZiRanDe@自然的}{自然变换}%
   $\gamma:F\to G$ consists of
   \begin{enumerate}
   \item For each $a:A$, a morphism $\gamma_a:\hom_B(Fa,Ga)$ (the ``components'').
@@ -333,8 +333,8 @@ Similarly, identity of functors is determined by identity of the functions $A_0\
 \end{proof}
 
 \begin{lem}\label{ct:natiso}
-  \index{natural!TongGou@同构}%
-  \index{TongGou@同构!natural}%
+  \index{ZiRanDe@自然的!TongGou@同构}%
+  \index{TongGou@同构!ZiRanDe@自然的}%
   A natural transformation $\gamma:F\to G$ is an isomorphism in $B^A$ if and only if each $\gamma_a$ is an isomorphism in $B$.
 \end{lem}
 \begin{proof}
@@ -430,7 +430,7 @@ We now define all the usual ways to compose functors and natural transformations
   \end{align*}
 \end{proof}
 
-\index{horizontal composition!of natural transformations}%
+\index{horizontal composition!ZiRanBianHuanDe@自然变换的}%
 \index{JingDianDe@经典的!FanChouLun@范畴论}%
 Classically, one defines the ``horizontal composite'' of $\gamma:F\to G$ and $\delta:H\to K$ to be the common value of ${(\delta G)(H\gamma)}$ and ${(K\gamma)(\delta F)}$.
 We will refrain from doing this, because while equal, these two transformations are not \emph{definitionally} equal.
@@ -1303,7 +1303,7 @@ As an example, this methodology gives an alternative way to express the proof of
 
   Now we define a notion of structure on $B^{A_0}$ for which $P(F_0)$ is the type of operations $F:\prd{a,a':A_0} \hom_A(a,a') \to \hom_B(F_0 a,F_0 a')$ which extend $F_0$ to a functor (i.e.\ preserve composition and identities).
   This is a set since each $\hom_B(\blank,\blank)$ is so.
-  Given such $F$ and $G$, we define $\gamma:\hom_{B^{A_0}}(F_0, G_0)$ to be a homomorphism if it forms a natural transformation.\index{natural!transformation}
+  Given such $F$ and $G$, we define $\gamma:\hom_{B^{A_0}}(F_0, G_0)$ to be a homomorphism if it forms a natural transformation.\index{ZiRanDe@自然的!transformation}
   In \cref{ct:functor-precat} we essentially verified that this is a notion of structure.
   Moreover, if $F$ and $F'$ are both structures on $F_0$ and the identity is a natural transformation from $F$ to $F'$, then for any $f:\hom_A(a,a')$ we have $F'f = F'f \circ 1_{F_0 a} = 1_{F_0 a}\circ F f = F f$.
   Applying function extensionality, we conclude $F = F'$.

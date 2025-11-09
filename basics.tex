@@ -194,7 +194,7 @@ Usually, every time we apply this induction rule we will either not care about t
 
 Informally, the induction principle for identity types says that if we want to construct an object (or prove a statement) which depends on an inhabitant $p:\id[A]xy$ of an identity type, then it suffices to perform the construction (or the proof) in the special case when $x$ and $y$ are the same (judgmentally) and $p$ is the reflexivity element $\refl{x}:x=x$ (judgmentally).
 When writing informally, we may express this with a phrase such as ``by induction, it suffices to assume\dots''.
-This reduction to the ``reflexivity case'' is analogous to the reduction to the ``base case'' and ``inductive step'' in an ordinary proof by induction on the natural numbers, and also to the ``left case'' and ``right case'' in a proof by case analysis on a disjoint union or disjunction.\index{induction principle!for identity type}%
+This reduction to the ``reflexivity case'' is analogous to the reduction to the ``base case'' and ``inductive step'' in an ordinary proof by induction on the natural numbers, and also to the ``left case'' and ``right case'' in a proof by case analysis on a disjoint union or disjunction.\index{GuiNaFa@归纳法!for identity type}%
 
 
 The ``conversion rule''~\eqref{eq:Jconv} is less familiar in the context of proof by induction on natural numbers, but there is an analogous notion in the related concept of definition by recursion.
@@ -975,7 +975,7 @@ In \cref{sec:compute-pi,sec:compute-universe}, we will see that homotopy type th
 
 Traditionally, we regard two functions as the same if they take equal values on all inputs.
 Under the propositions-as-types interpretation, this suggests that two functions $f$ and $g$ (perhaps dependently typed) should be the same if the type $\prd{x:A} (f(x)=g(x))$ is inhabited.
-Under the homotopical interpretation, this dependent function type consists of \emph{continuous} paths or \emph{functorial} equivalences, and thus may be regarded as the type of \emph{homotopies} or of \emph{natural isomorphisms}.\index{TongGou@同构!natural}
+Under the homotopical interpretation, this dependent function type consists of \emph{continuous} paths or \emph{functorial} equivalences, and thus may be regarded as the type of \emph{homotopies} or of \emph{natural isomorphisms}.\index{TongGou@同构!ZiRanDe@自然的}
 We will adopt the topological terminology for this.
 
 \begin{defn} \label{defn:homotopy}
@@ -2068,7 +2068,7 @@ The proof is an easy path induction.
 \section{Natural numbers}
 \label{sec:compute-nat}
 
-\index{natural numbers|(}%
+\index{ZiRanShu@自然数|(}%
 \index{encode-decode method|(}%
 We use the encode-decode method to characterize the path space of the natural numbers, which are also a positive type.
 In this case, rather than fixing one endpoint, we characterize the two-sided path space all at once.
@@ -2158,7 +2158,7 @@ We will study more general positive types in \cref{cha:induction,cha:hits}.
 In \cref{cha:homotopy}, we will see that the same technique used here to characterize the identity types of coproducts and \nat can also be used to calculate homotopy groups of spheres.
 
 \index{encode-decode method|)}%
-\index{natural numbers|)}%
+\index{ZiRanShu@自然数|)}%
 
 \section{Example: equality of structures}
 \label{sec:equality-of-structures}
