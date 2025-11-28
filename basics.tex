@@ -1,497 +1,419 @@
 \chapter{同伦类型论}
 \label{cha:basics}
 
-同伦类型论的核心创意是类型可以被视作同伦论中的空间,抑或是范畴论中的高阶群胚。
+同伦类型论的核心创意是类型可以被视作同伦论中的空间, 或是范畴论中的高阶群胚。
 
 \index{JingDianDe@经典的!TongLunLun@同伦论|(}
 \index{higher category theory|(}
-We begin with a brief summary of the connection between homotopy theory
-and higher-dimensional category theory.
-In classical homotopy theory, a space $X$ is a set of points equipped
-with a topology,
+我们首先对同伦论与高阶范畴论之间的联系做一个简要的总结。在经典同伦论中, 空间 $X$ 是一个带有拓扑结构的点集,
 \indexsee{space!topological}{topological space}
 \index{topological!space}
-and a path between points $x$ and $y$ is represented by
-a continuous map $p : [0,1] \to X$, where $p(0) = x$ and $p(1) = y$.
+而点集中的点 $x,y \in X$ 之间的道路则被表示为一个连续映射 $p : [0,1] \to X$, 满足 $p(0) = x$ 且 $p(1) = y$。
 \index{DaoLu@道路!topological}
 \index{topological!DaoLu@道路}
-This function can be thought of as giving a point in $X$ at each
-``moment in time''.  For many purposes, strict equality of paths
-(meaning, pointwise equal functions) is too fine a notion.  For example,
-one can define operations of path concatenation (if $p$ is a path from
-$x$ to $y$ and $q$ is a path from $y$ to $z$, then the concatenation $p
-\ct q$ is a path from $x$ to $z$) and inverses ($\opp p$ is a path
-from $y$ to $x$).  However, there are natural equations between these
-operations that do not hold for strict equality: for example, the path
-$p \ct \opp p$ (which walks from $x$ to $y$, and then back along the
-same route, as time goes from $0$ to $1$) is not strictly equal to the
-identity path (which stays still at $x$ at all times).
+该函数可以被这样理解为在``每个时刻''给出$X$中的一点。 对许多目的而言, 道路的严格相等(即逐点相等的函数)是过于精细的概念。
+例如, 可以定义道路的连接运算(如果 $p$ 是从 $x$ 到 $y$ 的道路, 而 $q$ 是从 $y$ 到 $z$ 的道路, 那么连接 $p \ct q$ 是从 $x$ 到 $z$ 的道路)
+和逆运算($\opp p$ 是从 $y$ 到 $x$ 的道路)。 然而, 这些运算之间存在自然的等式, 但对于严格相等而言并不成立: 
+例如, 道路 $p \ct \opp p$(它随着时间从 $0$ 到 $1$ 沿着同一道路从 $x$ 走到 $y$, 然后再返回)并不严格等于恒等道路(它在所有时刻都停留在 $x$ 上)。
 
-The remedy is to consider a coarser notion of equality of paths called
-\emph{homotopy}.
+解决方案是将道路的相等性概念放宽为所谓的\emph{同伦}。
 \index{TongLun@同伦!topological}
-A homotopy between a pair of continuous maps $f :
-X_1 \to X_2$ and $g : X_1\to X_2$ is a continuous map $H : X_1
-\times [0, 1] \to X_2$ satisfying $H(x, 0) = f (x)$ and $H(x, 1) =
-g(x)$.  In the specific case of paths $p$ and $q$ from $x$ to $y$, a homotopy is a
-continuous map $H : [0,1] \times [0,1] \rightarrow X$
-such that $H(s,0) = p(s)$ and $H(s,1) = q(s)$ for all $s\in [0,1]$.
-In this case we require also that $H(0,t) = x$ and $H(1,t)=y$ for all $t\in [0,1]$,
-so that for each $t$ the function $H(\blank,t)$ is again a path from $x$ to $y$;
-a homotopy of this sort is said to be \emph{endpoint-preserving} or \emph{rel endpoints}.
-In simple cases, we can think of the image of the square $[0,1]\times [0,1]$ under $H$ as ``filling the space'' between $p$ and $q$, although for general $X$ this doesn't really make sense; it is better to think of $H$ as a continuous deformation of $p$ into $q$ that doesn't move the endpoints.
-Since $[0,1]\times [0,1]$ is 2-dimensional, we also speak of $H$ as a 2-dimensional \emph{path between paths}.\index{DaoLu@道路!2-}
+一对连续映射 $f : X_1 \to X_2$ 和 $g : X_1\to X_2$ 之间的同伦是一个连续映射 $H : X_1 \times [0, 1] \to X_2$, 满足 $H(x, 0) = f (x)$ 且 $H(x, 1) = g(x)$。
+对具体的道路 $p$ 和 $q$ (分别从 $x$ 到 $y$) 而言, 同伦是一个连续映射 $H : [0,1] \times [0,1] \rightarrow X$, 
+使得对于所有 $s\in [0,1]$ 有 $H(s,0) = p(s)$ 且 $H(s,1) = q(s)$。
+在这种情况下, 我们还要求对于所有 $t\in [0,1]$ 有 $H(0,t) = x$ 且 $H(1,t)=y$, 使得对于每个$t$, 
+函数$H(\blank,t)$ 仍然是从 $x$ 到 $y$ 的道路; 这种函数被称为\emph{保端点的}或\emph{相对于端点的}同伦。
+在简单的情况下, 我们可以将 $H$ 对方形 $[0,1]\times [0,1]$ 的像视为在 $p$ 和 $q$ 之间的``填充空间'',
+尽管对于一般的 $X$ 来说这并没有什么真正的意义; 更好的理解方式是将 $H$ 视为不移动端点的, 将 $p$ 连续变形为 $q$ 的过程。
+因为 $[0,1]\times [0,1]$ 是二维的, 我们也将 $H$ 称为一个二维的\emph{道路之间的道路}。
+\index{DaoLu@道路!2-}
 
-For example, because
-$p \ct \opp p$ walks out and back along the same route, you know that
-you can continuously shrink $p \ct \opp p$ down to the identity
-path --- it won't, for example, get snagged around a hole in the space.
-Homotopy is an equivalence relation, and operations such as
-concatenation, inverses, etc., respect it.  Moreover, the homotopy
-equivalence classes of loops\index{HuanLu@环路} at some point $x_0$ (where two loops $p$
-and $q$ are equated when there is a \emph{based} homotopy between them,
-which is a homotopy $H$ as above that additionally satisfies $H(0,t) =
-H(1,t) = x_0$ for all $t$) form a group called the \emph{fundamental
-  group}.\index{JiChuDe@基础的!Qun@群}  This group is an \emph{algebraic invariant} of a space, which
-can be used to investigate whether two spaces are \emph{homotopy
-  equivalent} (there are continuous maps back and forth whose composites
-are homotopic to the identity), because equivalent spaces have
-isomorphic fundamental groups.
+例如，由于 $p \ct \opp p$ 沿着同一道路往返，所以可以将 $p \ct \opp p$ 连续缩小到恒等道路——它不会被空间中的一个洞卡住。
+同伦是一种等价关系，并且诸如连接、逆运算等操作都保持同伦。此外，在某个点 $x_0$ 处的环路\index{HuanLu@环路}的同伦等价类
+（当两个环路 $p$ 和 $q$ 存在一个\emph{基于点的}同伦时被视为相等，
+这种同伦是一个如上所述的同伦 $H$，并且额外满足 $H(0,t) = H(1,t) = x_0$ 对所有 $t$ 成立）
+形成一个称为\emph{基本群}\index{JiBenQun@基本群}的群。
+这个群是空间的一个\emph{代数不变量}，可以用来研究两个空间是否\emph{同伦等价}（存在连续映射来回，其复合同伦于恒等映射），
+因为等价的空间具有同构的基本群。
 
-Because homotopies are themselves a kind of 2-dimensional path, there is
-a natural notion of 3-dimensional \emph{homotopy between homotopies},\index{DaoLu@道路!3-}
-and then \emph{homotopy between homotopies between homotopies}, and so
-on.  This infinite tower of points, paths, homotopies, homotopies between
-homotopies, \ldots, equipped with algebraic operations such as the
-fundamental group, is an instance of an algebraic structure called a
-(weak) \emph{$\infty$-groupoid}.  An $\infty$-groupoid\index{.WuQiongQunPei@$\infty$-群胚} consists of a
-collection of objects, and then a collection of \emph{morphisms}\indexdef{morphism!in an .infinity-groupoid@in an $\infty$-groupoid} between
-objects, and then \emph{morphisms between morphisms}, and so on,
-equipped with some complex algebraic structure; a morphism at level $k$ is called a \define{$k$-morphism}\indexdef{k-morphism@$k$-morphism}.  Morphisms at each level
-have identity, composition, and inverse operations, which are weak in
-the sense that they satisfy the groupoid laws (associativity of
-composition, identity is a unit for composition, inverses cancel) only
-up to morphisms at the next level, and this weakness gives rise to
-further structure. For example, because associativity of composition of
-morphisms $p \ct (q \ct r) = (p \ct q) \ct r$ is itself a
-higher-dimensional morphism, one needs an additional operation relating
-various proofs of associativity: the various ways to reassociate $p \ct
-(q \ct (r \ct s))$ into $((p \ct q) \ct r) \ct s$ give rise to Mac
-Lane's pentagon\index{WuBianXing, Mac Lane@五边形, Mac Lane}.  Weakness also creates non-trivial interactions between
-levels.
+由于同伦本身是一种二维的道路，因此自然存在三维的\emph{同伦之间的同伦}\index{DaoLu@道路!3-}，
+然后是\emph{同伦之间的同伦之间的同伦}，以此类推。这种点、道路、同伦、同伦之间的同伦的无限塔，
+配备了诸如基本群之类的代数操作，是一种称为（弱）\emph{$\infty$-群胚}的代数结构的实例。
+一个 $\infty$-群胚\index{.WuQiongQunPei@$\infty$-群胚}由一组对象组成，
+然后是一组对象之间的\emph{态射}\indexdef{morphism!in an .infinity-groupoid@in an $\infty$-groupoid}，
+然后是态射之间的\emph{态射}，以此类推，配备了一些复杂的代数结构；
+第 $k$层的态射称为\define{$k$-态射}\indexdef{k-morphism@$k$-morphism}。每一层的态射都有恒等、复合和逆运算，
+这些运算是弱的，因为它们仅在下一层的态射上满足群胚定律（复合的结合性，恒等是复合的单位元，逆元相消），
+而这种弱性又产生了进一步的结构。例如，由于态射复合的结合性 $p \ct (q \ct r) = (p \ct q) \ct r$ 本身是一个高维态射，
+因此需要一个额外的操作来关联各种结合性的证明：
+将 $p \ct (q \ct (r \ct s))$ 重新结合为 $((p \ct q) \ct r) \ct s$ 的各种方式
+产生了 Mac Lane 五边形\index{WuBianXing, Mac Lane@五边形, Mac Lane}。
+弱性还在层之间产生了非平凡的相互作用。
 
-Every topological space $X$ has a \emph{fundamental $\infty$-groupoid}
-\index{.WuQiongQunPei@$\infty$-群胚!JiChuDe@基础的}
-\index{JiChuDe@基础的!.infinity-groupoid@$\infty$-groupoid}
-whose
-$k$-mor\-ph\-isms are the $k$-dimen\-sional paths in $X$.  The weakness of the
-$\infty$-group\-oid corresponds directly to the fact that paths form a
-group only up to homotopy, with the $(k+1)$-paths serving as the
-homotopies between the $k$-paths.  Moreover, the view of a space as an
-$\infty$-groupoid preserves enough aspects of the space to do homotopy theory:
-the fundamental $\infty$-groupoid construction is adjoint\index{BanSui@伴随!HanZi@函子} to the
-geometric\index{geometric realization} realization of an $\infty$-groupoid as a space, and this
-adjunction preserves homotopy theory (this is called the \emph{homotopy
-  hypothesis/theorem},
-\index{hypothesis!TongLun@同伦}%
-\index{TongLun@同伦!hypothesis}%
-because whether it is a hypothesis or theorem
-depends on how you define $\infty$-groupoid).  For example, you can
-easily define the fundamental group of an $\infty$-groupoid, and if you
-calculate the fundamental group of the fundamental $\infty$-groupoid of
-a space, it will agree with the classical definition of fundamental
-group of that space.  Because of this correspondence, homotopy theory
-and higher-dimensional category theory are intimately related.
+每个拓扑空间 $X$ 都有一个\emph{基本 $\infty$-群胚}\index{.WuQiongQunPei@$\infty$-群胚!JiChuDe@基础的}
+\index{JiChuDe@基础的!.infinity-groupoid@$\infty$-groupoid}，
+其 $k$-态射是 $X$ 中的 $k$ 维道路。$\infty$-群胚的弱性直接对应于道路仅在同伦意义上形成一个群，
+其中 $(k+1)$-道路作为 $k$-道路之间的同伦。此外，将空间视为 $\infty$-群胚保留了足够的空间特性以进行同伦论的研究：
+基本 $\infty$-群胚构造伴随于\index{BanSui@伴随!HanZi@函子} $\infty$-群胚作为空间的几何实现\index{geometric realization}
+，并且这种伴随保留了同伦论。
+（这被称为\emph{同伦假设/定理}，\index{hypothesis!TongLun@同伦}\index{TongLun@同伦!hypothesis}
+因为它是一个假设还是定理取决于你如何定义 $\infty$-群胚）。
+例如，你可以轻松定义 $\infty$-群胚的基本群，
+如果你计算一个空间的基本 $\infty$-群胚的基本群，它将与该空间的基本群的经典定义一致。由于这种对应关系，同伦论和高维范畴论密切相关。
 
 \index{JingDianDe@经典的!TongLunLun@同伦论|)}%
 \index{higher category theory|)}%
 
 \mentalpause
 
-Now, in homotopy type theory each type can be seen to have the structure
-of an $\infty$-groupoid.  Recall that for any type $A$, and any $x,y:A$,
-we have an identity type $\id[A]{x}{y}$, also written $\idtype[A]{x}{y}$
-or just $x=y$.  Logically, we may think of elements of $x=y$ as evidence
-that $x$ and $y$ are equal, or as identifications of $x$ with
-$y$. Furthermore, type theory (unlike, say, first-order logic) allows us
-to consider such elements of $\id[A]{x}{y}$ also as individuals which
-may be the subjects of further propositions.  Therefore, we can
-\emph{iterate} the identity type: we can form the type
-$\id[{(\id[A]{x}{y})}]{p}{q}$ of identifications between
-identifications $p,q$, and the type
-$\id[{(\id[{(\id[A]{x}{y})}]{p}{q})}]{r}{s}$, and so on.  The structure
-of this tower of identity types corresponds precisely to that of the
-continuous paths and (higher) homotopies between them in a space, or an
-$\infty$-groupoid.\index{.WuQiongQunPei@$\infty$-群胚}
+现在，在同伦类型论中，每种类型都可以看作具有 $\infty$-群胚的结构。
+回想一下，对于任何类型 $A$，以及任何 $x,y:A$，我们都有一个恒等类型 $\id[A]{x}{y}$，
+也写作 $\idtype[A]{x}{y}$ 或简单写作 $x=y$。
+从逻辑上讲，我们可以将 $x=y$ 的元素视为 $x$ 和 $y$ 相等的证据，
+或者是 $x$ 与 $y$ 的同一性。此外，类型论（与一阶逻辑不同）允许我们将 $\id[A]{x}{y}$ 的这些元素也视为可以成为进一步命题的主体的个体。
+因此，我们可以\emph{迭代}恒等类型：我们可以形成 $\id[{(\id[A]{x}{y})}]{p}{q}$ 类型，
+表示 $p,q$ 之间的同一性，以及 $\id[{(\id[{(\id[A]{x}{y})}]{p}{q})}]{r}{s}$ 类型，
+以此类推。这种恒等类型塔的结构恰好对应于空间中的连续道路及其之间的（更高维的）同伦，
+或者是一个 $\infty$-群胚。\index{.WuQiongQunPei@$\infty$-群胚}
 
-
-Thus, we will frequently refer to an element $p : \id[A]{x}{y}$ as
-a \define{path}
-\index{DaoLu@道路}
-from $x$ to $y$; we call $x$ its \define{start point}
-\indexdef{start point of a path}
-\indexdef{DaoLu@道路!start point of}
-and $y$ its \define{end point}.
-\indexdef{end point of a path}
-\indexdef{DaoLu@道路!end point of}
-Two paths $p,q : \id[A]{x}{y}$ with the same start and end point are said to be \define{parallel},
-\indexdef{PingXingDaoLu@平行道路}
-\indexdef{DaoLu@道路!PingXingDe@平行的}
-in which case an element $r : \id[{(\id[A]{x}{y})}]{p}{q}$ can
-be thought of as a homotopy, or a morphism between morphisms;
-we will often refer to it as a \define{2-path}
-\indexdef{DaoLu@道路!2-}\indexsee{2-DaoLu@2-道路}{道路, 2-}%
-or a \define{2-dimensional path}.
-\index{dimension!of paths}%
-\indexsee{2WeiLuJing@2维路径}{道路, 2-}\indexsee{DaoLu@道路!2WeiDe@2维的}{道路, 2-}%
-Similarly, $\id[{(\id[{(\id[A]{x}{y})}]{p}{q})}]{r}{s}$ is the type of
-\define{3-dimensional paths}
-\indexdef{DaoLu@道路!3-}\indexsee{3-DaoLu@3-道路}{道路, 3-}\indexsee{3WeiDaoLu@3维道路}{道路, 3-}\indexsee{DaoLu@道路!3WeiDe@3维的}{道路, 3-}%
-between two parallel 2-dimensional paths, and so on.  If the
-type $A$ is ``set-like'', such as \nat, these iterated identity types
-will be uninteresting (see \cref{sec:basics-sets}), but in the
-general case they can model non-trivial homotopy types.
+因此，我们经常将一个元素 $p : \id[A]{x}{y}$ 称为从 $x$ 到 $y$ 的\define{道路}\index{DaoLu@道路}；
+我们称 $x$ 为其\define{起点}\indexdef{start point of a path}\indexdef{DaoLu@道路!start point of}，
+$y$ 为其\define{终点}\indexdef{end point of a path}\indexdef{DaoLu@道路!end point of}。
+具有相同起点和终点的两条道路 $p,q : \id[A]{x}{y}$ 被称为\define{平行的}道路
+\indexdef{PingXingDaoLu@平行道路}\indexdef{DaoLu@道路!PingXingDe@平行的}，
+在这种情况下，一个元素 $r : \id[{(\id[A]{x}{y})}]{p}{q}$ 可以被视为一个同伦，或者是态射之间的态射；
+我们通常将其称为\define{2-道路}\indexdef{DaoLu@道路!2-}\indexsee{2-DaoLu@2-道路}{道路, 2-}
+或者\define{二维道路}。
+\index{dimension!of paths}\indexsee{2WeiLuJing@2维道路}{道路, 2-}\indexsee{DaoLu@道路!2WeiDe@2维的}{道路, 2-}
+类似地，$\id[{(\id[{(\id[A]{x}{y})}]{p}{q})}]{r}{s}$ 是\define{三维道路}
+\indexdef{DaoLu@道路!3-}\indexsee{3-DaoLu@3-道路}{道路, 3-}
+\indexsee{3WeiDaoLu@3维道路}{道路, 3-}\indexsee{DaoLu@道路!3WeiDe@3维的}{道路, 3-}
+的类型，表示两条平行二维道路之间的道路，依此类推。如果类型 $A$ 是“集合状”的，
+例如 \nat, 那么这些迭代的恒等类型将是无趣的（参见第\ref{sec:basics-sets}节），但在一般情况下，它们可以对非平凡的同伦类型进行建模。
 
 %% (Obviously, the
 %% notation ``$\id[A]{x}{y}$'' has its limitations here.  The style
 %% $\idtype[A]{x}{y}$ is only slightly better in iterations:
 %% $\idtype[{\idtype[{\idtype[A]{x}{y}}]{p}{q}}]{r}{s}$.)
 
-An important difference between homotopy type theory and classical homotopy theory is that homotopy type theory provides a \emph{synthetic}
-\index{synthetic mathematics}%
-\index{geometry, synthetic}%
-\index{Euclid of Alexandria}%
-description of spaces, in the following sense. Synthetic geometry is geometry in the style of Euclid~\cite{Euclid}: one starts from some basic notions (points and lines), constructions (a line connecting any two points), and axioms
-(all right angles are equal), and deduces consequences logically.  This is in contrast with analytic
-\index{FenXiShuXue@分析数学}%
-geometry, where notions such as points and lines are represented concretely using cartesian coordinates in $\R^n$ --- lines are sets of points --- and the basic constructions and axioms are derived from this representation.  While classical homotopy theory is analytic (spaces and paths are made of points), homotopy type theory is synthetic: points, paths, and paths between paths are basic, indivisible, primitive notions.
+同伦类型论与经典同伦论的一个重要区别在于，同伦类型论提供了一种\emph{综合的}
+\index{synthetic mathematics}\index{geometry, synthetic}\index{Euclid of Alexandria}
+方式来描述空间。``综合''的含义如下:
+综合几何是欧几里得风格的几何\cite{Euclid}：
+从一些基本概念（点和线）、构造（连接任意两个点的线）和公理（所有直角相等）开始，逻辑推导出结果。
+这与解析几何\index{FenXiShuXue@分析数学} 形成对比，
+后者使用笛卡尔坐标在 $\R^n$ 中具体表示点和线等概念——线是点的集合——并且基本构造和公理是从这种表示中推导出来的。
+虽然经典同伦论是解析的（空间和道路由点构成），
+但同伦类型论是综合的：点、道路和道路之间道路是的基本、不可分割的原始概念。
+此外，同伦类型论的一个惊人之处在于，所有基本构造和公理——所有更高的群胚结构——都是从恒等类型的归纳原理自动产生的。
 
-Moreover, one of the amazing things about homotopy type theory is that all of the basic constructions and axioms --- all of the
-higher groupoid structure --- arises automatically from the induction
-principle for identity types.
-Recall from \cref{sec:identity-types} that this says that if
+回想一下，恒等类型的归纳原理指的是，如果
 \begin{itemize}
-\item for every $x,y:A$ and every $p:\id[A]xy$ we have a type $D(x,y,p)$, and
-\item for every $a:A$ we have an element $d(a):D(a,a,\refl a)$,
+\item 对于每个 $x,y:A$ 和每个 $p:\id[A]xy$，我们都有一个类型 $D(x,y,p)$，以及
+\item 对于每个 $a:A$，我们都有一个元素 $d(a):D(a,a,\refl a)$，
 \end{itemize}
-then
+那么
 \begin{itemize}
-\item there exists an element $\indid{A}(D,d,x,y,p):D(x,y,p)$ for \emph{every} two elements $x,y:A$ and $p:\id[A]xy$, such that $\indid{A}(D,d,a,a,\refl a) \jdeq d(a)$.
+\item 对于\emph{每一对}元素 $x,y:A$ 和 $p:\id[A]xy$，
+存在一个元素 $\indid{A}(D,d,x,y,p):D(x,y,p)$，使得 $\indid{A}(D,d,a,a,\refl a) \jdeq d(a)$。
 \end{itemize}
-In other words, given dependent functions
+换句话说，给定依值函数
 \begin{align*}
 D & :\prd{x,y:A} (\id{x}{y}) \to \type\\
 d & :\prd{a:A} D(a,a,\refl{a})
 \end{align*}
-there is a dependent function
+存在一个依值函数
 \[\indid{A}(D,d):\prd{x,y:A}{p:\id{x}{y}} D(x,y,p)\]
-such that
+使得
 \begin{equation}\label{eq:Jconv}
 \indid{A}(D,d,a,a,\refl{a})\jdeq d(a)
 \end{equation}
-for every $a:A$.
-Usually, every time we apply this induction rule we will either not care about the specific function being defined, or we will immediately give it a different name.
+对于每个 $a:A$。
+通常，每次应用这个归纳原理时，我们要么不关心正在定义的特定函数，要么立即给它一个不同的名字。
 
-Informally, the induction principle for identity types says that if we want to construct an object (or prove a statement) which depends on an inhabitant $p:\id[A]xy$ of an identity type, then it suffices to perform the construction (or the proof) in the special case when $x$ and $y$ are the same (judgmentally) and $p$ is the reflexivity element $\refl{x}:x=x$ (judgmentally).
-When writing informally, we may express this with a phrase such as ``by induction, it suffices to assume\dots''.
-This reduction to the ``reflexivity case'' is analogous to the reduction to the ``base case'' and ``inductive step'' in an ordinary proof by induction on the natural numbers, and also to the ``left case'' and ``right case'' in a proof by case analysis on a disjoint union or disjunction.\index{GuiNaFa@归纳法!for identity type}%
+非正式地说，恒等类型的归纳原理表示，如果我们想要构造一个对象（或证明一个命题），
+它依赖于恒等类型的某个成员 $p:\id[A]xy$，
+那么只需在 $x$ 和 $y$ 相同（判断上）且 $p$ 是反射元 $\refl{x}:x=x$（判断上）的特殊情况下执行构造（或证明）即可。
+在非正式写作中，我们可以用诸如“通过归纳，假设\dots”之类的短语来表达这一点。
+这种对“反射情况”的简化类似于对自然数的普通归纳证明中的“基本情况”和“归纳步骤”的简化，
+以及对无交并或析取的“左侧”和“右侧”情况的简化证明。\index{GuiNaFa@归纳法!for identity type}%
 
 
-The ``conversion rule''~\eqref{eq:Jconv} is less familiar in the context of proof by induction on natural numbers, but there is an analogous notion in the related concept of definition by recursion.
-If a sequence\index{sequence} $(a_n)_{n\in \mathbb{N}}$ is defined by giving $a_0$ and specifying $a_{n+1}$ in terms of $a_n$, then in fact the $0^{\mathrm{th}}$ term of the resulting sequence \emph{is} the given one, and the given recurrence relation relating $a_{n+1}$ to $a_n$ holds for the resulting sequence.
-(This may seem so obvious as to not be worth saying, but if we view a definition by recursion as an algorithm\index{SuanFa@算法} for calculating values of a sequence, then it is precisely the process of executing that algorithm.)
-The rule~\eqref{eq:Jconv} is analogous: it says that if we define an object $f(p)$ for all $p:x=y$ by specifying what the value should be when $p$ is $\refl{x}:x=x$, then the value we specified is in fact the value of $f(\refl{x})$.
+“转换规则”~\eqref{eq:Jconv} 在自然数的归纳证明中并不常见，
+但在递归定义的相关概念中有类似的概念。
+如果通过给定 $a_0$ 并根据 $a_n$ 中的 $a_{n-1}$ 指定 $a_{n}$ 来定义一个序列\index{sequence} $(a_n)_{n\in \mathbb{N}}$，
+那么实际上，所得到序列的第 $0$ 项就是给定的那一项，而给定的递推关系也适用于所得到的序列。
+（这可能看起来是显而易见的，甚至不值得一提，但如果我们将递归定义视为计算序列值的算法\index{SuanFa@算法}，那么这正是执行该算法的过程。）
+规则~\eqref{eq:Jconv} 类似：它表示，如果我们为所有 $p:x=y$ 定义一个对象 $f(p)$，
+通过指定当 $p$ 为 $\refl{x}:x=x$ 时值应该是什么，那么我们指定的值实际上就是 $f(\refl{x})$ 的值。
 
-This induction principle endows each type with the structure of an $\infty$-groupoid\index{.WuQiongQunPei@$\infty$-群胚}, and each function between two types with the structure of an $\infty$-functor\index{.infinity-functor@$\infty$-functor} between two such groupoids.  This is interesting from a mathematical point of view, because it gives a new way to work with
-$\infty$-groupoids.  It is interesting from a type-theoretic point of view, because it reveals new operations that are associated with each type and function.  In the remainder of this chapter, we begin to explore this structure.
+这个归纳原理赋予每种类型 $\infty$-群胚的结构\index{.WuQiongQunPei@$\infty$-群胚}，
+而两个类型之间的每个函数则具有 $\infty$-函子\index{.infinity-functor@$\infty$-functor} 的结构。 
+这从数学的角度来看很有趣，因为它提供了一种新的方式来处理 $\infty$-群胚。
+从类型理论的角度来看，它揭示了与每种类型和函数相关联的新操作。 
+我们将在本章的其余部分开始探索这种结构。
 
-\section{Types are higher groupoids}
+\section{类型即高阶群胚}
 \label{sec:equality}
 
-\index{LeiXing@类型!identity|(}%
-\index{DaoLu@道路|(}%
-\index{.WuQiongQunPei@$\infty$-群胚!structure of a type|(}%
-We now derive from the induction principle the beginnings of the structure of a higher groupoid.
-We begin with symmetry of equality, which, in topological language, means that ``paths can be reversed''.
+\index{type!identity|(}%
+\index{path|(}%
+\index{.infinity-groupoid@$\infty$-groupoid!structure of a type|(}%
+我们现在从归纳原理推导出高阶群胚结构的开端。我们首先从等式的对称性开始，在拓扑语言中，这意味着``道路可以被反转''。
+
 
 \begin{lem}\label{lem:opp}
-  For every type $A$ and every $x,y:A$ there is a function
+  对于每个类型 $A$ 和每个 $x, y:A$, 存在一个函数
   \begin{equation*}
     (x= y)\to(y= x)
   \end{equation*}
-  denoted $p\mapsto \opp{p}$, such that $\opp{\refl{x}}\jdeq\refl{x}$ for each $x:A$.
-  We call $\opp{p}$ the \define{inverse} of $p$.
-  \indexdef{DaoLu@道路!inverse}%
+  记为 $p\mapsto \opp{p}$, 使得对每个 $x:A$ 有 $\opp{\refl{x}}\jdeq\refl{x}$。我们称 $\opp{p}$ 为 $p$ 的\define{逆}。
+  \indexdef{path!inverse}%
   \indexdef{inverse!of path}%
-  \index{equality!symmetry of}%a
-  \index{symmetry!XiangDengXingDe@相等性的}%
+  \index{equality!symmetry of}%
+  \index{symmetry!of equality}%
 \end{lem}
 
-Since this is our first time stating something as a ``Lemma'' or ``Theorem'', let us pause to consider what that means.
-Recall that propositions (statements susceptible to proof) are identified with types, whereas lemmas and theorems (statements that have been proven) are identified with \emph{inhabited} types.
-Thus, the statement of a lemma or theorem should be translated into a type, as in \cref{sec:pat}, and its proof translated into an inhabitant of that type.
-According to the interpretation of the universal quantifier ``for every'', the type corresponding to \cref{lem:opp} is
+由于这是我们第一次将某事物陈述为``引理''或``定理'', 让我们暂停一下以考虑这意味着什么。
+回想一下, 命题(可证明的陈述)被等同于类型, 而引理和定理(已被证明的陈述)被等同于\emph{被居留}的类型。
+因此, 引理或定理的陈述应被翻译为一个类型, 如\S\ref{sec:pat}所述, 而其证明被翻译为该类型的一个居留元。
+根据全称量词``对于每个''的解释, 对应引理\ref{lem:opp}的类型是
 \[ \prd{A:\UU}{x,y:A} (x= y)\to(y= x). \]
-The proof of \cref{lem:opp} will consist of constructing an element of this type, i.e.\ deriving the judgment $f:\prd{A:\UU}{x,y:A} (x= y)\to(y= x)$ for some $f$.
-We then introduce the notation $\opp{(\blank)}$ for this element $f$, in which the arguments $A$, $x$, and $y$ are omitted and inferred from context.
-(As remarked in \cref{sec:types-vs-sets}, the secondary statement ``$\opp{\refl{x}}\jdeq\refl{x}$ for each $x:A$'' should be regarded as a separate judgment.)
+引理\ref{lem:opp}的证明将包括构造该类型的一个元素, 
+即对某个 $f$ 推导判断 $f:\prd{A:\UU}{x,y:A} (x= y)\to(y= x)$。
+然后我们引入记号 $\opp{(\blank)}$ 表示这个元素 $f$, 其中参数 $A$, $x$ 和 $y$ 被省略并从上下文推断。
+(如\S\ref{sec:types-vs-sets}所述, 次要陈述``对每个 $x:A$ 有 $\opp{\refl{x}}\jdeq\refl{x}$''应被视为一个独立的判断。)
 
-\begin{proof}[First proof]
-  Assume given $A:\UU$, and
-  let $D:\prd{x,y:A}(x= y) \to \type$ be the type family defined by $D(x,y,p)\defeq (y= x)$.
-  In other words, $D$ is a function assigning to any $x,y:A$ and $p:x=y$ a type, namely the type $y=x$.
-  Then we have an element
+\begin{proof}[第一证明]
+  假设给定 $A:\UU$, 并令 $D:\prd{x,y:A}(x= y) \to \type$ 为类型族, 定义为 $D(x,y,p)\defeq (y= x)$。
+  换句话说, $D$ 是一个函数, 给任何 $x,y:A$ 和 $p:x=y$ 分配一个类型, 即类型 $y=x$。那么我们有一个元素
   \begin{equation*}
     d\defeq \lam{x} \refl{x}:\prd{x:A} D(x,x,\refl{x}).
   \end{equation*}
-  Thus, the induction principle for identity types gives us an element
+  因此, 恒等类型的归纳原理给我们一个元素
   \narrowequation{ \indid{A}(D,d,x,y,p): (y= x)}
-  for each $p:(x= y)$.
-  We can now define the desired function $\opp{(\blank)}$ to be $\lam{p} \indid{A}(D,d,x,y,p)$, i.e.\ we set $\opp{p} \defeq \indid{A}(D,d,x,y,p)$.
-  The conversion rule~\eqref{eq:Jconv} gives $\opp{\refl{x}}\jdeq \refl{x}$, as required.
+  对每个 $p:(x= y)$。我们现在可以定义所需的函数 $\opp{(\blank)}$ 为 $\lam{p} \indid{A}(D,d,x,y,p)$, 
+  即我们设 $\opp{p} \defeq \indid{A}(D,d,x,y,p)$。转换规则~\eqref{eq:Jconv} 给出 $\opp{\refl{x}}\jdeq \refl{x}$, 这正是我们所需。
 \end{proof}
 
-We have written out this proof in a very formal style, which may be helpful while the induction rule on identity types is unfamiliar.
-To be even more formal, we could say that \cref{lem:opp} and its proof together consist of the judgment
+
+我们以非常形式化的风格写出了这个证明, 这在恒等类型的归纳规则还不熟悉时可能有所帮助。
+为了更加形式化, 我们可以说引理\ref{lem:opp}及其证明一起由判断
 \begin{narrowmultline*}
   \lam{A}{x}{y}{p} \indid{A}((\lam{x}{y}{p} (y=x)), (\lam{x} \refl{x}), x, y, p)
   \narrowbreak : \prd{A:\UU}{x,y:A} (x= y)\to(y= x)
 \end{narrowmultline*}
-(along with an additional equality judgment).
-However, eventually we prefer to use more natural language, such as in the following equivalent proof.
+(以及一个额外的相等判断)组成。然而, 最终我们更喜欢使用更自然的语言, 如下面的等价证明。
 
-\begin{proof}[Second proof]
-  We want to construct, for each $x,y:A$ and $p:x=y$, an element $\opp{p}:y=x$.
-  By induction, it suffices to do this in the case when $y$ is $x$ and $p$ is $\refl{x}$.
-  But in this case, the type $x=y$ of $p$ and the type $y=x$ in which we are trying to construct $\opp{p}$ are both simply $x=x$.
-  Thus, in the ``reflexivity case'', we can define $\opp{\refl{x}}$ to be simply $\refl{x}$.
-  The general case then follows by the induction principle, and the conversion rule $\opp{\refl{x}}\jdeq\refl{x}$ is precisely the proof in the reflexivity case that we gave.
+\begin{proof}[第二证明]
+  我们想要对每个 $x,y:A$ 和 $p:x=y$, 构造一个元素 $\opp{p}:y=x$。
+  通过归纳, 只需在 $y$ 是 $x$ 且 $p$ 是 $\refl{x}$ 的情况下进行。
+  但在这种情况下, $p$ 的类型 $x=y$ 和我们试图构造 $\opp{p}$ 的类型 $y=x$ 都简化为 $x=x$。
+  因此, 在``自反性情况''下, 我们可以定义 $\opp{\refl{x}}$ 为简单的 $\refl{x}$。
+  一般情况随后由归纳原理得出, 而转换规则 $\opp{\refl{x}}\jdeq\refl{x}$ 正是我们在自反性情况下给出的证明。
 \end{proof}
 
-We will write out the next few proofs in both styles, to help the reader become accustomed to the latter one.
-Next we prove the transitivity of equality, or equivalently we ``concatenate paths''.
+我们将以两种风格写出接下来的几个证明, 以帮助读者熟悉后一种风格。接下来我们证明等式的传递性, 或等价的, ``道路的连接''。
 
 \begin{lem}\label{lem:concat}
-  For every type $A$ and every $x,y,z:A$ there is a function
+  对于每个类型 $A$ 和每个 $x,y,z:A$, 存在一个函数
   \begin{equation*}
   (x= y) \to   (y= z)\to (x=  z),
   \end{equation*}
-  written $p \mapsto q \mapsto p\ct q$, such that $\refl{x}\ct \refl{x}\jdeq \refl{x}$ for any $x:A$.
-  We call $p\ct q$ the \define{concatenation} or \define{composite} of $p$ and $q$.
-  \indexdef{DaoLu@道路!LianJie@连接}%
-  \indexdef{DaoLu@道路!FuHe@复合}%
-  \indexdef{DaoLuDeLianJie@道路的连接}%
-  \indexdef{FuHe@复合!of paths}%
+  记为 $p \mapsto q \mapsto p\ct q$, 使得对任何 $x:A$ 有 $\refl{x}\ct \refl{x}\jdeq \refl{x}$。
+  我们称 $p\ct q$ 为 $p$ 和 $q$ 的\define{连接}或\define{复合}。
+  \indexdef{path!concatenation}%
+  \indexdef{path!composite}%
+  \indexdef{concatenation of paths}%
+  \indexdef{composition!of paths}%
   \index{equality!transitivity of}%
-  \index{transitivity!XiangDengXingDe@相等性的}%
+  \index{transitivity!of equality}%
 \end{lem}
 
-Note that we choose to notate path concatenation in the opposite order from function composition: from $p:x=y$ and $q:y=z$ we get $p\ct q : x=z$, whereas from $f:A\to B$ and $g:B\to C$ we get $g\circ f : A\to C$ (see \cref{ex:composition}).
+注意我们选择以与函数复合相反的顺序记法道路连接: 从 $p:x=y$ 和 $q:y=z$ 我们得到 $p\ct q : x=z$, 
+而从 $f:A\to B$ 和 $g:B\to C$ 我们得到 $g\circ f : A\to C$ (见练习\ref{ex:composition})。
 
-\begin{proof}[First proof]
-  The desired function has type $\prd{x,y,z:A} (x= y) \to   (y= z)\to (x=  z)$.
-  We will instead define a function with the equivalent type $\prd{x,y:A} (x= y) \to \prd{z:A} (y= z)\to (x=  z)$, which allows us to apply path induction twice.
-  Let $D:\prd{x,y:A} (x=y) \to \type$ be the type family
+\begin{proof}[第一证明]
+  所需函数的类型为 $\prd{x,y,z:A} (x= y) \to   (y= z)\to (x=  z)$。
+  我们将改为定义一个具有等价类型 $\prd{x,y:A} (x= y) \to \prd{z:A} (y= z)\to (x=  z)$ 的函数, 
+  这允许我们应用两次道路归纳。令 $D:\prd{x,y:A} (x=y) \to \type$ 为类型族
   \begin{equation*}
     D(x,y,p)\defeq \prd{z:A}{q:y=z} (x=z).
   \end{equation*}
-  Note that $D(x,x,\refl x) \jdeq \prd{z:A}{q:x=z} (x=z)$.
-  Thus, in order to apply the induction principle for identity types to this $D$, we need a function of type
+  注意 $D(x,x,\refl x) \jdeq \prd{z:A}{q:x=z} (x=z)$。因此, 为了将恒等类型的归纳原理应用于这个 $D$, 我们需要一个类型为
   \begin{equation}\label{eq:concatD}
     \prd{x:A} D(x,x,\refl{x})
   \end{equation}
-  which is to say, of type
+  的函数, 也就是说, 类型为
   \[ \prd{x,z:A}{q:x=z} (x=z). \]
-  Now let $E:\prd{x,z:A}{q:x=z}\type$ be the type family $E(x,z,q)\defeq (x=z)$.
-  Note that $E(x,x,\refl x) \jdeq (x=x)$.
-  Thus, we have the function
+  现在令 $E:\prd{x,z:A}{q:x=z}\type$ 为类型族 $E(x,z,q)\defeq (x=z)$。注意 $E(x,x,\refl x) \jdeq (x=x)$。因此, 我们有函数
   \begin{equation*}
     e(x) \defeq \refl{x} : E(x,x,\refl{x}).
   \end{equation*}
-  By the induction principle for identity types applied to $E$, we obtain a function
+  通过将恒等类型的归纳原理应用于 $E$, 我们获得一个函数
   \begin{equation*}
     d : \prd{x,z:A}{q:x=z} E(x,z,q).
   \end{equation*}
-  But $E(x,z,q)\jdeq (x=z)$, so the type of $d$ is~\eqref{eq:concatD}.
-  Thus, we can use this function $d$ and apply the induction principle for identity types to $D$, to obtain our desired function of type
+  但 $E(x,z,q)\jdeq (x=z)$, 所以 $d$ 的类型是~\eqref{eq:concatD}。
+  因此, 我们可以使用这个函数 $d$ 并将恒等类型的归纳原理应用于 $D$, 以获得我们所需的类型为
   \begin{equation*}
     \prd{x,y:A} (x= y) \to \prd{z:A} (y= z)\to (x=  z)
   \end{equation*}
-  and hence $\prd{x,y,z:A} (y=z) \to (x=y) \to (x=z)$.
-  The conversion rules for the two induction principles give us $\refl{x}\ct \refl{x}\jdeq \refl{x}$ for any $x:A$.
+  的函数, 从而得到 $\prd{x,y,z:A} (y=z) \to (x=y) \to (x=z)$。
+  两个归纳原理的转换规则给我们对任何 $x:A$ 有 $\refl{x}\ct \refl{x}\jdeq \refl{x}$。
 \end{proof}
 
-\begin{proof}[Second proof]
-  We want to construct, for every $x,y,z:A$ and every $p:x=y$ and $q:y=z$, an element of $x=z$.
-  By induction on $p$, it suffices to assume that $y$ is $x$ and $p$ is $\refl{x}$.
-  In this case, the type $y=z$ of $q$ is $x=z$.
-  Now by induction on $q$, it suffices to assume also that $z$ is $x$ and $q$ is $\refl{x}$.
-  But in this case, $x=z$ is $x=x$, and we have $\refl{x}:(x=x)$.
+\begin{proof}[第二证明]
+  我们想要对每个 $x,y,z:A$ 和每个 $p:x=y$ 和 $q:y=z$, 构造一个 $x=z$ 的元素。
+  通过对 $p$ 归纳, 只需假设 $y$ 是 $x$ 且 $p$ 是 $\refl{x}$。
+  在这种情况下, $q$ 的类型 $y=z$ 是 $x=z$。现在通过对 $q$ 归纳, 只需进一步假设 $z$ 是 $x$ 且 $q$ 是 $\refl{x}$。
+  但在这种情况下, $x=z$ 是 $x=x$, 而我们拥有 $\refl{x}:(x=x)$。
 \end{proof}
 
-The reader may well feel that we have given an overly convoluted proof of this lemma.
-In fact, we could stop after the induction on $p$, since at that point what we want to produce is an equality $x=z$, and we already have such an equality, namely $q$.
-Why do we go on to do another induction on $q$?
+读者很可能会觉得我们给出的这个引理的证明过于复杂。实际上, 我们可以在对 $p$ 归纳之后停止, 因为在那个点我们想要产生的是一个等式 $x=z$, 而我们已经有这样一个等式, 即 $q$。
+为什么我们继续对 $q$ 做另一个归纳?
 
-The answer is that, as described in the introduction, we are doing \emph{proof-relevant} mathematics.
+答案是, 如引言中所述, 我们正在做\emph{证明相关}的数学。
 \index{mathematics!proof-relevant}%
-When we prove a lemma, we are defining an inhabitant of some type, and it can matter what \emph{specific} element we defined in the course of the proof, not merely the type inhabited by that element (that is, the \emph{statement} of the lemma).
-\cref{lem:concat} has three obvious proofs: we could do induction over $p$, induction over $q$, or induction over both of them.
-If we proved it three different ways, we would have three different elements of the same type.
-It's not hard to show that these three elements are equal (see \cref{ex:basics:concat}), but as they are not \emph{definitionally} equal, there can still be reasons to prefer one over another.
+当我们证明一个引理时, 我们正在定义某个类型的一个居留元, 并且我们在证明过程中定义的\emph{特定}元素可能是重要的, 而不仅仅是该元素所居留的类型(即引理的\emph{陈述})。
+引理\ref{lem:concat}有三个明显的证明: 我们可以对 $p$ 归纳, 对 $q$ 归纳, 或者对两者都归纳。
+如果我们用三种不同的方式证明它, 我们将得到同一类型的三个不同元素。不难证明这三个元素是相等的(见练习\ref{ex:basics:concat}), 
+但由于它们不是\emph{定义性}相等的, 仍然可能有理由偏好其中一个而非另一个。
 
-In the case of \cref{lem:concat}, the difference hinges on the computation rule.
-If we proved the lemma using a single induction over $p$, then we would end up with a computation rule of the form $\refl{y} \ct q \jdeq q$.
-If we proved it with a single induction over $q$, we would have instead $p\ct\refl{y}\jdeq p$, while proving it with a double induction (as we did) gives only $\refl{x}\ct\refl{x} \jdeq \refl{x}$.
+在引理\ref{lem:concat}的情况下, 差异取决于计算规则。如果我们使用对 $p$ 的单次归纳来证明引理, 那么我们将得到形式为 $\refl{y} \ct q \jdeq q$ 的计算规则。
+如果我们使用对 $q$ 的单次归纳来证明它, 我们将得到 $p\ct\refl{y}\jdeq p$, 而使用双重归纳(如我们所做的)证明则只给出 $\refl{x}\ct\refl{x} \jdeq \refl{x}$。
 
-\index{mathematics!XingShiHuaDe@形式化的}%
-The asymmetrical computation rules can sometimes be convenient when doing formalized mathematics, as they allow the computer to simplify more things automatically.
-However, in informal mathematics, and arguably even in the formalized case, it can be confusing to have a concatenation operation which behaves asymmetrically and to have to remember which side is the ``special'' one.
-Treating both sides symmetrically makes for more robust proofs; this is why we have given the proof that we did.
-(However, this is admittedly a stylistic choice.)
+\index{mathematics!formalized}%
+不对称的计算规则在进行形式化数学时有时是方便的, 因为它们允许计算机自动简化更多东西。然而, 在非形式化数学中, 并且可以说即使在形式化的情况下, 
+拥有一个行为不对称的连接操作并且必须记住哪一边是``特殊的''可能会令人困惑。对称地对待两边可以产生更稳健的证明; 这就是为什么我们给出了我们所做的证明。
+(然而, 必须承认的是, 这只是一个风格选择。)
 
-The table below summarizes the ``equality'', ``homotopical'', and ``higher-groupoid" points of view on what we have done so far.
+\index{mathematics!formalized}% The asymmetrical computation rules can sometimes be convenient when doing formalized mathematics, as they allow the computer to simplify more things automatically. However, in informal mathematics, and arguably even in the formalized case, it can be confusing to have a concatenation operation which behaves asymmetrically and to have to remember which side is the``special'' one. Treating both sides symmetrically makes for more robust proofs; this is why we have given the proof that we did. (However, this is admittedly a stylistic choice.)
+
+下表总结了我们到目前为止所做的``等式''、``同伦''和``高阶群胚''观点。
 \begin{center}
   \medskip
   \begin{tabular}{ccc}
     \toprule
-    Equality & Homotopy & $\infty$-Groupoid\\
+    等式 & 同伦 & $\infty$-群胚\\
     \midrule
-    reflexivity\index{equality!reflexivity of} & constant path & identity morphism\\
-    symmetry\index{equality!symmetry of} & inversion of paths & inverse morphism\\
-    transitivity\index{equality!transitivity of} & concatenation of paths & composition of morphisms\\
+    自反性\index{equality!reflexivity of} & 常道路 & 恒等态射\\
+    对称性\index{equality!symmetry of} & 道路的逆 & 逆态射\\
+    传递性\index{equality!transitivity of} & 道路的连接 & 态射的复合\\
     \bottomrule
   \end{tabular}
   \medskip
 \end{center}
 
-In practice, transitivity is often applied to prove an equality by a chain of intermediate steps.
-We will use the common notation for this such as $a=b=c=d$.
-If the intermediate expressions are long, or we want to specify the witness of each equality, we may write
+在实践中, 传递性的应用通常为由一系列中间步骤来证明一个等式。我们将使用常见的记号来表示这一点, 例如 $a=b=c=d$。如果中间表达式很长, 或者我们想要指定每个等式的见证, 我们则可以写成
 \begin{align*}
-  a &= b & \text{(by $p$)}\\ &= c &\text{(by $q$)} \\ &= d &\text{(by $r$)}.
+  a &= b & \text{(由 $p$)}\\ &= c &\text{(由 $q$)} \\ &= d &\text{(由 $r$)}.
 \end{align*}
-In either case, the notation indicates construction of the element $(p\ct q)\ct r: (a=d)$.
-(We choose left-associativity for concreteness, although in view of \cref{thm:omg}\ref{item:omg4} below it makes little difference.)
-If it should happen that $b$ and $c$, say, are judgmentally equal, then we may write
+在任一种情况下, 该记号表示构造元素 $(p\ct q)\ct r: (a=d)$。(为了具体性, 我们选择左结合, 尽管考虑到下面的定理\ref{thm:omg}\ref{item:omg4}, 这几乎没有区别。)
+如果碰巧 $b$ 和 $c$ 是判断相等的, 那么我们可以写成
 \begin{align*}
   a &= b & \text{(by $p$)}\\ &\jdeq c \\ &= d &\text{(by $r$)}
 \end{align*}
-to indicate construction of $p\ct r : (a=d)$.
-We also follow common mathematical practice in not requiring the justifications in this notation (``by $p$'' and ``by $r$'') to supply the exact witness needed; instead we allow them to simply mention the most important (or least obvious) ingredient in constructing that witness.
-For instance, if ``Lemma A'' states that for all $x$ and $y$ we have $f(x)=g(y)$, then we may write ``by Lemma A'' as a justification for the step $f(a) = g(b)$, trusting the reader to deduce that we apply Lemma A with $x\defeq a$ and $y\defeq b$.
-We may also omit a justification entirely if we trust the reader to be able to guess it.
+来表示构造 $p\ct r : (a=d)$。我们还遵循常见的数学实践, 不要求此记号中的理由(``by $p$'' 和 ``by $r$'')提供所需的精确见证; 
+相反, 我们允许它们仅仅提及构造该见证中最重要(或最不显然)的部分。例如, 如果``引理 A''陈述了对所有 $x$ 和 $y$ 我们有 $f(x)=g(y)$, 
+那么我们可以将``由引理 A''作为步骤 $f(a) = g(b)$ 的理由, 相信读者能推断出我们应用引理 A 时取 $x\defeq a$ 和 $y\defeq b$。
+如果我们相信读者能够猜出理由, 我们也可以完全省略理由。
 
-Now, because of proof-relevance, we can't stop after proving ``symmetry'' and ``transitivity'' of equality: we need to know that these \emph{operations} on equalities are well-behaved.
-(This issue is invisible in set theory, where symmetry and transitivity are mere \emph{properties} of equality, rather than structure on
-paths.)
-From the homotopy-theoretic point of view, concatenation and inversion are just the ``first level'' of higher groupoid structure --- we also need coherence\index{coherence} laws on these operations, and analogous operations at higher dimensions.
-For instance, we need to know that concatenation is \emph{associative}, and that inversion provides \emph{inverses} with respect to concatenation.
+现在, 由于证明相关性, 我们不能在证明了等式的``对称性''和``传递性''之后就停止: 我们需要知道这些等式上的\emph{操作}是良行为的。
+(这个问题在集合论中是看不见的, 在集合论中对称性和传递性仅仅是等式的\emph{性质}, 而不是道路上的结构。)
+从同伦论的观点来看, 连接和逆仅仅是高阶群胚结构的``第一层''——我们还需要这些操作上的融贯\index{coherence}律, 以及更高维的类似操作。
+例如, 我们需要知道连接是\emph{结合的}, 并且逆关于连接提供了\emph{逆元}。
 
-\begin{lem}\label{thm:omg}%[The $\omega$-groupoid structure of types]
-  \index{JieHeXing@结合性!of path concatenation}%
-  \index{unit!DaoLuLianJieLv@道路连接律}%
-  Suppose $A:\type$, that $x,y,z,w:A$ and that $p:x= y$ and $q:y = z$ and $r:z=w$.
-  We have the following:
+\begin{lem}\label{thm:omg}%[类型的 $\omega$-群胚结构]
+  \index{associativity!of path concatenation}%
+  \index{unit!law for path concatenation}%
+  假设 $A:\type$, 且 $x,y,z,w:A$ 以及 $p:x= y$, $q:y = z$, $r:z=w$。我们有以下内容:
   \begin{enumerate}
-  \item $p= p\ct \refl{y}$ and $p = \refl{x} \ct p$.\label{item:omg1}
-  \item $\opp{p}\ct p=  \refl{y}$ and $p\ct \opp{p}= \refl{x}$.\label{item:omg2}
+  \item $p= p\ct \refl{y}$ 且 $p = \refl{x} \ct p$.\label{item:omg1}
+  \item $\opp{p}\ct p=  \refl{y}$ 且 $p\ct \opp{p}= \refl{x}$.\label{item:omg2}
   \item $\opp{(\opp{p})}= p$.\label{item:omg3}
   \item $p\ct (q\ct r)=  (p\ct q)\ct r$.\label{item:omg4}
   \end{enumerate}
 \end{lem}
 
-Note, in particular, that \ref{item:omg1}--\ref{item:omg4} are themselves propositional equalities, living in the identity types \emph{of} identity types, such as $p=_{x=y}q$ for $p,q:x=y$.
-Topologically, they are \emph{paths of paths}, i.e.\ homotopies.
-It is a familiar fact in topology that when we concatenate a path $p$ with the reversed path $\opp p$, we don't literally obtain a constant path (which corresponds to the equality $\refl{}$ in type theory) --- instead we have a homotopy, or higher path, from $p\ct\opp p$ to the constant path.
+特别要注意, \ref{item:omg1}--\ref{item:omg4} 本身是命题等式, 居于恒等类型\emph{的}恒等类型中, 例如对 $p,q:x=y$ 有 $p=_{x=y}q$。
+在拓扑上, 它们是\emph{道路的道路}, 即同伦。在拓扑学中有一个熟悉的事实, 当我们将一条道路 $p$ 与反转的道路 $\opp p$ 连接时, 
+我们并没有得到一条字面意义上的常道路(对应于类型论中的等式 $\refl{}$)——相反, 我们有一个从 $p\ct\opp p$ 到常道路的同伦, 或更高阶的道路。
 
-\begin{proof}[Proof of~\cref{thm:omg}]
-  All the proofs use the induction principle for equalities.
+\begin{proof}[定理\ref{thm:omg}的证明]
+  所有证明都使用等式的归纳原理。
   \begin{enumerate}
-  \item \emph{First proof:} let $D:\prd{x,y:A} (x=y) \to \type$ be the type family given by
+  \item \emph{第一证明:} 令 $D:\prd{x,y:A} (x=y) \to \type$ 为由下式给出的类型族
     \begin{equation*}
       D(x,y,p)\defeq (p= p\ct \refl{y}).
     \end{equation*}
-    Then $D(x,x,\refl{x})$ is $\refl{x}=\refl{x}\ct\refl{x}$.
-    Since $\refl{x}\ct\refl{x}\jdeq\refl{x}$, it follows that $D(x,x,\refl{x})\jdeq (\refl{x}=\refl{x})$.
-    Thus, there is a function
+    那么 $D(x,x,\refl{x})$ 是 $\refl{x}=\refl{x}\ct\refl{x}$。由于 $\refl{x}\ct\refl{x}\jdeq\refl{x}$, 可得 $D(x,x,\refl{x})\jdeq (\refl{x}=\refl{x})$。因此, 存在一个函数
     \begin{equation*}
       d\defeq\lam{x} \refl{\refl{x}}:\prd{x:A} D(x,x,\refl{x}).
     \end{equation*}
-    Now the induction principle for identity types gives an element $\indid{A}(D,d,x,y,p):(p= p\ct\refl{y})$ for each $p:x= y$.
-    The other equality is proven similarly.
+    现在恒等类型的归纳原理对每个 $p:x= y$ 给出一个元素 $\indid{A}(D,d,x,y,p):(p= p\ct\refl{y})$。另一个等式类似地证明。
 
     \mentalpause
 
     \noindent
-    \emph{Second proof:} by induction on $p$, it suffices to assume that $y$ is $x$ and that $p$ is $\refl x$.
-    But in this case, we have $\refl{x}\ct\refl{x}\jdeq\refl{x}$.
-  \item \emph{First proof:} let $D:\prd{x,y:A} (x=y) \to \type$ be the type family given by
+    \emph{第二证明:} 通过对 $p$ 归纳, 只需假设 $y$ 是 $x$ 且 $p$ 是 $\refl x$。但在这种情况下, 我们有 $\refl{x}\ct\refl{x}\jdeq\refl{x}$。
+  \item \emph{第一证明:} 令 $D:\prd{x,y:A} (x=y) \to \type$ 为由下式给出的类型族
     \begin{equation*}
       D(x,y,p)\defeq (\opp{p}\ct p=  \refl{y}).
     \end{equation*}
-    Then $D(x,x,\refl{x})$ is $\opp{\refl{x}}\ct\refl{x}=\refl{x}$.
-    Since $\opp{\refl{x}}\jdeq\refl{x}$ and $\refl{x}\ct\refl{x}\jdeq\refl{x}$, we get that $D(x,x,\refl{x})\jdeq (\refl{x}=\refl{x})$.
-    Hence we find the function
+    那么 $D(x,x,\refl{x})$ 是 $\opp{\refl{x}}\ct\refl{x}=\refl{x}$。由于 $\opp{\refl{x}}\jdeq\refl{x}$ 且 $\refl{x}\ct\refl{x}\jdeq\refl{x}$, 我们得到 $D(x,x,\refl{x})\jdeq (\refl{x}=\refl{x})$。因此我们找到函数
     \begin{equation*}
       d\defeq\lam{x} \refl{\refl{x}}:\prd{x:A} D(x,x,\refl{x}).
     \end{equation*}
-    Now path induction gives an element $\indid{A}(D,d,x,y,p):\opp{p}\ct p=\refl{y}$ for each $p:x= y$ in $A$.
-    The other equality is similar.
+    现在道路归纳对 $A$ 中每个 $p:x= y$ 给出一个元素 $\indid{A}(D,d,x,y,p):\opp{p}\ct p=\refl{y}$。另一个等式类似。
 
     \mentalpause
 
-    \noindent \emph{Second proof:} by induction, it suffices to assume $p$ is $\refl x$.
-    But in this case, we have $\opp{p} \ct p \jdeq \opp{\refl x} \ct \refl x \jdeq \refl x$.
+    \noindent \emph{第二证明:} 通过归纳, 只需假设 $p$ 是 $\refl x$。但在这种情况下, 我们有 $\opp{p} \ct p \jdeq \opp{\refl x} \ct \refl x \jdeq \refl x$。
 
-  \item \emph{First proof:} let $D:\prd{x,y:A} (x=y) \to \type$ be the type family given by
+  \item \emph{第一证明:} 令 $D:\prd{x,y:A} (x=y) \to \type$ 为由下式给出的类型族
     \begin{equation*}
       D(x,y,p)\defeq (\opp{(\opp{p})}= p).
     \end{equation*}
-    Then $D(x,x,\refl{x})$ is the type $(\opp{(\opp{\refl x})}=\refl{x})$.
-    But since $\opp{\refl{x}}\jdeq \refl{x}$ for each $x:A$, we have $\opp{(\opp{\refl{x}})}\jdeq \opp{\refl{x}} \jdeq\refl{x}$, and thus $D(x,x,\refl{x})\jdeq(\refl{x}=\refl{x})$.
-    Hence we find the function
+    那么 $D(x,x,\refl{x})$ 是类型 $(\opp{(\opp{\refl x})}=\refl{x})$。但由于对每个 $x:A$ 有 $\opp{\refl{x}}\jdeq \refl{x}$, 我们有 $\opp{(\opp{\refl{x}})}\jdeq \opp{\refl{x}} \jdeq\refl{x}$, 因此 $D(x,x,\refl{x})\jdeq(\refl{x}=\refl{x})$。因此我们找到函数
     \begin{equation*}
       d\defeq\lam{x} \refl{\refl{x}}:\prd{x:A} D(x,x,\refl{x}).
     \end{equation*}
-    Now path induction gives an element $\indid{A}(D,d,x,y,p):\opp{(\opp{p})}= p$ for each $p:x= y$.
+    现在道路归纳对每个 $p:x= y$ 给出一个元素 $\indid{A}(D,d,x,y,p):\opp{(\opp{p})}= p$。
 
     \mentalpause
 
-    \noindent \emph{Second proof:} by induction, it suffices to assume $p$ is $\refl x$.
-    But in this case, we have $\opp{(\opp{p})}\jdeq \opp{(\opp{\refl x})} \jdeq \refl x$.
+    \noindent \emph{第二证明:} 通过归纳, 只需假设 $p$ 是 $\refl x$。但在这种情况下, 我们有 $\opp{(\opp{p})}\jdeq \opp{(\opp{\refl x})} \jdeq \refl x$。
 
-  \item \emph{First proof:} let $D_1:\prd{x,y:A} (x=y) \to \type$ be the type family given by
+  \item \emph{第一证明:} 令 $D_1:\prd{x,y:A} (x=y) \to \type$ 为由下式给出的类型族
     \begin{equation*}
       D_1(x,y,p)\defeq\prd{z,w:A}{q:y= z}{r:z= w} \big(p\ct (q\ct r)=  (p\ct q)\ct r\big).
     \end{equation*}
-    Then $D_1(x,x,\refl{x})$ is
+    那么 $D_1(x,x,\refl{x})$ 是
     \begin{equation*}
       \prd{z,w:A}{q:x= z}{r:z= w} \big(\refl{x}\ct(q\ct r)= (\refl{x}\ct q)\ct r\big).
     \end{equation*}
-    To construct an element of this type, let $D_2:\prd{x,z:A} (x=z) \to \type$ be the type family
+    为了构造这个类型的一个元素, 令 $D_2:\prd{x,z:A} (x=z) \to \type$ 为类型族
     \begin{equation*}
       D_2 (x,z,q) \defeq \prd{w:A}{r:z=w} \big(\refl{x}\ct(q\ct r)= (\refl{x}\ct q)\ct r\big).
     \end{equation*}
-    Then $D_2(x,x,\refl{x})$ is
+    那么 $D_2(x,x,\refl{x})$ 是
     \begin{equation*}
       \prd{w:A}{r:x=w} \big(\refl{x}\ct(\refl{x}\ct r)= (\refl{x}\ct \refl{x})\ct r\big).
     \end{equation*}
-    To construct an element of \emph{this} type, let $D_3:\prd{x,w:A} (x=w) \to \type$ be the type family
+    为了构造\emph{这个}类型的一个元素, 令 $D_3:\prd{x,w:A} (x=w) \to \type$ 为类型族
     \begin{equation*}
       D_3(x,w,r) \defeq \big(\refl{x}\ct(\refl{x}\ct r)= (\refl{x}\ct \refl{x})\ct r\big).
     \end{equation*}
-    Then $D_3(x,x,\refl{x})$ is
+    那么 $D_3(x,x,\refl{x})$ 是
     \begin{equation*}
       \big(\refl{x}\ct(\refl{x}\ct \refl{x})= (\refl{x}\ct \refl{x})\ct \refl{x}\big)
     \end{equation*}
-    which is definitionally equal to the type $(\refl{x} = \refl{x})$, and is therefore inhabited by $\refl{\refl{x}}$.
-    Applying the path induction rule three times, therefore, we obtain an element of the overall desired type.
+    它定义性地等于类型 $(\refl{x} = \refl{x})$, 因此被 $\refl{\refl{x}}$ 居留。因此, 应用道路归纳规则三次, 我们得到整体所需类型的一个元素。
 
     \mentalpause
 
-    \noindent \emph{Second proof:} by induction, it suffices to assume $p$, $q$, and $r$ are all $\refl x$.
-    But in this case, we have
+    \noindent \emph{第二证明:} 通过归纳, 只需假设 $p$, $q$, 和 $r$ 都是 $\refl x$。但在这种情况下, 我们有
     \begin{align*}
       p\ct (q\ct r)
       &\jdeq \refl{x}\ct(\refl{x}\ct \refl{x})\\
@@ -499,70 +421,65 @@ It is a familiar fact in topology that when we concatenate a path $p$ with the r
       &\jdeq (\refl{x}\ct \refl x)\ct \refl x\\
       &\jdeq (p\ct q)\ct r.
     \end{align*}
-    Thus, we have $\refl{\refl{x}}$ inhabiting this type. \qedhere
+    因此, 我们有 $\refl{\refl{x}}$ 居留这个类型。 \qedhere
   \end{enumerate}
 \end{proof}
 
 \begin{rmk}
-  There are other ways to define these higher paths.
-  For instance, in \cref{thm:omg}\ref{item:omg4} we might do induction only over one or two paths rather than all three.
-  Each possibility will produce a \emph{definitionally} different proof, but they will all be equal to each other.
-  Such an equality between any two particular proofs can, again, be proven by induction, reducing all the paths in question to reflexivities and then observing that both proofs reduce themselves to reflexivities.
+  还有其他定义这些高阶道路的方法。例如, 在定理\ref{thm:omg}\ref{item:omg4}中, 我们可能只对一个或两个路径进行归纳, 而不是所有三个。
+  每种可能性都会产生一个\emph{定义上}不同的证明, 但它们都将彼此相等。
+  同样, 任何两个特定证明之间的这种相等性可以通过归纳来证明, 将所有涉及的路径化为自反性, 然后观察到两个证明都将自身化为自反性。
 \end{rmk}
 
-In view of \cref{thm:omg}\ref{item:omg4}, we will often write $p\ct q\ct r$ for $(p\ct q)\ct r$, and similarly $p\ct q\ct r \ct s$ for $((p\ct q)\ct r)\ct s$ and so on.
-We choose left-associativity for definiteness, but it makes no real difference.
-We generally trust the reader to insert instances of \cref{thm:omg}\ref{item:omg4} to reassociate such expressions as necessary.
 
-We are still not really done with the higher groupoid structure: the paths~\ref{item:omg1}--\ref{item:omg4} must also satisfy their own higher coherence\index{coherence} laws, which are themselves higher paths,
-\index{JieHeXing@结合性!of path concatenation!coherence of}%
+鉴于定理\ref{thm:omg}\ref{item:omg4}, 我们将经常把 $(p\ct q)\ct r$ 写成 $p\ct q\ct r$, 
+类似地把 $((p\ct q)\ct r)\ct s$ 写成 $p\ct q\ct r \ct s$ 等等。为了明确性, 我们选择左结合, 但这没有真正的影响。
+我们通常相信读者会插入定理\ref{thm:omg}\ref{item:omg4} 的实例来根据需要重新结合这些表达式。
+
+我们仍然没有真正完成高阶群胚结构: 道路~\ref{item:omg1}--\ref{item:omg4} 还必须满足它们自己的高阶融贯\index{coherence}律, 这些定理本身就是高阶道路,
+\index{associativity!of path concatenation!coherence of}%
 \index{globular operad}%
 \index{operad}%
-\index{QunPei@群胚!GaoJieDe@高阶的}%
-and so on ``all the way up to infinity'' (this can be made precise using e.g.\ the notion of a globular operad).
-However, for most purposes it is unnecessary to make the whole infinite-dimensional structure explicit.
-One of the nice things about homotopy type theory is that all of this structure can be \emph{proven} starting from only the inductive property of identity types, so we can make explicit as much or as little of it as we need.
+\index{groupoid!higher}%
+并且如此``一直上升到无穷''(这可以使用例如球状多元体的概念来精确化)。然而, 对于大多数目的, 不需要使整个无限维结构显式化。
+同伦类型论的一个好处是, 所有这些结构都可以\emph{证明}是从恒等类型的归纳性质出发的, 因此我们可以根据需要显式化尽可能多或尽可能少的部分。
 
-In particular, in this book we will not need any of the complicated combinatorics involved in making precise notions such as ``coherent structure at all higher levels''.
-In addition to ordinary paths, we will use paths of paths (i.e.\ elements of a type $p =_{x=_A y} q$), which as remarked previously we call \emph{2-paths}\index{DaoLu@道路!2-} or \emph{2-dimensional paths}, and perhaps occasionally paths of paths of paths (i.e.\ elements of a type $r = _{p =_{x=_A y} q} s$), which we call \emph{3-paths}\index{DaoLu@道路!3-} or \emph{3-dimensional paths}.
-It is possible to define a general notion of \emph{$n$-dimensional path}
-\indexdef{DaoLu@道路!n-@$n$-}%
+特别是, 在本书中, 我们不需要任何涉及精确化诸如``所有更高层的融贯结构''等概念的复杂组合学。除了普通道路, 
+我们将使用道路的道路(即类型 $p =_{x=_A y} q$ 的元素), 如前所述, 我们称之为\emph{2-道路}\index{path!2-}或\emph{2维道路}, 
+并且可能偶尔使用道路的道路的道路(即类型 $r = _{p =_{x=_A y} q} s$ 的元素), 我们称之为\emph{3-道路}\index{path!3-}或\emph{3维道路}。可以定义\emph{$n$维道路}的一般概念
+\indexdef{path!n-@$n$-}%
 \indexsee{n-path@$n$-path}{path, $n$-}%
 \indexsee{n-dimensional path@$n$-dimensional path}{path, $n$-}%
-\indexsee{DaoLu@道路!n-dimensional@$n$-dimensional}{path, $n$-}%
-(see \cref{ex:npaths}), but we will not need it.
+\indexsee{path!n-dimensional@$n$-dimensional}{path, $n$-}%
+(见练习\ref{ex:npaths}), 但我们将不需要它。
 
-We will, however, use one particularly important and simple case of higher paths, which is when the start and end points are the same.
-In set theory, the proposition $a=a$ is entirely uninteresting, but in homotopy theory, paths from a point to itself are called \emph{loops}\index{HuanLu@环路} and carry lots of interesting higher structure.
-Thus, given a type $A$ with a point $a:A$, we define its \define{loop space}
-\index{HuanLuKongJian@环路空间}%
-$\Omega(A,a)$ to be the type $\id[A]{a}{a}$.
-We may sometimes write simply $\Omega A$ if the point $a$ is understood from context.
+然而, 我们将使用一个特别重要且简单的高阶道路情况, 即当起点和终点相同时。在集合论中, 命题 $a=a$ 完全无趣, 
+但在同伦论中, 从一点到自身的道路称为\emph{环路}\index{loop}并携带许多有趣的高阶结构。因此, 给定一个有点 $a:A$ 的类型 $A$, 我们定义其\define{环路空间}
+\index{loop space}%
+$\Omega(A,a)$ 为类型 $\id[A]{a}{a}$。如果点 $a$ 从上下文中可理解, 我们有时可能只写 $\Omega A$。
+由于 $\Omega A$ 的任何两个元素都是具有相同起点和终点的道路, 它们可以连接; 因此我们有一个操作 $\Omega A\times \Omega A\to \Omega A$。
+更一般地, $A$ 的高阶群胚结构赋予 $\Omega A$ 一个``高阶群''的类似结构。
 
-Since any two elements of $\Omega A$ are paths with the same start and end points, they can be concatenated;
-thus we have an operation $\Omega A\times \Omega A\to \Omega A$.
-More generally, the higher groupoid structure of $A$ gives $\Omega A$ the analogous structure of a ``higher group''.
-
-It can also be useful to consider the loop space\index{HuanLuKongJian@环路空间!iterated}\index{iterated loop space} \emph{of} the loop space of $A$, which is the space of 2-dimensional loops on the identity loop at $a$.
-This is written $\Omega^2(A,a)$ and represented in type theory by the type $\id[({\id[A]{a}{a}})]{\refl{a}}{\refl{a}}$.
-While $\Omega^2(A,a)$, as a loop space, is again a ``higher group'', it now also has some additional structure resulting from the fact that its elements are 2-dimensional loops between 1-dimensional loops.
+考虑 $A$ 的环路空间\index{loop space!iterated}\index{iterated loop space}的环路空间也是有用的, 
+它是在 $a$ 处的恒等环路上的2维环路的空间。这写作 $\Omega^2(A,a)$ 并在类型论中由类型 $\id[({\id[A]{a}{a}})]{\refl{a}}{\refl{a}}$ 表示。
+虽然 $\Omega^2(A,a)$ 作为环路空间又是一个``高阶群'', 但它现在还有一些额外的结构, 因为它的元素是1维环路之间的2维环路。
 
 \begin{thm}[Eckmann--Hilton]\label{thm:EckmannHilton}
-  The composition operation on the second loop space
+  第二个环路空间上的复合操作
   %
   \begin{equation*}
     \Omega^2(A)\times \Omega^2(A)\to \Omega^2(A)
   \end{equation*}
-  is commutative: $\alpha\ct\beta = \beta\ct\alpha$, for any $\alpha, \beta:\Omega^2(A)$.
-  \index{Eckmann--HiltonLunZheng@Eckmann--Hilton论证}%
+  是交换的: 对任何 $\alpha, \beta:\Omega^2(A)$ 有 $\alpha\ct\beta = \beta\ct\alpha$。
+  \index{Eckmann--Hilton argument}%
 \end{thm}
 
 \begin{proof}
-First, observe that the composition of $1$-loops $\Omega A\times \Omega A\to \Omega A$ induces an operation
+首先, 观察到1-环路的复合 $\Omega A\times \Omega A\to \Omega A$ 诱导了一个操作
 \[
 \star : \Omega^2(A)\times \Omega^2(A)\to \Omega^2(A)
 \]
-as follows: consider elements $a, b, c : A$ and 1- and 2-paths,
+如下: 考虑元素 $a, b, c : A$ 和1-及2-道路,
 %
 \begin{align*}
   p &: a = b,       &       r &: b = c \\
@@ -570,7 +487,7 @@ as follows: consider elements $a, b, c : A$ and 1- and 2-paths,
   \alpha &: p = q,  &   \beta &: r = s
 \end{align*}
 %
-as depicted in the following diagram (with paths drawn as arrows).
+如以下图表中所描绘的(道路画为箭头)。
 % Changed this to xymatrix in the name of having uniform source code,
 % maybe the original using xy looked better (I think it was too big).
 % It is commented out below in case you want to reinstate it.
@@ -583,30 +500,27 @@ as depicted in the following diagram (with paths drawn as arrows).
    {c}
  }
 \]
-Composing the upper and lower 1-paths, respectively, we get two paths $p\ct r,\ q\ct s : a = c$, and there is then a ``horizontal composition''
+分别复合上部和下部的1-道路, 我们得到两条道路 $p\ct r,\ q\ct s : a = c$, 然后它们之间有一个``水平复合''
 %
 \begin{equation*}
   \alpha\hct\beta : p\ct r = q\ct s
 \end{equation*}
 %
-between them, defined as follows.
-First, we define $\alpha \rightwhisker r : p\ct r = q\ct r$ by path induction on $r$, so that
+定义如下。首先, 我们通过对 $r$ 的道路归纳定义 $\alpha \rightwhisker r : p\ct r = q\ct r$, 使得
 \[ \alpha \rightwhisker \refl{b} \jdeq \opp{\mathsf{ru}_p} \ct \alpha \ct \mathsf{ru}_q \]
-where $\mathsf{ru}_p : p = p \ct \refl{b}$ is the right unit law from \cref{thm:omg}\ref{item:omg1}.
-We could similarly define $\rightwhisker$ by induction on $\alpha$, or on all paths in sight, resulting in different judgmental equalities, but for present purposes the definition by induction on $r$ will make things simpler.
-Similarly, we define $q\leftwhisker \beta : q\ct r = q\ct s$ by induction on $q$, so that
+其中 $\mathsf{ru}_p : p = p \ct \refl{b}$ 是来自定理\ref{thm:omg}\ref{item:omg1}的右单位律。
+我们可以类似地通过对 $\alpha$ 的归纳或对所有涉及的路径的归纳来定义 $\rightwhisker$, 导致不同的判断等式, 
+但就目前目的而言, 通过对 $r$ 归纳的定义将使事情更简单。类似地, 我们通过对 $q$ 的归纳定义 $q\leftwhisker \beta : q\ct r = q\ct s$, 使得
 \[ \refl{b} \leftwhisker \beta \jdeq \opp{\mathsf{lu}_r} \ct \beta \ct \mathsf{lu}_s \]
-where $\mathsf{lu}_r$ denotes the left unit law.
-The operations $\leftwhisker$ and $\rightwhisker$ are called \define{whiskering}\indexdef{whiskering}.
-Next, since $\alpha \rightwhisker r$ and $q\leftwhisker \beta$ are composable 2-paths, we can define the \define{horizontal composition}
+其中 $\mathsf{lu}_r$ 表示左单位律。操作 $\leftwhisker$ 和 $\rightwhisker$ 称为\define{拔毛}\indexdef{BaMao@拔毛}。
+接下来, 由于 $\alpha \rightwhisker r$ 和 $q\leftwhisker \beta$ 是可复合的2-道路, 我们可以定义\define{水平复合}
 \indexdef{horizontal composition!of paths}%
-\indexdef{FuHe@复合!of paths!horizontal}%
-by:
+\indexdef{composition!of paths!horizontal}%
+为:
 \[
 \alpha\hct\beta\ \defeq\ (\alpha\rightwhisker r) \ct (q\leftwhisker \beta).
 \]
-Now suppose that $a \jdeq  b \jdeq  c$, so that all the 1-paths $p$, $q$, $r$, and $s$ are elements of $\Omega(A,a)$, and assume moreover that $p\jdeq q \jdeq r \jdeq s\jdeq \refl{a}$, so that $\alpha:\refl{a} = \refl{a}$ and $\beta:\refl{a} = \refl{a}$ are composable in both orders.
-In that case, we have
+现在假设 $a \jdeq  b \jdeq  c$, 使得所有1-道路 $p$, $q$, $r$, 和 $s$ 都是 $\Omega(A,a)$ 的元素, 并进一步假设 $p\jdeq q \jdeq r \jdeq s\jdeq \refl{a}$, 使得 $\alpha:\refl{a} = \refl{a}$ 和 $\beta:\refl{a} = \refl{a}$ 可以以两种顺序复合。在那种情况下, 我们有
 \begin{align*}
   \alpha\hct\beta
   &\jdeq (\alpha\rightwhisker\refl{a}) \ct (\refl{a}\leftwhisker \beta)\\
@@ -614,74 +528,70 @@ In that case, we have
   &\jdeq \opp{\refl{\refl{a}}} \ct \alpha \ct \refl{\refl{a}} \ct \opp{\refl{\refl a}} \ct \beta \ct \refl{\refl{a}}\\
   &= \alpha \ct \beta.
 \end{align*}
-(Recall that $\mathsf{ru}_{\refl{a}} \jdeq \mathsf{lu}_{\refl{a}} \jdeq \refl{\refl{a}}$, by the computation rule for path induction.)
-On the other hand, we can define another horizontal composition analogously by
+(回想一下, 根据道路归纳的计算规则, $\mathsf{ru}_{\refl{a}} \jdeq \mathsf{lu}_{\refl{a}} \jdeq \refl{\refl{a}}$。)另一方面, 我们可以类似地定义另一个水平复合为
 \[
 \alpha\hct'\beta\ \defeq\ (p\leftwhisker \beta)\ct (\alpha\rightwhisker s)
 \]
-and we similarly learn that
+并且我们类似地得知
 \[
 \alpha\hct'\beta = \beta\ct\alpha.
 \]
 \index{interchange law}%
-But, in general, the two ways of defining horizontal composition agree, $\alpha\hct\beta = \alpha\hct'\beta$, as we can see by induction on $\alpha$ and $\beta$ and then on the two remaining 1-paths, to reduce everything to reflexivity.
-Thus we have
+但是, 一般来说, 两种定义水平复合的方式是一致的, $\alpha\hct\beta = \alpha\hct'\beta$, 正如我们可以通过对 $\alpha$ 和 $\beta$ 的归纳然后对剩下的两个1-道路的归纳来看出, 
+并将所有东西化为自反性。因此我们有
 \[\alpha \ct \beta = \alpha\hct\beta = \alpha\hct'\beta = \beta\ct\alpha.
 \qedhere
 \]
 \end{proof}
 
-The foregoing fact, which is known as the \emph{Eckmann--Hilton argument}, comes from classical homotopy theory, and indeed it is used in \cref{cha:homotopy} below to show that the higher homotopy groups of a type are always abelian\index{Qun@群!AbelDe@Abel的} groups.
-The whiskering and horizontal composition operations defined in the proof are also a general part of the $\infty$-groupoid structure of types.
-They satisfy their own laws (up to higher homotopy), such as
+上述事实, 被称为\emph{Eckmann--Hilton 论证}, 来自经典同伦论, 并且确实在下面的第\ref{cha:homotopy}章中用于证明一个类型的高阶同伦群
+总是阿贝尔\index{group!abelian}群。证明中定义的拔毛和水平复合操作也是类型的 $\infty$-群胚结构的一般部分。它们满足它们自己的律(直到更高阶的同伦), 例如
 \[ \alpha \rightwhisker (p\ct q) = (\alpha \rightwhisker p) \rightwhisker q \]
-and so on.
-From now on, we trust the reader to apply path induction whenever needed to define further operations of this sort and verify their properties.
+等等。从现在开始, 我们相信读者会在需要时应用道路归纳来定义这种类型的进一步操作并验证它们的性质。
 
-As this example suggests, the algebra of higher path types is much more intricate than just the groupoid-like structure at each level; the levels interact to give many further operations and laws, as in the study of iterated loop spaces in homotopy theory.
-Indeed, as in classical homotopy theory, we can make the following general definitions:
+正如这个例子所表明的, 高阶道路类型的代数比仅仅每层的类群胚结构要复杂得多; 各层相互作用给出许多进一步的操作和律, 
+如同在同伦论中对迭代环路空间的研究。确实, 如同在经典同伦论中, 我们可以做出以下一般定义:
 
 \begin{defn} \label{def:pointedtype}
-  A \define{pointed type}
-  \indexsee{pointed!LeiXing@类型}{类型, 定点的}%
-  \indexdef{LeiXing@类型!pointed}%
-  $(A,a)$ is a type $A:\type$ together with a point $a:A$, called its \define{basepoint}.
-  \indexdef{JiDian@基点}%
-  We write $\pointed{\type} \defeq \sm{A:\type} A$ for the type of pointed types in the universe $\type$.
+  一个\define{带点类型}
+  \indexsee{pointed!type}{type, pointed}%
+  \indexdef{type!pointed}%
+  $(A,a)$ 是一个类型 $A:\type$ 连同一点 $a:A$, 称为其\define{基点}。
+  \indexdef{basepoint}%
+  我们写 $\pointed{\type} \defeq \sm{A:\type} A$ 表示宇宙 $\type$ 中带点类型的类型。
 \end{defn}
 
 \begin{defn} \label{def:loopspace}
-  Given a pointed type $(A,a)$, we define the \define{loop space}
-  \indexdef{HuanLuKongJian@环路空间}%
-  of $(A,a)$ to be the following pointed type:
+  给定一个带点类型 $(A,a)$, 我们定义 $(A,a)$ 的\define{环路空间}
+  \indexdef{loop space}%
+  为以下带点类型:
   \[\Omega(A,a)\defeq ((\id[A]aa),\refl a).\]
-  An element of it will be called a \define{loop}\indexdef{HuanLu@环路} at $a$.
-  For $n:\N$, the \define{$n$-fold iterated loop space} $\Omega^{n}(A,a)$
-  \indexdef{HuanLuKongJian@环路空间!iterated}%
-  \indexsee{HuanLuKongJian@环路空间!n-fold@$n$-fold}{loop space, iterated}%
-  of a pointed type $(A,a)$ is defined recursively by:
+  它的一个元素将称为在 $a$ 处的一个\define{环路}\indexdef{loop}。对于 $n:\N$, 一个带点类型 $(A,a)$ 的\define{$n$重迭代环路空间} $\Omega^{n}(A,a)$
+  \indexdef{loop space!iterated}%
+  \indexsee{loop space!n-fold@$n$-fold}{loop space, iterated}%
+  递归地定义为:
   \begin{align*}
     \Omega^0(A,a)&\defeq(A,a)\\
     \Omega^{n+1}(A,a)&\defeq\Omega^n(\Omega(A,a)).
   \end{align*}
-  An element of it will be called an \define{$n$-loop}
-  \indexdef{HuanLu@环路!n-@$n$-}%
+  它的一个元素将称为一个\define{$n$-环路}
+  \indexdef{loop!n-@$n$-}%
   \indexsee{n-loop@$n$-loop}{loop, $n$-}%
-  or an \define{$n$-dimensional loop}
-  \indexsee{HuanLu@环路!n-dimensional@$n$-dimensional}{loop, $n$-}%
+  或一个在 $a$ 处的\define{$n$维环路}。
+  \indexsee{loop!n-dimensional@$n$-dimensional}{loop, $n$-}%
   \indexsee{n-dimensional loop@$n$-dimensional loop}{loop, $n$-}%
-  at $a$.
 \end{defn}
 
-We will return to iterated loop spaces in \cref{cha:hlevels,cha:hits,cha:homotopy}.
-\index{.WuQiongQunPei@$\infty$-群胚!structure of a type|)}%
-\index{LeiXing@类型!identity|)}
-\index{DaoLu@道路|)}%
 
-\section{Functions are functors}
+我们将在第\ref{cha:hlevels}章、第\ref{cha:hits}章和第\ref{cha:homotopy}章回到迭代环路空间。
+\index{.infinity-groupoid@$\infty$-groupoid!structure of a type|)}%
+\index{type!identity|)}
+\index{path|)}%
+
+\section{函数即函子}
 \label{sec:functors}
 
-\index{HanShu@函数|(}%
+\index{function|(}%
 \index{functoriality of functions in type theory@``functoriality'' of functions in type theory}%
 Now we wish to establish that functions $f:A\to B$ behave functorially on paths.
 In traditional type theory, this is equivalently the statement that functions respect equality.
@@ -695,10 +605,10 @@ Topologically, this corresponds to saying that every function is ``continuous'',
     \apfunc f : (\id[A] x y) \to (\id[B] {f(x)} {f(y)}).
   \end{equation*}
   Moreover, for each $x:A$ we have $\apfunc{f}(\refl{x})\jdeq \refl{f(x)}$.
-  \indexdef{YingYong@应用!of function to a path}%
-  \indexdef{DaoLu@道路!HanShuZai...DeYingYong@函数在...的应用}%
-  \indexdef{HanShu@函数!...ZaiYiTiaoDaoLuShangDeYingYong@...在一条道路上的应用}%
-  \indexdef{ZuoYong@作用!DaoLuShangHanShuDe@道路上函数的}%
+  \indexdef{application!of function to a path}%
+  \indexdef{path!application of a function to}%
+  \indexdef{function!application to a path of}%
+  \indexdef{action!of a function on a path}%
 \end{lem}
 
 The notation $\apfunc f$ can be read either as the \underline{ap}plication of $f$ to a path, or as the \underline{a}ction on \underline{p}aths of $f$.
@@ -738,15 +648,15 @@ We note that $\apfunc{}$ behaves functorially, in all the ways that one might ex
 \begin{proof}
   Left to the reader.
 \end{proof}
-\index{HanShu@函数|)}%
+\index{function|)}%
 
 As was the case for the equalities in \cref{thm:omg}, those in \cref{lem:ap-functor} are themselves paths, which satisfy their own coherence laws (which can be proved in the same way), and so on.
 
 
-\section{Type families are fibrations}
+\section{类型族即纤维丛}
 \label{sec:fibrations}
 
-\index{LeiXing@类型!family of|(}%
+\index{type!family of|(}%
 \index{transport|(defstyle}%
 Since \emph{dependently typed} functions are essential in type theory, we will also need a version of \cref{lem:map} for these.
 However, this is not quite so simple to state, because if $f:\prd{x:A} B(x)$ and $p:x=y$, then $f(x):B(x)$ and $f(y):B(y)$ are elements of distinct types, so that \emph{a priori} we cannot even ask whether they are equal.
@@ -793,8 +703,8 @@ The point $\trans p u$ can be thought of as the other endpoint of this lifted pa
 We can also define the path itself in type theory:
 
 \begin{lem}[Path lifting property]\label{thm:path-lifting}
-  \indexdef{DaoLu@道路!lifting}%
-  \indexdef{lifting!DaoLu@道路}%
+  \indexdef{path!lifting}%
+  \indexdef{lifting!path}%
   Let $P:A\to\type$ be a type family over $A$ and assume we have $u:P(x)$ for some $x:A$.
   Then for any $p:x=y$, we have
   \begin{equation*}
@@ -818,14 +728,14 @@ It also ensures automatically that the path liftings are chosen ``continuously''
 
   We may also occasionally use other topological terminology when speaking about type families.
   For instance, we may refer to a dependent function $f:\prd{x:A} P(x)$ as a \define{section}
-  \indexdef{section!LeiXingZuDe@类型族的}%
+  \indexdef{section!of a type family}%
   of the fibration $P$, and we may say that something happens \define{fiberwise}
   \indexdef{fiberwise}%
   if it happens for each $P(x)$.
   For instance, a section $f:\prd{x:A} P(x)$ shows that $P$ is ``fiberwise inhabited''.
 \end{rmk}
 
-\index{HanShu@函数!YiZhiDe@依值的|(}
+\index{function!dependent|(}
 Now we can prove the dependent version of \cref{lem:map}.
 The topological intuition is that given $f:\prd{x:A} P(x)$ and a path $p:\id[A]xy$, we ought to be able to apply $f$ to $p$ and obtain a path in the total space of $P$ which ``lies over'' $p$, as shown below.
 
@@ -855,10 +765,10 @@ Thus, up to equivalence, it makes sense to define ``a path from $u$ to $v$ lying
 And, indeed, we can show that dependent functions produce such paths.
 
 \begin{lem}[Dependent map]\label{lem:mapdep}
-  \indexdef{YingYong@应用!DaoLuShangYiZhiHanShuDe@道路上依值函数的}%
-  \indexdef{DaoLu@道路!YiZhiHanShuZai...DeYingYong@依值函数在...的应用}%
-  \indexdef{HanShu@函数!YiZhiDe@依值的!...ZaiYiTiaoDaoLuShangDeYingYong@...在一条道路上的应用}%
-  \indexdef{ZuoYong@作用!of a dependent function on a path}%
+  \indexdef{application!of dependent function to a path}%
+  \indexdef{path!application of a dependent function to}%
+  \indexdef{function!dependent!application to a path of}%
+  \indexdef{action!of a dependent function on a path}%
   Suppose $f:\prd{x: A} P(x)$; then we have a map
   \[\apdfunc f : \prd{p:x=y}\big(\id[P(y)]{\trans p{f(x)}}{f(y)}\big).\]
 \end{lem}
@@ -883,8 +793,8 @@ And, indeed, we can show that dependent functions produce such paths.
 \end{proof}
 
 We will refer generally to paths which ``lie over other paths'' in this sense as \emph{dependent paths}.
-\indexsee{YiZhiDe@依值的!DaoLu@道路}{道路, 依值的}%
-\index{DaoLu@道路!YiZhiDe@依值的}%
+\indexsee{dependent!path}{path, dependent}%
+\index{path!dependent}%
 They will play an increasingly important role starting in \cref{cha:hits}.
 In \cref{sec:computational} we will see that for a few particular kinds of type families, there are equivalent ways to represent the notion of dependent paths that are sometimes more convenient.
 
@@ -940,7 +850,7 @@ In fact, these functions are inverse equivalences (in the sense to be introduced
 Because the types of $\apdfunc{f}$ and $\apfunc{f}$ are different, it is often clearer to use different notations for them.
 % We may sometimes use a notation $\apd f p$ for $\apdfunc{f}(p)$, which is similar to the notation $\ap f p$ for $\apfunc{f}(p)$.
 
-\index{HanShu@函数!YiZhiDe@依值的|)}%
+\index{function!dependent|)}%
 
 At this point, we hope the reader is starting to get a feel for proofs by induction on identity types.
 From now on we stop giving both styles of proofs, allowing ourselves to use whatever is most clear and convenient (and often the second, more concise one).
@@ -961,13 +871,13 @@ Here are a few other useful lemmas about transport; we leave it to the reader to
   \[ \transfib{Q}{p}{f_x(u)} = f_y(\transfib{P}{p}{u}). \]
 \end{lem}
 
-\index{LeiXing@类型!family of|)}%
+\index{type!family of|)}%
 \index{transport|)}
 
-\section{Homotopies and equivalences}
+\section{同伦与等价}
 \label{sec:basics-equivalences}
 
-\index{TongLun@同伦|(defstyle}%
+\index{homotopy|(defstyle}%
 
 So far, we have seen how the identity type $\id[A]xy$ can be regarded as a type of \emph{identifications}, \emph{paths}, or \emph{equivalences} between two elements $x$ and~$y$ of a type $A$.
 Now we investigate the appropriate notions of ``identification'' or ``sameness'' between \emph{functions} and between \emph{types}.
@@ -975,7 +885,7 @@ In \cref{sec:compute-pi,sec:compute-universe}, we will see that homotopy type th
 
 Traditionally, we regard two functions as the same if they take equal values on all inputs.
 Under the propositions-as-types interpretation, this suggests that two functions $f$ and $g$ (perhaps dependently typed) should be the same if the type $\prd{x:A} (f(x)=g(x))$ is inhabited.
-Under the homotopical interpretation, this dependent function type consists of \emph{continuous} paths or \emph{functorial} equivalences, and thus may be regarded as the type of \emph{homotopies} or of \emph{natural isomorphisms}.\index{TongGou@同构!ZiRanDe@自然的}
+Under the homotopical interpretation, this dependent function type consists of \emph{continuous} paths or \emph{functorial} equivalences, and thus may be regarded as the type of \emph{homotopies} or of \emph{natural isomorphisms}.\index{isomorphism!natural}
 We will adopt the topological terminology for this.
 
 \begin{defn} \label{defn:homotopy}
@@ -1067,11 +977,11 @@ as desired (with some associativity paths suppressed).
 
 Of course, like the functoriality of functions (\cref{lem:ap-functor}), the equality in \cref{lem:htpy-natural} is a path which satisfies its own coherence laws, and so on.
 
-\index{TongLun@同伦|)}%
+\index{homotopy|)}%
 
 \index{equivalence|(}%
 Moving on to types, from a traditional perspective one may say that a function $f:A\to B$ is an \emph{isomorphism} if there is a function $g:B\to A$ such that both composites $f\circ g$ and $g\circ f$ are pointwise equal to the identity, i.e.\ such that $f \circ g \htpy \idfunc[B]$ and $g\circ f \htpy \idfunc[A]$.
-\indexsee{TongLun@同伦!equivalence}{equivalence}%
+\indexsee{homotopy!equivalence}{equivalence}%
 A homotopical perspective suggests that this should be called a \emph{homotopy equivalence}, and from a categorical one, it should be called an \emph{equivalence of (higher) groupoids}.
 However, when doing proof-relevant mathematics,
 \index{mathematics!proof-relevant}%
@@ -1081,13 +991,13 @@ the corresponding type
 \end{equation}
 is poorly behaved.
 For instance, for a single function $f:A\to B$ there may be multiple unequal inhabitants of~\eqref{eq:qinvtype}.
-(This is closely related to the observation in higher category theory that often one needs to consider \emph{adjoint} equivalences\index{BanSui@伴随!equivalence} rather than plain equivalences.)
+(This is closely related to the observation in higher category theory that often one needs to consider \emph{adjoint} equivalences\index{adjoint!equivalence} rather than plain equivalences.)
 For this reason, we give~\eqref{eq:qinvtype} the following historically accurate, but slightly de\-rog\-a\-to\-ry-sounding name instead.
 
 \begin{defn}\label{defn:quasi-inverse}
   For a function $f:A\to B$, a \define{quasi-inverse}
   \indexdef{quasi-inverse}%
-  \indexsee{HanShu@函数!quasi-inverse of}{quasi-inverse}%
+  \indexsee{function!quasi-inverse of}{quasi-inverse}%
   of $f$ is a triple $(g,\alpha,\beta)$ consisting of a function $g:B\to A$ and homotopies
 $\alpha:f\circ g\htpy \idfunc[B]$ and $\beta:g\circ f\htpy \idfunc[A]$.
 \end{defn}
@@ -1096,8 +1006,8 @@ $\alpha:f\circ g\htpy \idfunc[B]$ and $\beta:g\circ f\htpy \idfunc[A]$.
 Thus,~\eqref{eq:qinvtype} is \emph{the type of quasi-inverses of $f$}; we may denote it by $\qinv(f)$.
 
 \begin{eg}\label{eg:idequiv}
-  \index{identity!HanShu@函数}%
-  \index{HanShu@函数!identity}%
+  \index{identity!function}%
+  \index{function!identity}%
   The identity function $\idfunc[A]:A\to A$ has a quasi-inverse given by $\idfunc[A]$ itself, together with homotopies defined by $\alpha(y) \defeq \refl{y}$ and $\beta(x) \defeq \refl{x}$.
 \end{eg}
 
@@ -1118,9 +1028,9 @@ Thus,~\eqref{eq:qinvtype} is \emph{the type of quasi-inverses of $f$}; we may de
 
 \symlabel{basics-isequiv}\symlabel{basics:iso}
 In general, we will only use the word \emph{isomorphism}
-\index{TongGou@同构!of sets}
+\index{isomorphism!of sets}
 (and similar words such as \emph{bijection}, and the associated notation $A\cong B$)
-\index{ShuangShe@双射}
+\index{bijection}
 in the special case when the types $A$ and $B$ ``behave like sets'' (see \cref{sec:basics-sets}).
 In this case, the type~\eqref{eq:qinvtype} is unproblematic.
 We will reserve the word \emph{equivalence} for an improved notion $\isequiv (f)$ with the following properties:%
@@ -1186,7 +1096,7 @@ We conclude by observing:
 \index{equivalence|)}%
 
 
-\section{The higher groupoid structure of type formers}
+\section{类型构造子的高阶群胚结构}
 \label{sec:computational}
 
 In \cref{cha:typetheory}, we introduced many ways to form new types: cartesian products, disjoint unions, dependent products, dependent sums, etc.
@@ -1217,11 +1127,11 @@ Thus, the characterizations for particular types to be discussed in this chapter
 Actually, the type theory of \cref{cha:typetheory} is insufficient to prove the desired theorems for two of the type formers: $\Pi$-types and universes.
 For this reason, we are forced to introduce axioms into our type theory, in order to make those ``theorems'' true.
 Type-theoretically, an \emph{axiom} (c.f.~\cref{sec:axioms}) is an ``atomic'' element that is declared to inhabit some specified type, without there being any rules governing its behavior other than those pertaining to the type it inhabits.
-\index{GongLi@公理!vsGuiZe@vs规则}%
+\index{axiom!versus rules}%
 
-\index{HanShuWaiYanXing@函数外延性}%
+\index{function extensionality}%
 \indexsee{extensionality, of functions}{function extensionality}
-\index{FanDengGongLi@泛等公理}%
+\index{univalence axiom}%
 The axiom for $\Pi$-types (\cref{sec:compute-pi}) is familiar to type theorists: it is called \emph{function extensionality}, and states (roughly) that if two functions are homotopic in the sense of \cref{sec:basics-equivalences}, then they are equal.
 The axiom for universes (\cref{sec:compute-universe}), however, is a new contribution of homotopy type theory due to Voevodsky: it is called the \emph{univalence axiom}, and states (roughly) that if two types are equivalent in the sense of \cref{sec:basics-equivalences}, then they are equal.
 We have already remarked on this axiom in the introduction; it will play a very important role in this book.%
@@ -1233,10 +1143,10 @@ Counterexamples include most nontrivial higher inductive types (see \cref{cha:hi
 For instance, calculating the identity types of the types $\Sn^n$ (see \cref{sec:circle}) is equivalent to calculating the higher homotopy groups of spheres, a deep and important field of research in algebraic topology.
 
 
-\section{Cartesian product types}
+\section{笛卡尔积类型}
 \label{sec:compute-cartprod}
 
-\index{LeiXing@类型!product|(}%
+\index{type!product|(}%
 Given types $A$ and $B$, consider the cartesian product type $A \times B$.
 For any elements $x,y:A\times B$ and a path $p:\id[A\times B]{x}{y}$, by functoriality we can extract paths $\ap{\proj1}p:\id[A]{\proj1(x)}{\proj1(y)}$ and $\ap{\proj2}p:\id[B]{\proj2(x)}{\proj2(y)}$.
 Thus, we have a function
@@ -1296,7 +1206,7 @@ From this perspective, the two components of~\eqref{eq:path-prod}:
 \end{align*}
 are \emph{elimination} rules.
 Similarly, the two homotopies which witness~\eqref{eq:path-prod-inverse} as quasi-inverse to~\eqref{eq:path-prod} consist, respectively, of \emph{propositional computation rules}:
-\index{JiSuanGuiZe@计算规则!propositional!for identities between pairs}%
+\index{computation rule!propositional!for identities between pairs}%
 \begin{align*}
   {\projpath{1}{(\pairpath(p, q)})}
   &= %_{(\id{\proj{1} x}{\proj{1} y})}
@@ -1386,12 +1296,12 @@ Suppose given types $A,B,A',B'$ and functions $g:A\to A'$ and $h:B\to B'$; then 
   Thus, by path induction, we may assume $p$ and $q$ are reflexivity, in which case the desired equation holds judgmentally.
 \end{proof}
 
-\index{LeiXing@类型!product|)}%
+\index{type!product|)}%
 
-\section{\texorpdfstring{$\Sigma$}{Σ}-types}
+\section{\texorpdfstring{$\Sigma$}{Σ}-类型}
 \label{sec:compute-sigma}
 
-\index{LeiXing@类型!YiZhiDui@依值对|(}%
+\index{type!dependent pair|(}%
 Let $A$ be a type and $P:A\to\type$ a type family.
 Recall that the $\Sigma$-type, or dependent pair type, $\sm{x:A} P(x)$ is a generalization of the cartesian product type.
 Thus, we expect its higher groupoid structure to also be a generalization of the previous section.
@@ -1527,12 +1437,12 @@ We leave it to the reader to state and prove a generalization of
 the reflexivity, inverses, and composition of $\Sigma$-types
 componentwise.
 
-\index{LeiXing@类型!YiZhiDui@依值对|)}%
+\index{type!dependent pair|)}%
 
-\section{The unit type}
+\section{单位类型}
 \label{sec:compute-unit}
 
-\index{LeiXing@类型!unit|(}%
+\index{type!unit|(}%
 Trivial cases are sometimes important, so we mention briefly the case of the unit type~\unit.
 
 \begin{thm}\label{thm:path-unit}
@@ -1561,14 +1471,14 @@ We leave it to the reader to formulate this equivalence in terms of introduction
 \index{transport!in unit type}%
 The transport lemma for \unit is simply the transport lemma for constant type families (\cref{thm:trans-trivial}).
 
-\index{LeiXing@类型!unit|)}%
+\index{type!unit|)}%
 
-\section{\texorpdfstring{$\Pi$}{Π}-types and the function extensionality axiom}
+\section{\texorpdfstring{$\Pi$}{Π}-类型与函数外延性公理}
 \label{sec:compute-pi}
 
-\index{LeiXing@类型!YiZhiHanShu@依值函数|(}%
-\index{LeiXing@类型!HanShu@函数|(}%
-\index{TongLun@同伦|(}%
+\index{type!dependent function|(}%
+\index{type!function|(}%
+\index{homotopy|(}%
 Given a type $A$ and a type family $B : A \to \type$, consider the dependent function type $\prd{x:A}B(x)$.
 We expect the type $f=g$ of paths from $f$ to $g$ in $\prd{x:A} B(x)$ to be equivalent to
 the type of pointwise paths:\index{pointwise!equality of functions}
@@ -1590,8 +1500,8 @@ which is easily defined by path induction.
 For the moment, therefore, we will assume:
 
 \begin{axiom}[Function extensionality]\label{axiom:funext}
-  \indexsee{GongLi@公理!HanShuWaiYanXing@函数外延性}{function extensionality}%
-  \indexdef{HanShuWaiYanXing@函数外延性}%
+  \indexsee{axiom!function extensionality}{function extensionality}%
+  \indexdef{function extensionality}%
   For any $A$, $B$, $f$, and $g$, the function~\eqref{eq:happly} is an equivalence.
 \end{axiom}
 
@@ -1603,7 +1513,7 @@ In particular, \cref{axiom:funext} implies that~\eqref{eq:happly} has a quasi-in
 \]
 This function is also referred to as ``function extensionality''.
 As we did with $\pairpath$ in \cref{sec:compute-cartprod}, we can regard $\funext$ as an \emph{introduction rule} for the type $\id f g$.
-From this point of view, $\happly$ is the \emph{elimination rule}, while the homotopies witnessing $\funext$ as quasi-inverse to $\happly$ become a propositional computation rule\index{JiSuanGuiZe@计算规则!propositional!for identities between functions}
+From this point of view, $\happly$ is the \emph{elimination rule}, while the homotopies witnessing $\funext$ as quasi-inverse to $\happly$ become a propositional computation rule\index{computation rule!propositional!for identities between functions}
 \[
 \id{\happly({\funext{(h)}},x)}{h(x)} \qquad\text{for }h:\prd{x:A} (\id{f(x)}{g(x)})
 \]
@@ -1653,7 +1563,7 @@ The basic idea is just the same as for the non-dependent function type: we trans
 
 Now recall that for a general type family $P:X\to\type$, in \cref{sec:functors} we defined the type of \emph{dependent paths} over $p:\id[X]xy$ from $u:P(x)$ to $v:P(y)$ to be $\id[P(y)]{\trans{p}{u}}{v}$.
 When $P$ is a family of function types, there is an equivalent way to represent this which is often more convenient.
-\index{DaoLu@道路!YiZhiDe@依值的!in function types}
+\index{path!dependent!in function types}
 
 \begin{lem}\label{thm:dpath-arrow}
   Given type families $A,B:X\to\type$ and $p:\id[X]xy$, and also $f:A(x)\to B(x)$ and $g:A(y)\to B(y)$, we have an equivalence
@@ -1687,7 +1597,7 @@ In ordinary mathematics, such a chain of equalities would be merely proving that
 We are enhancing this by using it to describe a \emph{particular} path between them.
 
 As usual, there is a version of \cref{thm:dpath-arrow} for dependent functions that is similar, but more complicated.
-\index{DaoLu@道路!YiZhiDe@依值的!in dependent function types}
+\index{path!dependent!in dependent function types}
 
 \begin{lem}\label{thm:dpath-forall}
   Given type families $A:X\to\type$ and $B:\prd{x:X} A(x)\to\type$ and $p:\id[X]xy$, and also $f:\prd{a:A(x)} B(x,a)$ and $g:\prd{a:A(y)} B(y,a)$, we have an equivalence
@@ -1697,14 +1607,14 @@ As usual, there is a version of \cref{thm:dpath-arrow} for dependent functions t
 
 We leave it to the reader to prove this and to formulate a suitable computation rule.
 
-\index{TongLun@同伦|)}%
-\index{LeiXing@类型!YiZhiHanShu@依值函数|)}%
-\index{LeiXing@类型!HanShu@函数|)}%
+\index{homotopy|)}%
+\index{type!dependent function|)}%
+\index{type!function|)}%
 
-\section{Universes and the univalence axiom}
+\section{宇宙与单值公理}
 \label{sec:compute-universe}
 
-\index{LeiXing@类型!YuZhou@宇宙|(}%
+\index{type!universe|(}%
 \index{equivalence|(}%
 Given two types $A$ and $B$, we may consider them as elements of some universe type \type, and thereby form the identity type $\id[\type]AB$.
 As mentioned in the introduction, \emph{univalence} is the identification of $\id[\type]AB$ with the type $(\eqv AB)$ of equivalences from $A$ to $B$, which we described in \cref{sec:basics-equivalences}.
@@ -1719,8 +1629,8 @@ We perform this identification by way of the following canonical function.
 \end{lem}
 \begin{proof}
   We could construct this directly by induction on equality, but the following description is more convenient.
-  \index{identity!HanShu@函数}%
-  \index{HanShu@函数!identity}%
+  \index{identity!function}%
+  \index{function!identity}%
   Note that the identity function $\idfunc[\type]:\type\to\type$ may be regarded as a type family indexed by the universe \type; it assigns to each type $X:\type$ the type $X$ itself.
   (When regarded as a fibration, its total space is the type $\sm{A:\type}A$ of ``pointed types''; see also \cref{sec:object-classification}.)
   Thus, given a path $p:A =_\type B$, we have a transport\index{transport} function $\transf{p}:A \to B$.
@@ -1734,8 +1644,8 @@ However, as with $\happly$ for function types, the type theory described in \cre
 Thus, as we did for function extensionality, we formulate this property as an axiom: Voevodsky's \emph{univalence axiom}.
 
 \begin{axiom}[Univalence]\label{axiom:univalence}
-  \indexdef{FanDengGongLi@泛等公理}%
-  \indexsee{GongLi@公理!FanDengXing@泛等性}{univalence axiom}%
+  \indexdef{univalence axiom}%
+  \indexsee{axiom!univalence}{univalence axiom}%
   For any $A,B:\type$, the function~\eqref{eq:uidtoeqv} is an equivalence.
 \end{axiom}
 
@@ -1746,8 +1656,8 @@ In particular, therefore, we have
 
 Technically, the univalence axiom is a statement about a particular universe type $\UU$.
 If a universe $\UU$ satisfies this axiom, we say that it is \define{univalent}.
-\indexdef{LeiXing@类型!YuZhou@宇宙!FanDengDe@泛等的}%
-\indexdef{FanDengYuZhou@泛等宇宙}%
+\indexdef{type!universe!univalent}%
+\indexdef{univalent universe}%
 Except when otherwise noted (e.g.\ in \cref{sec:univalence-implies-funext}) we will assume that \emph{all} universes are univalent.
 
 \begin{rmk}
@@ -1768,7 +1678,7 @@ As we did in previous sections, it is useful to break this equivalence into:
   \[
   \idtoeqv \jdeq \transfibf{X \mapsto X} : (\id[\type]{A}{B}) \to (\eqv A B).
   \]
-\item The propositional computation rule\index{JiSuanGuiZe@计算规则!propositional!for univalence},
+\item The propositional computation rule\index{computation rule!propositional!for univalence},
   \[
   \transfib{X \mapsto X}{\ua(f)}{x} = f(x).
   \]
@@ -1802,12 +1712,12 @@ The following observation, which is a special case of \cref{thm:transport-compos
 \end{lem}
 
 \index{equivalence|)}%
-\index{LeiXing@类型!YuZhou@宇宙|)}%
+\index{type!universe|)}%
 
-\section{Identity type}
+\section{恒等类型}
 \label{sec:compute-paths}
 
-\index{LeiXing@类型!identity|(}%
+\index{type!identity|(}%
 Just as the type \id[A]{a}{a'} is characterized up to isomorphism, with
 a separate ``definition'' for each $A$, there is no simple
 characterization of the type \id[{\id[A]{a}{a'}}]{p}{q} of paths between
@@ -1912,7 +1822,7 @@ A yet more general version is when $B$ can be a family of types indexed on $A$:
 \end{thm}
 
 Finally, as in \cref{sec:compute-pi}, for families of identity types there is another equivalent characterization of dependent paths.
-\index{DaoLu@道路!YiZhiDe@依值的!in identity types}
+\index{path!dependent!in identity types}
 
 \begin{thm}\label{thm:dpath-path}
   For $p:\id[A]a{a'}$ with $q:a=a$ and $r:a'=a'$, we have
@@ -1924,15 +1834,15 @@ Finally, as in \cref{sec:compute-pi}, for families of identity types there is an
 
 There are more general equivalences involving the application of functions, akin to \cref{thm:transport-path,thm:transport-path2}.
 
-\index{LeiXing@类型!identity|)}%
+\index{type!identity|)}%
 
-\section{Coproducts}
+\section{余积}
 \label{sec:compute-coprod}
 
-\index{LeiXing@类型!coproduct|(}%
+\index{type!coproduct|(}%
 \index{encode-decode method|(}%
 So far, most of the type formers we have considered have been what are called \emph{negative}.
-\index{LeiXing@类型!negative}\index{negative!LeiXing@类型}%
+\index{type!negative}\index{negative!type}%
 \index{polarity}%
 Intuitively, this means that their elements are determined by their behavior under the elimination rules: a (dependent) pair is determined by its projections, and a (dependent) function is determined by its values.
 The identity types of negative types can almost always be characterized straightforwardly, along with all of their higher structure, as we have done in \crefrange{sec:compute-cartprod}{sec:compute-pi}.
@@ -1940,7 +1850,7 @@ The universe is not exactly a negative type, but its identity types behave simil
 Identity types themselves, of course, are a special case.
 
 We now consider our first example of a \emph{positive} type former.
-\index{LeiXing@类型!positive}\index{positive!LeiXing@类型}%
+\index{type!positive}\index{positive!type}%
 Again informally, a positive type is one which is ``presented'' by certain constructors, with the universal property of a presentation\index{presentation!of a positive type by its constructors} being expressed by its elimination rule.
 (Categorically speaking, a positive type has a ``mapping out'' universal property, while a negative type has a ``mapping in'' universal property.)
 Because computing with presentations is, in general, an uncomputable problem, for positive types we cannot always expect a straightforward characterization of the identity type.
@@ -2063,12 +1973,12 @@ where as usual, $A+B$ in the superscript denotes abusively the type family $x\ma
 The proof is an easy path induction.
 
 \index{encode-decode method|)}%
-\index{LeiXing@类型!coproduct|)}%
+\index{type!coproduct|)}%
 
-\section{Natural numbers}
+\section{自然数}
 \label{sec:compute-nat}
 
-\index{ZiRanShu@自然数|(}%
+\index{natural numbers|(}%
 \index{encode-decode method|(}%
 We use the encode-decode method to characterize the path space of the natural numbers, which are also a positive type.
 In this case, rather than fixing one endpoint, we characterize the two-sided path space all at once.
@@ -2158,18 +2068,19 @@ We will study more general positive types in \cref{cha:induction,cha:hits}.
 In \cref{cha:homotopy}, we will see that the same technique used here to characterize the identity types of coproducts and \nat can also be used to calculate homotopy groups of spheres.
 
 \index{encode-decode method|)}%
-\index{ZiRanShu@自然数|)}%
+\index{natural numbers|)}%
 
-\section{Example: equality of structures}
+\section{示例：结构的等价性}
 \label{sec:equality-of-structures}
 
 We now consider one example to illustrate the interaction between the groupoid structure on a type and the type
 formers.  In the introduction we remarked that one of the
 advantages of univalence is that two isomorphic things are interchangeable,
 in the sense that every property or construction involving one also
-applies to the other.  Common ``abuses of notation''\index{LanYong@滥用!of notation} become formally
+applies to the other.  Common ``abuses of notation''\index{abuse!of notation} become formally
 true.  Univalence itself says that equivalent types are equal, and
-therefore interchangeable, which includes e.g.\  the common practice of identifying isomorphic sets.  Moreover, when we define other
+therefore interchangeable, which includes e.g.\  the common practice of identifying isomorphic sets.  
+Moreover, when we define other
 mathematical objects as sets, or even general types, equipped with structure or properties, we
 can derive the correct notion of equality for them from univalence.  We will illustrate this
 point with a significant example in \cref{cha:category-theory}, where we
@@ -2189,7 +2100,7 @@ In the case of semigroups this yields the following.
 Given a type $A$, the type \semigroupstr{A} of \define{semigroup structures}
 \indexdef{semigroup!structure}%
 \index{structure!semigroup}%
-\index{JieHeXing@结合性!of semigroup operation}%
+\index{associativity!of semigroup operation}%
 with carrier\index{carrier} $A$ is defined by
 \[
 \semigroupstr{A} \defeq \sm{m:A \to A \to A} \prd{x,y,z:A} m(x,m(y,z)) = m(m(x,y),z).
@@ -2227,7 +2138,7 @@ Moreover, this map is an equivalence, because
 $\transfibf{C}(\alpha)$ is always an equivalence with inverse
 $\transfibf{C}{(\opp \alpha)}$, see \cref{thm:transport-concat,thm:omg}.
 
-While the univalence axiom\index{FanDengGongLi@泛等公理} ensures that this map exists, we need to use
+While the univalence axiom\index{univalence axiom} ensures that this map exists, we need to use
 facts about $\mathsf{transport}$ proven in the preceding sections to
 calculate what it actually does. Let $(m,a)$ be a semigroup structure on
 $A$, and we investigate the induced semigroup structure on $B$ given by
@@ -2341,10 +2252,10 @@ the structure of a semigroup.  However, if we restrict to set-like types
 (again, see \cref{cha:logic}), the
 equation relating $a$ and $a'$ is trivially true.  Moreover, in this
 case, an equivalence between sets is exactly a bijection.  Thus, we have
-arrived at a standard definition of a \emph{semigroup isomorphism}:\index{TongGou@同构!semigroup} a
+arrived at a standard definition of a \emph{semigroup isomorphism}:\index{isomorphism!semigroup} a
 bijection on the carrier sets that preserves the multiplication
 operation.  It is also possible to use the category-theoretic definition
-of isomorphism, by defining a \emph{semigroup homomorphism}\index{TongTai@同态!semigroup} to be a map
+of isomorphism, by defining a \emph{semigroup homomorphism}\index{homomorphism!semigroup} to be a map
 that preserves the multiplication, and arrive at the conclusion that equality of
 semigroups is the same as two mutually inverse homomorphisms; but we
 will not show the details here; see \cref{sec:sip}.
@@ -2355,20 +2266,20 @@ conclusion applies more generally: in homotopy type theory, all constructions of
 mathematical structures automatically respect isomorphisms, without any
 tedious proofs or abuse of notation.
 
-\section{Universal properties}
+\section{泛性质}
 \label{sec:universal-properties}
 
-\index{FanDe@泛的!property|(}%
+\index{universal!property|(}%
 By combining the path computation rules described in the preceding sections, we can show that various type forming operations satisfy the expected universal properties, interpreted in a homotopical way as equivalences.
 For instance, given types $X,A,B$, we have a function
-\index{LeiXing@类型!product}%
+\index{type!product}%
 \begin{equation}\label{eq:prod-ump-map}
   (X\to A\times B) \to (X\to A)\times (X\to B)
 \end{equation}
 defined by $f \mapsto (\proj1 \circ f, \proj2\circ f)$.
 
 \begin{thm}\label{thm:prod-ump}
-  \index{FanDe@泛的!property!of cartesian product}%
+  \index{universal!property!of cartesian product}%
   \eqref{eq:prod-ump-map} is an equivalence.
 \end{thm}
 \begin{proof}
@@ -2405,7 +2316,7 @@ defined as before by $f \mapsto (\proj1 \circ f, \proj2\circ f)$.
 Just as $\Sigma$-types are a generalization of cartesian products, they satisfy a generalized version of this universal property.
 Jumping right to the dependently typed version, suppose we have a type $X$ and type families $A:X\to \type$ and $P:\prd{x:X} A(x)\to\type$.
 Then we have a function
-\index{LeiXing@类型!YiZhiDui@依值对}%
+\index{type!dependent pair}%
 \begin{equation}
   \label{eq:sigma-ump-map}
   \Parens{\prd{x:X}\dsm{a:A(x)} P(x,a)} \to
@@ -2414,7 +2325,7 @@ Then we have a function
 Note that if we have $P(x,a) \defeq B(x)$ for some $B:X\to\type$, then~\eqref{eq:sigma-ump-map} reduces to~\eqref{eq:prod-umpd-map}.
 
 \begin{thm}\label{thm:ttac}
-  \index{FanDe@泛的!property!YiZhiDuiDe@依值对的}%
+  \index{universal!property!of dependent pair type}%
   \eqref{eq:sigma-ump-map} is an equivalence.
 \end{thm}
 \begin{proof}
@@ -2433,7 +2344,7 @@ Note that if we have $P(x,a) \defeq B(x)$ for some $B:X\to\type$, then~\eqref{eq
   On the other hand, given $(g,h)$, the round-trip composite yields $(\lam {x} g(x),\lam{x} h(x))$, which is judgmentally equal to $(g,h)$ as before.
 \end{proof}
 
-\index{GongLi@公理!XuanZe@选择!LeiXingLunDe@类型论的}
+\index{axiom!of choice!type-theoretic}
 This is noteworthy because the propositions-as-types interpretation of~\eqref{eq:sigma-ump-map} is ``the axiom of choice''.
 If we read $\Sigma$ as ``there exists'' and $\Pi$ (sometimes) as ``for all'', we can pronounce:
 \begin{itemize}
@@ -2441,13 +2352,13 @@ If we read $\Sigma$ as ``there exists'' and $\Pi$ (sometimes) as ``for all'', we
 \item $\sm{g:\prd{x:X} A(x)} \prd{x:X} P(x,g(x))$ as ``there exists a choice function $g:\prd{x:X} A(x)$ such that for all $x:X$ we have $P(x,g(x))$''.
 \end{itemize}
 Thus, \cref{thm:ttac} says that not only is the axiom of choice ``true'', its antecedent is actually equivalent to its conclusion.
-(On the other hand, the classical\index{mathematics!JingDianDe@经典的} mathematician may find that~\eqref{eq:sigma-ump-map} does not carry the usual meaning of the axiom of choice, since we have already specified the values of $g$, and there are no choices left to be made.
+(On the other hand, the classical\index{mathematics!classical} mathematician may find that~\eqref{eq:sigma-ump-map} does not carry the usual meaning of the axiom of choice, since we have already specified the values of $g$, and there are no choices left to be made.
 We will return to this point in \cref{sec:axiom-choice}.)
 
 The above universal property for pair types is for ``mapping in'', which is familiar from the category-theoretic notion of products.
 However, pair types also have a universal property for ``mapping out'', which may look less familiar.
 In the case of cartesian products, the non-dependent version simply expresses
-the cartesian closure adjunction\index{BanSui@伴随!HanZi@函子}:
+the cartesian closure adjunction\index{adjoint!functor}:
 \[ \eqvspaced{\big((A\times B) \to C\big)}{\big(A\to (B\to C)\big)}.\]
 The dependent version of this is formulated for a type family $C:A\times B\to \type$:
 \[ \eqvspaced{\Parens{\prd{w:A\times B} C(w)}}{\Parens{\prd{x:A}{y:B} C(x,y)}}. \]
@@ -2461,8 +2372,8 @@ Again, the right-to-left function is the induction principle.
 
 Some other induction principles are also part of universal properties of this sort.
 For instance, path induction is the right-to-left direction of an equivalence as follows:
-\index{LeiXing@类型!identity}%
-\index{FanDe@泛的!property!of identity type}%
+\index{type!identity}%
+\index{universal!property!of identity type}%
 \begin{equation}
   \label{eq:path-lump}
   \eqvspaced{\Parens{\prd{x:A}{p:a=x} B(x,p)}}{B(a,\refl a)}
@@ -2470,16 +2381,16 @@ For instance, path induction is the right-to-left direction of an equivalence as
 for any $a:A$ and type family $B:\prd{x:A} (a=x) \to\type$.
 However, inductive types with recursion, such as the natural numbers, have more complicated universal properties; see \cref{cha:induction}.
 
-\index{LeiXing@类型!limit}%
-\index{LeiXing@类型!YuJiXian@余极限}%
+\index{type!limit}%
+\index{type!colimit}%
 \index{limit!of types}%
-\index{YuJiXian@余极限!of types}%
+\index{colimit!of types}%
 Since \cref{thm:prod-ump} expresses the usual universal property of a cartesian product (in an appropriate homotopy-theoretic sense), the categorically inclined reader may well wonder about other limits and colimits of types.
 In \cref{ex:coprod-ump} we ask the reader to show that the coproduct type $A+B$ also has the expected universal property, and the nullary cases of $\unit$ (the terminal object) and $\emptyt$ (the initial object) are easy.
-\index{LeiXing@类型!empty}%
-\index{LeiXing@类型!unit}%
-\indexsee{initial!LeiXing@类型}{类型, 空}%
-\indexsee{terminal!LeiXing@类型}{类型, 单位}%
+\index{type!empty}%
+\index{type!unit}%
+\indexsee{initial!type}{type, empty}%
+\indexsee{terminal!type}{type, unit}%
 
 \indexdef{pullback}%
 For pullbacks, the expected explicit construction works: given $f:A\to C$ and $g:B\to C$, we define
@@ -2489,16 +2400,16 @@ For pullbacks, the expected explicit construction works: given $f:A\to C$ and $g
 In \cref{ex:pullback} we ask the reader to verify this.
 Some more general homotopy limits can be constructed in a similar way, but for colimits we will need a new ingredient; see \cref{cha:hits}.
 
-\index{FanDe@泛的!property|)}%
+\index{universal!property|)}%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%
 \sectionNotes
 
 The definition of identity types, with their induction principle, is due to Martin-L\"of \cite{Martin-Lof-1973}.
 \index{intensional type theory}%
-\index{extensional!LeiXingLun@类型论}%
-\index{LeiXingLun@类型论!intensional}%
-\index{LeiXingLun@类型论!extensional}%
+\index{extensional!type theory}%
+\index{type theory!intensional}%
+\index{type theory!extensional}%
 \index{reflection rule}%
 As mentioned in the notes to \cref{cha:typetheory}, our identity types are those that belong to \emph{intensional} type theory, rather than \emph{extensional} type theory.
 In general, a notion of equality is said to be ``intensional'' if it distinguishes objects based on their particular definitions, and ``extensional'' if it does not distinguish between objects that have the same ``extension'' or ``observable behavior''.
@@ -2519,10 +2430,10 @@ Therefore, regarding univalence as an extensionality property, one may say that 
 The proofs of symmetry (inversion) and transitivity (concatenation) for equalities are well-known in type theory.
 The fact that these make each type into a 1-groupoid (up to homotopy) was exploited in~\cite{hs:gpd-typethy} to give the first ``homotopy'' style semantics for type theory.
 
-The actual homotopical interpretation, with identity types as path spaces, and type families as fibrations, is due to \cite{AW}, who used the formalism of Quillen model categories.  An interpretation in (strict) $\infty$-groupoids\index{.WuQiongQunPei@$\infty$-群胚} was also given in the thesis \cite{mw:thesis}.
+The actual homotopical interpretation, with identity types as path spaces, and type families as fibrations, is due to \cite{AW}, who used the formalism of Quillen model categories.  An interpretation in (strict) $\infty$-groupoids\index{.infinity-groupoid@$\infty$-groupoid} was also given in the thesis \cite{mw:thesis}.
 For a construction of \emph{all} the higher operations and coherences of an $\infty$-groupoid in type theory, see~\cite{pll:wkom-type} and~\cite{bg:type-wkom}.
 
-\index{proof!ZhuShou@助手!Coq@\textsc{Coq}}%
+\index{proof!assistant!Coq@\textsc{Coq}}%
 Operations such as $\transfib{P}{p}{\blank}$ and $\apfunc{f}$, and one good notion of equivalence, were first studied extensively in type theory by Voevodsky, using the proof assistant \Coq.
 Subsequently, many other equivalent definitions of equivalence have been found, which are compared in \cref{cha:equivalences}.
 
@@ -2530,12 +2441,12 @@ The ``computational'' interpretation of identity types, transport, and so on des
 They also described a ``1-truncated'' type theory (see \cref{cha:hlevels}) in which these rules are judgmental equalities.
 The possibility of extending this to the full untruncated theory is a subject of current research.
 
-\index{HanShuWaiYanXing@函数外延性}%
+\index{function extensionality}%
 The naive form of function extensionality which says that ``if two functions are pointwise equal, then they are equal'' is a common axiom in type theory, going all the way back to \cite{PM2}.
 Some stronger forms of function extensionality were considered in~\cite{garner:depprod}.
 The version we have used, which identifies the identity types of function types up to equivalence, was first studied by Voevodsky, who also proved that it is implied by the naive version (and by univalence; see \cref{sec:univalence-implies-funext}).
 
-\index{FanDengGongLi@泛等公理}%
+\index{univalence axiom}%
 The univalence axiom is also due to Voevodsky.
 It was originally motivated by semantic considerations in the simplicial set model; see~\cite{klv:ssetmodel}.
 A similar axiom motivated by the groupoid model was proposed by Hofmann and Streicher~\cite{hs:gpd-typethy} under the name ``universe extensionality''.
@@ -2552,15 +2463,15 @@ There are also other potential ways to introduce univalence and function extensi
 The simple conclusions in \crefrange{sec:compute-coprod}{sec:compute-nat} such as ``$\inl$ and $\inr$ are injective and disjoint'' are well-known in type theory, and the construction of the function \encode is the usual way to prove them.
 The more refined approach we have described, which characterizes the entire identity type of a positive type (up to equivalence), is a more recent development; see e.g.~\cite{ls:pi1s1}.
 
-\index{GongLi@公理!XuanZe@选择!LeiXingLunDe@类型论的}%
+\index{axiom!of choice!type-theoretic}%
 The type-theoretic axiom of choice~\eqref{eq:sigma-ump-map} was noticed in William Howard's original paper~\cite{howard:pat} on the propositions-as-types correspondence, and was studied further by Martin-L\"of with the introduction of his dependent type theory.  It is mentioned as a ``distributivity law'' in Bourbaki's set theory \cite{Bourbaki}.\index{Bourbaki}%
 
 For a more comprehensive (and formalized) discussion of pullbacks and more general homotopy limits in homotopy type theory, see~\cite{AKL13}.
-Limits\index{limit!of types} of diagrams over directed graphs\index{Tu@图} are the easiest general sort of limit to formalize; the problem with diagrams over categories (or more generally $(\infty,1)$-categories)
+Limits\index{limit!of types} of diagrams over directed graphs\index{graph} are the easiest general sort of limit to formalize; the problem with diagrams over categories (or more generally $(\infty,1)$-categories)
 \index{.infinity1-category@$(\infty,1)$-category}%
-\indexsee{FanChou@范畴!.infinity1-@$(\infty,1)$-}{$(\infty,1)$-category}%
+\indexsee{category!.infinity1-@$(\infty,1)$-}{$(\infty,1)$-category}%
 is that in general, infinitely many coherence conditions are involved in the notion of (homotopy coherent) diagram.\index{diagram}
-Resolving this problem is an important open question\index{KaiFang@开放!WenTi@问题} in homotopy type theory.
+Resolving this problem is an important open question\index{open!problem} in homotopy type theory.
 
 \sectionExercises
 
@@ -2580,7 +2491,7 @@ Resolving this problem is an important open question\index{KaiFang@开放!WenTi@
 \end{ex}
 
 \begin{ex}\label{ex:npaths}
-  Define, by induction on $n$, a general notion of \define{$n$-dimensional path}\index{DaoLu@道路!n-@$n$-} in a type $A$, simultaneously with the type of boundaries for such paths.
+  Define, by induction on $n$, a general notion of \define{$n$-dimensional path}\index{path!n-@$n$-} in a type $A$, simultaneously with the type of boundaries for such paths.
 \end{ex}
 
 \begin{ex}\label{ex:ap-to-apd-equiv-apd-to-ap}
@@ -2601,7 +2512,7 @@ Resolving this problem is an important open question\index{KaiFang@开放!WenTi@
 \end{ex}
 
 \begin{ex}\label{ex:coprod-ump}
-  \index{FanDe@泛的!property!YuJiDe@余集的}%
+  \index{universal!property!of coproduct}%
   Prove that coproducts have the expected universal property,
   \[ \eqv{(A+B \to X)}{(A\to X)\times (B\to X)}. \]
   Can you generalize this to an equivalence involving dependent functions?
@@ -2609,14 +2520,14 @@ Resolving this problem is an important open question\index{KaiFang@开放!WenTi@
 
 \begin{ex}\label{ex:sigma-assoc}
   Prove that $\Sigma$-types are ``associative'',
-  \index{JieHeXing@结合性!of Sigma-types@of $\Sigma$-types}%
+  \index{associativity!of Sigma-types@of $\Sigma$-types}%
   in that for any $A:\UU$ and families $B:A\to\UU$ and $C:(\sm{x:A} B(x))\to\UU$, we have
   \[\eqvspaced{\Parens{\sm{x:A}{y:B(x)} C(\pairr{x,y})}}{\Parens{\sm{p:\sm{x:A}B(x)} C(p)}}. \]
 \end{ex}
 
 \begin{ex}\label{ex:pullback}
   A (homotopy) \define{commutative square}
-  \indexdef{KeJiaoHuanDe@可交换的!square}%
+  \indexdef{commutative!square}%
   \begin{equation*}
   \vcenter{\xymatrix{
       P\ar[r]^h\ar[d]_k &
@@ -2689,7 +2600,7 @@ Resolving this problem is an important open question\index{KaiFang@开放!WenTi@
 \end{ex}
 
 \begin{ex}\label{ex:sigma-eq-components-neq}
-  We have seen that $\bfalse \neq \btrue$ (rmk:false-neq-true, 不知怎得, 这里的引用失效了). Show that, nevertheless, $(\bool, \bfalse) =_{\sm{A:\type}A} (\bool, \btrue)$ (see \cref{rmk:sigma-equality-extraction}).
+  We have seen that $\bfalse \neq \btrue$ (\cref{rmk:false-neq-true}). Show that, nevertheless, $(\bool, \bfalse) =_{\sm{A:\type}A} (\bool, \btrue)$ (see \cref{rmk:sigma-equality-extraction}).
 \end{ex}
 
 % Local Variables:
